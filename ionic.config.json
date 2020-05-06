@@ -1,0 +1,7 @@
+{
+  "name": "Team-078-EmergencyAppIonic",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
