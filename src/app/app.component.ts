@@ -27,25 +27,4 @@ export class AppComponent {
     });
   }
 
-  sideMenu()
-  {
-    this.navigate =
-    [
-      {
-        title : "Home",
-        url   : "/home",
-        icon  : "home"
-      },
-      {
-        title : "Chat",
-        url   : "/chat",
-        icon  : "chatboxes"
-      },
-      {
-        title : "Contacts",
-        url   : "/contacts",
-        icon  : "contacts"
-      },
-    ]
-  }
 }
