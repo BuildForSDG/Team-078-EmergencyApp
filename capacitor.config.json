@@ -1,6 +1,6 @@
 {
   "appId": "io.ionic.starter",
-  "appName": "Team-078-EmergencyAppIonic",
+  "appName": "myApp",
   "bundledWebRuntime": false,
   "npmClient": "npm",
   "webDir": "www",
