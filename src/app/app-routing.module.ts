@@ -27,6 +27,11 @@ const routes: Routes = [
     path: 'map',
     loadChildren: () => import('./pages/admin-pages/map/map.module').then( m => m.MapPageModule)
   },
+  {
+    path: 'search',
+    loadChildren: () => import('./pages/admin-pages/search/search.module').then( m => m.SearchPageModule)
+  },
+
 
 ];
 
