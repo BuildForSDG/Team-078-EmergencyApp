@@ -21,7 +21,7 @@ const routes: Routes = [
   },
   {
     path: 'danger',
-    loadChildren: () => import('./pages/danger/danger.module').then( m => m.DangerPageModule)
+    loadChildren: () => import('./pages/admin-pages/danger/danger.module').then( m => m.DangerPageModule)
   },
   {
     path: 'map',
