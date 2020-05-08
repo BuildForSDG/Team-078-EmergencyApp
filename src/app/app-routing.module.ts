@@ -14,9 +14,18 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },  {
+  },
+  {
     path: 'admin-sign-up',
-    loadChildren: () => import('./admin-sign-up/admin-sign-up.module').then( m => m.AdminSignUpPageModule)
+    loadChildren: () => import('./pages/admin-sign-up/admin-sign-up.module').then( m => m.AdminSignUpPageModule)
+  },
+  {
+    path: 'danger',
+    loadChildren: () => import('./pages/danger/danger.module').then( m => m.DangerPageModule)
+  },
+  {
+    path: 'map',
+    loadChildren: () => import('./pages/map/map.module').then( m => m.MapPageModule)
   },
 
 ];
