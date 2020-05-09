@@ -12,12 +12,12 @@ export class LoginPage implements OnInit {
   ngOnInit() {
   }
 
-  signUpUser(){
-    if (this.registerCredentials.password != this.registerCredentials.confirmation_password) {
-      alert('The password confirmation does not match.');
-    } else {
-     return this._auth.signupUser(this.registerCredentials.email,this.registerCredentials.password);
-    }
-  }
+  // signUpUser(){
+  //   if (this.registerCredentials.password != this.registerCredentials.confirmation_password) {
+  //     alert('The password confirmation does not match.');
+  //   } else {
+  //    return this._auth.signupUser(this.registerCredentials.email,this.registerCredentials.password);
+  //   }
+  // }
 
 }
