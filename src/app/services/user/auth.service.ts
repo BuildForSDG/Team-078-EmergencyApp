@@ -15,10 +15,22 @@ export class AuthService {
     return firebase.auth().signInWithEmailAndPassword(email, password); 
   }
 
-  signupUser(email: string, password: string): Promise<any> { 
+  adminSignupUser(firstname:string, lastname:string,phone_number:string,email: string, password: string): Promise<any> { 
     return firebase .auth() .createUserWithEmailAndPassword(email, password) 
     .then((newUserCredential: firebase.auth.UserCredential) => { 
-      firebase .firestore() .doc(`/userProfile/${newUserCredential.user.uid}`) .set({ email: email, notifications_frquency : 3 }); 
+      firebase .firestore() .doc(`/admin/${newUserCredential.user.uid}`) .set({ firstname:firstname,lastname:lastname,phone_number:phone_number, email: email, notifications_frquency : 3 }); 
+      alert("Registration Successful");
+    }) .catch(error => { 
+      console.error(error); 
+      alert(error.message);
+      throw new Error(error); 
+    }); 
+  }
+
+  signupUser(firstname:string, lastname:string,phone_number:string,email: string, password: string): Promise<any> { 
+    return firebase .auth() .createUserWithEmailAndPassword(email, password) 
+    .then((newUserCredential: firebase.auth.UserCredential) => { 
+      firebase .firestore() .doc(`/admin/${newUserCredential.user.uid}`) .set({ firstname:firstname,lastname:lastname,phone_number:phone_number, email: email, notifications_frquency : 3 }); 
       alert("Registration Successful");
     }) .catch(error => { 
       console.error(error); 
