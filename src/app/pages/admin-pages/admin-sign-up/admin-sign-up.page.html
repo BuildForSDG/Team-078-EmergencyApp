@@ -1,6 +1,37 @@
 <ion-toolbar>
-    <ion-title>admin_sign_up</ion-title>
+    <ion-title>Admin Sign up page</ion-title>
   </ion-toolbar>
-<ion-content>
+  <ion-content>
+    <form>
+      <ion-item lines="full">
+        <ion-label position="floating">First name</ion-label>
+        <ion-input type="text" required></ion-input>
+      </ion-item>
+  
+      <ion-item lines="full">
+        <ion-label position="floating">Last name</ion-label>
+        <ion-input type="text" required></ion-input>
+      </ion-item>
+  
+      <ion-item lines="full">
+        <ion-label position="floating">Email</ion-label>
+        <ion-input type="text" required></ion-input>
+      </ion-item>
+  
+      <ion-item lines="full">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" required></ion-input>
+      </ion-item>
 
-</ion-content>
+      <ion-item lines="full">
+        <ion-label position="floating">Password</ion-label>
+        <ion-input type="password" required></ion-input>
+      </ion-item>
+  
+      <ion-row>
+        <ion-col>
+          <ion-button type="submit" color="danger" expand="block">Sign Up</ion-button>
+        </ion-col>
+      </ion-row>
+    </form>
+  </ion-content>
