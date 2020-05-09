@@ -31,6 +31,11 @@ const routes: Routes = [
     path: 'search',
     loadChildren: () => import('./pages/admin-pages/search/search.module').then( m => m.SearchPageModule)
   },
+  {
+    path: 'admin-login',
+    loadChildren: () => import('./pages/admin-pages/admin-login/admin-login.module').then( m => m.AdminLoginPageModule)
+  },
+
 
 
 ];
