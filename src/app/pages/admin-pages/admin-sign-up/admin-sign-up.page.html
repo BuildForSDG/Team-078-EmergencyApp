@@ -1,13 +1,12 @@
-<ion-header>
+
   <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
-    <ion-title>Register</ion-title>
+    <ion-title>Admin Sign Up</ion-title>
   </ion-toolbar>
-</ion-header>
-  
-  
+
+
   <ion-content>
     <form>
       <ion-item lines="full">
@@ -24,6 +23,11 @@
         <ion-label position="floating">Email</ion-label>
         <ion-input type="text" required></ion-input>
       </ion-item>
+
+      <ion-item lines="full">
+        <ion-label position="floating">Phone Number</ion-label>
+        <ion-input type="text" required></ion-input>
+      </ion-item>
   
       <ion-item lines="full">
         <ion-label position="floating">Password</ion-label>
@@ -37,7 +41,7 @@
   
       <ion-row>
         <ion-col>
-          <ion-button type="submit" color="danger" expand="block">Sign Up</ion-button>
+          <ion-button type="submit" color="primary" expand="block">Sign Up</ion-button>
         </ion-col>
       </ion-row>
     </form>
