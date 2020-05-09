@@ -12,6 +12,22 @@ const routes: Routes = [
   },  {
     path: 'admin-dashboard',
     loadChildren: () => import('./admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule)
+  },
+  {
+    path: 'welcom-page',
+    loadChildren: () => import('./welcom-page/welcom-page.module').then( m => m.WelcomPagePageModule)
+  },
+  {
+    path: 'respondant-login',
+    loadChildren: () => import('./respondant-login/respondant-login.module').then( m => m.RespondantLoginPageModule)
+  },
+  {
+    path: 'welcom-page',
+    loadChildren: () => import('./welcom-page/welcom-page.module').then( m => m.WelcomPagePageModule)
+  },
+  {
+    path: 'respondant-dashboard',
+    loadChildren: () => import('./respondant-dashboard/respondant-dashboard.module').then( m => m.RespondantDashboardPageModule)
   }
 
 ];
