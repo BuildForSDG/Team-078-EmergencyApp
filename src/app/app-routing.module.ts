@@ -9,6 +9,22 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },  {
+    path: 'admin-dashboard',
+    loadChildren: () => import('./admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule)
+  },
+  {
+    path: 'welcom-page',
+    loadChildren: () => import('./welcom-page/welcom-page.module').then( m => m.WelcomPagePageModule)
+  },
+  {
+    path: 'respondant-login',
+    loadChildren: () => import('./respondant-login/respondant-login.module').then( m => m.RespondantLoginPageModule)
+  },
+  {
+<<<<<<< HEAD
+    path: 'login',
+    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
   }, {
     path: 'admin-sign-up',
     loadChildren: () => import('./pages/admin-pages/admin-sign-up/admin-sign-up.module').then( m => m.AdminSignUpPageModule)
@@ -34,3 +50,21 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+=======
+    path: 'welcom-page',
+    loadChildren: () => import('./welcom-page/welcom-page.module').then( m => m.WelcomPagePageModule)
+  },
+  {
+    path: 'respondant-dashboard',
+    loadChildren: () => import('./respondant-dashboard/respondant-dashboard.module').then( m => m.RespondantDashboardPageModule)
+  }
+
+];
+@NgModule({
+  imports: [
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+  ],
+  exports: [RouterModule]
+})
+export class AppRoutingModule {}
+>>>>>>> 5ef9b7e01edcce35a48c92ea10406bee8e749744
