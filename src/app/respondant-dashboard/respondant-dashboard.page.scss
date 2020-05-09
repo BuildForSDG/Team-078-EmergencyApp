@@ -1,0 +1,61 @@
+ion-toolbar {
+  --background: rgba(0, 21, 79, 0.9);
+}
+
+ion-footer ion-button {
+  min-width: 100%;
+  min-height: 100%;
+  margin: 0;
+}
+
+.welcome-text {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 40px;
+  letter-spacing: 0.05em;
+  color: rgba(0, 21, 79, 0.9);
+  margin-top: 50px;
+}
+
+.buttons{
+    margin-top: 100px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.buttons div ion-button {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 800;
+  font-size: 14.5px;
+  line-height: 40px;
+  text-align: center;
+  letter-spacing: 0.05em;
+  cursor: pointer;
+  min-height: 140px;
+  min-width: 140px;
+  background: #ffffff;
+  border: 1px solid rgba(18, 18, 18, 0.4);
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  color: rgba(0, 21, 79, 0.9);
+}
+
+ion-button ion-title,
+ion-button ion-icon {
+  color: #f4af1b;
+}
+
+ion-button ion-title {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.03em;
+}
+
+ion-button ion-icon {
+  font-size: 34px;
+}
