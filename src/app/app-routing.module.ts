@@ -4,7 +4,9 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    //loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
+    loadChildren: () => import('./welcom-page/welcom-page.module').then( m => m.WelcomPagePageModule)
+  
   },
   {
     path: 'login',
@@ -12,7 +14,7 @@ const routes: Routes = [
   },
   {
     path: 'admin-dashboard',
-    loadChildren: () => import('./admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule)
+    loadChildren: () => import('./pages/admin-pages/admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule)
   },
   {
     path: 'welcom-page',
@@ -20,7 +22,7 @@ const routes: Routes = [
   },
   {
     path: 'respondant-login',
-    loadChildren: () => import('./respondant-login/respondant-login.module').then( m => m.RespondantLoginPageModule)
+    loadChildren: () => import('./pages/respondant-pages/respondant-login/respondant-login.module').then( m => m.RespondantLoginPageModule)
   },
   {
     path: 'welcom-page',
@@ -28,8 +30,16 @@ const routes: Routes = [
   },
   {
     path: 'respondant-dashboard',
-    loadChildren: () => import('./respondant-dashboard/respondant-dashboard.module').then( m => m.RespondantDashboardPageModule)
-  }
+    loadChildren: () => import('./pages/respondant-pages/respondant-dashboard/respondant-dashboard.module').then( m => m.RespondantDashboardPageModule)
+  },
+  {
+    path: 'admin-sign-up',
+    loadChildren: () => import('./pages/admin-pages/admin-sign-up/admin-sign-up.module').then( m => m.AdminSignUpPageModule)
+  },
+  {
+    path: 'admin-login',
+    loadChildren: () => import('./pages/admin-pages/admin-login/admin-login.module').then( m => m.AdminLoginPageModule)
+  },
 
 ];
 @NgModule({
@@ -39,3 +49,4 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class AppRoutingModule {}
+{ }
