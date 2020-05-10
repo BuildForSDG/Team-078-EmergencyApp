@@ -40,6 +40,11 @@ const routes: Routes = [
     path: 'admin-login',
     loadChildren: () => import('./pages/admin-pages/admin-login/admin-login.module').then( m => m.AdminLoginPageModule)
   },
+  {
+    path: 'admin-add-respondant',
+    loadChildren: () => import('./pages/admin-pages/admin-add-respondant/admin-add-respondant.module').then( m => m.AdminAddRespondantPageModule)
+  },
+
 
 ];
 @NgModule({
