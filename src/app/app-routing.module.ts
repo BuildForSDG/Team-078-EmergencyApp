@@ -14,7 +14,11 @@ const routes: Routes = [
   {
     path: 'login',
     loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
+  },  {
+    path: 'admin-add-respondant',
+    loadChildren: () => import('./admin-add-respondant/admin-add-respondant.module').then( m => m.AdminAddRespondantPageModule)
   },
+
 ];
 
 @NgModule({
