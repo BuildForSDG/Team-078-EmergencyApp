@@ -24,10 +24,7 @@ const routes: Routes = [
     path: 'respondant-login',
     loadChildren: () => import('./pages/respondant-pages/respondant-login/respondant-login.module').then( m => m.RespondantLoginPageModule)
   },
-  {
-    path: 'welcom-page',
-    loadChildren: () => import('./welcom-page/welcom-page.module').then( m => m.WelcomPagePageModule)
-  },
+
   {
     path: 'respondant-dashboard',
     loadChildren: () => import('./pages/respondant-pages/respondant-dashboard/respondant-dashboard.module').then( m => m.RespondantDashboardPageModule)

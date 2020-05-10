@@ -1,40 +1,41 @@
 <!-- This link is reserved to take care of back button -->
-  <!-- <ion-toolbar>
+<!-- <ion-toolbar>
     <ion-buttons slot="start">
       <ion-back-button></ion-back-button>
     </ion-buttons>
     <ion-title>Admin Sign Up</ion-title>
   </ion-toolbar> -->
-  
-  <ion-grid id="container">
+
+<ion-grid id="container">
     <ion-row>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-      <form>
-        <div padding>
-  
-          <div class="emerge-form-line">
-            <ion-item lines="none">
-              <ion-label position="floating">Email</ion-label>
-              <ion-input type="text" required></ion-input>
-            </ion-item>
-          </div>
-          <span class="emerge-span"></span>
-  
-          <div class="emerge-form-line">
-            <ion-item lines="none">
-              <ion-label position="floating">Password</ion-label>
-              <ion-input type="password" required></ion-input>
-            </ion-item>
-          </div>
-          <span class="emerge-span"></span>
-      </div>
-      
-          <div padding>
-            <ion-button size="large" type="submit" color="secondary" expand="block">Login <ion-icon name="log-out-outline"></ion-icon></ion-button>
-          </div>
-        
-      </form>
-  </ion-col>
-  </ion-row>
-  </ion-grid>
-  
+            <form (ngSubmit)="loginUser()">
+                <div padding>
+
+                    <div class="emerge-form-line">
+                        <ion-item lines="none">
+                            <ion-label position="floating">Email</ion-label>
+                            <ion-input type="text" name="email" [(ngModel)]="loginCredentials.email" required></ion-input>
+                        </ion-item>
+                    </div>
+                    <span class="emerge-span"></span>
+
+                    <div class="emerge-form-line">
+                        <ion-item lines="none">
+                            <ion-label position="floating">Password</ion-label>
+                            <ion-input type="password" name="password" [(ngModel)]="loginCredentials.password" required></ion-input>
+                        </ion-item>
+                    </div>
+                    <span class="emerge-span"></span>
+                </div>
+
+                <div padding>
+                    <ion-button size="large" type="submit" color="secondary" expand="block">Login
+                        <ion-icon name="log-out-outline"></ion-icon>
+                    </ion-button>
+                </div>
+
+            </form>
+        </ion-col>
+    </ion-row>
+</ion-grid>
