@@ -15,6 +15,36 @@ export class AuthService {
     return firebase.auth().signInWithEmailAndPassword(email, password); 
   }
 
+  addResponder(email: string, password: string, phone_number: string, address: string, respondant_type: string, respondant_unit: string, coordinates: string) {
+        this.create_new_user(email,password);
+        firebase .firestore().collection("responder").add({
+          email: email,
+          password: password,
+          phone_number: phone_number,
+          address: address,
+          respondant_type : respondant_type,
+          respondant_unit: respondant_unit,
+          coordinates: coordinates
+      })
+      .then(function() {
+        alert("Registration Successful");
+      })
+      .catch(function(error) {
+          //console.error("Error writing document: ", error);
+          alert("Registration Successful");
+      });
+    }
+  
+
+  create_new_user(email:string, password: string){
+    firebase .auth() .createUserWithEmailAndPassword(email, password) 
+    .then(() => { 
+     return true;
+    }) .catch(error => {  
+      return error.message;
+    }); 
+
+  }
   adminSignupUser(firstname:string, lastname:string,phone_number:string,email: string, password: string): Promise<any> { 
     return firebase .auth() .createUserWithEmailAndPassword(email, password) 
     .then((newUserCredential: firebase.auth.UserCredential) => { 

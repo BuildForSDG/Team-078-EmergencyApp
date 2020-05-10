@@ -14,12 +14,12 @@
                 </ion-text>
 
                 <div class="form">
-                    <form size="12">
+                    <form size="12" #form="ngForm" (ngSubmit)="loginUser()">
                         <ion-item no-lines>
-                            <ion-input required type="text" placeholder="RESPONDER ID"></ion-input>
+                            <ion-input required type="text" placeholder="RESPONDER ID" name="email" [(ngModel)]="loginCredentials.email" required></ion-input>
                         </ion-item>
                         <ion-item no-lines>
-                            <ion-input required type="password" placeholder="PASSWORD"></ion-input>
+                            <ion-input required type="password" placeholder="PASSWORD" name="password" [(ngModel)]="loginCredentials.password" required></ion-input>
                         </ion-item>
                         <ion-button href="/respondant-dashboard" type="submit" size="12">
                             Login
