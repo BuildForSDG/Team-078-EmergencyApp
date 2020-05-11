@@ -41,8 +41,12 @@ const routes: Routes = [
     path: 'admin-add-respondant',
     loadChildren: () => import('./pages/admin-pages/admin-add-respondant/admin-add-respondant.module').then( m => m.AdminAddRespondantPageModule)
   },
+  {
+    path: 'user-location',
+    loadChildren: () => import('./pages/user-pages/user-location/user-location.module').then( m => m.UserLocationPageModule)
+  },
 
-
+  
 ];
 @NgModule({
   imports: [
