@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=\'Poppins\', sans-serif:wght@100;200;300;400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
+
+// Menu harmburger design start
+.menu-harmbg-1 {
+  position: absolute;
+  width: 30px;
+  height: 1.86px;
+  background: var(--ion-color-secondary);
+  border-radius: 45px;
+  transform: rotate(-180deg);
+  margin-bottom: 5px;
+  top: -5px;
+}
+
+.menu-harmbg-2 {
+  position: absolute;
+  width: 19.71px;
+  height: 1.86px;
+  background: var(--ion-color-secondary);
+  border-radius: 45px;
+  transform: rotate(-180deg);
+  margin-top: 5px;
+  top: -5px;
+  left: 10px;
+}
+
+.menu-harmbg-3 {
+  position: absolute;
+  width: 30px;
+  height: 1.86px;
+  background: var(--ion-color-secondary);
+  border-radius: 45px;
+  transform: rotate(-180deg);
+  margin-top: 10px;
+  top: -5px;
+}
+
+// Menu harmburger design end
+
+.admin-menu-bg {
+  --background: var(--ion-color-primary);
+  height: 80px;
+  padding: 10px;
+}
+
+ion-title {
+  text-align: center;
+  color: var(--ion-color-secondary);
+}
+
+// .button-text, .button-icon {
+//   color: var(--ion-color-primary);
+// }
+
+// .admin-title {
+//   color: var(--ion-color-secondary);
+//   padding-top: 20px;
+// }
+
+// ion-row {
+//     display: flex;
+//     flex-direction: column;
+//     align-items: center;
+//     position: absolute;
+//     left: 0;
+//     right: 0;
+//     margin: 0;
+//     top: 50%;
+//     transform: translateY(-50%);
+// }
+
+// ion-col {
+//     border: px solid #488aff;
+//     background: #fff;
+// }
+
+// // This class take care of space amongst each form field
+// .emerge-form-line {
+//   border: 1.5px solid #F2BC94;
+// box-sizing: border-box;
+// box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+// border-radius: 3px;
+// }
+
+// .emerge-span {
+//   padding: 10px;
+// }
+
+// ion-button {
+//     font-weight: 300;
+// }
+
+
+// .shadow-text{
+//   font-family: '' Poppins ', sans-serif';
+//   font-style: normal;
+//   font-weight: bold;
+//   font-size: 24px;
+//   line-height: 40px;
+//   letter-spacing: 0.05em;
+//   color: #00154f;
+//   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+// }
+
+// @media (min-width: 240px) and (max-width: 768px) {
+//     ion-grid {
+//         background: #fff;
+//     }
+//     ion-col {
+//         border: none;
+//     }
+// }
