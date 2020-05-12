@@ -14,14 +14,35 @@
                 </ion-text>
 
                 <div class="form">
-                    <form size="12" #form="ngForm" (ngSubmit)="loginUser()">
-                        <ion-item no-lines>
-                            <ion-input required type="text" placeholder="RESPONDER ID" name="email" [(ngModel)]="loginCredentials.email" required></ion-input>
-                        </ion-item>
-                        <ion-item no-lines>
-                            <ion-input required type="password" placeholder="PASSWORD" name="password" [(ngModel)]="loginCredentials.password" required></ion-input>
-                        </ion-item>
-                        <ion-button href="/respondant-dashboard" type="submit" size="12">
+                    <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+                        <div class="emerge-form-line">
+                            <ion-item no-lines>
+                                <ion-input type="text" placeholder="Email" formControlName="email" required></ion-input>
+                            </ion-item>
+                        </div>
+                        <div class="error-container">
+                            <ng-container *ngFor="let validation of validation_messages.email">
+                                <div class="error-message" *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                                    <ion-icon name="information-circle-outline"></ion-icon>
+                                    <span>{{ validation.message }}</span>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <div class="emerge-form-line">
+                            <ion-item no-lines>
+                                <ion-input type="password" placeholder="Password" formControlName="password" required></ion-input>
+                            </ion-item>
+                        </div>
+
+                        <div class="error-container">
+                            <ng-container *ngFor="let validation of validation_messages.password">
+                                <div class="error-message" *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
+                                    <ion-icon name="information-circle-outline"></ion-icon>
+                                    <span>{{ validation.message }}</span>
+                                </div>
+                            </ng-container>
+                        </div>
+                        <ion-button type="submit" size="12" [disabled]="!loginForm.valid">
                             Login
                         </ion-button>
                     </form>
