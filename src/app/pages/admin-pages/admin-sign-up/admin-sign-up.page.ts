@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { LoadingController, AlertController } from '@ionic/angular';
 import { AuthService } from '../../../services/user/auth.service';
 
 @Component({
@@ -8,16 +10,34 @@ import { AuthService } from '../../../services/user/auth.service';
 })
 export class AdminSignUpPage implements OnInit {
 
+  public loading: any;
+
   registerCredentials = {firstname: '', lastname:'', phone_number:'', email: '', password: ''};
-  constructor(private _auth: AuthService) { }
+  constructor(private _auth: AuthService,
+    public router: Router,
+    public loadingCtrl: LoadingController, 
+    public alertCtrl: AlertController
+    ) { }
 
   ngOnInit() {
   }
 
-  adminAddUser(){
+  async adminAddUser(): Promise<void> { 
   
-     return this._auth.signupUser(this.registerCredentials.firstname,this.registerCredentials.lastname,this.registerCredentials.phone_number,this.registerCredentials.email,this.registerCredentials.password);
-    
+      //return this._auth.signupUser(this.registerCredentials.firstname,this.registerCredentials.lastname,this.registerCredentials.phone_number,this.registerCredentials.email,this.registerCredentials.password);
+      
+      this._auth.signupUser(this.registerCredentials.firstname,this.registerCredentials.lastname,this.registerCredentials.phone_number,this.registerCredentials.email,this.registerCredentials.password).then( () => { 
+        this.loading.dismiss().then(() => { 
+          this.router.navigate(['/admin-dashboard']);
+        }); 
+      }, error => { 
+        this.loading.dismiss().then(async () => { 
+          const alert = await this.alertCtrl.create({ message: error.message, buttons: [{ text: 'Ok', role: 'cancel' }] }); 
+          await alert.present(); 
+        });
+      } ); 
+      this.loading = await this.loadingCtrl.create(); await this.loading.present();
+
   }
 
 }

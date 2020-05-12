@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
+import { resolve } from 'url';
 
 @Injectable({
   providedIn: 'root'
@@ -49,10 +50,9 @@ export class AuthService {
     return firebase .auth() .createUserWithEmailAndPassword(email, password) 
     .then((newUserCredential: firebase.auth.UserCredential) => { 
       firebase .firestore() .doc(`/admin/${newUserCredential.user.uid}`) .set({ firstname:firstname,lastname:lastname,phone_number:phone_number, email: email, notifications_frquency : 3 }); 
-      alert("Registration Successful");
     }) .catch(error => { 
       console.error(error); 
-      alert(error.message);
+      //alert(error.message);
       throw new Error(error); 
     }); 
   }
