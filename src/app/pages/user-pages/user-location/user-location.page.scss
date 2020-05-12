@@ -45,9 +45,27 @@
 }
 
 ion-title {
+  position: relative;
   text-align: center;
   color: var(--ion-color-secondary);
+  top: -12px;
 }
+
+.center {
+  width: 50px;
+  height: 50px;
+  position: relative;
+  color: var(--ion-color-secondary);
+  top: 18px;
+}
+
+// ion-icon {
+//   &.big {
+//     align: center;
+//     width: 50px;
+//     height: 50px;
+//   }
+// }
 
 // .button-text, .button-icon {
 //   color: var(--ion-color-primary);
