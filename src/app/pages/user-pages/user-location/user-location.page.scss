@@ -1,6 +1,9 @@
 @import url('https://fonts.googleapis.com/css2?family=\'Poppins\', sans-serif:wght@100;200;300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
 
+
+// Menu Icon and Grid start
+
 ion-menu {
   --ion-background-color: var(--ion-color-secondary);
   // --background: rgba(0, 0, 0, 0.1);
@@ -28,30 +31,36 @@ ion-app {
   top: 80px
 }
 
-.menu-border {
+  .menu-border {
   position: absolute;
   width: 90%;
-  height: 40%;
-  border: 2px solid #F4AF1B;
+  --height: 40%;
+  border: 2px solid var(--ion-color-primary);
   box-sizing: border-box;
   border-radius: 3px;
-  margin: 10px 0 10px 10px;
+  margin: 10px 0 1px 15px;
 }
 
 .menu-main-icon {
   display: flex;
   justify-content: space-between;
+  padding-top: 40px;
 }
 
 .menu-icon {
   width: 30px;
   height: 30px;
-  // padding: 10px;
 }
 
 .menu-main-icon:first-child {
   padding-left: 10px;
 }
+
+.no-lines {
+  border-bottom: 2px solid var(--ion-color-primary);
+}
+
+// Menu Icon and Grid End
 
 // Menu harmburger design start
 .menu-harmbg-1 {
