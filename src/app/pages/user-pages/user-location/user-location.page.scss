@@ -3,7 +3,7 @@
 
 ion-menu {
   --ion-background-color: var(--ion-color-secondary);
-  background: rgba(0, 0, 0, 0.1);
+  // --background: rgba(0, 0, 0, 0.1);
   // --ion-text-color: var(--ion-color-secondary-tint);
   ion-item {
     background: transparent;
@@ -26,6 +26,16 @@ ion-menu {
 ion-app {
   position: absolute;
   top: 80px
+}
+
+.menu-border {
+  position: absolute;
+  width: 90%;
+  height: 40%;
+  border: 2px solid #F4AF1B;
+  box-sizing: border-box;
+  border-radius: 3px;
+  margin: 10px 0 10px 10px;
 }
 
 .menu-main-icon {
