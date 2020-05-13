@@ -3,20 +3,44 @@
 
 ion-menu {
   --ion-background-color: var(--ion-color-secondary);
+  background: rgba(0, 0, 0, 0.1);
   // --ion-text-color: var(--ion-color-secondary-tint);
   ion-item {
     background: transparent;
   }
+  
   ion-label{
     color: white;
   }
+  
   ion-icon{
     color: white;
     margin-right: 20px;
   }
+  
   ion-content{
     background-color: transparent !important;
 }
+}
+
+ion-app {
+  position: absolute;
+  top: 80px
+}
+
+.menu-main-icon {
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu-icon {
+  width: 30px;
+  height: 30px;
+  // padding: 10px;
+}
+
+.menu-main-icon:first-child {
+  padding-left: 10px;
 }
 
 // Menu harmburger design start
@@ -112,6 +136,7 @@ ion-title {
   width: 100%;
   min-height: 70vh;
   margin: 20px;
+  overflow: hidden;
 }
 
 // LOCATION CONFIRMATION
@@ -155,7 +180,6 @@ ion-title {
   padding-top: 5px;
 }
 
-
 .confirm-btn {
   display: flex;
   justify-content: space-between;
@@ -197,20 +221,20 @@ ion-button:hover {
   transition: 0.5s; 
 }
 
-
+// Media query
 @media (min-width: 1200px) and (max-width: 1600px) {
   .user-location {
     width: 350px;
     height: 50vh;
   }
+
   .confirm-text {
     text-align: center; 
     text-transform: uppercase;
     font-size: 28px;
     margin: 10px;
-    color: #00154f;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   }
+
   .location-text {
     text-align: left;
     text-transform: capitalize;
@@ -218,7 +242,27 @@ ion-button:hover {
     margin: 10px 10px 0 10px;
     font-family: '' Poppins ', sans-serif';
     letter-spacing: 0.05em;
-    color: #00154f;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  }
+}
+
+@media screen and (max-width: 360px) {
+  .confirm-text {
+    text-align: center; 
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+  
+  .location-text {
+    font-size: 20px;
+  }
+
+  .text-loc {
+    font-size: 16px;
+    padding-top: 10px;
+  }
+  
+  .quest-loc {
+    font-size: 16px;
+    padding-top: 5px;
   }
 }
