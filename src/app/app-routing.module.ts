@@ -40,7 +40,27 @@ const routes: Routes = [
   {
     path: 'admin-add-respondant',
     loadChildren: () => import('./pages/admin-pages/admin-add-respondant/admin-add-respondant.module').then( m => m.AdminAddRespondantPageModule)
+  },  {
+    path: 'splash-page',
+    loadChildren: () => import('./splash-page/splash-page.module').then( m => m.SplashPagePageModule)
   },
+  {
+    path: 'get-help',
+    loadChildren: () => import('./get-help/get-help.module').then( m => m.GetHelpPageModule)
+  },
+  {
+    path: 'user-welcome',
+    loadChildren: () => import('./user-welcome/user-welcome.module').then( m => m.UserWelcomePageModule)
+  },
+  {
+    path: 'find-unit',
+    loadChildren: () => import('./find-unit/find-unit.module').then( m => m.FindUnitPageModule)
+  },
+  {
+    path: 'user-welcome',
+    loadChildren: () => import('./user-welcome/user-welcome.module').then( m => m.UserWelcomePageModule)
+  },
+
 
 
 ];
