@@ -35,7 +35,6 @@
   margin-top: 10px;
   top: -5px;
 }
-
 // Menu harmburger design end
 
 .admin-menu-bg {
@@ -44,6 +43,7 @@
   padding: 10px;
 }
 
+// header Title and SVG start
 ion-title {
   position: relative;
   text-align: center;
@@ -51,7 +51,7 @@ ion-title {
   top: -14px;
 }
 
-.center {
+.user-helpsvg{
   width: 45px;
   height: 45px;
   position: relative;
@@ -59,36 +59,34 @@ ion-title {
   top: 22px;
   left: 8px;
   z-index: 1111;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-// ion-icon {
-//   &.big {
-//     align: center;
-//     width: 50px;
-//     height: 50px;
-//   }
-// }
+.header-shadow-text {
+  font-family: '' Poppins ', sans-serif';
+  font-style: normal;
+  font-weight: bold;
+  font-size: 24px;
+  line-height: 40px;
+  letter-spacing: 0.05em;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+// header Title and SVG end
 
-// .button-text, .button-icon {
-//   color: var(--ion-color-primary);
-// }
+// body 
+.user-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: 0;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
-// .admin-title {
-//   color: var(--ion-color-secondary);
-//   padding-top: 20px;
-// }
 
-// ion-row {
-//     display: flex;
-//     flex-direction: column;
-//     align-items: center;
-//     position: absolute;
-//     left: 0;
-//     right: 0;
-//     margin: 0;
-//     top: 50%;
-//     transform: translateY(-50%);
-// }
 
 // ion-col {
 //     border: px solid #488aff;
@@ -123,11 +121,11 @@ ion-title {
 //   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 // }
 
-// @media (min-width: 240px) and (max-width: 768px) {
-//     ion-grid {
-//         background: #fff;
-//     }
-//     ion-col {
-//         border: none;
-//     }
-// }
+@media (min-width: 240px) and (max-width: 768px) {
+    ion-grid {
+        background: #fff;
+    }
+    ion-col {
+        border: none;
+    }
+}
