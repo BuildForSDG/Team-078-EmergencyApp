@@ -45,7 +45,6 @@ const routes: Routes = [
     path: 'user-location',
     loadChildren: () => import('./pages/user-pages/user-location/user-location.module').then( m => m.UserLocationPageModule)
   },
-
   
 ];
 @NgModule({
