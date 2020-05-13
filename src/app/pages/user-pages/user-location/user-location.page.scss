@@ -3,9 +3,16 @@
 
 ion-menu {
   --ion-background-color: var(--ion-color-secondary);
-  --ion-text-color: var(--ion-color-secondary-tint);
-  ion-list {
+  // --ion-text-color: var(--ion-color-secondary-tint);
+  ion-item {
     background: transparent;
+  }
+  ion-label{
+    color: white;
+  }
+  ion-icon{
+    color: white;
+    margin-right: 20px;
   }
   ion-content{
     background-color: transparent !important;
