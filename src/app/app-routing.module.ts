@@ -41,6 +41,11 @@ const routes: Routes = [
     path: 'admin-add-respondant',
     loadChildren: () => import('./pages/admin-pages/admin-add-respondant/admin-add-respondant.module').then( m => m.AdminAddRespondantPageModule)
   },
+  {
+    path: 'admin-add-unit',
+    loadChildren: () => import('./pages/admin-pages/admin-add-unit/admin-add-unit.module').then( m => m.AdminAddUnitPageModule)
+  },
+
 
 
 ];
