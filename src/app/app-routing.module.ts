@@ -66,9 +66,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/victim-pages/view-unit/view-unit.module').then( m => m.ViewUnitPageModule)
 
   },
-
-
-
+  {
+    path: 'user-location',
+    loadChildren: () => import('./pages/victim-pages/user-location/user-location.module').then( m => m.UserLocationPageModule)
+  },
 ];
 @NgModule({
   imports: [
