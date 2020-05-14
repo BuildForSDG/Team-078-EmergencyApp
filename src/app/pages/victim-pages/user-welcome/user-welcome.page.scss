@@ -1,0 +1,122 @@
+ion-button {
+  --background: #f4af1b;
+  font-family: 'Inconsolata', monospace;
+  color: #000000;
+  height: 45px;
+  max-width: max-content;
+  min-width: 100%;
+  font-style: normal;
+  font-weight: bold;
+  text-align: left;
+  font-size: 18px;
+  line-height: 35px;
+  letter-spacing: 0.03em;
+  margin-top: 50px;
+}
+
+.wave-div,
+.wave1,
+.wave2,
+.wave3,
+.wave3,
+.wave4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  transition: background-color 0.4s ease ;
+}
+
+.wave1 {
+  width: 120px;
+  height: 120px;
+  animation-delay: 15s;
+  animation: 2s glow infinite;
+}
+
+.wave2 {
+  width: 105px;
+  height: 105px;
+  animation-delay: 10s;
+  z-index: 2;
+  animation: 2s glow2 infinite;
+}
+
+.wave3 {
+  width: 90px;
+  height: 90px;
+  animation-delay: 5s;
+  z-index: 3;
+  animation: 2s glow3 infinite;
+}
+
+.wave4 {
+  width: 90px;
+  height: 90px;
+  z-index: 4;
+  animation: 2s glow4 infinite;
+}
+
+.waveButton {
+  --background: rgba(0, 21, 79, 0.9);
+  color: #fff;
+  font-size: 10px;
+  min-width: 70px !important;
+  height: 70px;
+  border-radius: 50%;
+  padding: 0;
+  display: flex;
+  flex-direction: column-reverse;
+  justify-content: center;
+  align-items: center;
+}
+
+.btnHolder {
+  position: relative;
+  bottom: 25px;
+  z-index: 5;
+}
+
+.wave-div{
+    margin-bottom: 40px;
+}
+
+@keyframes glow {
+  from {
+    background: transparent;
+  }
+
+  to {
+    background: rgba(0, 21, 79, 0.3);
+  }
+}
+
+@keyframes glow2 {
+  from {
+    background: transparent;
+  }
+
+  to {
+    background: rgba(0, 21, 79, 0.4);
+  }
+}
+
+@keyframes glow3 {
+  from {
+    background: transparent;
+  }
+
+  to {
+    background: rgba(0, 21, 79, 0.5);
+  }
+}
+
+@keyframes glow4 {
+  from {
+    background: transparent;
+  }
+
+  to {
+    background: rgba(0, 21, 79, 0.6);
+  }
+}
