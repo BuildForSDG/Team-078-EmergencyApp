@@ -38,6 +38,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/admin-pages/admin-add-respondant/admin-add-respondant.module').then( m => m.AdminAddRespondantPageModule)
   },
   {
+    path: 'admin-add-unit',
+    loadChildren: () => import('./pages/admin-pages/admin-add-unit/admin-add-unit.module').then( m => m.AdminAddUnitPageModule)
+  },
+
     path: 'splash-page',
     loadChildren: () => import('./splash-page/splash-page.module').then( m => m.SplashPagePageModule)
   },
@@ -64,7 +68,6 @@ const routes: Routes = [
   {
     path: 'view-unit',
     loadChildren: () => import('./pages/victim-pages/view-unit/view-unit.module').then( m => m.ViewUnitPageModule)
-
   },
   {
     path: 'user-location',
