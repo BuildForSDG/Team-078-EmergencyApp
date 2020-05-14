@@ -9,10 +9,6 @@ const routes: Routes = [
   
   },
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
-  {
     path: 'admin-dashboard',
     loadChildren: () => import('./pages/admin-pages/admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule)
   },
@@ -42,12 +38,33 @@ const routes: Routes = [
     loadChildren: () => import('./pages/admin-pages/admin-add-respondant/admin-add-respondant.module').then( m => m.AdminAddRespondantPageModule)
   },
   {
+    path: 'splash-page',
+    loadChildren: () => import('./splash-page/splash-page.module').then( m => m.SplashPagePageModule)
+  },
+  {
+    path: 'get-help',
+    loadChildren: () => import('./pages/victim-pages/get-help/get-help.module').then( m => m.GetHelpPageModule)
+  },
+  {
+    path: 'user-welcome',
+    loadChildren: () => import('./pages/victim-pages/user-welcome/user-welcome.module').then( m => m.UserWelcomePageModule)
+  },
+  {
+    path: 'find-unit',
+    loadChildren: () => import('./pages/victim-pages/find-unit/find-unit.module').then( m => m.FindUnitPageModule)
+  },
+  {
+    path: 'user-welcome',
+    loadChildren: () => import('./pages/victim-pages/user-welcome/user-welcome.module').then( m => m.UserWelcomePageModule)
+  },
+  {
     path: 'unit-alert',
     loadChildren: () => import('./pages/victim-pages/unit-alert/unit-alert.module').then( m => m.UnitAlertPageModule)
   },
   {
     path: 'view-unit',
     loadChildren: () => import('./pages/victim-pages/view-unit/view-unit.module').then( m => m.ViewUnitPageModule)
+
   },
   {
     path: 'user-location',
