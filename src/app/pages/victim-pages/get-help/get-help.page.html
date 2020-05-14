@@ -1,7 +1,7 @@
 <ion-header>
-  <ion-toolbar class="ion-padding-vertical">
-    <ion-title>
-      <i class="handshake">
+    <ion-toolbar class="ion-padding-vertical">
+        <ion-title>
+            <i class="handshake">
         <svg
           width="35"
           height="25"
@@ -15,51 +15,43 @@
           />
         </svg>
       </i> GET HELP
-    </ion-title>
-  </ion-toolbar>
+        </ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-  <ion-grid>
-    <ion-row class="ion-text-center ion-align-items-center">
-      <ion-col size-md="6" offset-md="3" class="ion-margin-vertical">
-        <div class="form">
-          <form size="12">
-            <ion-item>
-              <ion-label>SELECT EMERGENCY</ion-label>
-              <ion-select
-                value="EMERGENCY"
-                multiple="true"
-                placeholder="EMERGENCY"
-              >
-                <ion-select-option value="Robbery">Robbery</ion-select-option>
-                <ion-select-option value="Accident">Accident</ion-select-option>
-                <ion-select-option value="Fire">Fire</ion-select-option>
-              </ion-select>
-            </ion-item>
-            <ion-item no-lines>
-              <ion-input
-                type="text"
-                placeholder="ENTER LOCATION"
-                required
-              ></ion-input>
-            </ion-item>
-            <ion-button>
-              <ion-icon name="search-sharp" slot="start"></ion-icon> GET GPS
-              LOCATION
-            </ion-button>
-            <ion-grid>
-              <ion-row>
-                <ion-col size="6" offset="6">
-                  <ion-button type="submit">
-                    SUMBIT <ion-icon name="arrow-forward" slot="end"></ion-icon>
-                  </ion-button>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
-          </form>
-        </div>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
+    <ion-grid>
+        <ion-row class="ion-text-center ion-align-items-center">
+            <ion-col size-md="6" offset-md="3" class="ion-margin-vertical">
+                <div class="form">
+                    <form size="12">
+                        <ion-item>
+                            <ion-label>SELECT EMERGENCY</ion-label>
+                            <ion-select value="EMERGENCY" multiple="true" placeholder="EMERGENCY">
+                                <ion-select-option value="Robbery">Robbery</ion-select-option>
+                                <ion-select-option value="Accident">Accident</ion-select-option>
+                                <ion-select-option value="Fire">Fire</ion-select-option>
+                            </ion-select>
+                        </ion-item>
+                        <ion-item no-lines>
+                            <ion-input type="text" placeholder="ENTER LOCATION" required></ion-input>
+                        </ion-item>
+                        <ion-button>
+                            <ion-icon name="search-sharp" slot="start"></ion-icon> GET GPS LOCATION
+                        </ion-button>
+                        <ion-grid>
+                            <ion-row>
+                                <ion-col size="6" offset="6">
+                                    <ion-button href="/user-location">
+                                        SUMBIT
+                                        <ion-icon name="arrow-forward" slot="end"></ion-icon>
+                                    </ion-button>
+                                </ion-col>
+                            </ion-row>
+                        </ion-grid>
+                    </form>
+                </div>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
