@@ -42,10 +42,17 @@ const routes: Routes = [
     loadChildren: () => import('./pages/admin-pages/admin-add-respondant/admin-add-respondant.module').then( m => m.AdminAddRespondantPageModule)
   },
   {
+    path: 'unit-alert',
+    loadChildren: () => import('./pages/victim-pages/unit-alert/unit-alert.module').then( m => m.UnitAlertPageModule)
+  },
+  {
+    path: 'view-unit',
+    loadChildren: () => import('./pages/victim-pages/view-unit/view-unit.module').then( m => m.ViewUnitPageModule)
+  },
+  {
     path: 'user-location',
     loadChildren: () => import('./pages/user-pages/user-location/user-location.module').then( m => m.UserLocationPageModule)
   },
-  
 ];
 @NgModule({
   imports: [
