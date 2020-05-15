@@ -321,7 +321,7 @@ ion-button:hover {
   .user-helpsvg {
     position: fixed;
     top: 35px;
-    left: 88x;
+    left: 88px;
     height: 30px;
     width: 30px;
   }
@@ -334,5 +334,31 @@ ion-button:hover {
 
   .ion-padding-vertical {
     height: 70px;
+  }
+}
+
+
+@media screen and (max-width: 375px) {
+  .header-shadow-text {
+    font-size: 16px;
+  }
+  
+  // Menu SVG and title
+  .user-helpsvg {
+    position: fixed;
+    top: 35px;
+    left: 115px;
+    height: 30px;
+    width: 30px;
+  }
+  
+  .header-shadow-text {
+    position: relative;
+    top: 5px;
+    left: 10px;
+  }
+
+  .ion-padding-vertical {
+    height: 80px;
   }
 }
