@@ -65,45 +65,41 @@ ion-app {
 // Menu Icon and Grid End
 
 
+// Menu harmburger design start
+.menu-harmbg-1 {
+  position: absolute;
+  width: 30px;
+  height: 1.86px;
+  background: var(--ion-color-secondary);
+  border-radius: 45px;
+  border: 1px solid black;
+  margin-bottom: 5px;
+  top: -5px;
+}
 
-/* Webkit browser engine: Safari and Chrome */
+.menu-harmbg-2 {
+  position: absolute;
+  width: 19.71px;
+  height: 1.86px;
+  background: var(--ion-color-secondary);
+  border-radius: 45px;
+  border: 1px solid black;
+  margin-top: 5px;
+  top: -5px;
+  left: 10px;
+}
 
-@supports (-webkit-appearance:none) {
-  // Menu harmburger design start
-  .menu-harmbg-1 {
-    position: absolute;
-    width: 30px;
-    height: 1.86px;
-    background: var(--ion-color-secondary);
-    border-radius: 45px;
-    border: 1px solid black;
-    margin-bottom: 5px;
-    top: -5px;
-  }
+.menu-harmbg-3 {
+  position: absolute;
+  width: 30px;
+  height: 1.86px;
+  background: var(--ion-color-secondary);
+  border-radius: 45px;
+  border: 1px solid black;
+  margin-top: 10px;
+  top: -5px;
+}
   
-  .menu-harmbg-2 {
-    position: absolute;
-    width: 19.71px;
-    height: 1.86px;
-    background: var(--ion-color-secondary);
-    border-radius: 45px;
-    border: 1px solid black;
-    margin-top: 5px;
-    top: -5px;
-    left: 10px;
-  }
-  
-  .menu-harmbg-3 {
-    position: absolute;
-    width: 30px;
-    height: 1.86px;
-    background: var(--ion-color-secondary);
-    border-radius: 45px;
-    border: 1px solid black;
-    margin-top: 10px;
-    top: -5px;
-  }
-  }
 
   @supports (-moz-appearance:none) { 
     .menu-harmbg-1 {
@@ -281,7 +277,8 @@ ion-button:hover {
   transition: 0.5s; 
 }
 
-// Media query
+// Media query for mozila browzer
+
 @media (min-width: 1200px) and (max-width: 1600px) {
   .user-location {
     width: 350px;
@@ -352,65 +349,6 @@ ion-button:hover {
     position: relative;
     top: 8px;
     left: 20px;
-  }
-}
-
-@media screen and (max-width: 320px) {
-  .header-shadow-text {
-    font-size: 16px;
-  }
-  
-  // Menu SVG and title
-  .menu-harmbg-1 {
-    position: fixed;
-    width: 4000px;
-    height: 1.86px;
-    background: var(--ion-color-secondary);
-    border-radius: 45px;
-    border: 1px solid black;
-    // margin-bottom: 5px;
-    top: 12px;
-  }
-  
-  .menu-harmbg-2 {
-    position: fixed;
-    width: 30px;
-    height: 1.86px;
-    background: var(--ion-color-secondary);
-    border-radius: 45px;
-    border: 1px solid black;
-    // margin-top: 5px;
-    top: 17px;
-    // left: 10px;
-  }
-  
-  .menu-harmbg-3 {
-    position: fixed;
-    width: 4000px;
-    height: 1.86px;
-    background: var(--ion-color-secondary);
-    border-radius: 45px;
-    border: 1px solid black;
-    margin-top: 10px;
-    top: 15px;
-  }
-
-  .user-helpsvg {
-    position: fixed;
-    top: 35px;
-    left: 88px;
-    height: 30px;
-    width: 30px;
-  }
-  
-  .header-shadow-text {
-    position: relative;
-    top: 5px;
-    left: 10px;
-  }
-
-  .ion-padding-vertical {
-    height: 70px;
   }
 }
 
