@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Emergency Details</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding class="unit-body">
+  <ion-grid style="height: 100%">
+    <ion-row>
+      <ion-col class="ion-margin-vertical">
+        <ion-grid class="unit-inner-body">
+          <div>
+            <ion-item lines="none">
+              <div class="ion-text-start ion-margin ion-padding em_item">
+                <h3 class="em_header">Details :</h3>
+                <p>
+                  {{Number | json}} <br>
+                  {{Time | json}} <br>
+                  {{Location | json}}
+                </p>
+              </div>
+            </ion-item>
+          </div>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <div class="footer">
+    <ion-item lines="none">
+      <div slot="start">
+        <ion-button size="small" type="submit" color="danger">Decline
+        </ion-button>
+      </div>
+      <div slot="end">
+        <ion-button size="small" type="submit" color="warning">Respond
+        </ion-button>
+      </div>
+    </ion-item>
+  </div>
+</ion-footer>

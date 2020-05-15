@@ -1,0 +1,60 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" class="header">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="unit-body">
+  <ion-grid style="height: 100%">
+    <ion-row>
+      <ion-col size-md="6" size-lg="5" size-xs="12" class="ion-margin-vertical">
+        <h3 class="divider line one-line">EMERGENCIES</h3>
+        <ion-grid class="unit-inner-body">
+          <div>
+            <ion-item lines="none">
+                <div slot="end" class="ion-margin">
+                  <a>
+                    <ion-button size="medium" type="submit" color="default">
+                      <ion-icon size="small" name="filter-sharp"></ion-icon>
+                    </ion-button>
+                  </a>
+                </div>
+            </ion-item>
+          </div>
+          <div class="modal" *ngFor="let emergency of emergencyList">
+            <ion-item (click)="openModal()" lines="none">
+              <div class="ion-text-start ion-margin ion-padding em_item">
+                <h3 class="em_header">Details :</h3>
+                <p>
+                  {{emergency.number}} <br>
+                  {{emergency.time}} <br>
+                  {{emergency.location}}
+                </p>
+              </div>
+            </ion-item>
+          </div>
+          <div class="modal">
+            <ion-item (click)="openModal()" lines="none">
+              <div class="ion-text-start ion-margin ion-padding em_item">
+                <h3 class="em_header">Dummy Test Details :</h3>
+                <p>
+                  090-626-34222 <br>Mon 12 Dec, 2020 <br> National Industrial Court Nigeria 6th Lugard Ave, GRA, Enugu.
+                </p>
+              </div>
+            </ion-item>
+          </div>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer">
+    </div>
+  </ion-toolbar>
+</ion-footer>
