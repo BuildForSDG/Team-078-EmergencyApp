@@ -305,6 +305,9 @@ ion-button:hover {
     font-family: '' Poppins ', sans-serif';
     letter-spacing: 0.05em;
   }
+  .user-helpsvg1 {
+    display: none;
+  }
 }
 
 @media screen and (max-width: 360px) {
@@ -340,6 +343,10 @@ ion-button:hover {
     top: 8px;
     left: 20px;
   }
+
+  .user-helpsvg1 {
+    display: none;
+  }
 }
 
 @media screen and (min-width: 411px) {
@@ -354,6 +361,10 @@ ion-button:hover {
     position: relative;
     top: 8px;
     left: 20px;
+  }
+
+  .user-helpsvg1 {
+    display: none;
   }
 }
 
@@ -401,6 +412,10 @@ ion-button:hover {
     width: 30px;
     top: 20px;
   }
+
+  .user-helpsvg1 {
+    display: none;
+  }
 }
 
 // @media screen and (min-width: 768px) and (max-width: 1200px) {
@@ -446,6 +461,9 @@ ion-button:hover {
 //     width: 30px;
 //     top: 20px;
 //   }
+// .user-helpsvg1 {
+//   display: none;
+// }
 // }
 
 @media screen and (min-width: 1201px) {
