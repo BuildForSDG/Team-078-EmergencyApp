@@ -41,9 +41,13 @@ const routes: Routes = [
     path: 'admin-add-unit',
     loadChildren: () => import('./pages/admin-pages/admin-add-unit/admin-add-unit.module').then( m => m.AdminAddUnitPageModule)
   },
-
+  {
     path: 'splash-page',
-    loadChildren: () => import('./splash-page/splash-page.module').then( m => m.SplashPagePageModule)
+    loadChildren: () => import('./splash-page/splash-page.module').then( m => m.SplashPagePageModule),
+  },
+  {
+    path: 'view-dangers',
+    loadChildren: () => import('./pages/victim-pages/view-dangers/view-dangers.module').then( m => m.ViewDangersPageModule)
   },
   {
     path: 'get-help',
@@ -56,10 +60,6 @@ const routes: Routes = [
   {
     path: 'find-unit',
     loadChildren: () => import('./pages/victim-pages/find-unit/find-unit.module').then( m => m.FindUnitPageModule)
-  },
-  {
-    path: 'user-welcome',
-    loadChildren: () => import('./pages/victim-pages/user-welcome/user-welcome.module').then( m => m.UserWelcomePageModule)
   },
   {
     path: 'unit-alert',
