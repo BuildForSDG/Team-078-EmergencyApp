@@ -9,6 +9,7 @@ const routes: Routes = [
   
   },
   {
+
     path: 'admin-dashboard',
     loadChildren: () => import('./pages/admin-pages/admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule)
   },
@@ -71,9 +72,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/victim-pages/view-unit/view-unit.module').then( m => m.ViewUnitPageModule)
   },
   {
+    path: 'view-emergencies',
+    loadChildren: () => import('./pages/respondant-pages/view-emergencies/view-emergencies.module').then( m => m.ViewEmergenciesPageModule)
+  },
+  // {
+  //   path: 'emergency-details',
+  //   loadChildren: () => import('./pages/respondant-pages/emergency-details/emergency-details.module').then( m => m.EmergencyDetailsPageModule)
+  // },
+
     path: 'user-location',
     loadChildren: () => import('./pages/victim-pages/user-location/user-location.module').then( m => m.UserLocationPageModule)
   },
+
 ];
 @NgModule({
   imports: [
