@@ -12,6 +12,7 @@ const routes: Routes = [
     path: 'admin-dashboard',
     loadChildren: () => import('./pages/admin-pages/admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule)
   },
+  
   {
     path: 'welcom-page',
     loadChildren: () => import('./welcom-page/welcom-page.module').then( m => m.WelcomPagePageModule)
@@ -56,10 +57,6 @@ const routes: Routes = [
   {
     path: 'find-unit',
     loadChildren: () => import('./pages/victim-pages/find-unit/find-unit.module').then( m => m.FindUnitPageModule)
-  },
-  {
-    path: 'user-welcome',
-    loadChildren: () => import('./pages/victim-pages/user-welcome/user-welcome.module').then( m => m.UserWelcomePageModule)
   },
   {
     path: 'unit-alert',
