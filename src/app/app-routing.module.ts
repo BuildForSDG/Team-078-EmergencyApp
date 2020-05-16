@@ -41,7 +41,7 @@ const routes: Routes = [
     path: 'admin-add-unit',
     loadChildren: () => import('./pages/admin-pages/admin-add-unit/admin-add-unit.module').then( m => m.AdminAddUnitPageModule)
   },
-
+  {
     path: 'splash-page',
     loadChildren: () => import('./splash-page/splash-page.module').then( m => m.SplashPagePageModule)
   },
