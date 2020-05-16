@@ -44,7 +44,11 @@ const routes: Routes = [
   },
   {
     path: 'splash-page',
-    loadChildren: () => import('./splash-page/splash-page.module').then( m => m.SplashPagePageModule)
+    loadChildren: () => import('./splash-page/splash-page.module').then( m => m.SplashPagePageModule),
+  },
+  {
+    path: 'view-dangers',
+    loadChildren: () => import('./pages/victim-pages/view-dangers/view-dangers.module').then( m => m.ViewDangersPageModule)
   },
   {
     path: 'get-help',
