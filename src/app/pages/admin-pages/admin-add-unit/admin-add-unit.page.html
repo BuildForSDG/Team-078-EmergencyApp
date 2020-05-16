@@ -1,0 +1,106 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Add Unit</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+</ion-content> -->
+
+<ion-header>
+  <ion-toolbar>
+      <ion-buttons slot="start" class="header">
+          <ion-menu-button></ion-menu-button>
+          <ion-back-button></ion-back-button>
+      </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="auth-form">
+  <ion-grid>
+      <ion-row>
+          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+              <span class="divider line one-line">ADD UNIT</span>
+              <form #form="ngForm" (ngSubmit)="adminAddUnit()">
+                  <ion-grid>
+                      <ion-row color="primary" justify-content-center>
+                          <ion-col align-self-center>
+                              <div padding>
+                                  <div class="input-form-line">
+                                      <ion-item lines="none">
+                                          <ion-label position="floating">Email</ion-label>
+                                          <ion-input type="text" name="email" [(ngModel)]="addUnit.email" required></ion-input>
+                                      </ion-item>
+                                  </div>
+                                  <span class="input-padding "></span>
+                                  <div class="input-form-line">
+                                      <ion-item lines="none">
+                                          <ion-label position="floating">Password</ion-label>
+                                          <ion-input type="password" name="password" [(ngModel)]="addUnit.password" required></ion-input>
+                                      </ion-item>
+                                  </div>
+                                  <span class="input-padding "></span>
+                                  <div class="input-form-line">
+                                      <ion-item lines="none">
+                                          <ion-label position="floating">Full Name</ion-label>
+                                          <ion-input type="text" name="fullname" [(ngModel)]="addUnit.fullname" required></ion-input>
+                                      </ion-item>
+                                  </div>
+                                  <span class="input-padding "></span>
+                                  <div class="input-form-line">
+                                      <ion-item lines="none">
+                                          <ion-label position="floating">Phone Number</ion-label>
+                                          <ion-input type="text" name="phone_number" [(ngModel)]="addUnit.phone_number" required></ion-input>
+                                      </ion-item>
+                                  </div>
+                                  <span class="input-padding "></span>
+                                  <div class="input-form-line">
+                                      <ion-item lines="none">
+                                          <ion-label position="floating">Unit Location</ion-label>
+                                          <ion-input type="text" name="address" [(ngModel)]="addUnit.address" required></ion-input>
+                                      </ion-item>
+                                  </div>
+                                  <span class="input-padding "></span>
+                                  <div class="input-form-line">
+                                      <ion-item lines="none">
+                                          <ion-label position="floating">Responder Unit</ion-label>
+                                          <ion-input type="text" name="respondant_unit" [(ngModel)]="addUnit.respondant_unit" required></ion-input>
+                                      </ion-item>
+                                  </div>
+                                  <span class="input-padding "></span>
+                                  <div class="input-form-line">
+                                      <ion-item lines="none">
+                                          <ion-label position="floating">Responder Type</ion-label>
+                                          <ion-input type="text" name="respondant_type" [(ngModel)]="addUnit.respondant_type" required></ion-input>
+                                      </ion-item>
+                                  </div>
+                                  <span class="input-padding "></span>
+                                  <div class="input-form-line">
+                                      <ion-item lines="none">
+                                          <ion-label position="floating">Coordinates</ion-label>
+                                          <ion-input type="text" name="coordinates" [(ngModel)]="addUnit.coordinates" required></ion-input>
+                                      </ion-item>
+                                  </div>
+                                  <span class="input-padding "></span>
+                              </div>
+                          </ion-col>
+                      </ion-row>
+                  </ion-grid>
+                  <ion-item lines="none">
+                      <div slot="end">
+                          <ion-button size="large" type="submit" expand="" color="warning">Add
+                              <ion-icon name="add-circle-sharp"></ion-icon>
+                          </ion-button>
+                      </div>
+                  </ion-item>
+              </form>
+          </ion-col>
+      </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+      <div class="footer">
+      </div>
+  </ion-toolbar>
+</ion-footer>

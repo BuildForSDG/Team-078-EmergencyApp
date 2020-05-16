@@ -9,10 +9,7 @@ const routes: Routes = [
   
   },
   {
-    path: 'login',
-    loadChildren: () => import('./login/login.module').then( m => m.LoginPageModule)
-  },
-  {
+
     path: 'admin-dashboard',
     loadChildren: () => import('./pages/admin-pages/admin-dashboard/admin-dashboard.module').then( m => m.AdminDashboardPageModule)
   },
@@ -42,6 +39,30 @@ const routes: Routes = [
     loadChildren: () => import('./pages/admin-pages/admin-add-respondant/admin-add-respondant.module').then( m => m.AdminAddRespondantPageModule)
   },
   {
+    path: 'admin-add-unit',
+    loadChildren: () => import('./pages/admin-pages/admin-add-unit/admin-add-unit.module').then( m => m.AdminAddUnitPageModule)
+  },
+  {
+    path: 'splash-page',
+    loadChildren: () => import('./splash-page/splash-page.module').then( m => m.SplashPagePageModule),
+  },
+  {
+    path: 'view-dangers',
+    loadChildren: () => import('./pages/victim-pages/view-dangers/view-dangers.module').then( m => m.ViewDangersPageModule)
+  },
+  {
+    path: 'get-help',
+    loadChildren: () => import('./pages/victim-pages/get-help/get-help.module').then( m => m.GetHelpPageModule)
+  },
+  {
+    path: 'user-welcome',
+    loadChildren: () => import('./pages/victim-pages/user-welcome/user-welcome.module').then( m => m.UserWelcomePageModule)
+  },
+  {
+    path: 'find-unit',
+    loadChildren: () => import('./pages/victim-pages/find-unit/find-unit.module').then( m => m.FindUnitPageModule)
+  },
+  {
     path: 'unit-alert',
     loadChildren: () => import('./pages/victim-pages/unit-alert/unit-alert.module').then( m => m.UnitAlertPageModule)
   },
@@ -58,7 +79,9 @@ const routes: Routes = [
   //   loadChildren: () => import('./pages/respondant-pages/emergency-details/emergency-details.module').then( m => m.EmergencyDetailsPageModule)
   // },
 
-
+    path: 'user-location',
+    loadChildren: () => import('./pages/victim-pages/user-location/user-location.module').then( m => m.UserLocationPageModule)
+  },
 
 ];
 @NgModule({
