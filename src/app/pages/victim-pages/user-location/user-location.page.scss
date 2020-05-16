@@ -279,6 +279,29 @@ ion-button:hover {
 
 // Media query for mozila browzer
 
+@media (min-width: 1200px) and (max-width: 1600px) {
+  .user-location {
+    width: 350px;
+    height: 50vh;
+  }
+
+  .confirm-text {
+    text-align: center; 
+    text-transform: uppercase;
+    font-size: 28px;
+    margin: 10px;
+  }
+
+  .location-text {
+    text-align: left;
+    text-transform: capitalize;
+    font-size: 20px;
+    margin: 10px 10px 0 10px;
+    font-family: '' Poppins ', sans-serif';
+    letter-spacing: 0.05em;
+  }
+}
+
 @media screen and (max-width: 360px) {
   .confirm-text {
     text-align: center; 
@@ -299,6 +322,13 @@ ion-button:hover {
     font-size: 16px;
     padding-top: 5px;
   }
+
+  // Menu SVG and title
+  .user-helpsvg {
+    position: fixed;
+    top: 43px;
+    left: 60px;
+  }
   
   .header-shadow-text {
     position: relative;
@@ -307,7 +337,23 @@ ion-button:hover {
   }
 }
 
-@media screen and (max-width: 375px) {
+@media screen and (min-width: 411px) {
+  // Menu SVG and title
+  .user-helpsvg {
+    position: fixed;
+    top: 40px;
+    left: 85px;
+  }
+  
+  .header-shadow-text {
+    position: relative;
+    top: 8px;
+    left: 20px;
+  }
+}
+
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
   .header-shadow-text {
     font-size: 16px;
   }
@@ -315,7 +361,7 @@ ion-button:hover {
   // Menu SVG and title
   .user-helpsvg {
     position: fixed;
-    top: 30px;
+    top: 28px;
     left: 115px;
     height: 30px;
     width: 30px;
@@ -327,62 +373,27 @@ ion-button:hover {
     left: 10px;
   }
 
+  .ion-padding-vertical {
+    height: 80px;
+  }
+
+  // Menu harmburger
   .menu-harmbg-1 {
-    position: absolute;
+    position: fixed;
     width: 30px;
-    top: -5px;
-    left: -1105px;
+    top: 20px;
   }
-  
-  .menu-harmbg-2 {
-    position: absolute;
+
+.menu-harmbg-2 {
+    position: fixed;
     width: 19.71px;
-    top: -5px;
-    left: -10px;
+    top: 20px;
+    left: 5px;
   }
-  
+
   .menu-harmbg-3 {
-    position: absolute;
+    position: fixed;
     width: 30px;
-    top: -5px;
-    left: -10px;
+    top: 20px;
   }
 }
-
-// @media screen and (min-width: 411px) {
-//   // Menu SVG and title
-//   .user-helpsvg {
-//     position: fixed;
-//     top: 40px;
-//     left: 85px;
-//   }
-  
-//   .header-shadow-text {
-//     position: relative;
-//     top: 8px;
-//     left: 20px;
-//   }
-// }
-
-// @media (min-width: 1200px) and (max-width: 1600px) {
-//   .user-location {
-//     width: 350px;
-//     height: 50vh;
-//   }
-
-//   .confirm-text {
-//     text-align: center; 
-//     text-transform: uppercase;
-//     font-size: 28px;
-//     margin: 10px;
-//   }
-
-//   .location-text {
-//     text-align: left;
-//     text-transform: capitalize;
-//     font-size: 20px;
-//     margin: 10px 10px 0 10px;
-//     font-family: '' Poppins ', sans-serif';
-//     letter-spacing: 0.05em;
-//   }
-// }
