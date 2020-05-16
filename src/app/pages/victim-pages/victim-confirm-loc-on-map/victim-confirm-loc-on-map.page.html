@@ -1,9 +1,14 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-title>victim-confirm-loc-onMap</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-title>Confirm Your Location</ion-title>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+    <app-google-map apiKey="AIzaSyBExZNShIaWE9RKXq_oqsAgyaYcYRhYGB8"></app-google-map>
 </ion-content>
+
+<ion-footer>
+    <ion-button expand="full" (click)="addLocationMarker()">Confirm Location</ion-button>
+
+</ion-footer>
