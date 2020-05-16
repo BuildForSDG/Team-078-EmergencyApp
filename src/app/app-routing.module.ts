@@ -79,7 +79,7 @@ const routes: Routes = [
   //   path: 'emergency-details',
   //   loadChildren: () => import('./pages/respondant-pages/emergency-details/emergency-details.module').then( m => m.EmergencyDetailsPageModule)
   // },
-
+  {
     path: 'user-location',
     loadChildren: () => import('./pages/victim-pages/user-location/user-location.module').then( m => m.UserLocationPageModule)
   },
