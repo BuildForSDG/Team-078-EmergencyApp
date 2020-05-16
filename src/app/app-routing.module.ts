@@ -78,10 +78,16 @@ const routes: Routes = [
   //   path: 'emergency-details',
   //   loadChildren: () => import('./pages/respondant-pages/emergency-details/emergency-details.module').then( m => m.EmergencyDetailsPageModule)
   // },
-
+  {
     path: 'user-location',
-    loadChildren: () => import('./pages/victim-pages/user-location/user-location.module').then( m => m.UserLocationPageModule)
-  },
+    loadChildren: () => import('./pages/victim-pages/user-location/user-location.module').then( m => m.UserLocationPageModule),
+   },
+   {
+    path: 'victim-confirm-loc-on-map',
+    loadChildren: () => import('./pages/victim-pages/victim-confirm-loc-on-map/victim-confirm-loc-on-map.module').then( m => m.VictimConfirmLocOnMapPageModule)
+  }
+
+  
 
 ];
 @NgModule({
