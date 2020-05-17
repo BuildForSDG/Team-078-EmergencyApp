@@ -1,0 +1,10 @@
+1 - Created indidual components and shared component for all the parents folders (admin, victim, respondant).
+The essence of creating this was, each user has his own menu designed differently, 
+hence, this gives us the berty to design each menu differently, the pages are grouped 
+(Admin, respondants and victim), all this pages has a sub-folder for individual page.
+
+2. I imported NgModule, BrowserModule IonicModule and IonicRouteStrategy into this give us our component 
+to use modules provided by Angular and Ionic.
+
+3 I imported each menu component that are two steps upward
+
