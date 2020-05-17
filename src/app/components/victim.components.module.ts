@@ -1,13 +1,18 @@
 import { NgModule } from '@angular/core';
-import { BrowserModule } from '@angular/platform-browser';
+import { CommonModule } from '@angular/common';
+import { FormsModule } from '@angular/forms';
+import { IonicModule } from '@ionic/angular';
 
-import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
-
+import { VictimMenuComponent } from '../components/victim-menu/victim-menu.component'
 
 @NgModule({
-  declarations: [AppComponent],
-  entryComponents: [],
-  imports: [BrowserModule, IonicModule, IonicRouteStrategy],
-  bootstrap: [AppComponent]
+  declarations: [VictimMenuComponent],
+  exports: [VictimMenuComponent],
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule
+  ],
+  
 })
-export class AppModule {}
+export class AdminComponentsModule {}
