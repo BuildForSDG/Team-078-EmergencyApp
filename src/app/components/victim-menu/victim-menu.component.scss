@@ -1,30 +1,38 @@
-// Menu Icon and Grid start
+// // Menu Icon and Grid start
 ion-menu {
     --ion-background-color: rgb(0, 18, 70, 0.8);
+
     ion-item {
-      --ion-background-color: rgb(0, 18, 70, 0.8);;
+        background: transparent;
     }
-    
-    ion-label{
-      color: white;
+
+    ion-label {
+        color: white;
     }
-    
+
     ion-icon {
-      color: white;
-      margin-right: 20px;
+        color: white;
+        margin-right: 20px;
     }
-    
-    ion-content {
-      background-color: transparent !important;
-  }
-  }
-  
-  ion-menu-button {
+}
+
+ion-menu-button {
     padding-top: 10px;
-  }
-  
-  
-    .menu-border {
+}
+
+.menu-close {
+    position: absolute;
+    top: 10px;
+    left: 250px;
+    height: 45px;
+    width: 45px;
+}
+
+.item-background {
+    --ion-background-color: transparent;
+}
+
+.menu-border {
     position: absolute;
     width: 90%;
     --height: 40%;
@@ -32,31 +40,37 @@ ion-menu {
     box-sizing: border-box;
     border-radius: 3px;
     margin: 10px 0 1px 15px;
-  }
-  
-  .menu-main-icon {
+}
+
+.menu-main-icon {
     display: flex;
     justify-content: space-between;
-    padding-top: 40px;
+    padding-top: 50px;
+    
+}
+
+.item-content {
+    background-color: rgb(0, 18, 70, 0.8);;
   }
-  
-  .menu-icon {
+
+.menu-icon {
     width: 30px;
     height: 30px;
-  }
-  
-  .menu-main-icon:first-child {
+}
+
+.menu-main-icon:first-child {
     padding-left: 10px;
-  }
-  
-  .menu-border-lines {
+}
+
+.menu-item-line {
     border-bottom: 2px solid var(--ion-color-primary);
-  }
-  // Menu Icon and Grid End
-  
-  
-  // Menu harmburger design start
-  .menu-harmbg-1 {
+}
+
+// Menu Icon and Grid End
+
+
+// Menu harmburger design start
+.menu-harmbg-1 {
     position: absolute;
     width: 30px;
     height: 1.86px;
@@ -65,9 +79,9 @@ ion-menu {
     border: 1px solid black;
     margin-bottom: 5px;
     top: -5px;
-  }
-  
-  .menu-harmbg-2 {
+}
+
+.menu-harmbg-2 {
     position: absolute;
     width: 19.71px;
     height: 1.86px;
@@ -77,9 +91,9 @@ ion-menu {
     margin-top: 5px;
     top: -5px;
     left: 10px;
-  }
-  
-  .menu-harmbg-3 {
+}
+
+.menu-harmbg-3 {
     position: absolute;
     width: 30px;
     height: 1.86px;
@@ -88,70 +102,71 @@ ion-menu {
     border: 1px solid black;
     margin-top: 10px;
     top: -5px;
-  }
-    
-  
-    @supports (-moz-appearance:none) { 
-      .menu-harmbg-1 {
-      position: absolute;
-      width: 30px;
-      height: 1.86px;
-      background: var(--ion-color-secondary);
-      border-radius: 45px;
-      border: 1px solid black;
-      // margin-bottom: 5px;
-      top: 13px;
+}
+
+
+@supports (-moz-appearance:none) {
+    .menu-harmbg-1 {
+        position: absolute;
+        width: 30px;
+        height: 1.86px;
+        background: var(--ion-color-secondary);
+        border-radius: 45px;
+        border: 1px solid black;
+        // margin-bottom: 5px;
+        top: 13px;
     }
-  
-  .menu-harmbg-2 {
-      position: absolute;
-      width: 19.71px;
-      height: 1.86px;
-      background: var(--ion-color-secondary);
-      border-radius: 45px;
-      border: 1px solid black;
-      // margin-top: 5px;
-      top: 13px;
-      left: 10px;
+
+    .menu-harmbg-2 {
+        position: absolute;
+        width: 19.71px;
+        height: 1.86px;
+        background: var(--ion-color-secondary);
+        border-radius: 45px;
+        border: 1px solid black;
+        // margin-top: 5px;
+        top: 13px;
+        left: 10px;
     }
-  
+
     .menu-harmbg-3 {
-      position: absolute;
-      width: 30px;
-      height: 1.86px;
-      background: var(--ion-color-secondary);
-      border-radius: 45px;
-      border: 1px solid black;
-      // margin-top: 10px;
-      top: 13px;
+        position: absolute;
+        width: 30px;
+        height: 1.86px;
+        background: var(--ion-color-secondary);
+        border-radius: 45px;
+        border: 1px solid black;
+        // margin-top: 10px;
+        top: 13px;
     }
-  }
-  
-  // Menu harmburger design end
-  
-  // header Title and SVG start
-  ion-title {
+}
+
+// Menu harmburger design end
+
+// header Title and SVG start
+ion-title {
     position: relative;
     text-align: center;
     top: -14px;
-  }
-  
-  .user-helpsvg1{
+}
+
+.user-helpsvg1 {
     width: 45px;
     height: 45px;
     position: relative;
     top: 5px;
     left: -5px;
-  }
-  .user-helpsvg {
+}
+
+.user-helpsvg {
     width: 45px;
     height: 45px;
     position: fixed;
     top: 10px;
     left: 10px;
-  }
-  
-  .header-shadow-text {
+}
+
+.header-shadow-text {
     font-family: 'Poppins', 'sans-serif';
     font-style: normal;
     font-weight: bold;
@@ -162,11 +177,12 @@ ion-menu {
     position: relative;
     top: 10px;
     left: 20px;
-  }
-  // header Title and SVG end
-  
-  // body 
-  .user-container {
+}
+
+// header Title and SVG end
+
+// body 
+.user-container {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -177,9 +193,9 @@ ion-menu {
     top: 50%;
     transform: translateY(-50%);
     padding: 50px 20px 10px 20px;
-  }
-  
-  .user-location {
+}
+
+.user-location {
     border: 1px solid var(--ion-color-secondary);
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
@@ -188,22 +204,22 @@ ion-menu {
     min-height: 70vh;
     margin: 20px;
     overflow: hidden;
-  }
-  
-  // LOCATION CONFIRMATION
-  .confirm-text {
-    text-align: center; 
+}
+
+// LOCATION CONFIRMATION
+.confirm-text {
+    text-align: center;
     text-transform: uppercase;
     font-size: 28px;
     font-weight: bold;
     margin: 30px;
     color: #00154f;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-  
-  .location-text {
+}
+
+.location-text {
     text-align: left;
-    font-weight: 500px; 
+    font-weight: 500px;
     text-transform: capitalize;
     font-size: 20px;
     margin: 10px 10px 0 10px;
@@ -213,30 +229,30 @@ ion-menu {
     letter-spacing: 0.05em;
     color: #00154f;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-  }
-  
-  .text-loc {
+}
+
+.text-loc {
     font-size: 24px;
     color: red;
     text-align: center;
     letter-spacing: 0.05em;
     padding-top: 20px;
-  }
-  
-  .quest-loc {
+}
+
+.quest-loc {
     font-size: 24px;
     color: red;
     text-align: center;
     letter-spacing: 0.05em;
     padding-top: 5px;
-  }
-  
-  .confirm-btn {
+}
+
+.confirm-btn {
     display: flex;
     justify-content: space-between;
-  }
-  
-  ion-button {
+}
+
+ion-button {
     --background: #f4af1b;
     font-family: 'Inconsolata', monospace;
     color: #000000;
@@ -248,171 +264,153 @@ ion-menu {
     font-size: 18px;
     line-height: 35px;
     letter-spacing: 0.03em;
-  }
-  
-  ion-button:hover {
+}
+
+ion-button:hover {
     --background: #f4af1b;
-  }
-  
-  .confirm-btn .loc-btn{
+}
+
+.confirm-btn .loc-btn {
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     height: 50px;
     width: 100px;
     transition: all 0.5s;
     cursor: pointer;
     margin: 5px;
-  }
-  
-  .loc-btn .btn-txt {
+}
+
+.loc-btn .btn-txt {
     text-transform: capitalize;
     font-size: 20px;
     color: #00154f;
     cursor: pointer;
     position: relative;
-    transition: 0.5s; 
-  }
-  
-  // Media query for mozila browzer
-  
-  @media (min-width: 1200px) and (max-width: 1600px) {
-    .user-location {
-      width: 350px;
-      height: 50vh;
-    }
-  
-    .confirm-text {
-      text-align: center; 
-      text-transform: uppercase;
-      font-size: 28px;
-      margin: 10px;
-    }
-  
-    .location-text {
-      text-align: left;
-      text-transform: capitalize;
-      font-size: 20px;
-      margin: 10px 10px 0 10px;
-      font-family: 'Poppins', 'sans-serif';
-      letter-spacing: 0.05em;
-    }
+    transition: 0.5s;
+}
+
+// Media query for mozila browzer
+
+@media (min-width: 1200px) and (max-width: 1600px) {
     .user-helpsvg1 {
-      display: none;
+        display: none;
     }
-  }
-  
-  @media screen and (max-width: 360px) {
+}
+
+@media screen and (max-width: 360px) {
     .confirm-text {
-      text-align: center; 
-      text-transform: uppercase;
-      font-size: 16px;
+        text-align: center;
+        text-transform: uppercase;
+        font-size: 16px;
     }
-    
+
     .location-text {
-      font-size: 20px;
+        font-size: 20px;
     }
-  
+
     .text-loc {
-      font-size: 16px;
-      padding-top: 10px;
+        font-size: 16px;
+        padding-top: 10px;
     }
-    
+
     .quest-loc {
-      font-size: 16px;
-      padding-top: 5px;
+        font-size: 16px;
+        padding-top: 5px;
     }
-  
+
     // Menu SVG and title
     .user-helpsvg {
-      position: fixed;
-      top: 43px;
-      left: 60px;
+        position: fixed;
+        top: 43px;
+        left: 60px;
     }
-    
+
     .header-shadow-text {
-      position: relative;
-      top: 8px;
-      left: 20px;
+        position: relative;
+        top: 8px;
+        left: 20px;
     }
-  
+
     .user-helpsvg1 {
-      display: none;
+        display: none;
     }
-  }
-  
-  @media screen and (min-width: 411px) {
+}
+
+@media screen and (min-width: 411px) {
+
     // Menu SVG and title
     .user-helpsvg {
-      position: fixed;
-      top: 40px;
-      left: 85px;
+        position: fixed;
+        top: 40px;
+        left: 85px;
     }
-    
+
     .header-shadow-text {
-      position: relative;
-      top: 8px;
-      left: 20px;
+        position: relative;
+        top: 8px;
+        left: 20px;
     }
-  
+
     .user-helpsvg1 {
-      display: none;
-    }
-  }
-  
-  
-  @media screen and (min-width: 375px) and (max-width: 767px) {
-    .header-shadow-text {
-      font-size: 16px;
+        display: none;
     }
     
+}
+
+
+@media screen and (min-width: 375px) and (max-width: 767px) {
+    .header-shadow-text {
+        font-size: 16px;
+    }
+
     // Menu SVG and title
     .user-helpsvg {
-      position: fixed;
-      top: 28px;
-      left: 115px;
-      height: 30px;
-      width: 30px;
+        position: fixed;
+        top: 28px;
+        left: 115px;
+        height: 30px;
+        width: 30px;
     }
-    
+
     .header-shadow-text {
-      position: relative;
-      top: 5px;
-      left: 10px;
+        position: relative;
+        top: 5px;
+        left: 10px;
     }
-  
+
     .ion-padding-vertical {
-      height: 80px;
+        height: 80px;
     }
-  
+
     // Menu harmburger
     .menu-harmbg-1 {
-      height: 1.86px;
-      background: var(--ion-color-secondary);
-      position: fixed;
-      width: 30px;
-      top: 20px;
-      right: 10px;
+        height: 1.86px;
+        background: var(--ion-color-secondary);
+        position: fixed;
+        width: 30px;
+        top: 20px;
+        right: 10px;
     }
-  
+
     .menu-harmbg-2 {
-      height: 1.86px;
-      background: var(--ion-color-secondary);
-      position: fixed;
-      width: 25px;
-      top: 20px;
-      left: -25px;
-      right: 10px;
+        height: 1.86px;
+        background: var(--ion-color-secondary);
+        position: fixed;
+        width: 25px;
+        top: 20px;
+        left: -25px;
+        right: 10px;
     }
-  
+
     .menu-harmbg-3 {
-      height: 1.86px;
-      background: var(--ion-color-secondary);
-      position: fixed;
-      width: 30px;
-      top: 20px;
-      right: 10px;
+        height: 1.86px;
+        background: var(--ion-color-secondary);
+        position: fixed;
+        width: 30px;
+        top: 20px;
+        right: 10px;
     }
-  
+
     .user-helpsvg1 {
-      display: none;
+        display: none;
     }
-  }
+}
