@@ -11,8 +11,8 @@ import { VictimMenuComponent } from '../components/victim-menu/victim-menu.compo
   imports: [
     CommonModule,
     FormsModule,
-    IonicModule
+    IonicModule,
   ],
   
 })
-export class AdminComponentsModule {}
+export class VictimMenuModule {}

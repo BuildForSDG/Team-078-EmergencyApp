@@ -8,13 +8,16 @@ import { GetHelpPageRoutingModule } from './get-help-routing.module';
 
 import { GetHelpPage } from './get-help.page';
 
+import { VictimMenuModule } from '../../../components/victim.components.module'
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    VictimMenuModule,
     GetHelpPageRoutingModule
   ],
-  declarations: [GetHelpPage]
+  declarations: [GetHelpPage, VictimMenuModule]
 })
 export class GetHelpPageModule {}
