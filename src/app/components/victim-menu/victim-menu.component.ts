@@ -6,8 +6,28 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./victim-menu.component.scss'],
 })
 export class VictimMenuComponent implements OnInit {
+  // properties
+ menuItem: string[];
+ menuIcon: string[];
 
-  constructor() { }
+  constructor() { 
+    this.menuItem = [
+      'admin-dashboard',
+      'welcom-page',
+      'respondant-login',
+      'respondant-dashboard',
+      'admin-sign-up',
+      'admin-login',
+      'admin-add-respondant',
+      'splash-page',
+      'get-help',
+      'user-welcome',
+      'find-unit',
+      'unit-alert',
+      'view-unit',
+      'user-location'
+    ]
+  }
 
   ngOnInit() {}
 
