@@ -18,6 +18,6 @@ import { VictimMenuModule } from '../../../components/victim.components.module'
     VictimMenuModule,
     GetHelpPageRoutingModule
   ],
-  declarations: [GetHelpPage, VictimMenuModule]
+  declarations: [GetHelpPage]
 })
 export class GetHelpPageModule {}

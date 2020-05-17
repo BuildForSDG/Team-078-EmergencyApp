@@ -1,8 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=\'Poppins\', sans-serif:wght@100;200;300;400;500;600;700;800&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
 
-
-
 //body 
 .user-container {
   display: flex;
@@ -45,7 +43,7 @@
   text-transform: capitalize;
   font-size: 20px;
   margin: 10px 10px 0 10px;
-  font-family: '' Poppins ', sans-serif';
+  font-family: 'Poppins', 'sans-serif';
   font-style: normal;
   line-height: 40px;
   letter-spacing: 0.05em;
@@ -109,13 +107,6 @@ ion-button:hover {
   position: relative;
   transition: 0.5s; 
 }
-
-
-
-
-@import url('https://fonts.googleapis.com/css2?family=\'Poppins\', sans-serif:wght@100;200;300;400;500;600;700;800&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
-
 
 // Menu Icon and Grid start
 ion-menu {
@@ -330,7 +321,7 @@ ion-title {
   text-transform: capitalize;
   font-size: 20px;
   margin: 10px 10px 0 10px;
-  font-family: '' Poppins ', sans-serif';
+  font-family: 'Poppins', 'sans-serif';
   font-style: normal;
   line-height: 40px;
   letter-spacing: 0.05em;
@@ -415,7 +406,7 @@ ion-button:hover {
     text-transform: capitalize;
     font-size: 20px;
     margin: 10px 10px 0 10px;
-    font-family: '' Poppins ', sans-serif';
+    font-family: 'Poppins', 'sans-serif';
     letter-spacing: 0.05em;
   }
   .user-helpsvg1 {
