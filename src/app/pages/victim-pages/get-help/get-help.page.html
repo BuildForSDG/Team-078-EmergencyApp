@@ -24,17 +24,20 @@
         <ion-row class="ion-text-center ion-align-items-center">
             <ion-col size-md="6" offset-md="3" class="ion-margin-vertical">
                 <div class="form">
-                    <form size="12" (ngSubmit)="submitForm()">
+                    <form size="12" (ngSubmit)="submitForm()" #infoForm="ngForm">
                         <ion-item>
                             <ion-label>SELECT EMERGENCY</ion-label>
-                            <ion-select value="EMERGENCY" multiple="true" placeholder="EMERGENCY">
+                            <ion-select value="EMERGENCY" name="emmergency" [(ngModel)]="userInfo.emmergency" placeholder="EMERGENCY">
                                 <ion-select-option value="Robbery">Robbery</ion-select-option>
                                 <ion-select-option value="Accident">Accident</ion-select-option>
                                 <ion-select-option value="Fire">Fire</ion-select-option>
                             </ion-select>
                         </ion-item>
                         <ion-item no-lines>
-                            <ion-input type="text" placeholder="ENTER LOCATION" required></ion-input>
+                            <ion-input type="text" placeholder="ENTER LOCATION" name="address" [(ngModel)]="userInfo.address" required></ion-input>
+                        </ion-item>
+                        <ion-item no-lines>
+                            <ion-input type="number" placeholder="ACTIVE PHONE NUMBER" name="phone_number" [(ngModel)]="userInfo.phone_number" required></ion-input>
                         </ion-item>
                         <!-- <ion-button href="/victim-confirm-loc-on-map">
                             <ion-icon name="search-sharp" slot="start"></ion-icon> GET GPS LOCATION

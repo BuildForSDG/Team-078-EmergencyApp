@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router,NavigationExtras  } from '@angular/router';
 
 @Component({
   selector: 'app-get-help',
@@ -7,14 +7,23 @@ import { Router } from '@angular/router';
   styleUrls: ['./get-help.page.scss'],
 })
 export class GetHelpPage implements OnInit {
-
+  userInfo = {
+    emmergency: '',
+    address: '',
+    phone_number:''
+  };
   constructor(private router: Router) { }
 
   ngOnInit() {
   }
-
+  
   submitForm(){
-    this.router.navigate(['/victim-confirm-loc-on-map']);
+    let navigationExtras: NavigationExtras = {
+      state: {
+        userInfo: this.userInfo
+      }
+    }; 
+    this.router.navigate(['/victim-confirm-loc-on-map'], navigationExtras);
   }
 
 }
