@@ -18,6 +18,7 @@ import	{	GoogleMapComponent	}	from	'../../../components/google-map/google-map.co
     ViewDangersPageRoutingModule
   ],
   declarations: [ViewDangersPage, GoogleMapComponent],
+  exports:[GoogleMapComponent],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class ViewDangersPageModule {}

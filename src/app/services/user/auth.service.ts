@@ -93,7 +93,29 @@ export class AuthService {
         throw new Error(error);
       });
   }
-
+  addRequest(request_ref:string, request_type:string, request_lat: number,
+     request_long:number,request_address: string, respond_rating: string,responder_email:string,victim_number:string ):Promise<any>{
+    return  firebase
+    .firestore()
+    .collection('request')
+    .add({
+      request_ref: request_ref,
+      request_type: request_type,
+      request_time: firebase.firestore.FieldValue.serverTimestamp(),
+      request_lat: request_lat,
+      request_long:request_long,
+      request_address : request_address,
+      respond_rating: respond_rating,
+      responder_email: responder_email,
+      victim_number: victim_number
+    });
+    // .then( () => {
+       
+    // }).catch(error => {
+    //   console.error(error);
+    //   throw new Error(error);
+    // });
+  }
   signupUser(
     firstname: string,
     lastname: string,

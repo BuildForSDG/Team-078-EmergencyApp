@@ -3,7 +3,8 @@
     // position: absolute;
     width: 100%;
     height: 58px;
-    background: rgba(0, 21, 79, 0.9);
+    //background: rgba(0, 21, 79, 0.9);
+    background: #f4af1b;
     margin: 0;
     // border-radius: 3px;
     // color: ;
@@ -13,7 +14,7 @@
     // position: absolute;
     width: 100%;
     height: 58px;
-    background: rgba(0, 21, 79, 0.9);
+    background: #f4af1b;
     // margin: 0;
     // border-radius: 3px;
     // color: ;
@@ -38,7 +39,6 @@
         height: 1px;
         margin: 0 1em;
     }
-
 }
 
 .one-line {
@@ -60,7 +60,7 @@
     letter-spacing: 0.1em;
 }
 
-.user-inner-body{
+.user-inner-body {
     background-color: #F1F5FF;
 }
 
@@ -81,7 +81,7 @@
     color: #000000;
 }
 
-.user-text{
+.user-text {
     font-style: normal;
     // font-size: 18px;
 }
@@ -91,5 +91,5 @@
 }
 
 ion-icon {
-    font-size: 25px; 
+    font-size: 25px;
 }

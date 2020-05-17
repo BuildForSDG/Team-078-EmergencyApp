@@ -190,16 +190,36 @@ export class GoogleMapComponent{
     let	marker	=	new	google.maps.Marker({												
       map:	this.map,												
       animation:	google.maps.Animation.DROP,												
-      position:	latLng								
+      position:	latLng,				
     });
     //	Remove	existing	marker	if	it	exists								
     if(this.marker){												
       this.marker.setMap(null);								
     }
     //	Add	new	marker								
-    this.marker	=	marker;
-  
+    this.marker	=	marker
+
   }
+
+  public changeMarkerWithoutAni(lat: number, lng:	number): void	{
+  
+    let	latLng	=	new	google.maps.LatLng(lat,	lng);
+    let	marker	=	new	google.maps.Marker({												
+      map:	this.map,																							
+      position:	latLng,
+      draggable: true					
+    });
+    //	Remove	existing	marker	if	it	exists								
+    if(this.marker){												
+      this.marker.setMap(null);								
+    }
+    //	Add	new	marker								
+    this.marker	=	marker
+
+  }
+ 
+
+  
 
 
 
