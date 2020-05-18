@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
+import { RespondantMenuModule } from '../../../components/respondant.components.module'
+
 import { RespondantDashboardPageRoutingModule } from './respondant-dashboard-routing.module';
 
 import { RespondantDashboardPage } from './respondant-dashboard.page';
@@ -13,6 +15,7 @@ import { RespondantDashboardPage } from './respondant-dashboard.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    RespondantMenuModule,
     RespondantDashboardPageRoutingModule
   ],
   declarations: [RespondantDashboardPage]
