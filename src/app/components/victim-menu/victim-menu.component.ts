@@ -7,8 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class VictimMenuComponent implements OnInit {
   // properties
- menuItem: string[];
- menuIcon: string[];
+  menuItem: string[]
+  
+ 
 
   constructor() { 
     this.menuItem = [
@@ -32,3 +33,4 @@ export class VictimMenuComponent implements OnInit {
   ngOnInit() {}
 
 }
+
