@@ -86,7 +86,19 @@ const routes: Routes = [
    {
     path: 'victim-confirm-loc-on-map',
     loadChildren: () => import('./pages/victim-pages/victim-confirm-loc-on-map/victim-confirm-loc-on-map.module').then( m => m.VictimConfirmLocOnMapPageModule)
-  }
+  },
+  {
+    path: 'admin-add-danger',
+    loadChildren: () => import('./pages/admin-pages/admin-add-danger/admin-add-danger.module').then( m => m.AdminAddDangerPageModule)
+  },
+  {
+    path: 'admin-verify-danger-map',
+    loadChildren: () => import('./pages/admin-pages/admin-verify-danger-map/admin-verify-danger-map.module').then( m => m.AdminVerifyDangerMapPageModule)
+  },
+
+ 
+
+
 
   
 

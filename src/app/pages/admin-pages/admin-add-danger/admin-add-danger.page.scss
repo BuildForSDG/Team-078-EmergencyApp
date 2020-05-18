@@ -1,0 +1,42 @@
+$white-color: #fff;
+$height100: 100%;
+ion-row {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin: 0;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+ion-col {
+    border: px solid #488aff;
+    background: $white-color;
+}
+
+// This class take care of space amongst each form field
+.emerge-form-line {
+    border: 1px solid #ffc409;
+    border-radius: 2px;
+    box-shadow: 5px 8px 18px #888888;
+}
+
+.emerge-span {
+    padding: 10px;
+}
+
+ion-button {
+    font-weight: 300;
+}
+
+@media (min-width: 240px) and (max-width: 768px) {
+    ion-grid {
+        background: $white-color;
+    }
+    ion-col {
+        border: none;
+    }
+}

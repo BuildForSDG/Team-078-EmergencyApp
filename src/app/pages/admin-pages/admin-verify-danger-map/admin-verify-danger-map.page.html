@@ -1,0 +1,19 @@
+<ion-header>
+    <ion-toolbar>
+        <ion-title>Select Danger Location</ion-title>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content>
+    <app-google-map apiKey="AIzaSyBExZNShIaWE9RKXq_oqsAgyaYcYRhYGB8"></app-google-map>
+</ion-content>
+
+<ion-footer>
+    <div class="emerge-form-line">
+        <ion-item>
+            <ion-label floating>Description</ion-label>
+            <ion-textarea name="description" [(ngModel)]="description"></ion-textarea>
+        </ion-item>
+    </div>
+    <ion-button expand="full" (click)="addDanger()">Submit Danger</ion-button>
+</ion-footer>
