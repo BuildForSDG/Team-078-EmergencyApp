@@ -188,3 +188,17 @@ ion-menu-button {
         height: 20px;
     }
 }
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+    .header-shadow-text {
+        font-size: 24px;
+    }
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+    .header-shadow-text {
+        font-size: 24px;
+    }
+}
