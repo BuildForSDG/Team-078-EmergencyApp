@@ -86,7 +86,15 @@ const routes: Routes = [
    {
     path: 'victim-confirm-loc-on-map',
     loadChildren: () => import('./pages/victim-pages/victim-confirm-loc-on-map/victim-confirm-loc-on-map.module').then( m => m.VictimConfirmLocOnMapPageModule)
+  },  {
+    path: 'admin-edit-unit',
+    loadChildren: () => import('./admin-edit-unit/admin-edit-unit.module').then( m => m.AdminEditUnitPageModule)
+  },
+  {
+    path: 'view-respondant-list',
+    loadChildren: () => import('./view-respondant-list/view-respondant-list.module').then( m => m.ViewRespondantListPageModule)
   }
+
 
   
 
