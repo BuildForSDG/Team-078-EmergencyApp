@@ -40,7 +40,7 @@
     height: 1.86px;
     background: var(--ion-color-secondary);
     border-radius: 45px;
-    border: 1px solid black;
+    border: 1px solid #ffc409;
     margin-bottom: 5px;
 }
 
@@ -50,9 +50,9 @@
     height: 1.86px;
     background: var(--ion-color-secondary);
     border-radius: 45px;
-    border: 1px solid black;
+    border: 1px solid #ffc409;
     margin-top: 5px;
-    left: 8.2px;
+    left: 7px;
     
 }
 
@@ -62,7 +62,7 @@
     height: 1.86px;
     background: var(--ion-color-secondary);
     border-radius: 45px;
-    border: 1px solid black;
+    border: 1px solid #ffc409;
     margin-top: 10px;
 }
 
@@ -72,10 +72,8 @@
         position: absolute;
         width: 30px;
         height: 1.86px;
-        background: var(--ion-color-secondary);
         border-radius: 45px;
-        border: 1px solid black;
-        // margin-bottom: 5px;
+        border: 1px solid var(--ion-color-primary);
         top: 13px;
     }
 
@@ -83,10 +81,8 @@
         position: absolute;
         width: 19.71px;
         height: 1.86px;
-        background: var(--ion-color-secondary);
         border-radius: 45px;
-        border: 1px solid black;
-        // margin-top: 5px;
+        border: 1px solid var(--ion-color-primary);
         top: 13px;
         left: 10px;
     }
@@ -95,10 +91,8 @@
         position: absolute;
         width: 30px;
         height: 1.86px;
-        background: var(--ion-color-secondary);
         border-radius: 45px;
-        border: 1px solid black;
-        // margin-top: 10px;
+        border: 1px solid var(--ion-color-primary);
         top: 13px;
     }
 }
@@ -158,7 +152,7 @@ ion-menu-button {
 .menu-main-icon {
     display: grid;
     grid-template-columns: auto auto auto;
-    padding-top: 50px;
+    padding: 1px;
 }
 
 .menu-main-icon:first-child {
