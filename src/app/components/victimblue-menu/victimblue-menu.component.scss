@@ -47,13 +47,13 @@
 
 .menu-harmbg-2 {
   position: absolute;
-  min-width: 80%;
+  min-width: 70%;
   height: 1.86px;
   background: var(--ion-color-secondary);
   border-radius: 45px;
   border: 1px solid #ffc409;
   margin-top: 5px;
-  left: 7px;
+  left: 10px;
   
 }
 
@@ -132,10 +132,10 @@ ion-menu-button {
 
 .back-btn {
   position: absolute;
-  top: 10px;
+  top: 20px;
   left: 10px;
-  height: 45px;
-  width: 45px;
+  height: 40px;
+  width: 40px;
 }
 
 .item-background {
