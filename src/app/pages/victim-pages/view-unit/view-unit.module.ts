@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { VictimMenuModule } from '../../../components/victim.components.module'
+import { VictimBlueMenuModule } from '../../../components/victimblue.components.module'
 
 import { ViewUnitPageRoutingModule } from './view-unit-routing.module';
 
@@ -15,7 +15,7 @@ import { ViewUnitPage } from './view-unit.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    VictimMenuModule,
+    VictimBlueMenuModule,
     ViewUnitPageRoutingModule
   ],
   declarations: [ViewUnitPage]
