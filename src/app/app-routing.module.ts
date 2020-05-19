@@ -97,11 +97,11 @@ const routes: Routes = [
   },
   {
     path: 'admin-edit-unit',
-    loadChildren: () => import('./admin-edit-unit/admin-edit-unit.module').then( m => m.AdminEditUnitPageModule)
+    loadChildren: () => import('./pages/admin-pages/admin-edit-unit/admin-edit-unit.module').then( m => m.AdminEditUnitPageModule)
   },
   {
     path: 'view-respondant-list',
-    loadChildren: () => import('./view-respondant-list/view-respondant-list.module').then( m => m.ViewRespondantListPageModule)
+    loadChildren: () => import('./pages/admin-pages/view-respondant-list/view-respondant-list.module').then( m => m.ViewRespondantListPageModule)
   }
 ];
 @NgModule({
