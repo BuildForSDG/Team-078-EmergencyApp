@@ -1,61 +1,3 @@
-$white-color: #fff;
-$height100: 100%;
-
-ion-row {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    position: absolute;
-    left: 0;
-    right: 0;
-    margin: 0;
-    top: 50%;transform: translateY(-50%);
-}
-
-ion-col {
-    border: px solid #488aff;
-    background: $white-color;
-}
-
-// This class take care of space amongst each form field
-.emerge-form-line {
-  border: 1px solid #ffc409;
-  border-radius: 2px;
-  box-shadow: 5px 8px 18px #888888;
-}
-
-.emerge-span {
-  padding: 10px;
-}
-
-ion-button {
-    font-weight: 300;
-}
-
-@media (min-width: 240px) and (max-width: 768px) {
-    ion-grid {
-        background: $white-color;
-    }
-    ion-col {
-        border: none;
-    }
-}
-
-
-.error-container {
-    .error-message {
-        margin: calc(var(--page-margin) / 2) 0px;
-        display: flex;
-        align-items: center;
-        color: var(--ion-color-danger);
-        font-size: 14px;
-
-        ion-icon {
-          padding-inline-end: calc(var(--page-margin) / 2);
-        }
-    }
-}
-
 //.................header Title and SVG start..........................//
 
 .user-helpsvg {
@@ -86,37 +28,6 @@ ion-button {
 // ....................Menu harmburger design start.........................//
 
 
-//.................header Title and SVG start..........................//
-
-.user-helpsvg {
-    width: 40px;
-    height: 40px;
-    position: relative;
-    top: 10px;
-    left: 5px;
-}
-
-.header-shadow-text {
-    font-family: 'Poppins', 'sans-serif';
-    font-style: normal;
-    color: var(--ion-color-primary);
-    font-weight: bold;
-    font-size: 5vw;
-    text-align: center;
-    letter-spacing: 0.05em;
-    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
-    position: relative;
-    top: 5px;
-    padding: 10px 0px 10px 0px;
-}
-
-//.....................header Title and SVG end..............................//
-
-
-
-// ....................Menu harmburger design start.........................//
-
-
 .main-menu-harmburger {
     width: 50px;
     height: 50px;
@@ -136,13 +47,13 @@ ion-button {
 
 .menu-harmbg-2 {
     position: absolute;
-    min-width: 80%;
+    min-width: 70%;
     height: 1.86px;
     background: var(--ion-color-secondary);
     border-radius: 45px;
     border: 1px solid #ffc409;
     margin-top: 5px;
-    left: 7px;
+    left: 10px;
     
 }
 
@@ -221,10 +132,10 @@ ion-menu-button {
 
 .back-btn {
     position: absolute;
-    top: 10px;
+    top: 20px;
     left: 10px;
-    height: 45px;
-    width: 45px;
+    height: 40px;
+    width: 40px;
 }
 
 .item-background {
