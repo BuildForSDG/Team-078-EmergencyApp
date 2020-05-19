@@ -1,25 +1,41 @@
 
-1 - I created a folder called components, where all our menu components will be resided
-all other components can be created here. To make our work neat, a subfolder(custome component) 
+1 - I created a folder called components, where all our custom menu components resided. To make our work neat, a subfolder(custome component) 
 is created for each of the user (admin, victim, respondant), this pertern was used for our pages.
 
-2 - A file called 'victim.components.module.ts (shared module) is created, this file allows us 
-to share component among components. Here we are sharing component for our menu for various pages
+2 - A file called 'victim.components.module.ts (shared module) was created, this file allows us 
+to share component among our components. Here we are sharing component for our menu for various pages
 
-3. To be able to  use features provided by Angular and Ionic, Modules provided by ionic and Angular
-were imported into sshared module. For example if Ionic module is not imported, ionic extentended elements will 
-not work and this could break our application.
+3. To be able to  use features provided by Angular and Ionic, I imported NgModule, CommonModule and IonicModule into the shared module. For example if IonicModule is not imported, ionic extentended elements will not work and this could break our application.
 
-4. In other to make our custom component sharable, I imported the custom component into the shared module
+4. In other to make our custom component sharable, I imported the custom component into the shared module.
 
-Created indidual components and shared component for all the parents folders (admin, victim, respondant).
-The essence of creating this was, each user has his own menu designed differently, 
-hence, this gives us the berty to design each menu differently, the pages are grouped 
-(Admin, respondants and victim), all this pages has a sub-folder for individual page.
+## USAGE for new pages
+There are three categories of users(admin, victim, respondant), some of their pages use either blue background or yellow background and have different menu contents, hence custom components are created to make sharing easy. 
 
-2. I imported NgModule, BrowserModule IonicModule and IonicRouteStrategy into this give us our component 
-to use modules provided by Angular and Ionic.
+See custom component below:
+ -  <app-admin-menu></app-admin-menu>             Blue
+ -  <app-respondant-menu></app-respondant-menu>   Blue
+ -  <app-victim-menu></app-victim-menu>           Yellow
+ -  <app-victimblue-menu></app-victimblue-menu>   Blue
 
-3 I imported each menu component which are two steps upward i.e that are two steps to their parent folder
+ To use any of this component, you need to import the module that allows us to share the component, for exmple, 
+ 
+ ## For user-location page: 
+ 1 - Open user-location.module.ts
+ 2 - Import VictimMenuModule  - import { VictimMenuModule } from '../../../components/victim.components.module' -
+ 3 - Locate @NgModule({
+  imports: [
+    CommonModule,
+    FormsModule,
+    IonicModule,
+    *VictimMenuModule,*
+    UserLocationPageRoutingModule
+  ],
+  declarations: [UserLocationPage]
+})
+export class UserLocationPageModule {}
 
-4. Imported Individual component into their respective module
+and place the VictimMenuModule here
+
+4. Since the background color of our Menu bar is yellow we will use 
+'<app-victim-menu></app-victim-menu>' component, this should be placed above our html
