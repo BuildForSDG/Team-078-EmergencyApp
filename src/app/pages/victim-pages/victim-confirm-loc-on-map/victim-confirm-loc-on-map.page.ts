@@ -9,7 +9,7 @@ import "firebase/auth";
 import "firebase/firestore";
 
 const { Geolocation, Storage } = Plugins;
-var google;
+declare var google;
 @Component({
   selector: "app-victim-confirm-loc-on-map",
   templateUrl: "./victim-confirm-loc-on-map.page.html",

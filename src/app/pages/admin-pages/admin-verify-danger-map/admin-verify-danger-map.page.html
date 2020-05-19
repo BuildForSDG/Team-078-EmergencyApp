@@ -9,11 +9,23 @@
 </ion-content>
 
 <ion-footer>
-    <div class="emerge-form-line">
-        <ion-item>
-            <ion-label floating>Description</ion-label>
-            <ion-textarea name="description" [(ngModel)]="description"></ion-textarea>
-        </ion-item>
-    </div>
-    <ion-button expand="full" (click)="addDanger()">Submit Danger</ion-button>
+
+    <form (ngSubmit)="addDanger()">
+        <div class="emerge-form-line">
+            <ion-item>
+
+                <ion-select name="dangerType" [(ngModel)]="dangerInfo.dangerType" placeholder="Select Type" required>
+                    <ion-select-option value="Robbery">Robbery</ion-select-option>
+                    <ion-select-option value="pot_holes">Pot Holes</ion-select-option>
+                    <ion-select-option value="road_block">Road Block</ion-select-option>
+                    <ion-select-option value="under_contruction">Under Contruction</ion-select-option>
+                </ion-select>
+            </ion-item>
+            <ion-item>
+                <ion-label floating>Description</ion-label>
+                <ion-textarea name="description" [(ngModel)]="dangerInfo.description" required></ion-textarea>
+            </ion-item>
+        </div>
+        <ion-button expand="full" type="submit">Submit Danger</ion-button>
+    </form>
 </ion-footer>

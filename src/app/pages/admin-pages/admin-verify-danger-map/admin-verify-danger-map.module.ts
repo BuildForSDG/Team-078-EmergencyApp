@@ -7,7 +7,7 @@ import { IonicModule } from '@ionic/angular';
 import { AdminVerifyDangerMapPageRoutingModule } from './admin-verify-danger-map-routing.module';
 
 import { AdminVerifyDangerMapPage } from './admin-verify-danger-map.page';
-// import { ViewDangersPageModule } from '../../victim-pages/view-dangers/view-dangers.module';
+import { ViewDangersPageModule } from '../../victim-pages/view-dangers/view-dangers.module';
 
 @NgModule({
   imports: [
@@ -15,7 +15,7 @@ import { AdminVerifyDangerMapPage } from './admin-verify-danger-map.page';
     FormsModule,
     IonicModule,
     AdminVerifyDangerMapPageRoutingModule,
-    // ViewDangersPageModule
+    ViewDangersPageModule
   ],
   declarations: [AdminVerifyDangerMapPage]
 })

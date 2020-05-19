@@ -1,5 +1,6 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { AlertController, LoadingController } from "@ionic/angular";
+import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { Plugins } from "@capacitor/core";
 import { Router, ActivatedRoute } from "@angular/router";
 import { GoogleMapComponent } from "../../../components/google-map/google-map.component";
@@ -9,29 +10,28 @@ import "firebase/auth";
 import "firebase/firestore";
 
 const { Geolocation, Storage } = Plugins;
-var google;
+declare var google;
 @Component({
   selector: 'app-admin-verify-danger-map',
   templateUrl: './admin-verify-danger-map.page.html',
   styleUrls: ['./admin-verify-danger-map.page.scss'],
 })
 export class AdminVerifyDangerMapPage implements OnInit {
+  addDangerForm : FormGroup;
   @ViewChild(GoogleMapComponent, { static: false })
   map: GoogleMapComponent;
   private latitude: number;
   private longitude: number;
-  public description: string = "Tonykay";
   public loading: HTMLIonLoadingElement;
   data: any;
   markerlatlong = {
     lat: 0,
-    long: 0
+    lng: 0
   };
-  userInfo = {
-    emmergency: "",
-    address: "",
+  dangerInfo = {
+    dangerType: "",
+    description: "",
     latLong: this.markerlatlong,
-    phone_number: ""
   };
 
   constructor(
@@ -56,35 +56,54 @@ export class AdminVerifyDangerMapPage implements OnInit {
     });
   }
 
-  addDanger() {
-    this.alertCtrl
-      .create({
-        header: "Location	set!",
-        message: "Okay, Help will arrive soon",
-        buttons: [{ text: "Ok" }]
-      })
-      .then(alert => {
-        alert.present();
-        let latLong = this.map.marker.position;
-        this.markerlatlong.lat = latLong.lat();
-        this.markerlatlong.long = latLong.lng();
-        this.userInfo.latLong = this.markerlatlong;
-        let request_ref = "23324256354";
-        let responder_email = "tonykay001@gmail.com";
-        this._auth.addRequest(
-          request_ref,
-          this.userInfo.emmergency,
-          this.userInfo.latLong.lat,
-          this.userInfo.latLong.long,
-          this.userInfo.address,
-          "",
-          responder_email,
-          this.userInfo.phone_number
-        );
+  async addDanger(): Promise<void>{
+    if( this.dangerInfo.dangerType != "" &&
+      this.dangerInfo.description != ""){
+    let latLong = this.map.marker.position;
+    this.markerlatlong.lat = latLong.lat();
+    this.markerlatlong.lng = latLong.lng();
+    this.dangerInfo.latLong = this.markerlatlong;
 
-        this.router.navigate(["/unit-alert"]);
+    this.loading = await this.loadingCtrl.create();
+    await this.loading.present();
+    this._auth.addDanger(
+      this.dangerInfo.dangerType,
+      this.dangerInfo.description,
+      this.dangerInfo.latLong.lng,
+      this.dangerInfo.latLong.lat,
+    ).then(() => {
+      this.loading.dismiss().then(() => { 
+        this.alertCtrl
+        .create({
+          header: "Location	set!",
+          message: "Danger Added",
+          buttons: [{ text: "Ok" }]
+        })
+        .then(alert => {
+          alert.present();
+          this.dangerInfo.dangerType = "";
+          this.dangerInfo.description = "";
+        });
+      }); 
+     
+    }, error => { 
+      this.loading.dismiss().then(async () => { 
+        const alert = await this.alertCtrl.create({ message: error.message, buttons: [{ text: 'Ok', role: 'cancel' }] }); 
+        await alert.present(); 
       });
+     }); 
+    
+  }else{
+    this.alertCtrl
+    .create({
+      header: "Error!",
+      message: "All fields are required",
+      buttons: [{ text: "Ok" }]
+    }).then(alert => {
+      alert.present();
+    });
   }
+}
 
   setLocation(): void {
     this.loadingCtrl
@@ -104,8 +123,8 @@ export class AdminVerifyDangerMapPage implements OnInit {
               longitude: this.longitude
             };
             this.markerlatlong.lat = this.latitude;
-            this.markerlatlong.long = this.longitude;
-            this.userInfo.latLong = this.markerlatlong;
+            this.markerlatlong.lng = this.longitude;
+            this.dangerInfo.latLong = this.markerlatlong;
             this.alertCtrl
               .create({
                 header: "Map set!",
@@ -125,8 +144,8 @@ export class AdminVerifyDangerMapPage implements OnInit {
         google.maps.event.addListener(this.map.map, "dragend", () => {
           let center = this.map.map.getCenter();
           this.map.changeMarkerWithoutAni(center.lat(), center.lng());
-          console.log("Info1", this.map.marker);
         });
+
       });
   }
 }
