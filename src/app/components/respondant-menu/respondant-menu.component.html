@@ -1,0 +1,60 @@
+<!-- Menu toggle -->
+<ion-header>
+  <ion-toolbar color="secondary" class="ion-padding-vertical">
+    <ion-icon color="primary" class="back-btn" name="home"></ion-icon>
+
+    <!-- <ion-title class="header-shadow-text">
+      <ion-icon class="user-helpsvg" name="aperture-outline"></ion-icon> PAGE TITLE
+    </ion-title> -->
+
+    <ion-buttons slot="end">
+      <ion-menu-button class="main-menu-harmburger" menu="main-menu">
+        <span class="menu-harmbg-1"></span>
+        <span class="menu-harmbg-2"></span>
+        <span class="menu-harmbg-3"></span>
+      </ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- MENU SIDE ITEMS START -->
+<ion-menu menuId="main-menu" contentId="main" side="end">
+  <ion-header>
+    <ion-menu-toggle>
+      <ion-icon  color="primary" class="menu-close" name="close-outline"></ion-icon>
+    </ion-menu-toggle>
+    <div class="menu-main-icon">
+      <ion-menu-toggle>
+        <ion-item class="item-background" style="padding: 90px 150px 10px 5px;" href="/home">
+          <ion-icon color="primary" class="menu-icon" name="home"></ion-icon>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item class="item-background" style="padding: 90px 0px 10px 5px;" href="/" >
+          <ion-icon color="primary" class="menu-icon" name="log-in-outline"></ion-icon>
+        </ion-item>
+      </ion-menu-toggle>
+    </div>
+  </ion-header>
+  <ion-content>
+    <ion-list class="menu-border">
+      <ion-menu-toggle>
+        <ion-item class="menu-item-line" href="/">
+          <ion-label>Emergency</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item class="menu-item-line" href="/">
+          <ion-label>History</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item href="./">
+          <ion-label>Edit Details</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-menu>
+

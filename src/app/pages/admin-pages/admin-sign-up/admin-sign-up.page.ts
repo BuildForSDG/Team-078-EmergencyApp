@@ -24,19 +24,19 @@ export class AdminSignUpPage implements OnInit {
 
   async adminAddUser(): Promise<void> { 
   
-      //return this._auth.signupUser(this.registerCredentials.firstname,this.registerCredentials.lastname,this.registerCredentials.phone_number,this.registerCredentials.email,this.registerCredentials.password);
-      
+      this.loading = await this.loadingCtrl.create();
+      await this.loading.present();
       this._auth.signupUser(this.registerCredentials.firstname,this.registerCredentials.lastname,this.registerCredentials.phone_number,this.registerCredentials.email,this.registerCredentials.password).then( () => { 
         this.loading.dismiss().then(() => { 
           this.router.navigate(['/admin-dashboard']);
         }); 
       }, error => { 
-        this.loading.dismiss().then(async () => { 
+          this.loading.dismiss().then(async () => { 
           const alert = await this.alertCtrl.create({ message: error.message, buttons: [{ text: 'Ok', role: 'cancel' }] }); 
           await alert.present(); 
         });
       } ); 
-      this.loading = await this.loadingCtrl.create(); await this.loading.present();
+      
 
   }
 

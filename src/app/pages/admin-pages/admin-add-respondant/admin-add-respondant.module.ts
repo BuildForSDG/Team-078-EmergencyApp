@@ -4,6 +4,8 @@ import { FormsModule ,ReactiveFormsModule} from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
+import { AdminMenuModule } from '../../../components/admin.components.module'
+
 import { AdminAddRespondantPageRoutingModule } from './admin-add-respondant-routing.module';
 
 import { AdminAddRespondantPage } from './admin-add-respondant.page';
@@ -13,6 +15,7 @@ import { AdminAddRespondantPage } from './admin-add-respondant.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    AdminMenuModule,
     ReactiveFormsModule,
     AdminAddRespondantPageRoutingModule
   ],

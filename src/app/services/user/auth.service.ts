@@ -9,6 +9,7 @@ import { resolve } from "url";
   providedIn: "root"
 })
 export class AuthService {
+
   constructor() {}
 
   loginUser(
@@ -109,12 +110,22 @@ export class AuthService {
       responder_email: responder_email,
       victim_number: victim_number
     });
-    // .then( () => {
-       
-    // }).catch(error => {
-    //   console.error(error);
-    //   throw new Error(error);
-    // });
+  }
+
+  addDanger(dangerType: string, description: string, lng: number, lat: number) {
+    let location = {
+      lat: lat,
+      lng: lng
+    };
+    return  firebase
+    .firestore()
+    .collection('road_danger')
+    .add({
+      dangerType: dangerType,
+      description: description,
+      location: location,
+      request_time: firebase.firestore.FieldValue.serverTimestamp()
+    });
   }
   signupUser(
     firstname: string,
