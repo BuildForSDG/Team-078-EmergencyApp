@@ -95,13 +95,14 @@ const routes: Routes = [
     path: 'admin-verify-danger-map',
     loadChildren: () => import('./pages/admin-pages/admin-verify-danger-map/admin-verify-danger-map.module').then( m => m.AdminVerifyDangerMapPageModule)
   },
-
- 
-
-
-
-  
-
+  {
+    path: 'admin-edit-unit',
+    loadChildren: () => import('./admin-edit-unit/admin-edit-unit.module').then( m => m.AdminEditUnitPageModule)
+  },
+  {
+    path: 'view-respondant-list',
+    loadChildren: () => import('./view-respondant-list/view-respondant-list.module').then( m => m.ViewRespondantListPageModule)
+  }
 ];
 @NgModule({
   imports: [

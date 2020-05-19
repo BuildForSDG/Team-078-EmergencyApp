@@ -1,0 +1,81 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row>
+      <ion-col size-md="6" offset-md="3">
+        <div class="flex-top">
+          <ion-text color="primary">
+            <h2>EDIT UNIT</h2>
+          </ion-text>
+
+          <ion-text color="primary">
+            <h2>ID: <span id="id">547AT2</span></h2>
+          </ion-text>
+        </div>
+
+        <form action="">
+          <ion-item>
+            <ion-select value="UNIT" multiple="true" placeholder="UNIT TYPE">
+              <ion-select-option value="polic">Police</ion-select-option>
+              <ion-select-option value="hospital">Hospital</ion-select-option>
+              <ion-select-option value="firemen">Firemen</ion-select-option>
+            </ion-select>
+          </ion-item>
+          <ion-item no-lines>
+            <ion-input type="text" placeholder="LOCATION" required></ion-input>
+          </ion-item>
+          <ion-item no-lines>
+            <ion-input
+              type="tel"
+              placeholder="UNIT CONTACT"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-item no-lines>
+            <ion-input
+              type="text"
+              placeholder="UNIT ADDRESS"
+              required
+            ></ion-input>
+          </ion-item>
+          <ion-item no-lines>
+            <ion-input
+              type="tel"
+              placeholder="UNIT HEAD CONTACT"
+              required
+            ></ion-input>
+          </ion-item>
+
+          <ion-item no-lines>
+            <ion-input
+              type="password"
+              placeholder="PASSWORD"
+              required
+            ></ion-input>
+          </ion-item>
+
+          <ion-grid>
+            <ion-row>
+              <ion-col size="5" offset="7">
+                <ion-button type="submit">
+                  SAVE
+                </ion-button>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <ion-title></ion-title>
+  </ion-toolbar>
+</ion-footer>
