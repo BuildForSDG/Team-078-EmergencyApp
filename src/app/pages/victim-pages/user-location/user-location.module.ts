@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
+import { VictimMenuModule } from '../../../components/victim.components.module'
+
 import { UserLocationPageRoutingModule } from './user-location-routing.module';
 
 import { UserLocationPage } from './user-location.page';
@@ -13,6 +15,7 @@ import { UserLocationPage } from './user-location.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    VictimMenuModule,
     UserLocationPageRoutingModule
   ],
   declarations: [UserLocationPage]
