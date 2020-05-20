@@ -30,48 +30,42 @@
                                     <div class="input-form-line">
                                         <ion-item lines="none">
                                             <ion-label position="floating">Email</ion-label>
-                                            <ion-input type="text" name="email"
-                                                [(ngModel)]="addReponderCredentials.email" required></ion-input>
+                                            <ion-input type="text" name="email" [(ngModel)]="addReponderCredentials.email" required></ion-input>
                                         </ion-item>
                                     </div>
                                     <span class="input-padding "></span>
                                     <div class="input-form-line">
                                         <ion-item lines="none">
                                             <ion-label position="floating">Password</ion-label>
-                                            <ion-input type="password" name="password"
-                                                [(ngModel)]="addReponderCredentials.password" required></ion-input>
+                                            <ion-input type="password" name="password" [(ngModel)]="addReponderCredentials.password" required></ion-input>
                                         </ion-item>
                                     </div>
                                     <span class="input-padding "></span>
                                     <div class="input-form-line">
                                         <ion-item lines="none">
                                             <ion-label position="floating">Full Name</ion-label>
-                                            <ion-input type="text" name="fullname"
-                                                [(ngModel)]="addReponderCredentials.fullname" required></ion-input>
+                                            <ion-input type="text" name="fullname" [(ngModel)]="addReponderCredentials.fullname" required></ion-input>
                                         </ion-item>
                                     </div>
                                     <span class="input-padding "></span>
                                     <div class="input-form-line">
                                         <ion-item lines="none">
                                             <ion-label position="floating">Phone Number</ion-label>
-                                            <ion-input type="text" name="phone_number"
-                                                [(ngModel)]="addReponderCredentials.phone_number" required></ion-input>
+                                            <ion-input type="text" name="phone_number" [(ngModel)]="addReponderCredentials.phone_number" required></ion-input>
                                         </ion-item>
                                     </div>
                                     <span class="input-padding "></span>
                                     <div class="input-form-line">
                                         <ion-item lines="none">
                                             <ion-label position="floating">Unit Location</ion-label>
-                                            <ion-input type="text" name="address"
-                                                [(ngModel)]="addReponderCredentials.address" required></ion-input>
+                                            <ion-input type="text" name="address" [(ngModel)]="addReponderCredentials.address" required></ion-input>
                                         </ion-item>
                                     </div>
                                     <span class="input-padding "></span>
                                     <div class="input-form-line">
                                         <ion-item lines="none">
                                             <ion-label position="floating">Responder Unit</ion-label>
-                                            <ion-input type="text" name="respondant_unit"
-                                                [(ngModel)]="addReponderCredentials.respondant_unit" required>
+                                            <ion-input type="text" name="respondant_unit" [(ngModel)]="addReponderCredentials.respondant_unit" required>
                                             </ion-input>
                                         </ion-item>
                                     </div>
@@ -79,8 +73,7 @@
                                     <div class="input-form-line">
                                         <ion-item lines="none">
                                             <ion-label position="floating">Responder Type</ion-label>
-                                            <ion-input type="text" name="respondant_type"
-                                                [(ngModel)]="addReponderCredentials.respondant_type" required>
+                                            <ion-input type="text" name="respondant_type" [(ngModel)]="addReponderCredentials.respondant_type" required>
                                             </ion-input>
                                         </ion-item>
                                     </div>
@@ -88,8 +81,7 @@
                                     <div class="input-form-line">
                                         <ion-item lines="none">
                                             <ion-label position="floating">Coordinates</ion-label>
-                                            <ion-input type="text" name="coordinates"
-                                                [(ngModel)]="addReponderCredentials.coordinates" required></ion-input>
+                                            <ion-input type="text" name="coordinates" (click)="presentModal()" [(ngModel)]="addReponderCredentials.coordinateInfo" diabled></ion-input>
                                         </ion-item>
                                     </div>
                                     <span class="input-padding "></span>
