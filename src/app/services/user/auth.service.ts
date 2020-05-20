@@ -26,7 +26,7 @@ export class AuthService {
     address: string,
     respondant_type: string,
     respondant_unit: string,
-    coordinates: string
+    coordinates: any
   ): Promise<any> {
     return firebase
     .auth()
@@ -42,7 +42,7 @@ export class AuthService {
             address: address,
             respondant_type: respondant_type,
             respondant_unit: respondant_unit,
-            coordinates: coordinates
+            location: coordinates
           })
           .then(function() {
             return true;
