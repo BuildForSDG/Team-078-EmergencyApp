@@ -108,7 +108,10 @@ export class AuthService {
       request_address : request_address,
       respond_rating: respond_rating,
       responder_email: responder_email,
-      victim_number: victim_number
+      victim_number: victim_number,
+      request_resolved: false,
+      assigned_responders: [],
+      responded_responder: ''
     });
   }
 
