@@ -19,6 +19,19 @@
     // color: ;
 }
 
+.error-container {
+    .error-message {
+        margin: calc(var(--page-margin) / 2) 0px;
+        display: flex;
+        align-items: center;
+        color: var(--ion-color-danger);
+        font-size: 14px;
+        ion-icon {
+            padding-inline-end: calc(var(--page-margin) / 2);
+        }
+    }
+}
+
 ion-back-button {
     color: rgba(240, 236, 33, 0.9);
 }
