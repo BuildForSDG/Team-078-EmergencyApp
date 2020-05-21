@@ -95,7 +95,7 @@ export class AuthService {
       });
   }
   addRequest(request_ref:string, request_type:string, request_lat: number,
-     request_long:number,request_address: string, respond_rating: string,responder_email:string,victim_number:string ):Promise<any>{
+     request_long:number,request_address: string, respond_rating: string,responder_email:string, victim_number:string ):Promise<any>{
     return  firebase
     .firestore()
     .collection('request')
