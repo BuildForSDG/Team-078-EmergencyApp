@@ -66,6 +66,7 @@ export class AuthService {
         return error.message;
       });
   }
+
   adminSignupUser(
     firstname: string,
     lastname: string,
@@ -94,6 +95,7 @@ export class AuthService {
         throw new Error(error);
       });
   }
+  
   addRequest(request_ref:string, request_type:string, request_lat: number,
      request_long:number,request_address: string, respond_rating: string,responder_email:string, victim_number:string ):Promise<any>{
     return  firebase

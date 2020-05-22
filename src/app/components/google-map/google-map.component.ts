@@ -154,6 +154,7 @@ export class GoogleMapComponent{
 
   disableMap():	void	{
     this.connectionAvailable	=	false;
+    google = undefined ;
   }
 
   enableMap():	void	{

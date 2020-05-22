@@ -9,8 +9,10 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
-const { Geolocation, Storage } = Plugins;
+const {Geolocation} = Plugins;
+
 declare var google;
+
 @Component({
   selector: 'app-add-respondant-coordinates',
   templateUrl: './add-respondant-coordinates.page.html',
@@ -62,7 +64,9 @@ export class AddRespondantCoordinatesPage implements OnInit {
       'dismissed': true,
       'location' : this.markerlatlong
     });
+    this.map.disableMap();
   }
+
   setLocation(): void {
     this.loadingCtrl
       .create({
