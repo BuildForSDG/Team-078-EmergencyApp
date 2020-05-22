@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
 
 import { AdminAddUnitPageRoutingModule } from './admin-add-unit-routing.module';
+import { AddRespondantCoordinatesPageModule } from "../add-respondant-coordinates/add-respondant-coordinates.module";
 
 import { AdminAddUnitPage } from './admin-add-unit.page';
 
@@ -13,7 +14,8 @@ import { AdminAddUnitPage } from './admin-add-unit.page';
     FormsModule,
     IonicModule,
     ReactiveFormsModule,
-    AdminAddUnitPageRoutingModule
+    AdminAddUnitPageRoutingModule,
+    AddRespondantCoordinatesPageModule
   ],
   declarations: [AdminAddUnitPage]
 })

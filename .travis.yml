@@ -6,7 +6,7 @@ cache:
   - node_modules
 before_script:
  — npm install -g ionic
+ npm install -g @angular/cli
 script:
-  - yarn test
-  - yarn build
+  - ionic serve
 

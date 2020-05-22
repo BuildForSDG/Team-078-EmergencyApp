@@ -1,16 +1,22 @@
 import { Component, OnInit } from '@angular/core';
 import { Validators, FormGroup, FormControl } from '@angular/forms';
-import { LoadingController, AlertController } from '@ionic/angular';
+import { LoadingController, AlertController,ModalController} from '@ionic/angular';
 import { AuthService } from '../../../services/user/auth.service';
-
+import { AddRespondantCoordinatesPage } from "../add-respondant-coordinates/add-respondant-coordinates.page";
 @Component({
   selector: 'app-admin-add-unit',
   templateUrl: './admin-add-unit.page.html',
   styleUrls: ['./admin-add-unit.page.scss'],
 })
+
+
 export class AdminAddUnitPage implements OnInit {
   addUnitForm: FormGroup;
-
+  public modal: any;
+  coordinatesInfo = {
+    location : {},
+    locationString : ""
+  }
   validation_messages = {
     'unit_title': [
       { type: 'required', message: 'Title is required.' },
@@ -30,7 +36,8 @@ export class AdminAddUnitPage implements OnInit {
   };
   public loading: HTMLIonLoadingElement; 
   constructor( public loadingCtrl: LoadingController, 
-    public alertCtrl: AlertController, private _auth: AuthService,) { 
+    public alertCtrl: AlertController, private _auth: AuthService,
+    public modalController: ModalController) { 
     this.addUnitForm = new FormGroup({
       'unit_title': new FormControl('', Validators.compose([
         Validators.required,
@@ -79,5 +86,27 @@ export class AdminAddUnitPage implements OnInit {
       } );
     }
   }
+
+  async presentModal() {
+    this.modal = await this.modalController.create({
+     component: AddRespondantCoordinatesPage,
+     componentProps: {
+       aParameter: true,
+       otherParameter: this.modal
+     }
+   });
+
+   this.modal.onDidDismiss().then(res => {
+     if (res !== null) {
+       console.log("The result:", res);
+       this.coordinatesInfo.location = res.data.location;
+       this.coordinatesInfo.locationString = res.data.location.lat + "," + res.data.location.lng;
+     }else{
+       console.log("No result:", res);
+     }
+   });
+
+   await this.modal.present();
+ }
 
 }
