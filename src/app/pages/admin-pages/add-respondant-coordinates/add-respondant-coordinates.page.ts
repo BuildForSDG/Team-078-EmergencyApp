@@ -64,6 +64,7 @@ export class AddRespondantCoordinatesPage implements OnInit {
       'dismissed': true,
       'location' : this.markerlatlong
     });
+    //disable map
     this.map.disableMap();
   }
 
