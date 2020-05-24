@@ -8,7 +8,7 @@ import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
 
-const { Geolocation, Storage } = Plugins;
+const {Geolocation} = Plugins;
 declare var google;
 @Component({
   selector: "app-victim-confirm-loc-on-map",
