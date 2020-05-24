@@ -169,7 +169,11 @@ const routes: Routes = [
       import("./pages/admin-pages/view-respondant-list/view-respondant-list.module").then(
         m => m.ViewRespondantListPageModule
       )
-  },  {
+  },
+  {
+    path: 'admin-edit-admin',
+    loadChildren: () => import('./admin-edit-admin/admin-edit-admin.module').then( m => m.AdminEditAdminPageModule)
+  },{
     path: 'view-admins',
     loadChildren: () => import('./pages/admin-pages/view-admins/view-admins.module').then( m => m.ViewAdminsPageModule)
   }
