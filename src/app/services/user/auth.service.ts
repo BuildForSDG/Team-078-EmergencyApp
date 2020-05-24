@@ -140,6 +140,24 @@ export class AuthService {
       request_time: firebase.firestore.FieldValue.serverTimestamp()
     });
   }
+  getUnit(){
+    var docRef =  firebase.firestore().collection("unit");
+    let info: [];
+    docRef.get().then(function(querySnapshot) {
+    
+     querySnapshot.forEach(function(doc) {
+        console.log("Details",doc.data());
+    });
+
+    return info;
+  }).catch(function(error) {
+      console.log("Error getting document:", error);
+  });
+  }
+ 
+
+
+
   signupUser(
     firstname: string,
     lastname: string,
