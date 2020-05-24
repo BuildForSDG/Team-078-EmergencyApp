@@ -19,6 +19,36 @@ export class AuthService {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
+  anonymousLogin() : Promise<any> {
+    return firebase.auth().signInAnonymously().then(firebaseUser => {
+      firebase.firestore().doc(`victims/${firebaseUser.user.uid}`).set({
+        email: ''
+      });
+      console.log("Signed in as:", firebaseUser.user.uid);
+    },
+    error => {
+      console.error("Authentication failed:", error);
+    });
+  }
+
+  checkVictimAccount(victim) : Promise<any> {
+    var doc = firebase.firestore().doc(`victims/${victim}`);
+    return	new	Promise((resolve,	reject)	=>	{
+      doc.get().then((docu) => {
+        //this user is already registered as a victim
+        if(docu.exists) {
+            reject("Victim Exists") ;
+        }else{
+          //this document does not exists meaning this victim has not been previously registered 
+          resolve(true);
+        }
+      }, (err) => {
+        console.log("Error getting document:", err);
+        reject(err);
+      });
+    });
+  }
+
   addResponder(
     email: string,
     password: string,
@@ -132,6 +162,7 @@ export class AuthService {
       request_time: firebase.firestore.FieldValue.serverTimestamp()
     });
   }
+
   signupUser(
     firstname: string,
     lastname: string,
