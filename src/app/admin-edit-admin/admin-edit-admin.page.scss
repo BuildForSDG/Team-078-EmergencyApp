@@ -3,7 +3,7 @@ ion-toolbar {
 }
 
 ion-content {
-  --background: center / contain no-repeat url('./../../../../assets/spiral-path.svg');
+  --background: center / contain no-repeat url('./../../assets/spiral-path.svg');
 }
 
 .flex-top {
@@ -18,7 +18,11 @@ ion-content {
 
 ion-text h2 {
   color: #000000;
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 700;
   font-size: 16px;
+  letter-spacing: 0.03em;
   line-height: 20px;
 }
 
@@ -57,7 +61,7 @@ ion-item {
   --highlight-height: 0;
 }
 
-ion-footer{
-    height: 80PX;
-    position: relative;
+ion-footer {
+  height: 80px;
+  position: relative;
 }

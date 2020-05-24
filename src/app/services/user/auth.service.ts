@@ -32,6 +32,36 @@ export class AuthService {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
+  anonymousLogin() : Promise<any> {
+    return firebase.auth().signInAnonymously().then(firebaseUser => {
+      firebase.firestore().doc(`victims/${firebaseUser.user.uid}`).set({
+        email: ''
+      });
+      console.log("Signed in as:", firebaseUser.user.uid);
+    },
+    error => {
+      console.error("Authentication failed:", error);
+    });
+  }
+
+  checkVictimAccount(victim) : Promise<any> {
+    var doc = firebase.firestore().doc(`victims/${victim}`);
+    return	new	Promise((resolve,	reject)	=>	{
+      doc.get().then((docu) => {
+        //this user is already registered as a victim
+        if(docu.exists) {
+            reject("Victim Exists") ;
+        }else{
+          //this document does not exists meaning this victim has not been previously registered 
+          resolve(true);
+        }
+      }, (err) => {
+        console.log("Error getting document:", err);
+        reject(err);
+      });
+    });
+  }
+
   addResponder(
     email: string,
     password: string,
@@ -79,6 +109,7 @@ export class AuthService {
         return error.message;
       });
   }
+
   adminSignupUser(
     firstname: string,
     lastname: string,
@@ -107,8 +138,9 @@ export class AuthService {
         throw new Error(error);
       });
   }
+  
   addRequest(request_ref:string, request_type:string, request_lat: number,
-     request_long:number,request_address: string, respond_rating: string,responder_email:string,victim_number:string ):Promise<any>{
+     request_long:number,request_address: string, respond_rating: string,responder_email:string, victim_number:string ):Promise<any>{
     return  firebase
     .firestore()
     .collection('request')
@@ -121,7 +153,10 @@ export class AuthService {
       request_address : request_address,
       respond_rating: respond_rating,
       responder_email: responder_email,
-      victim_number: victim_number
+      victim_number: victim_number,
+      request_resolved: false,
+      assigned_responders: [],
+      responded_responder: ''
     });
   }
 
