@@ -8,6 +8,6 @@ cache:
 before_script:
   - npm install -g ionic
   - npm install -g @angular/cli
-  - npm run lint:ci
+  - npm run lint
 script:
-  - npm run test:ci
+  - npm run test
