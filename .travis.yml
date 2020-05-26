@@ -9,5 +9,5 @@ before_script:
   - npm install -g ionic
   - npm install -g @angular/cli
 script:
-  - npm lint
+  - npm run lint
   - npm run-script build
