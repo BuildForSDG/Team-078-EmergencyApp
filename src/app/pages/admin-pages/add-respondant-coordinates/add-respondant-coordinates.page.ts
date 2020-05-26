@@ -55,7 +55,7 @@ export class AddRespondantCoordinatesPage implements OnInit {
    // this.setLocation();
   }
   dismissModal() {
-    if(this.map.marker){
+       if(this.map.marker){
     let latLong = this.map.marker.position;
     this.markerlatlong.lat = latLong.lat();
     this.markerlatlong.lng = latLong.lng();

@@ -5,8 +5,8 @@ cache:
   directories:
   - node_modules
 before_script:
- — npm install -g ionic
- npm install -g @angular/cli
+  - npm install -g ionic
+  - npm install -g @angular/cli
+  - npm run lint:ci
 script:
-  - ionic serve
-
+  - npm run test:ci
