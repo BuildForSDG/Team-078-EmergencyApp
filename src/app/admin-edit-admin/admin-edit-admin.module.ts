@@ -1,18 +1,20 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
+
 import { IonicModule } from '@ionic/angular';
 
-import { VictimMenuComponent } from '../components/victim-menu/victim-menu.component'
+import { AdminEditAdminPageRoutingModule } from './admin-edit-admin-routing.module';
+
+import { AdminEditAdminPage } from './admin-edit-admin.page';
 
 @NgModule({
-  declarations: [VictimMenuComponent],
-  exports: [VictimMenuComponent],
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    AdminEditAdminPageRoutingModule
   ],
-
+  declarations: [AdminEditAdminPage]
 })
-export class VictimMenuModule {}
+export class AdminEditAdminPageModule {}

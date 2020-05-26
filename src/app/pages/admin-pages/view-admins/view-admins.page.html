@@ -1,0 +1,91 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start" class="header">
+      <ion-menu-button></ion-menu-button>
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="unit-body">
+  <ion-grid style="height: 100%;">
+    <ion-row>
+      <ion-col size-md="6" size-lg="5" size-xs="12" class="ion-margin-vertical">
+        <h3 class="divider line one-line">ADMINS</h3>
+        <ion-grid class="unit-inner-body">
+          <div *ngFor="let admin of adminList">
+            <div class="ion-text-start ion-margin ion-padding em_item">
+              <ion-list>
+                <ion-item lines="none">
+                  <ion-label class="em_header ion-text-uppercase"
+                    >ADMIN ID : {{admin.ID}}</ion-label
+                  >
+                  <button slot="end" class="no-bg">
+                    <ion-icon class="pen" name="create" size="large"></ion-icon>
+                  </button>
+                </ion-item>
+                <ion-item lines="none">
+                  <p class="ion-text-capitalize">
+                    {{admin.Name}}
+                  </p>
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-label class="ion-text-lowercase"
+                    >{{admin.Email}}</ion-label
+                  >
+                  <button slot="end" class="no-bg">
+                    <ion-icon
+                      slot="end"
+                      class="trash"
+                      name="trash-sharp"
+                      size="large"
+                    ></ion-icon>
+                  </button>
+                </ion-item>
+              </ion-list>
+            </div>
+          </div>
+          <div>
+            <div class="ion-text-start ion-margin ion-padding em_item">
+              <ion-list>
+                <ion-item lines="none">
+                  <ion-label class="em_header ion-text-uppercase"
+                    >ADMIN ID : AD3023</ion-label
+                  >
+                  <button slot="end" class="no-bg">
+                    <ion-icon class="pen" name="create" size="large"></ion-icon>
+                  </button>
+                </ion-item>
+                <ion-item lines="none">
+                  <p class="ion-text-capitalize">
+                    Adebayo Adeojo
+                  </p>
+                </ion-item>
+                <ion-item lines="none">
+                  <ion-label class="ion-text-lowercase"
+                    >adedayo@gmail.com</ion-label
+                  >
+                  <button slot="end" class="no-bg">
+                    <ion-icon
+                      slot="end"
+                      class="trash"
+                      name="trash-sharp"
+                      size="large"
+                    >
+                    </ion-icon>
+                  </button>
+                </ion-item>
+              </ion-list>
+            </div>
+          </div>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer"></div>
+  </ion-toolbar>
+</ion-footer>

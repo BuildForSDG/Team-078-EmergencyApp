@@ -16,13 +16,13 @@ export class GetHelpPage implements OnInit {
 
   ngOnInit() {
   }
-  
+
   submitForm(){
-    let navigationExtras: NavigationExtras = {
+    const navigationExtras: NavigationExtras = {
       state: {
         userInfo: this.userInfo
       }
-    }; 
+    };
     this.router.navigate(['/victim-confirm-loc-on-map'], navigationExtras);
   }
 
