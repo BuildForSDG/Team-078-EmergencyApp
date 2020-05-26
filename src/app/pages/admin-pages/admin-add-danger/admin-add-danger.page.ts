@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./admin-add-danger.page.scss'],
 })
 export class AdminAddDangerPage implements OnInit {
-  description: string = "Tonykay";
+  description = 'Tonykay';
   constructor() { }
 
   ngOnInit() {
