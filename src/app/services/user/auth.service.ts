@@ -9,6 +9,19 @@ import { resolve } from 'url';
   providedIn: 'root'
 })
 export class AuthService {
+  addUnit(unit_title: string, unit_type: string, address: string, phone_number: string, coordinates: any) {
+    return  firebase
+    .firestore()
+    .collection('units')
+    .add({
+      unit_title: unit_title,
+      unit_type: unit_type,
+      address: address,
+      phone_number:phone_number,
+      coordinates: coordinates,
+      reg_date: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }
 
   constructor() {}
 
@@ -162,6 +175,23 @@ export class AuthService {
       request_time: firebase.firestore.FieldValue.serverTimestamp()
     });
   }
+  getUnit(){
+    var docRef =  firebase.firestore().collection("unit");
+    let info: [];
+    docRef.get().then(function(querySnapshot) {
+    
+     querySnapshot.forEach(function(doc) {
+        console.log("Details",doc.data());
+    });
+
+    return info;
+  }).catch(function(error) {
+      console.log("Error getting document:", error);
+  });
+  }
+ 
+
+
 
   signupUser(
     firstname: string,
