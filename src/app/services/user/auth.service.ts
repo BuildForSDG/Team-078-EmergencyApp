@@ -24,6 +24,33 @@ export class AuthService {
   }
 
   constructor() {}
+  getUnitType(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const units = [];
+      firebase.firestore().collection("unit_types").get().then(function (querySnapshot) {
+        querySnapshot.forEach((doc) => {
+          units.push(doc.data().name);
+          resolve(units);
+        });
+      }).catch((error) => {
+        console.log("Error:" + error);
+      });
+    });
+  }
+
+  getUnit(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const units = [];
+      firebase.firestore().collection("units").get().then(function (querySnapshot) {
+        querySnapshot.forEach((doc) => {
+          units.push(doc.data().unit_title);
+          resolve(units);
+        });
+      }).catch((error) => {
+        console.log("Error:" + error);
+      });
+    });
+  }
 
   loginUser(
     email: string,
@@ -67,7 +94,6 @@ export class AuthService {
     password: string,
     phoneNumber: string,
     address: string,
-    respondantType: string,
     respondantUnit: string,
     coordinates: any
   ): Promise<any> {
@@ -83,7 +109,6 @@ export class AuthService {
             password,
             phoneNumber,
             address,
-            respondantType,
             respondantUnit,
             location: coordinates
           })
@@ -175,24 +200,6 @@ export class AuthService {
       request_time: firebase.firestore.FieldValue.serverTimestamp()
     });
   }
-  getUnit(){
-    var docRef =  firebase.firestore().collection("unit");
-    let info: [];
-    docRef.get().then(function(querySnapshot) {
-    
-     querySnapshot.forEach(function(doc) {
-        console.log("Details",doc.data());
-    });
-
-    return info;
-  }).catch(function(error) {
-      console.log("Error getting document:", error);
-  });
-  }
- 
-
-
-
   signupUser(
     firstname: string,
     lastname: string,

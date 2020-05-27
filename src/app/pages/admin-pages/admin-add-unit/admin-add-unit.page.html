@@ -51,7 +51,9 @@
                                     <div class="input-form-line">
                                         <ion-item lines="none">
                                             <ion-label position="floating">Unit Type</ion-label>
-                                            <ion-input type="text" formControlName="unit_type" required></ion-input>
+                                            <ion-select name="emmergency" formControlName="unit_type" placeholder="Select Type">
+                                                <ion-select-option [value]="types" *ngFor="let types of emergencies">{{types}}</ion-select-option>
+                                            </ion-select>
                                         </ion-item>
                                     </div>
                                     <div class="error-container">
