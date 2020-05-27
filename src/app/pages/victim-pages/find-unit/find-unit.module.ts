@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { VictimMenuModule } from '../../../components/victim.components.module'
+import { VictimMenuModule} from '../../../components/victim.components.module'
 
 import { FindUnitPageRoutingModule } from './find-unit-routing.module';
 
