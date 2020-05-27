@@ -18,16 +18,16 @@ import { EmergencyDetailsPage } from '../emergency-details/emergency-details.pag
     ViewEmergenciesPageRoutingModule
   ],
   declarations: [ViewEmergenciesPage, EmergencyDetailsPage],
-  entryComponents: [EmergencyDetailsPage] 
+  entryComponents: [EmergencyDetailsPage]
 })
 export class ViewEmergenciesPageModule {}
 
 
 export const emergencyList = [
   {
-    'Number': '093090',
-    'Date': 'Mon 3 Jun, 2020',
-    'Location': 'Anambra'
+    Number: '093090',
+    Date: 'Mon 3 Jun, 2020',
+    Location: 'Anambra'
   }
 ];
 

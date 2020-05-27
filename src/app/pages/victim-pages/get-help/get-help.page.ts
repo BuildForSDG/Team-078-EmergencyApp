@@ -27,20 +27,17 @@ export class GetHelpPage implements OnInit {
     // });
 
     // let info = await this._auth.getUnit();
-    this._auth.getUnit();
- 
-      
+    this._auth.getUnit();   
   }
   async getUnit(): Promise<void>{
     await this._auth.getUnit();
   } 
-
   submitForm(){
-    let navigationExtras: NavigationExtras = {
+    const navigationExtras: NavigationExtras = {
       state: {
         userInfo: this.userInfo
       }
-    }; 
+    };
     this.router.navigate(['/victim-confirm-loc-on-map'], navigationExtras);
   }
 

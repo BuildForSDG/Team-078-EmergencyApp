@@ -21,8 +21,8 @@ export class ViewAdminsPageModule {}
 
 export const adminList = [
   {
-    'ID': '093090',
-    'Name': 'Mon 3 Jun, 2020',
-    'Email': 'Anambra'
+    ID: '093090',
+    Name: 'Mon 3 Jun, 2020',
+    Email: 'Anambra'
   }
 ];
