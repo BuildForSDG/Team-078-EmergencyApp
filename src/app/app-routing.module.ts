@@ -176,7 +176,12 @@ const routes: Routes = [
   },{
     path: 'view-admins',
     loadChildren: () => import('./pages/admin-pages/view-admins/view-admins.module').then( m => m.ViewAdminsPageModule)
+  },
+  {
+    path: 'respondant-recover-pass',
+    loadChildren: () => import('./pages/respondant-pages/respondant-recover-pass/respondant-recover-pass.module').then( m => m.RespondantRecoverPassPageModule)
   }
+
 
 
 ];

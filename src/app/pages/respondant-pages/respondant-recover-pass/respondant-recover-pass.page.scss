@@ -3,7 +3,9 @@
 ion-toolbar {
   --background: rgba(0, 21, 79, 0.9);
 }
-
+ion-title {
+  color: white;
+}
 ion-button {
   --background: #f4af1b;
   font-family: "Inconsolata", monospace;
