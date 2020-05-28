@@ -9,8 +9,48 @@ import { resolve } from 'url';
   providedIn: 'root'
 })
 export class AuthService {
+  addUnit(unit_title: string, unit_type: string, address: string, phone_number: string, coordinates: any) {
+    return  firebase
+    .firestore()
+    .collection('units')
+    .add({
+      unit_title: unit_title,
+      unit_type: unit_type,
+      address: address,
+      phone_number:phone_number,
+      coordinates: coordinates,
+      reg_date: firebase.firestore.FieldValue.serverTimestamp()
+    });
+  }
 
   constructor() {}
+  getUnitType(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const units = [];
+      firebase.firestore().collection("unit_types").get().then(function (querySnapshot) {
+        querySnapshot.forEach((doc) => {
+          units.push(doc.data().name);
+          resolve(units);
+        });
+      }).catch((error) => {
+        console.log("Error:" + error);
+      });
+    });
+  }
+
+  getUnit(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const units = [];
+      firebase.firestore().collection("units").get().then(function (querySnapshot) {
+        querySnapshot.forEach((doc) => {
+          units.push(doc.data().unit_title);
+          resolve(units);
+        });
+      }).catch((error) => {
+        console.log("Error:" + error);
+      });
+    });
+  }
 
   loginUser(
     email: string,
@@ -54,7 +94,6 @@ export class AuthService {
     password: string,
     phoneNumber: string,
     address: string,
-    respondantType: string,
     respondantUnit: string,
     coordinates: any
   ): Promise<any> {
@@ -70,7 +109,6 @@ export class AuthService {
             password,
             phoneNumber,
             address,
-            respondantType,
             respondantUnit,
             location: coordinates
           })
@@ -162,7 +200,6 @@ export class AuthService {
       request_time: firebase.firestore.FieldValue.serverTimestamp()
     });
   }
-
   signupUser(
     firstname: string,
     lastname: string,

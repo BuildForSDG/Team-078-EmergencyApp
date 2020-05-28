@@ -1,3 +1,20 @@
+<!-- <ion-header>
+  <ion-toolbar>
+    <ion-title>Add Responder</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+</ion-content> -->
+
+<!-- <ion-header>
+    <ion-toolbar>
+        <ion-buttons slot="start" class="header">
+            <ion-menu-button></ion-menu-button>
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
+</ion-header> -->
+
 <app-admin-menu></app-admin-menu>
 
 <ion-content class="auth-form">
@@ -71,29 +88,12 @@
                   </div>
                   <span class="input-padding"></span>
                   <div class="input-form-line">
-                    <ion-item lines="none">
-                      <ion-label position="floating">Responder Unit</ion-label>
-                      <ion-input
-                        type="text"
-                        name="respondant_unit"
-                        [(ngModel)]="addReponderCredentials.respondant_unit"
-                        required
-                      >
-                      </ion-input>
-                    </ion-item>
-                  </div>
-                  <span class="input-padding"></span>
-                  <div class="input-form-line">
-                    <ion-item lines="none">
-                      <ion-label position="floating">Responder Type</ion-label>
-                      <ion-input
-                        type="text"
-                        name="respondant_type"
-                        [(ngModel)]="addReponderCredentials.respondant_type"
-                        required
-                      >
-                      </ion-input>
-                    </ion-item>
+                    <ion-item>
+                      <ion-label>Responder Unit</ion-label>
+                      <ion-select name="respondant_unit" [(ngModel)]="addReponderCredentials.respondant_unit" placeholder="Units">
+                          <ion-select-option [value]="info" *ngFor="let info of units">{{info}}</ion-select-option>
+                      </ion-select>
+                  </ion-item>
                   </div>
                   <span class="input-padding"></span>
                   <div class="input-form-line">

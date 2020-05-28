@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
+import { AdminMenuModule } from '../../../components/admin.components.module';
 
 import { AdminVerifyDangerMapPageRoutingModule } from './admin-verify-danger-map-routing.module';
 
@@ -14,6 +15,7 @@ import { ViewDangersPageModule } from '../../victim-pages/view-dangers/view-dang
     CommonModule,
     FormsModule,
     IonicModule,
+    AdminMenuModule,
     AdminVerifyDangerMapPageRoutingModule,
     ViewDangersPageModule
   ],

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-victim-menu',
@@ -6,31 +7,34 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./victim-menu.component.scss'],
 })
 export class VictimMenuComponent implements OnInit {
-  // properties
-  menuItem: string[]
 
-
-
-  constructor() {
-    this.menuItem = [
-      'admin-dashboard',
-      'welcom-page',
-      'respondant-login',
-      'respondant-dashboard',
-      'admin-sign-up',
-      'admin-login',
-      'admin-add-respondant',
-      'splash-page',
-      'get-help',
-      'user-welcome',
-      'find-unit',
-      'unit-alert',
-      'view-unit',
-      'user-location'
-    ]
+  constructor(private location: Location) {
+    
   }
 
   ngOnInit() {}
 
+  goBack() {
+    this.location.back();
+  }
+
 }
+
+
+// this.menuItem = [
+//   'admin-dashboard',
+//   'welcom-page',
+//   'respondant-login',
+//   'respondant-dashboard',
+//   'admin-sign-up',
+//   'admin-login',
+//   'admin-add-respondant',
+//   'splash-page',
+//   'get-help',
+//   'user-welcome',
+//   'find-unit',
+//   'unit-alert',
+//   'view-unit',
+//   'user-location'
+// ]
 
