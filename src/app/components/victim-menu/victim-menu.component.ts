@@ -9,8 +9,6 @@ export class VictimMenuComponent implements OnInit {
   // properties
   menuItem: string[]
 
-
-
   constructor() {
     this.menuItem = [
       'admin-dashboard',
