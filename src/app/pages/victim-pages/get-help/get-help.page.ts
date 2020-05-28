@@ -50,7 +50,10 @@ export class GetHelpPage implements OnInit {
           userInfo: this.userInfo
         }
       };
-      this.router.navigate(['/victim-confirm-loc-on-map'], navigationExtras);
+      this.loading.dismiss().then(() => {
+        this.router.navigate(['/victim-confirm-loc-on-map'], navigationExtras);
+      });
+      
     } else {
       this.loading.dismiss().then(async () => {
         const alert = await this.alertCtrl.create({ message: "All fields are required", buttons: [{ text: 'Ok', role: 'cancel' }], });
