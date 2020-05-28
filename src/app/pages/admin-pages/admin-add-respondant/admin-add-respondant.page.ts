@@ -18,18 +18,31 @@ export class AdminAddRespondantPage implements OnInit {
     fullname: '',
     phone_number: '',
     address: '',
-    respondant_type: '',
     respondant_unit: '',
     coordinates: {},
     coordinateInfo: ''
   };
+  units = [];
   public loading: any;
   constructor(
     private _auth: AuthService,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public modalController: ModalController
-  ) { }
+  ) {
+    _auth.getUnit().then(async (result) => {
+      this.loading = await this.loadingCtrl.create();
+      await this.loading.present();
+      this.units = await result;
+      this.loading.dismiss();
+    }).catch((error) => {
+      this.loading.dismiss().then(async () => {
+        const alert = await this.alertCtrl.create({ message: error.message, buttons: [{ text: 'Ok', role: 'cancel' }], });
+        await alert.present();
+      });
+    })
+
+  }
   public modal: any;
   ngOnInit() { }
 
@@ -56,9 +69,6 @@ export class AdminAddRespondantPage implements OnInit {
     await this.modal.present();
   }
 
-
-
-
   async adminAddResponder(): Promise<void> {
     this.loading = await this.loadingCtrl.create();
     await this.loading.present();
@@ -67,7 +77,6 @@ export class AdminAddRespondantPage implements OnInit {
       this.addReponderCredentials.password !== '' &&
       this.addReponderCredentials.phone_number !== '' &&
       this.addReponderCredentials.address !== '' &&
-      this.addReponderCredentials.respondant_type !== '' &&
       this.addReponderCredentials.respondant_unit !== '' &&
       this.addReponderCredentials.coordinates != null) {
       this._auth
@@ -76,7 +85,6 @@ export class AdminAddRespondantPage implements OnInit {
           this.addReponderCredentials.password,
           this.addReponderCredentials.phone_number,
           this.addReponderCredentials.address,
-          this.addReponderCredentials.respondant_type,
           this.addReponderCredentials.respondant_unit,
           this.addReponderCredentials.coordinates
         )
@@ -96,7 +104,6 @@ export class AdminAddRespondantPage implements OnInit {
               fullname: '',
               phone_number: '',
               address: '',
-              respondant_type: '',
               respondant_unit: '',
               coordinates: {},
               coordinateInfo: ''

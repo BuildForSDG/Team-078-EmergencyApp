@@ -29,10 +29,8 @@
                     <form size="12" (ngSubmit)="submitForm()" #infoForm="ngForm">
                         <ion-item>
                             <ion-label>SELECT EMERGENCY</ion-label>
-                            <ion-select value="EMERGENCY" name="emmergency" [(ngModel)]="userInfo.emmergency" placeholder="EMERGENCY">
-                                <ion-select-option value="Robbery">Robbery</ion-select-option>
-                                <ion-select-option value="Accident">Accident</ion-select-option>
-                                <ion-select-option value="Fire">Fire</ion-select-option>
+                            <ion-select name="emmergency" [(ngModel)]="userInfo.emmergency" placeholder="EMERGENCY">
+                                <ion-select-option [value]="types" *ngFor="let types of emergencies">{{types}}</ion-select-option>
                             </ion-select>
                         </ion-item>
                         <ion-item no-lines>
