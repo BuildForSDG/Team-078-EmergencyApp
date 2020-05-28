@@ -8,9 +8,7 @@ import { Location } from '@angular/common';
 })
 export class VictimMenuComponent implements OnInit {
 
-  constructor(private location: Location) {
-    
-  }
+  constructor(private location: Location) { }
 
   ngOnInit() {}
 
@@ -19,6 +17,7 @@ export class VictimMenuComponent implements OnInit {
   }
 
 }
+
 
 
 // this.menuItem = [
