@@ -8,10 +8,10 @@ import { EmergencyDetailsPage } from '../emergency-details/emergency-details.pag
 })
 export class ViewEmergenciesPage implements OnInit {
 
-  //Store values from emergencyList
-  @Input() Number = "098765431";
-  @Input() Time = "Mon 12 Dec, 2020";
-  @Input() Location = "National Industrial Court Nigeria 6th Lugard Ave, GRA, Enugu.";
+  // Store values from emergencyList
+  @Input() Number = '098765431';
+  @Input() Time = 'Mon 12 Dec, 2020';
+  @Input() Location = 'National Industrial Court Nigeria 6th Lugard Ave, GRA, Enugu.';
   public Response: string;
 
   constructor(private modalController: ModalController) { }
@@ -24,14 +24,14 @@ export class ViewEmergenciesPage implements OnInit {
         Location: this.Location
       }
     });
-    // return response from modal 
+    // return response from modal
     modal.onWillDismiss().then(dataReturned => {
       this.Response = dataReturned.data;
     });
 
     return await modal.present();
   }
-  
+
   ngOnInit() {
   }
 

@@ -8,9 +8,8 @@ import { Component, OnInit } from '@angular/core';
 export class VictimMenuComponent implements OnInit {
   // properties
   menuItem: string[]
- 
 
-  constructor() { 
+  constructor() {
     this.menuItem = [
       'admin-dashboard',
       'welcom-page',
