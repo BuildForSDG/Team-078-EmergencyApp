@@ -13,6 +13,6 @@ import { VictimblueMenuComponent } from '../components/victimblue-menu/victimblu
     FormsModule,
     IonicModule,
   ],
-  
+
 })
 export class VictimBlueMenuModule {}

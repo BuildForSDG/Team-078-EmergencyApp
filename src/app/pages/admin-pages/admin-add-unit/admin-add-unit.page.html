@@ -7,100 +7,141 @@
 </ion-content> -->
 
 <ion-header>
-  <ion-toolbar>
-      <ion-buttons slot="start" class="header">
-          <ion-menu-button></ion-menu-button>
-          <ion-back-button></ion-back-button>
-      </ion-buttons>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start" class="header">
+            <ion-menu-button></ion-menu-button>
+            <ion-back-button></ion-back-button>
+        </ion-buttons>
+    </ion-toolbar>
 </ion-header>
 
 <ion-content class="auth-form">
-  <ion-grid>
-      <ion-row>
-          <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-              <span class="divider line one-line">ADD UNIT</span>
-              <form #form="ngForm" (ngSubmit)="adminAddUnit()">
-                  <ion-grid>
-                      <ion-row color="primary" justify-content-center>
-                          <ion-col align-self-center>
-                              <div padding>
-                                  <div class="input-form-line">
-                                      <ion-item lines="none">
-                                          <ion-label position="floating">Email</ion-label>
-                                          <ion-input type="text" name="email" [(ngModel)]="addUnit.email" required></ion-input>
-                                      </ion-item>
-                                  </div>
-                                  <span class="input-padding "></span>
+    <ion-grid>
+        <ion-row>
+            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+                <span class="divider line one-line">ADD UNIT</span>
+                <form [formGroup]="addUnitForm" (ngSubmit)="adminAddUnit()">
+                    <ion-grid>
+                        <ion-row color="primary" justify-content-center>
+                            <ion-col align-self-center>
+                                <div padding>
+                                    <div class="input-form-line">
+                                        <ion-item lines="none">
+                                            <ion-label position="floating">Unit Title</ion-label>
+                                            <ion-input type="text" formControlName="unit_title" required></ion-input>
+                                        </ion-item>
+                                    </div>
+
+                                    <div class="error-container">
+                                        <ng-container *ngFor="let validation of validation_messages.unit_title">
+                                            <div class="error-message" *ngIf="addUnitForm.get('unit_title').hasError(validation.type) && (addUnitForm.get('unit_title').dirty || addUnitForm.get('unit_title').touched)">
+                                                <ion-icon name="information-circle-outline"></ion-icon>
+                                                <span>{{ validation.unit_title }}</span>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                    <!-- <span class="input-padding "></span>
                                   <div class="input-form-line">
                                       <ion-item lines="none">
                                           <ion-label position="floating">Password</ion-label>
-                                          <ion-input type="password" name="password" [(ngModel)]="addUnit.password" required></ion-input>
+                                          <ion-input type="password" name="password" required></ion-input>
                                       </ion-item>
-                                  </div>
-                                  <span class="input-padding "></span>
-                                  <div class="input-form-line">
-                                      <ion-item lines="none">
-                                          <ion-label position="floating">Full Name</ion-label>
-                                          <ion-input type="text" name="fullname" [(ngModel)]="addUnit.fullname" required></ion-input>
-                                      </ion-item>
-                                  </div>
-                                  <span class="input-padding "></span>
-                                  <div class="input-form-line">
-                                      <ion-item lines="none">
-                                          <ion-label position="floating">Phone Number</ion-label>
-                                          <ion-input type="text" name="phone_number" [(ngModel)]="addUnit.phone_number" required></ion-input>
-                                      </ion-item>
-                                  </div>
-                                  <span class="input-padding "></span>
-                                  <div class="input-form-line">
-                                      <ion-item lines="none">
-                                          <ion-label position="floating">Unit Location</ion-label>
-                                          <ion-input type="text" name="address" [(ngModel)]="addUnit.address" required></ion-input>
-                                      </ion-item>
-                                  </div>
-                                  <span class="input-padding "></span>
+                                  </div> -->
+                                    <span class="input-padding "></span>
+                                    <div class="input-form-line">
+                                        <ion-item lines="none">
+                                            <ion-label position="floating">Unit Type</ion-label>
+                                            <ion-input type="text" formControlName="unit_type" required></ion-input>
+                                        </ion-item>
+                                    </div>
+                                    <div class="error-container">
+                                        <ng-container *ngFor="let validation of validation_messages.unit_type">
+                                            <div class="error-message" *ngIf="addUnitForm.get('unit_type').hasError(validation.type) && (addUnitForm.get('unit_type').dirty || addUnitForm.get('unit_type').touched)">
+                                                <ion-icon name="information-circle-outline"></ion-icon>
+                                                <span>{{ validation.unit_type }}</span>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                    <span class="input-padding "></span>
+                                    <div class="input-form-line">
+                                        <ion-item lines="none">
+                                            <ion-label position="floating">Phone Number</ion-label>
+                                            <ion-input type="text" formControlName="phone_number" required></ion-input>
+                                        </ion-item>
+                                    </div>
+                                    <div class="error-container">
+                                        <ng-container *ngFor="let validation of validation_messages.phone_number">
+                                            <div class="error-message" *ngIf="addUnitForm.get('phone_number').hasError(validation.type) && (addUnitForm.get('phone_number').dirty || addUnitForm.get('phone_number').touched)">
+                                                <ion-icon name="information-circle-outline"></ion-icon>
+                                                <span>{{ validation.phone_number }}</span>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                    <span class="input-padding "></span>
+                                    <div class="input-form-line">
+                                        <ion-item lines="none">
+                                            <ion-label position="floating">Unit Address</ion-label>
+                                            <ion-input type="text" formControlName="address" required></ion-input>
+                                        </ion-item>
+                                    </div>
+                                    <div class="error-container">
+                                        <ng-container *ngFor="let validation of validation_messages.address">
+                                            <div class="error-message" *ngIf="addUnitForm.get('address').hasError(validation.type) && (addUnitForm.get('address').dirty || addUnitForm.get('address').touched)">
+                                                <ion-icon name="information-circle-outline"></ion-icon>
+                                                <span>{{ validation.address }}</span>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                    <!-- <span class="input-padding "></span>
                                   <div class="input-form-line">
                                       <ion-item lines="none">
                                           <ion-label position="floating">Responder Unit</ion-label>
-                                          <ion-input type="text" name="respondant_unit" [(ngModel)]="addUnit.respondant_unit" required></ion-input>
+                                          <ion-input type="text" name="respondant_unit" formControlName="fullname" required></ion-input>
                                       </ion-item>
                                   </div>
                                   <span class="input-padding "></span>
                                   <div class="input-form-line">
                                       <ion-item lines="none">
                                           <ion-label position="floating">Responder Type</ion-label>
-                                          <ion-input type="text" name="respondant_type" [(ngModel)]="addUnit.respondant_type" required></ion-input>
+                                          <ion-input type="text" name="respondant_type" required></ion-input>
                                       </ion-item>
-                                  </div>
-                                  <span class="input-padding "></span>
-                                  <div class="input-form-line">
-                                      <ion-item lines="none">
-                                          <ion-label position="floating">Coordinates</ion-label>
-                                          <ion-input type="text" name="coordinates" [(ngModel)]="addUnit.coordinates" required></ion-input>
-                                      </ion-item>
-                                  </div>
-                                  <span class="input-padding "></span>
-                              </div>
-                          </ion-col>
-                      </ion-row>
-                  </ion-grid>
-                  <ion-item lines="none">
-                      <div slot="end">
-                          <ion-button size="large" type="submit" expand="" color="warning">Add
-                              <ion-icon name="add-circle-sharp"></ion-icon>
-                          </ion-button>
-                      </div>
-                  </ion-item>
-              </form>
-          </ion-col>
-      </ion-row>
-  </ion-grid>
+                                  </div> -->
+                                    <span class="input-padding "></span>
+                                    <div class="input-form-line">
+                                        <ion-item lines="none">
+                                            <ion-label position="floating">Coordinates</ion-label>
+                                            <ion-input type="text" (click)="presentModal()" formControlName="coordinates" value="{{ coordinatesInfo.locationString }}" required></ion-input>
+                                        </ion-item>
+                                    </div>
+                                    <div class="error-container">
+                                        <ng-container *ngFor="let validation of validation_messages.coordinates">
+                                            <div class="error-message" *ngIf="addUnitForm.get('coordinates').hasError(validation.type) && (addUnitForm.get('coordinates').dirty || addUnitForm.get('coordinates').touched)">
+                                                <ion-icon name="information-circle-outline"></ion-icon>
+                                                <span>{{ validation.coordinates }}</span>
+                                            </div>
+                                        </ng-container>
+                                    </div>
+                                    <span class="input-padding "></span>
+                                </div>
+                            </ion-col>
+                        </ion-row>
+                    </ion-grid>
+                    <ion-item lines="none">
+                        <div slot="end">
+                            <ion-button size="large" type="submit" expand="" [disabled]="!addUnitForm.valid" color="warning">Add
+                                <ion-icon name="add-circle-sharp"></ion-icon>
+                            </ion-button>
+                        </div>
+                    </ion-item>
+                </form>
+            </ion-col>
+        </ion-row>
+    </ion-grid>
 </ion-content>
 
 <ion-footer>
-  <ion-toolbar>
-      <div class="footer">
-      </div>
-  </ion-toolbar>
+    <ion-toolbar>
+        <div class="footer">
+        </div>
+    </ion-toolbar>
 </ion-footer>
