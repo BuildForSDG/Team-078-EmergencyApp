@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
+import { AdminMenuModule } from '../../../components/admin.components.module';
+
 import { AdminEditUnitPageRoutingModule } from './admin-edit-unit-routing.module';
 
 import { AdminEditUnitPage } from './admin-edit-unit.page';
@@ -13,6 +15,7 @@ import { AdminEditUnitPage } from './admin-edit-unit.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    AdminMenuModule,
     AdminEditUnitPageRoutingModule
   ],
   declarations: [AdminEditUnitPage]

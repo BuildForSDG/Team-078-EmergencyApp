@@ -1,7 +1,7 @@
 <!-- Menu toggle -->
 <ion-header>
   <ion-toolbar color="secondary" class="ion-padding-vertical">
-    <ion-icon color="primary" class="back-btn" src="/assets/md-custom-backbtn.svg"></ion-icon>
+    <ion-icon (click)="goBack()" color="primary" class="back-btn" src="/assets/md-custom-backbtn.svg"></ion-icon>
     <!-- <ion-title class="header-shadow-text">
       <ion-icon class="user-helpsvg" name="aperture-outline"></ion-icon> PAGE TITLE
     </ion-title> -->
@@ -37,22 +37,22 @@
   <ion-content>
     <ion-list class="menu-border">
       <ion-menu-toggle>
-        <ion-item class="menu-item-line" href="/">
+        <ion-item class="menu-item-line" href="/view-admins">
           <ion-label>View Responders</ion-label>
         </ion-item>
       </ion-menu-toggle>
       <ion-menu-toggle>
-        <ion-item class="menu-item-line" href="/">
+        <ion-item class="menu-item-line" href="/admin-add-respondant">
           <ion-label>Add Responders</ion-label>
         </ion-item>
       </ion-menu-toggle>
       <ion-menu-toggle>
-        <ion-item class="menu-item-line" href="./">
+        <ion-item class="menu-item-line" href="./admin-add-unit">
           <ion-label>Add Admin</ion-label>
         </ion-item>
       </ion-menu-toggle>
       <ion-menu-toggle>
-        <ion-item href="./">
+        <ion-item href="./admin-edit-unit">
           <ion-label>Edit Admin</ion-label>
         </ion-item>
       </ion-menu-toggle>

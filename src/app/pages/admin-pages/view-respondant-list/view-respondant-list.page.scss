@@ -1,17 +1,4 @@
-.heading {
-  font-family: 'Poppins', sans-serif;
-  font-style: normal;
-  font-weight: 800;
-  font-size: 18px;
-  line-height: 40px;
-  align-items: center;
-  letter-spacing: 0.05em;
-  color: rgba(0, 21, 79, 0.9);
-}
 
-ion-toolbar {
-  --background: #00154f;
-}
 
 .cards-holder {
   margin-top: 70px;
@@ -32,10 +19,7 @@ ion-card-title {
   font-weight: 700;
   font-size: 14px;
   line-height: 20px;
-  /* or 143% */
-
   letter-spacing: 0.03em;
-
   color: #00154f;
 }
 
@@ -45,10 +29,7 @@ ion-card-content {
   font-weight: 500;
   font-size: 14px;
   line-height: 20px;
-  /* or 143% */
-
   letter-spacing: 0.03em;
-
   color: #000000;
 }
 
@@ -74,4 +55,9 @@ ion-card{
 
 .card-buttons ion-button:last-child{
     color: #BC0000;
+}
+
+ion-footer {
+  background-color: var(--ion-color-secondary);
+  height: 80px;
 }
