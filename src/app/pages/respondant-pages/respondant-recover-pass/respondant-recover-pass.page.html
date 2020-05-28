@@ -1,0 +1,47 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Recover Password</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-grid>
+    <ion-row class="ion-text-center ion-align-items-center">
+      <ion-col size-md="6" offset-md="3" class="ion-margin-vertical">
+        <ion-text class="ion-text-center">
+          <h1>RECOVER PASSWORD</h1>
+        </ion-text>
+
+        <div class="form">
+          <form>
+            <div class="emerge-form-line">
+              <ion-item no-lines>
+                <ion-input type="text" placeholder="Email" required></ion-input>
+              </ion-item>
+            </div>
+
+            <!-- <div class="error-container">
+                          <ng-container *ngFor="let validation of validation_messages.email">
+                              <div class="error-message" *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
+                                  <ion-icon name="information-circle-outline"></ion-icon>
+                                  <span>{{ validation.message }}</span>
+                              </div>
+                          </ng-container>
+                      </div> -->
+
+            <ion-button type="submit" size="12">
+              RECOVER
+            </ion-button>
+          </form>
+        </div>
+
+        <div class="recover-password">
+          <ion-text>
+            <p>OR</p>
+            <p><a href="">Log in</a></p>
+          </ion-text>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
