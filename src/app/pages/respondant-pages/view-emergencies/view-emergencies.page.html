@@ -24,24 +24,14 @@
                 </div>
             </ion-item>
           </div>
-          <div class="modal" *ngFor="let emergency of emergencyList">
-            <ion-item (click)="openModal()" lines="none">
+          <div class="modal" *ngFor="let emergency of emergencies">
+            <ion-item (click)="openModal(emergency.id)" lines="none">
               <div class="ion-text-start ion-margin ion-padding em_item">
                 <h3 class="em_header">Details :</h3>
                 <p>
-                  {{emergency.number}} <br>
+                  {{emergency.phone_number}} <br>
                   {{emergency.time}} <br>
                   {{emergency.location}}
-                </p>
-              </div>
-            </ion-item>
-          </div>
-          <div class="modal">
-            <ion-item (click)="openModal()" lines="none">
-              <div class="ion-text-start ion-margin ion-padding em_item">
-                <h3 class="em_header">Dummy Test Details :</h3>
-                <p>
-                  090-626-34222 <br>Mon 12 Dec, 2020 <br> National Industrial Court Nigeria 6th Lugard Ave, GRA, Enugu.
                 </p>
               </div>
             </ion-item>

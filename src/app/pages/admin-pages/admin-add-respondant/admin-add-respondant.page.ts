@@ -23,6 +23,7 @@ export class AdminAddRespondantPage implements OnInit {
     coordinates: {},
     coordinateInfo: ""
   };
+  formatted_address = "";
   public loading: any;
   constructor(
     private _auth: AuthService,
@@ -47,6 +48,7 @@ export class AdminAddRespondantPage implements OnInit {
       if (res !== null) {
         console.log("The result:", res);
         this.addReponderCredentials.coordinates = res.data.location;
+        this.formatted_address = res.data.address;
         this.addReponderCredentials.coordinateInfo = res.data.location.lat + "," + res.data.location.lng;
       }else{
         console.log("No result:", res);
@@ -69,6 +71,7 @@ export class AdminAddRespondantPage implements OnInit {
     this.addReponderCredentials.address != "" &&
     this.addReponderCredentials.respondant_type != "" &&
     this.addReponderCredentials.respondant_unit != "" &&
+    this.formatted_address != "" &&
     this.addReponderCredentials.coordinates != null){
     this._auth
       .addResponder(
@@ -78,7 +81,8 @@ export class AdminAddRespondantPage implements OnInit {
         this.addReponderCredentials.address,
         this.addReponderCredentials.respondant_type,
         this.addReponderCredentials.respondant_unit,
-        this.addReponderCredentials.coordinates
+        this.addReponderCredentials.coordinates,
+        this.formatted_address
       )
       .then(
         () => {

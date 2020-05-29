@@ -18,9 +18,9 @@
               <div class="ion-text-start ion-margin ion-padding em_item">
                 <h3 class="em_header">Details :</h3>
                 <p>
-                  {{Number | json}} <br>
-                  {{Time | json}} <br>
-                  {{Location | json}}
+                  {{phone_number}} <br>
+                  {{time}} <br>
+                  {{location}}
                 </p>
               </div>
             </ion-item>
@@ -35,11 +35,13 @@
   <div class="footer">
     <ion-item lines="none">
       <div slot="start">
-        <ion-button size="small" type="submit" color="danger">Decline
+        <ion-button size="small" color="danger" (click)="closeModal()">Decline
         </ion-button>
       </div>
       <div slot="end">
-        <ion-button size="small" type="submit" color="warning">Respond
+        <ion-button size="small" *ngIf="!responded" color="warning" (click)="respond()">Respond
+        </ion-button>
+        <ion-button size="small" *ngIf="responded" color="warning" disabled>Unit Responded
         </ion-button>
       </div>
     </ion-item>

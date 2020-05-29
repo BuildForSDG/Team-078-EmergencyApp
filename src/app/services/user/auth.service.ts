@@ -56,7 +56,8 @@ export class AuthService {
     address: string,
     respondant_type: string,
     respondant_unit: string,
-    coordinates: any
+    coordinates: any,
+    formatted_address: string
   ): Promise<any> {
     return firebase
     .auth()
@@ -72,7 +73,8 @@ export class AuthService {
             address: address,
             respondant_type: respondant_type,
             respondant_unit: respondant_unit,
-            location: coordinates
+            location: coordinates,
+            formatted_address: formatted_address
           })
           .then(function() {
             return true;
@@ -126,12 +128,14 @@ export class AuthService {
       });
   }
   
-  addRequest(request_ref:string, request_type:string, request_lat: number,
-     request_long:number,request_address: string, respond_rating: string,responder_email:string, victim_number:string ):Promise<any>{
+  addRequest(victim_id:string, request_ref:string, request_type:string, 
+    request_lat: number, request_long:number,request_address: string, 
+    respond_rating: string,responder_email:string, victim_number:string, formatted_address:string ):Promise<any>{
     return  firebase
     .firestore()
     .collection('request')
     .add({
+      victim_id: victim_id,
       request_ref: request_ref,
       request_type: request_type,
       request_time: firebase.firestore.FieldValue.serverTimestamp(),
@@ -143,7 +147,9 @@ export class AuthService {
       victim_number: victim_number,
       request_resolved: false,
       assigned_responders: [],
-      responded_responder: ''
+      responded_responder: '',
+      //this is the address passed in from geocoding
+      formatted_address : formatted_address
     });
   }
 

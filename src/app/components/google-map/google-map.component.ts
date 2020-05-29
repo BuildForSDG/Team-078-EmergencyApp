@@ -218,8 +218,21 @@ export class GoogleMapComponent{
     this.marker	=	marker
 
   }
- 
 
+  public geoCodeLatLng(lat, lng): Promise<any> {
+    var geocoder = new google.maps.Geocoder;
+    var latlng = {lat: parseFloat(lat), lng: parseFloat(lng)};
+    return	new	Promise((resolve,	reject)	=>	{
+      geocoder.geocode({'location': latlng}, function(results, status) {
+        if (status === 'OK') {
+          resolve(results);
+        } else {
+          console.log('Geocoder failed due to: ' + status);
+          reject('Geocoder failed due to: ' + status);
+        }
+      });
+    });
+  }
   
 
 
