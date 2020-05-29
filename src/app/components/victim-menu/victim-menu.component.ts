@@ -31,7 +31,7 @@ export class VictimMenuComponent implements OnInit {
   //this is used to make the logo dynamic
   titleUpdate() {
     return (this.routerlocation === '/get-help') ? 
-    'Find Unit' : 'Get Help';
+      'Get Help' : 'Find Unit';
   }
 }
 
