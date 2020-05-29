@@ -3,9 +3,9 @@
   <ion-toolbar color="primary" class="ion-padding-vertical">
     <ion-icon (click)="goBack()" color="secondary" class="back-btn" src="/assets/md-custom-backbtn.svg"></ion-icon>
     <ion-title class="header-shadow-text">
-      <ion-icon class="logo-title"  src="/assets/md-custom-{{userMenu.alert}}.svg"></ion-icon> 
+      <ion-icon class="logo-title"  src={{logoUpdate()}}></ion-icon> 
       <span class="menu-title">
-        {{ userMenu.pageTitle }}
+        {{ titleUpdate() }}
       </span>
     </ion-title>
     

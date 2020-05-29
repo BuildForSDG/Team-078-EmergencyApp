@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-victim-menu',
@@ -8,23 +9,44 @@ import { Location } from '@angular/common';
 })
 export class VictimMenuComponent implements OnInit {
 
-  userMenu: any;
+  routerlocation: string = this.router.url;
 
-  constructor(private location: Location) { }
+  constructor(private location: Location, private router: Router) { }
 
   ngOnInit() {
-    this.userMenu = {
-      pageTitle: 'find Unit',
-      menuLogo: 'alert'
-    }
+    
   }
 
   goBack() {
     this.location.back();
   }
 
+  // this is used to make the logo dynamic
+  logoUpdate(){
+   return (this.routerlocation === '/get-help') ? 
+   '/assets/md-custom-focus.svg' : 
+   '/assets/md-custom-handshake.svg';
+  }
+
+  //this is used to make the logo dynamic
+  titleUpdate() {
+    return (this.routerlocation === '/get-help') ? 
+    'Find Unit' : 'Get Help';
+  }
 }
 
+
+
+
+// these are users' path
+//   'find-unit',
+//   'get-help',
+//   'unit-alert',
+//   'user-location'
+//   'victim-confirm-loc-on-map'
+//   'view-dangers'
+//   'view-unit',
+// ]
 
 
 // this.menuItem = [
@@ -38,13 +60,5 @@ export class VictimMenuComponent implements OnInit {
 //   'splash-page',
 //   'user-welcome',
 
-// these are users' path
-//   'find-unit',
-//   'get-help',
-//   'unit-alert',
-//   'user-location'
-//   'victim-confirm-loc-on-map'
-//   'view-dangers'
-//   'view-unit',
-// ]
+
 
