@@ -8,9 +8,16 @@ import { Location } from '@angular/common';
 })
 export class VictimMenuComponent implements OnInit {
 
+  userMenu: any;
+
   constructor(private location: Location) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.userMenu = {
+      pageTitle: 'find Unit',
+      menuLogo: 'alert'
+    }
+  }
 
   goBack() {
     this.location.back();
@@ -29,11 +36,15 @@ export class VictimMenuComponent implements OnInit {
 //   'admin-login',
 //   'admin-add-respondant',
 //   'splash-page',
-//   'get-help',
 //   'user-welcome',
+
+// these are users' path
 //   'find-unit',
+//   'get-help',
 //   'unit-alert',
-//   'view-unit',
 //   'user-location'
+//   'victim-confirm-loc-on-map'
+//   'view-dangers'
+//   'view-unit',
 // ]
 
