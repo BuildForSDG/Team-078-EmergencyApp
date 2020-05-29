@@ -8,11 +8,29 @@ import { Router } from '@angular/router';
   styleUrls: ['./victim-menu.component.scss'],
 })
 export class VictimMenuComponent implements OnInit {
-
   routerlocation: string = this.router.url;
+  // properties
+  menuItem: string[]
 
-  constructor(private location: Location, private router: Router) { }
-
+  constructor(private location: Location, private router: Router) {
+    this.menuItem = [
+      'admin-dashboard',
+      'welcom-page',
+      'respondant-login',
+      'respondant-dashboard',
+      'admin-sign-up',
+      'admin-login',
+      'admin-add-respondant',
+      'splash-page',
+      'get-help',
+      'user-welcome',
+      'find-unit',
+      'unit-alert',
+      'view-unit',
+      'user-location'
+    ]
+  }
+  
   ngOnInit() {
     
   }

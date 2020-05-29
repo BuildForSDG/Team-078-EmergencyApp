@@ -171,7 +171,7 @@ const routes: Routes = [
   },
   {
     path: 'admin-edit-admin',
-    loadChildren: () => import('./pages/admin-pages/admin-edit-admin/admin-edit-admin.module').then(m => m.AdminEditAdminPageModule)
+    loadChildren: () => import('./admin-edit-admin/admin-edit-admin.module').then(m => m.AdminEditAdminPageModule)
   },
   {
     path: 'view-admins',
