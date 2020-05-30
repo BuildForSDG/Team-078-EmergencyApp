@@ -94,8 +94,10 @@ export class AuthService {
     password: string,
     phoneNumber: string,
     address: string,
+    respondantType: string,
     respondantUnit: string,
-    coordinates: any
+    coordinates: any,
+    formattedAddress: string
   ): Promise<any> {
     return firebase
     .auth()
@@ -106,11 +108,13 @@ export class AuthService {
           .doc(`/responder/${newUserCredential.user.uid}`)
           .set({
             email,
-            password,
+            password: password,
             phoneNumber,
             address,
+            respondantType,
             respondantUnit,
-            location: coordinates
+            location: coordinates,
+            formattedAddress,
           })
           .then(() =>{
             return true;
@@ -163,25 +167,50 @@ export class AuthService {
         throw new Error(error);
       });
   }
+// <<<<<<< assign-requests-to-unit-by-proximity
+  
+  addRequest(victim_id:string, request_ref:string, request_type:string, 
+    request_lat: number, request_long:number,request_address: string, 
+    respond_rating: string,responder_email:string, victim_number:string, formatted_address:string ):Promise<any>{
+// =======
 
-  addRequest(requestRef:string, requestType:string, requestLat: number,
-     requestLong:number,requestAddress: string, respondRating: string,responderEmail:string, victimNumber:string ):Promise<any>{
+//   addRequest(requestRef:string, requestType:string, requestLat: number,
+//      requestLong:number,requestAddress: string, respondRating: string,responderEmail:string, victimNumber:string ):Promise<any>{
+// >>>>>>> develop
     return  firebase
     .firestore()
     .collection('request')
     .add({
-      requestRef,
-      requestType,
-      requestTime: firebase.firestore.FieldValue.serverTimestamp(),
-      requestLat,
-      requestLong,
-      requestAddress,
-      respondRating,
-      responderEmail,
-      victimNumber,
-      requestResolved: false,
-      assignedResponders: [],
-      respondedResponder: ''
+// <<<<<<< assign-requests-to-unit-by-proximity
+      victim_id: victim_id,
+      request_ref: request_ref,
+      request_type: request_type,
+      request_time: firebase.firestore.FieldValue.serverTimestamp(),
+      request_lat: request_lat,
+      request_long:request_long,
+      request_address : request_address,
+      respond_rating: respond_rating,
+      responder_email: responder_email,
+      victim_number: victim_number,
+      request_resolved: false,
+      assigned_responders: [],
+      responded_responder: '',
+      //this is the address passed in from geocoding
+      formatted_address : formatted_address
+// =======
+//       requestRef,
+//       requestType,
+//       requestTime: firebase.firestore.FieldValue.serverTimestamp(),
+//       requestLat,
+//       requestLong,
+//       requestAddress,
+//       respondRating,
+//       responderEmail,
+//       victimNumber,
+//       requestResolved: false,
+//       assignedResponders: [],
+//       respondedResponder: ''
+// >>>>>>> develop
     });
   }
 

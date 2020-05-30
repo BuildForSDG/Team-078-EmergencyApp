@@ -1,9 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { Router, NavigationExtras } from '@angular/router';
+import { Router,NavigationExtras  } from '@angular/router';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
+import { async } from '@angular/core/testing';
 import { AuthService } from '../../../services/user/auth.service';
 import { LoadingController, AlertController } from '@ionic/angular';
-import { async } from '@angular/core/testing';
-import * as firebase from 'firebase/app';
+
 @Component({
   selector: 'app-get-help',
   templateUrl: './get-help.page.html',
@@ -11,18 +14,18 @@ import * as firebase from 'firebase/app';
 })
 
 export class GetHelpPage implements OnInit {
+  
   userInfo = {
     emmergency: '',
     address: '',
-    phone_number: ''
+    phone_number:'',
+    victim_id : ''
   };
   public loading: HTMLIonLoadingElement;
   emergencies = [];
-
   constructor(private router: Router, private _auth: AuthService, public loadingCtrl: LoadingController,
-    public alertCtrl: AlertController) {
-    //fetch all available types from firebase
-    _auth.getUnitType().then(async (result) => {
+    public alertCtrl: AlertController) { 
+      _auth.getUnitType().then(async (result) => {
       this.loading = await this.loadingCtrl.create();
       await this.loading.present();
       this.emergencies = await result;
@@ -33,7 +36,18 @@ export class GetHelpPage implements OnInit {
         await alert.present();
       });
     })
-
+    firebase.auth().onAuthStateChanged(user => { 
+      if (user) { 
+        //user is active
+        this.userInfo.victim_id = user.uid;
+      }else{
+        //there is no user, perform anonymous login 
+        //we leave this part bllank for now because
+        //anonymous ogin would have been performed on the user-welcome page
+        //before ever getting here
+       
+      }
+    });
   }
 
   ngOnInit() {

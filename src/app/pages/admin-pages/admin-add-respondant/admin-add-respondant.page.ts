@@ -22,6 +22,7 @@ export class AdminAddRespondantPage implements OnInit {
     coordinates: {},
     coordinateInfo: ''
   };
+  formatted_address = "";
   units = [];
   public loading: any;
   constructor(
@@ -60,9 +61,11 @@ export class AdminAddRespondantPage implements OnInit {
       if (res !== null) {
         console.log('The result:', res);
         this.addReponderCredentials.coordinates = res.data.location;
-        this.addReponderCredentials.coordinateInfo = res.data.location.lat + ',' + res.data.location.lng;
-      } else {
-        console.log('No result:', res);
+        this.formatted_address = res.data.address;
+        this.addReponderCredentials.coordinateInfo = res.data.location.lat + "," + res.data.location.lng;
+      }else{
+        console.log("No result:", res);
+
       }
     });
 
@@ -72,30 +75,32 @@ export class AdminAddRespondantPage implements OnInit {
   async adminAddResponder(): Promise<void> {
     this.loading = await this.loadingCtrl.create();
     await this.loading.present();
-    if (
-      this.addReponderCredentials.email !== '' &&
-      this.addReponderCredentials.password !== '' &&
-      this.addReponderCredentials.phone_number !== '' &&
-      this.addReponderCredentials.address !== '' &&
-      this.addReponderCredentials.respondant_unit !== '' &&
-      this.addReponderCredentials.coordinates != null) {
-      this._auth
-        .addResponder(
-          this.addReponderCredentials.email,
-          this.addReponderCredentials.password,
-          this.addReponderCredentials.phone_number,
-          this.addReponderCredentials.address,
-          this.addReponderCredentials.respondant_unit,
-          this.addReponderCredentials.coordinates
-        )
-        .then(
-          () => {
-            this.loading.dismiss().then(async () => {
-              const alert = await this.alertCtrl.create({
-                message: 'Respondant Created',
-                buttons: [{ text: 'Ok', role: 'cancel' }]
-              });
-              await alert.present();
+    if(
+    this.addReponderCredentials.email != "" &&
+    this.addReponderCredentials.password != "" &&
+    this.addReponderCredentials.phone_number != "" &&
+    this.addReponderCredentials.address != "" &&
+    this.addReponderCredentials.respondant_type != "" &&
+    this.addReponderCredentials.respondant_unit != "" &&
+    this.formatted_address != "" &&
+    this.addReponderCredentials.coordinates != null){
+    this._auth
+      .addResponder(
+        this.addReponderCredentials.email,
+        this.addReponderCredentials.password,
+        this.addReponderCredentials.phone_number,
+        this.addReponderCredentials.address,
+        this.addReponderCredentials.respondant_type,
+        this.addReponderCredentials.respondant_unit,
+        this.addReponderCredentials.coordinates,
+        this.formatted_address
+      )
+      .then(
+        () => {
+          this.loading.dismiss().then(async () => {
+            const alert = await this.alertCtrl.create({
+              message: "Respondant Created",
+              buttons: [{ text: "Ok", role: "cancel" }]
             });
 
             this.addReponderCredentials = {
