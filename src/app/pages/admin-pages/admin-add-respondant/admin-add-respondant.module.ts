@@ -9,7 +9,7 @@ import { AdminMenuModule } from '../../../components/admin.components.module'
 import { AdminAddRespondantPageRoutingModule } from './admin-add-respondant-routing.module';
 
 import { AdminAddRespondantPage } from './admin-add-respondant.page';
-import { AddRespondantCoordinatesPageModule } from "../add-respondant-coordinates/add-respondant-coordinates.module";
+import { AddRespondantCoordinatesPageModule } from '../add-respondant-coordinates/add-respondant-coordinates.module';
 
 @NgModule({
   imports: [

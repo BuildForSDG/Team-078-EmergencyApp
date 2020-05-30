@@ -1,35 +1,42 @@
-<ion-header>
+<!-- <ion-header>
     <ion-toolbar>
         <ion-title>admin add danger</ion-title>
     </ion-toolbar>
-</ion-header>
+</ion-header> -->
+
+<app-admin-menu></app-admin-menu>
 
 <ion-content>
+  <ion-grid id="container">
+    <ion-row>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <form (ngSubmit)="adminAddDanger()" #addDangerForm="ngForm">
+          <div padding>
+            <div class="emerge-form-line">
+              <ion-item>
+                <ion-label floating>Description</ion-label>
+                <ion-textarea
+                  name="description"
+                  [(ngModel)]="description"
+                ></ion-textarea>
+              </ion-item>
+            </div>
+          </div>
 
-    <ion-grid id="container">
-        <ion-row>
-            <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-                <form (ngSubmit)="adminAddDanger()" #addDangerForm="ngForm">
-                    <div padding>
-                        <div class="emerge-form-line">
-                            <ion-item>
-                                <ion-label floating>Description</ion-label>
-                                <ion-textarea name="description" [(ngModel)]="description"></ion-textarea>
-                            </ion-item>
-                        </div>
-
-                    </div>
-
-                    <div padding>
-                        <ion-button size="large " type="submit " color="secondary" expand="block ">Add Map Location
-                            <ion-icon name="log-out-outline "></ion-icon>
-                        </ion-button>
-                    </div>
-
-                </form>
-            </ion-col>
-        </ion-row>
-    </ion-grid>
+          <div padding>
+            <ion-button
+              size="large "
+              type="submit "
+              color="secondary"
+              expand="block "
+              >Add Map Location
+              <ion-icon name="log-out-outline "></ion-icon>
+            </ion-button>
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>
 
 <!-- This link is reserved to take care of back button -->

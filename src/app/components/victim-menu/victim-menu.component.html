@@ -1,9 +1,14 @@
 <!-- Menu toggle -->
 <ion-header>
   <ion-toolbar color="primary" class="ion-padding-vertical">
+    <ion-icon (click)="goBack()" color="secondary" class="back-btn" src="/assets/md-custom-backbtn.svg"></ion-icon>
     <ion-title class="header-shadow-text">
-      <ion-icon class="user-helpsvg" name="aperture-outline"></ion-icon> PAGE TITLE
+      <ion-icon class="logo-title"  src={{logoUpdate()}}></ion-icon> 
+      <span class="menu-title">
+        {{ titleUpdate() }}
+      </span>
     </ion-title>
+    
     <ion-buttons slot="end">
       <ion-menu-button class="main-menu-harmburger" menu="main-menu">
         <span class="menu-harmbg-1"></span>

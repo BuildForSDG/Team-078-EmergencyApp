@@ -12,9 +12,12 @@ import "firebase/firestore";
   styleUrls: ['./view-emergencies.page.scss'],
 })
 export class ViewEmergenciesPage implements OnInit {
-
   emergencies : any = [];
 
+  // Store values from emergencyList
+//   @Input() Number = '098765431';
+//   @Input() Time = 'Mon 12 Dec, 2020';
+//   @Input() Location = 'National Industrial Court Nigeria 6th Lugard Ave, GRA, Enugu.';
   public Response: string;
 
   constructor(private modalController: ModalController) {
@@ -65,7 +68,6 @@ export class ViewEmergenciesPage implements OnInit {
         location: request.location
       }
     });
-
     // return response from modal 
     modal.onWillDismiss().then(dataReturned => {
       this.Response = dataReturned.data;
@@ -73,7 +75,7 @@ export class ViewEmergenciesPage implements OnInit {
 
     return await modal.present();
   }
-  
+
   ngOnInit() {
   }
 

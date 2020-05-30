@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { GoogleMapComponent } from "../../../components/google-map/google-map.component";
 import { AuthService } from "../../../services/user/auth.service";
 import { RequestService } from "../../../services/victims/request.service";
+import { AuthService } from '../../../services/user/auth.service';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
@@ -12,9 +13,9 @@ import "firebase/firestore";
 const {Geolocation} = Plugins;
 declare var google;
 @Component({
-  selector: "app-victim-confirm-loc-on-map",
-  templateUrl: "./victim-confirm-loc-on-map.page.html",
-  styleUrls: ["./victim-confirm-loc-on-map.page.scss"]
+  selector: 'app-victim-confirm-loc-on-map',
+  templateUrl: './victim-confirm-loc-on-map.page.html',
+  styleUrls: ['./victim-confirm-loc-on-map.page.scss']
 })
 export class VictimConfirmLocOnMapPage implements OnInit {
   @ViewChild(GoogleMapComponent, { static: false })
@@ -29,9 +30,9 @@ export class VictimConfirmLocOnMapPage implements OnInit {
     long: 0
   };
   userInfo = {
-    emmergency: "",
-    address: "",
-    latLong: this.markerlatlong,
+    emmergency: '',
+    address: '',
+    latLong: this.markerlatlong
     phone_number: "",
     victim_id: ""
   };
@@ -52,7 +53,7 @@ export class VictimConfirmLocOnMapPage implements OnInit {
         this.userInfo.phone_number = this.data.phone_number;
         this.userInfo.victim_id = this.data.victim_id;
       } else {
-        this.router.navigate(["/get-help"]);
+        this.router.navigate(['/get-help']);
       }
     });
   }
@@ -71,7 +72,6 @@ export class VictimConfirmLocOnMapPage implements OnInit {
       }
     });
   }
-
   async addLocationMarker() {
     //create a new date object to use in the creation of the request ref
     var date = new Date();
@@ -111,18 +111,17 @@ export class VictimConfirmLocOnMapPage implements OnInit {
         this.loading.dismiss().then( () => { 
           alert("unable to process request");
         }); 
+
       });
     }, error=> {
       console.log(error);
-    })
-    
-    
+    })   
   }
 
   setLocation(): void {
     this.loadingCtrl
       .create({
-        message: "Setting current location..."
+        message: 'Setting current location...'
       })
       .then(overlay => {
         overlay.present();
@@ -132,7 +131,7 @@ export class VictimConfirmLocOnMapPage implements OnInit {
             this.latitude = position.coords.latitude;
             this.longitude = position.coords.longitude;
             this.map.changeMarkerWithoutAni(this.latitude, this.longitude);
-            let data = {
+            const data = {
               latitude: this.latitude,
               longitude: this.longitude
             };
@@ -141,9 +140,9 @@ export class VictimConfirmLocOnMapPage implements OnInit {
             this.userInfo.latLong = this.markerlatlong;
             this.alertCtrl
               .create({
-                header: "Location	set!",
-                message: "Verify Location",
-                buttons: [{ text: "Ok" }]
+                header: 'Location	set!',
+                message: 'Verify Location',
+                buttons: [{ text: 'Ok' }]
               })
               .then(alert => {
                 alert.present();
@@ -155,10 +154,10 @@ export class VictimConfirmLocOnMapPage implements OnInit {
           }
         );
 
-        google.maps.event.addListener(this.map.map, "dragend", () => {
-          let center = this.map.map.getCenter();
+        google.maps.event.addListener(this.map.map, 'dragend', () => {
+          const center = this.map.map.getCenter();
           this.map.changeMarkerWithoutAni(center.lat(), center.lng());
-          console.log("Info1", this.map.marker);
+          console.log('Info1', this.map.marker);
         });
       });
   }

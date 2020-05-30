@@ -2,6 +2,10 @@ ion-toolbar {
   --background: #00154f;
 }
 
+ion-content {
+  --background: center / contain no-repeat url('./../../../../assets/spiral-path.svg');
+}
+
 .flex-top {
   font-family: 'Poppins';
   font-style: normal;

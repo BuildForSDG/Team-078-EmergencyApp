@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
+import { VictimBlueMenuModule } from '../../../components/victimblue.components.module';
 
 import { ViewDangersPageRoutingModule } from './view-dangers-routing.module';
 
@@ -15,6 +16,7 @@ import	{	GoogleMapComponent	}	from	'../../../components/google-map/google-map.co
     CommonModule,
     FormsModule,
     IonicModule,
+    VictimBlueMenuModule,
     ViewDangersPageRoutingModule
   ],
   declarations: [ViewDangersPage, GoogleMapComponent],

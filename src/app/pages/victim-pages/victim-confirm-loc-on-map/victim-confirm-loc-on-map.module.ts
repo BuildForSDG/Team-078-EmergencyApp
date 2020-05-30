@@ -15,7 +15,7 @@ import { ViewDangersPageModule } from '../view-dangers/view-dangers.module';
     FormsModule,
     IonicModule,
     VictimConfirmLocOnMapPageRoutingModule,
-    ViewDangersPageModule 
+    ViewDangersPageModule
   ],
   declarations: [VictimConfirmLocOnMapPage]
 })

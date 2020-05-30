@@ -1,42 +1,55 @@
-import { Component, OnInit } from "@angular/core";
-import { AuthService } from "../../../services/user/auth.service";
+import { Component, OnInit } from '@angular/core';
+import { AuthService } from '../../../services/user/auth.service';
 import {
   LoadingController,
   AlertController,
   ModalController
-} from "@ionic/angular";
-import { AddRespondantCoordinatesPage } from "../add-respondant-coordinates/add-respondant-coordinates.page";
+} from '@ionic/angular';
+import { AddRespondantCoordinatesPage } from '../add-respondant-coordinates/add-respondant-coordinates.page';
 @Component({
-  selector: "app-admin-add-respondant",
-  templateUrl: "./admin-add-respondant.page.html",
-  styleUrls: ["./admin-add-respondant.page.scss"]
+  selector: 'app-admin-add-respondant',
+  templateUrl: './admin-add-respondant.page.html',
+  styleUrls: ['./admin-add-respondant.page.scss']
 })
 export class AdminAddRespondantPage implements OnInit {
   addReponderCredentials = {
-    email: "",
-    password: "",
-    fullname: "",
-    phone_number: "",
-    address: "",
-    respondant_type: "",
-    respondant_unit: "",
+    email: '',
+    password: '',
+    fullname: '',
+    phone_number: '',
+    address: '',
+    respondant_unit: '',
     coordinates: {},
-    coordinateInfo: ""
+    coordinateInfo: ''
   };
   formatted_address = "";
+  units = [];
   public loading: any;
   constructor(
     private _auth: AuthService,
     public loadingCtrl: LoadingController,
     public alertCtrl: AlertController,
     public modalController: ModalController
-  ) {}
+  ) {
+    _auth.getUnit().then(async (result) => {
+      this.loading = await this.loadingCtrl.create();
+      await this.loading.present();
+      this.units = await result;
+      this.loading.dismiss();
+    }).catch((error) => {
+      this.loading.dismiss().then(async () => {
+        const alert = await this.alertCtrl.create({ message: error.message, buttons: [{ text: 'Ok', role: 'cancel' }], });
+        await alert.present();
+      });
+    })
+
+  }
   public modal: any;
-  ngOnInit() {}
+  ngOnInit() { }
 
 
   async presentModal() {
-     this.modal = await this.modalController.create({
+    this.modal = await this.modalController.create({
       component: AddRespondantCoordinatesPage,
       componentProps: {
         aParameter: true,
@@ -46,20 +59,18 @@ export class AdminAddRespondantPage implements OnInit {
 
     this.modal.onDidDismiss().then(res => {
       if (res !== null) {
-        console.log("The result:", res);
+        console.log('The result:', res);
         this.addReponderCredentials.coordinates = res.data.location;
         this.formatted_address = res.data.address;
         this.addReponderCredentials.coordinateInfo = res.data.location.lat + "," + res.data.location.lng;
       }else{
         console.log("No result:", res);
+
       }
     });
 
     await this.modal.present();
   }
- 
-
- 
 
   async adminAddResponder(): Promise<void> {
     this.loading = await this.loadingCtrl.create();
@@ -91,38 +102,36 @@ export class AdminAddRespondantPage implements OnInit {
               message: "Respondant Created",
               buttons: [{ text: "Ok", role: "cancel" }]
             });
-            await alert.present();
-          });
 
-          this.addReponderCredentials = {
-            email: "",
-            password: "",
-            fullname: "",
-            phone_number: "",
-            address: "",
-            respondant_type: "",
-            respondant_unit: "",
-            coordinates: {},
-            coordinateInfo : ""
-          };
-        },
-        error => {
-          this.loading.dismiss().then(async () => {
-            const alert = await this.alertCtrl.create({
-              message: error.message,
-              buttons: [{ text: "Ok", role: "cancel" }]
+            this.addReponderCredentials = {
+              email: '',
+              password: '',
+              fullname: '',
+              phone_number: '',
+              address: '',
+              respondant_unit: '',
+              coordinates: {},
+              coordinateInfo: ''
+            };
+          },
+          error => {
+            this.loading.dismiss().then(async () => {
+              const alert = await this.alertCtrl.create({
+                message: error.message,
+                buttons: [{ text: 'Ok', role: 'cancel' }]
+              });
+              await alert.present();
             });
-            await alert.present();
-          });
-        }
-      ); }else{
-        this.loading.dismiss().then(async () => {
-          const alert = await this.alertCtrl.create({
-            message: "All fields are required",
-            buttons: [{ text: "Ok", role: "cancel" }]
-          });
-          await alert.present();
+          }
+        );
+    } else {
+      this.loading.dismiss().then(async () => {
+        const alert = await this.alertCtrl.create({
+          message: 'All fields are required',
+          buttons: [{ text: 'Ok', role: 'cancel' }]
         });
-      }
+        await alert.present();
+      });
+    }
   }
 }
