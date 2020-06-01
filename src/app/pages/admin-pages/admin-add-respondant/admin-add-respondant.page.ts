@@ -98,6 +98,7 @@ export class AdminAddRespondantPage implements OnInit {
     this.addReponderCredentials.phone_number != "" &&
     this.addReponderCredentials.address != "" &&
     this.addReponderCredentials.respondant_unit != "" &&
+    this.addReponderCredentials.respondantType != "" &&
     this.formatted_address != "" &&
     this.addReponderCredentials.coordinates != null){
     this._auth
