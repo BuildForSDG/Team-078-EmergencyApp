@@ -97,6 +97,15 @@
                   </div>
                   <span class="input-padding"></span>
                   <div class="input-form-line">
+                    <ion-item>
+                      <ion-label>Responder Type</ion-label>
+                      <ion-select name="respondantType" [(ngModel)]="addReponderCredentials.respondantType" placeholder="Unit Type">
+                          <ion-select-option [value]="info" *ngFor="let info of unitTypes">{{info}}</ion-select-option>
+                      </ion-select>
+                  </ion-item>
+                  </div>
+                  <span class="input-padding"></span>
+                  <div class="input-form-line">
                     <ion-item lines="none">
                       <ion-label position="floating">Coordinates</ion-label>
                       <ion-input

@@ -95,6 +95,7 @@ export class AuthService {
     phoneNumber: string,
     address: string,
     respondantUnit: string,
+    respondantType: string,
     coordinates: any,
     formattedAddress: string
   ): Promise<any> {
@@ -111,6 +112,7 @@ export class AuthService {
             phoneNumber,
             address,
             respondantUnit,
+            respondantType,
             location: coordinates,
             formattedAddress,
           })
@@ -165,6 +167,7 @@ export class AuthService {
         throw new Error(error);
       });
   }
+
 // <<<<<<< assign-requests-to-unit-by-proximity
   
   addRequest(victim_id:string, request_ref:string, request_type:string, 
