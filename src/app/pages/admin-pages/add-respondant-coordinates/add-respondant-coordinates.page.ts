@@ -65,7 +65,7 @@ export class AddRespondantCoordinatesPage implements OnInit {
     // coordinates, this takes the state and the country level address
     // this address value is useful in assigning responders
     if(this.map.marker){
-   
+      const latLong = this.map.marker.position;
       this.geoCodeLatLng(latLong.lat(), latLong.lng()).then( result=>{
         console.log(result);
         var total = result.length - 2 ;
@@ -77,7 +77,6 @@ export class AddRespondantCoordinatesPage implements OnInit {
         console.log(error);
       })
 
-    const latLong = this.map.marker.position;
     this.markerlatlong.lat = latLong.lat();
     this.markerlatlong.lng = latLong.lng();
 

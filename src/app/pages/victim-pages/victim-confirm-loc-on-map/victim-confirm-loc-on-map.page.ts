@@ -5,7 +5,6 @@ import { Router, ActivatedRoute } from "@angular/router";
 import { GoogleMapComponent } from "../../../components/google-map/google-map.component";
 import { AuthService } from "../../../services/user/auth.service";
 import { RequestService } from "../../../services/victims/request.service";
-import { AuthService } from '../../../services/user/auth.service';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
@@ -32,7 +31,7 @@ export class VictimConfirmLocOnMapPage implements OnInit {
   userInfo = {
     emmergency: '',
     address: '',
-    latLong: this.markerlatlong
+    latLong: this.markerlatlong,
     phone_number: "",
     victim_id: ""
   };

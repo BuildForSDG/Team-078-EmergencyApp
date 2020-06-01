@@ -80,7 +80,6 @@ export class AdminAddRespondantPage implements OnInit {
     this.addReponderCredentials.password != "" &&
     this.addReponderCredentials.phone_number != "" &&
     this.addReponderCredentials.address != "" &&
-    this.addReponderCredentials.respondant_type != "" &&
     this.addReponderCredentials.respondant_unit != "" &&
     this.formatted_address != "" &&
     this.addReponderCredentials.coordinates != null){
@@ -90,7 +89,6 @@ export class AdminAddRespondantPage implements OnInit {
         this.addReponderCredentials.password,
         this.addReponderCredentials.phone_number,
         this.addReponderCredentials.address,
-        this.addReponderCredentials.respondant_type,
         this.addReponderCredentials.respondant_unit,
         this.addReponderCredentials.coordinates,
         this.formatted_address
@@ -102,7 +100,6 @@ export class AdminAddRespondantPage implements OnInit {
               message: "Respondant Created",
               buttons: [{ text: "Ok", role: "cancel" }]
             });
-
             this.addReponderCredentials = {
               email: '',
               password: '',
@@ -113,7 +110,7 @@ export class AdminAddRespondantPage implements OnInit {
               coordinates: {},
               coordinateInfo: ''
             };
-          },
+          }),
           error => {
             this.loading.dismiss().then(async () => {
               const alert = await this.alertCtrl.create({
@@ -123,8 +120,8 @@ export class AdminAddRespondantPage implements OnInit {
               await alert.present();
             });
           }
-        );
-    } else {
+        });
+    }else{
       this.loading.dismiss().then(async () => {
         const alert = await this.alertCtrl.create({
           message: 'All fields are required',

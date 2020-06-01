@@ -94,7 +94,6 @@ export class AuthService {
     password: string,
     phoneNumber: string,
     address: string,
-    respondantType: string,
     respondantUnit: string,
     coordinates: any,
     formattedAddress: string
@@ -111,7 +110,6 @@ export class AuthService {
             password: password,
             phoneNumber,
             address,
-            respondantType,
             respondantUnit,
             location: coordinates,
             formattedAddress,
