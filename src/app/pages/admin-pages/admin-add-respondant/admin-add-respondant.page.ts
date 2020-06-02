@@ -79,6 +79,7 @@ export class AdminAddRespondantPage implements OnInit {
         console.log('The result:', res);
         this.addReponderCredentials.coordinates = res.data.location;
         this.formatted_address = res.data.address;
+        console.log(res.data.address);
         this.addReponderCredentials.coordinateInfo = res.data.location.lat + "," + res.data.location.lng;
       }else{
         console.log("No result:", res);
@@ -99,7 +100,7 @@ export class AdminAddRespondantPage implements OnInit {
     this.addReponderCredentials.address != "" &&
     this.addReponderCredentials.respondant_unit != "" &&
     this.addReponderCredentials.respondantType != "" &&
-    this.formatted_address != "" &&
+    // this.formatted_address != "" &&
     this.addReponderCredentials.coordinates != null){
     this._auth
       .addResponder(
@@ -119,6 +120,7 @@ export class AdminAddRespondantPage implements OnInit {
               message: "Respondant Created",
               buttons: [{ text: "Ok", role: "cancel" }]
             });
+            await alert.present();
             this.addReponderCredentials = {
               email: '',
               password: '',
@@ -130,16 +132,15 @@ export class AdminAddRespondantPage implements OnInit {
               coordinates: {},
               coordinateInfo: ''
             };
-          }),
-          error => {
-            this.loading.dismiss().then(async () => {
-              const alert = await this.alertCtrl.create({
-                message: error.message,
-                buttons: [{ text: 'Ok', role: 'cancel' }]
-              });
-              await alert.present();
+          })
+        }).catch( (error) => {
+          this.loading.dismiss().then(async () => {
+            const alert = await this.alertCtrl.create({
+              message: error.message,
+              buttons: [{ text: 'Ok', role: 'cancel' }]
             });
-          }
+            await alert.present();
+          });
         });
     }else{
       this.loading.dismiss().then(async () => {

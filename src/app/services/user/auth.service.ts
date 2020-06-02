@@ -173,11 +173,7 @@ export class AuthService {
   addRequest(victim_id:string, request_ref:string, request_type:string, 
     request_lat: number, request_long:number,request_address: string, 
     respond_rating: string,responder_email:string, victim_number:string, formatted_address:string ):Promise<any>{
-// =======
 
-//   addRequest(requestRef:string, requestType:string, requestLat: number,
-//      requestLong:number,requestAddress: string, respondRating: string,responderEmail:string, victimNumber:string ):Promise<any>{
-// >>>>>>> develop
     return  firebase
     .firestore()
     .collection('request')
@@ -198,20 +194,7 @@ export class AuthService {
       responded_responder: '',
       //this is the address passed in from geocoding
       formatted_address : formatted_address
-// =======
-//       requestRef,
-//       requestType,
-//       requestTime: firebase.firestore.FieldValue.serverTimestamp(),
-//       requestLat,
-//       requestLong,
-//       requestAddress,
-//       respondRating,
-//       responderEmail,
-//       victimNumber,
-//       requestResolved: false,
-//       assignedResponders: [],
-//       respondedResponder: ''
-// >>>>>>> develop
+
     });
   }
 
