@@ -4,8 +4,8 @@
     position: absolute;
     top: 20px;
     left: 10px;
-    height: 40px;
-    width: 40px;
+    height: 25px;
+    width: 25px;
   }
 
 .header-shadow-text {
@@ -25,21 +25,26 @@
 }
 
 .logo-title {
-    height: 40px;
-    width: 40px;
+    height: 25px;
+    width: 25px;
 }
 
 .menu-title {
     position: relative;
     top: -10px;
+} 
+
 .back-btn {
     position: absolute;
     top: 20px;
     left: 10px;
-    height: 40px;
-    width: 40px;
+    height: 25px;
+    width: 25px;
   }
-} 
+
+.header-title {
+    height: 60px;  
+}
 //modified
 //.....................header Title and SVG end..............................//
 // ....................Menu harmburger design start.........................//
@@ -158,8 +163,8 @@ ion-menu-button {
 }
 
 .menu-icon {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
 }
 
 .menu-main-icon {
