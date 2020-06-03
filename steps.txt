@@ -55,6 +55,7 @@ admin-edit-unit
 admin-login
 admin-sign-up
 admin-verify-danger-map
+view-admins
 
 Respondant:    
 respondant-login
@@ -76,6 +77,6 @@ respondant-dashboard
     
     view-respondant-list
     
-    view-admins
+    
     respondant-recover-pass
   
