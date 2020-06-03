@@ -51,10 +51,10 @@ admin-add-respondant
 admin-add-unit
 admin-dashboard
 admin-edit-admin
+admin-edit-unit
 admin-sign-up
 admin-login
 admin-verify-danger-map
-admin-edit-unit
 
 Respondant:    
 respondant-login
