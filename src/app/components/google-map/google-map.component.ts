@@ -198,7 +198,30 @@ export class GoogleMapComponent {
     }
     // 	Add	new	marker
     this.marker = marker
+  }
 
+  public displayMultipleMarkers(markers: []): void {
+    var markerInfo;
+    // const entries = Object.entries(markers)
+    console.log("Auth Details", markers);
+    markers.forEach((marker) => {
+      markerInfo = new google.maps.Marker({
+        position: new google.maps.LatLng(marker['location']['lat'], marker['location']['lng']),
+        map: this.map,
+        animation: google.maps.Animation.DROP,
+        title: marker['dangerType']
+      });
+      // var dateCreated = marker['request_time'];
+      var dateCreated = new Date(marker['request_time']['seconds'] * 1000).toLocaleString();
+      var infowindow = new google.maps.InfoWindow({
+        content: `<div class=infowindow><h4>${marker['dangerType']}</h4><p>Description: ${marker['description']}</p><p>Date: ${dateCreated}</p></div>`
+      });
+      google.maps.event.addListener(markerInfo, 'click', this.infoCallback(infowindow, markerInfo));
+    });
+  }
+
+  public infoCallback(infowindow, marker) {
+    return function () { infowindow.open(this.map, marker); };
   }
 
   public changeMarkerWithoutAni(lat: number, lng: number): void {
@@ -219,9 +242,9 @@ export class GoogleMapComponent {
   }
   public geoCodeLatLng(lat, lng): Promise<any> {
     var geocoder = new google.maps.Geocoder;
-    var latlng = {lat: parseFloat(lat), lng: parseFloat(lng)};
-    return	new	Promise((resolve,	reject)	=>	{
-      geocoder.geocode({'location': latlng}, function(results, status) {
+    var latlng = { lat: parseFloat(lat), lng: parseFloat(lng) };
+    return new Promise((resolve, reject) => {
+      geocoder.geocode({ 'location': latlng }, function (results, status) {
         if (status === 'OK') {
           resolve(results);
         } else {

@@ -141,15 +141,15 @@ const routes: Routes = [
         m => m.VictimConfirmLocOnMapPageModule
       )
   },
+  // {
+  //   path: 'admin-add-danger',
+  //   loadChildren: () =>
+  //     import('./pages/admin-pages/admin-add-danger/admin-add-danger.module').then(
+  //       m => m.AdminAddDangerPageModule
+  //     )
+  // },
   {
     path: 'admin-add-danger',
-    loadChildren: () =>
-      import('./pages/admin-pages/admin-add-danger/admin-add-danger.module').then(
-        m => m.AdminAddDangerPageModule
-      )
-  },
-  {
-    path: 'admin-verify-danger-map',
     loadChildren: () =>
       import('./pages/admin-pages/admin-verify-danger-map/admin-verify-danger-map.module').then(
         m => m.AdminVerifyDangerMapPageModule
@@ -180,8 +180,15 @@ const routes: Routes = [
   {
     path: 'respondant-recover-pass',
     loadChildren: () => import('./pages/respondant-pages/respondant-recover-pass/respondant-recover-pass.module').then( m => m.RespondantRecoverPassPageModule)
+  },
+  {
+    path: 'respondent-view-dangers',
+    loadChildren: () => import('./pages/respondant-pages/respondent-view-dangers/respondent-view-dangers.module').then( m => m.RespondentViewDangersPageModule)
+  },
+  {
+    path: 'respondent-add-danger',
+    loadChildren: () => import('./pages/respondant-pages/respondent-add-danger/respondent-add-danger.module').then( m => m.RespondentAddDangerPageModule)
   }
-
 
 
 ];
