@@ -178,6 +178,15 @@ ion-menu-button {
     border-bottom: 2px solid var(--ion-color-primary);
 }
 
+/*************************Footer************************/
+
+ion-footer ion-toolbar {
+    --background: rgba(0, 21, 79, 0.8);
+    height: 40px;
+    position: fixed;
+    bottom: 0;
+  }
+
 //....................Menu Icon and Grid End............................//
 
 
