@@ -56,6 +56,7 @@ admin-login
 admin-sign-up
 admin-verify-danger-map
 view-admins
+view-respondant-list
 
 Respondant:    
 respondant-login
@@ -74,8 +75,7 @@ respondant-dashboard
     emergency-details
     user-location
     victim-confirm-loc-on-map
-    
-    view-respondant-list
+
     
     
     respondant-recover-pass
