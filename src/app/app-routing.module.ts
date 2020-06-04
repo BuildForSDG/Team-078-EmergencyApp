@@ -180,9 +180,11 @@ const routes: Routes = [
   {
     path: 'respondant-recover-pass',
     loadChildren: () => import('./pages/respondant-pages/respondant-recover-pass/respondant-recover-pass.module').then( m => m.RespondantRecoverPassPageModule)
+  },
+  {
+    path: 'respondant-details',
+    loadChildren: () => import('./pages/respondant-pages/respondant-details/respondant-details.module').then( m => m.RespondantDetailsPageModule)
   }
-
-
 
 ];
 @NgModule({
