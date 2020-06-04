@@ -67,11 +67,11 @@ respondant-recover-pass
 view-emergencies    
       
     
+find-unit
 splash-page
 view-dangers
 get-help
 user-welcome
-find-unit
 unit-alert
 view-unit
 user-location

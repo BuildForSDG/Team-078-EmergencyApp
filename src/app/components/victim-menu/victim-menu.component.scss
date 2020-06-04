@@ -150,13 +150,14 @@ ion-menu-button {
 
 .item-background {
     --ion-background-color: transparent;
+    padding-left: -1020px
 }
 
 .menu-border {
     position: absolute;
     width: 90%;
     --height: 40%;
-    border: 2px solid var(--ion-color-primary);
+    border: 2px solid var(--ion-color-secondary);
     box-sizing: border-box;
     border-radius: 3px;
     margin: 10px 0 1px 15px;
@@ -171,14 +172,16 @@ ion-menu-button {
     display: flex;
     justify-content: space-between;
     padding-top: 50px;
+    margin-left:  -10px;
 }
 
-.menu-main-icon:first-child {
-    padding-left: 10px;
+ion-segment-button {
+    padding: 20px;
+    margin: -10px;
 }
 
 .menu-item-line {
-    border-bottom: 2px solid var(--ion-color-primary);
+    border-bottom: 2px solid var(--ion-color-secondary);
 }
 
 //....................Menu Icon and Grid End............................//
