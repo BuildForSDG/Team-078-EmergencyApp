@@ -58,11 +58,13 @@ admin-verify-danger-map
 view-admins
 view-respondant-list
 
-Respondant:    
-respondant-login
+Respondant:
+emergency-details   
 respondant-dashboard
-
-    
+respondant-details
+respondant-login
+respondant-recover-pass
+view-emergencies    
     
     splash-page
     view-dangers
@@ -71,12 +73,12 @@ respondant-dashboard
     find-unit
     unit-alert
     view-unit
-    view-emergencies
-    emergency-details
+    
+    
     user-location
     victim-confirm-loc-on-map
 
     
     
-    respondant-recover-pass
+    
   
