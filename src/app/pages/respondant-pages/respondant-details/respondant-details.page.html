@@ -4,6 +4,76 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-content>
-
+<ion-content class="auth-form">
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div class="details-header">
+          <ion-text>Detail</ion-text>
+          <ion-text>ID: 45826545</ion-text>
+        </div>
+        <form>
+          <ion-grid>
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center>
+                <div padding>
+                  <div class="input-form-line">
+                    <ion-item lines="none">
+                      <ion-label position="floating">Contact</ion-label>
+                      <ion-input
+                        type="text"
+                        name="text"
+                        required
+                      ></ion-input>
+                    </ion-item>
+                  </div>
+                  <span class="input-padding"></span>
+                  <div class="input-form-line">
+                    <ion-item lines="none">
+                      <ion-label position="floating">Location</ion-label>
+                      <ion-input
+                        type="text"
+                        name="text"
+                        required
+                      ></ion-input>
+                    </ion-item>
+                  </div>
+                  <span class="input-padding"></span>
+                  <div class="input-form-line">
+                    <ion-item lines="none">
+                      <ion-label position="floating">Unit Head Contact</ion-label>
+                      <ion-input
+                        type="text"
+                        name="text"
+                        required
+                      ></ion-input>
+                    </ion-item>
+                  </div>
+                  <span class="input-padding"></span>
+                  <div class="input-form-line">
+                    <ion-item lines="none">
+                      <ion-label position="floating">Password</ion-label>
+                      <ion-input
+                        type="password"
+                        name="password"
+                        required
+                      ></ion-input>
+                    </ion-item>
+                  </div>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-item lines="none">
+            <div slot="end">
+              <ion-button size="large" type="submit" color="warning"
+                >Add
+                <ion-icon name="add-circle-sharp"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-item>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
 </ion-content>

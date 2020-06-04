@@ -65,6 +65,9 @@ respondant-details
 respondant-login
 respondant-recover-pass
 view-emergencies    
+   
+    
+    
     
     splash-page
     view-dangers
