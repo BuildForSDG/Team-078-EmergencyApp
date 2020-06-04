@@ -65,21 +65,17 @@ respondant-details
 respondant-login
 respondant-recover-pass
 view-emergencies    
-   
+      
     
-    
-    
-    splash-page
-    view-dangers
-    get-help
-    user-welcome
-    find-unit
-    unit-alert
-    view-unit
-    
-    
-    user-location
-    victim-confirm-loc-on-map
+splash-page
+view-dangers
+get-help
+user-welcome
+find-unit
+unit-alert
+view-unit
+user-location
+victim-confirm-loc-on-map
 
     
     
