@@ -6,7 +6,7 @@
     left: 10px;
     height: 25px;
     width: 25px;
-  }
+}
 
 .header-shadow-text {
     font-family: 'Poppins', 'sans-serif';
@@ -32,7 +32,7 @@
 .menu-title {
     position: relative;
     top: -10px;
-} 
+}
 
 .back-btn {
     position: absolute;
@@ -40,11 +40,12 @@
     left: 10px;
     height: 25px;
     width: 25px;
-  }
+}
 
 .header-title {
-    height: 60px;  
+    height: 60px;
 }
+
 //modified
 //.....................header Title and SVG end..............................//
 // ....................Menu harmburger design start.........................//
@@ -97,6 +98,7 @@
         // margin-bottom: 5px;
         top: 13px;
     }
+
     .menu-harmbg-2 {
         position: absolute;
         width: 19.71px;
@@ -108,6 +110,7 @@
         top: 13px;
         left: 10px;
     }
+
     .menu-harmbg-3 {
         position: absolute;
         width: 30px;
@@ -124,16 +127,23 @@
 //...............................Menu Icon and Grid start...........................//
 ion-menu {
     --ion-background-color: rgb(0, 18, 70, 0.8);
+
     ion-item {
         background: transparent;
     }
+
     ion-label {
         color: white;
     }
+
     ion-icon {
         color: white;
         margin-right: 20px;
     }
+}
+
+.home-btn {
+    background-color: none;
 }
 
 ion-menu-button {
@@ -172,7 +182,7 @@ ion-menu-button {
     display: flex;
     justify-content: space-between;
     padding-top: 50px;
-    margin-left:  -10px;
+    margin-left: -10px;
 }
 
 ion-segment-button {
@@ -192,6 +202,7 @@ ion-segment-button {
         font-size: 2vw;
         word-wrap: break-word;
     }
+
     .user-helpsvg {
         width: 20px;
         height: 20px;
