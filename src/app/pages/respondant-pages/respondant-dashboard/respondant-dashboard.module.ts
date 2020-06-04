@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RespondantMenuModule } from '../../../components/respondant.components.module'
+import { RespondantMenuModule } from '../../../components/respondant.components.module';
 
 import { RespondantDashboardPageRoutingModule } from './respondant-dashboard-routing.module';
 

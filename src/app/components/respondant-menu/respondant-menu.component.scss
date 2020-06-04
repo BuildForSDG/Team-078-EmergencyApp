@@ -156,7 +156,7 @@ ion-menu-button {
     position: absolute;
     width: 90%;
     --height: 40%;
-    border: 2px solid var(--ion-color-primary);
+    border: 2px solid var(--ion-color-secondary);
     box-sizing: border-box;
     border-radius: 3px;
     margin: 10px 0 1px 15px;
@@ -175,7 +175,7 @@ ion-menu-button {
 }
 
 .menu-item-line {
-    border-bottom: 2px solid var(--ion-color-primary);
+    border-bottom: 2px solid var(--ion-color-secondary);
 }
 
 //....................Menu Icon and Grid End............................//
