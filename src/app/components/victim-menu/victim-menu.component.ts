@@ -8,9 +8,10 @@ import { Router } from "@angular/router";
   styleUrls: ["./victim-menu.component.scss"],
 })
 export class VictimMenuComponent implements OnInit {
-  routerlocation: string = this.router.url;
   // properties
+  routerlocation: string = this.router.url;
   menuItem: string[];
+  menuSegment: string
 
   constructor(private location: Location, private router: Router) {
     // this is reserved incase we add more
@@ -52,8 +53,13 @@ export class VictimMenuComponent implements OnInit {
     return this.routerlocation === "/get-help" ? "Get Help" : "Find Unit";
   }
 
-  menuSegment(ev: any) {
-    console.log("Segment changed", ev);
+  // triggers wen menu button is clicked
+  flipSegment(): void {
+    if (this.menuSegment === 'get-help') {
+      this.menuSegment = 'find-unit';
+    } else {
+      this.menuSegment = 'get-help';
+    }
   }
 }
 
