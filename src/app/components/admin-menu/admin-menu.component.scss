@@ -1,12 +1,5 @@
 //.................header Title and SVG start..........................//
 
-.user-helpsvg {
-    width: 40px;
-    height: 40px;
-    position: relative;
-    top: 10px;
-    left: 5px;
-}
 
 .header-shadow-text {
     font-family: 'Poppins', 'sans-serif';
@@ -31,6 +24,13 @@
     left: 10px;
     height: 25px;
     width: 25px;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.back-btn:hover {
+    height: 35px;
+    width: 35px;
 }
 
 .menu-close {
@@ -38,12 +38,19 @@
     top: 10px;
     left: 260px;
     height: 25px;
-    width: 25px;
+    width: 25px;   
 }
 
 .menu-icon {
     width: 25px;
     height: 25x;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+}
+
+.menu-icon:hover {
+    width: 30px;
+    height: 30x;
 }
 
 //.....................header Title and SVG end..............................//
