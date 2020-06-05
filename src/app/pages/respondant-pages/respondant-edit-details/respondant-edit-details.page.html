@@ -1,10 +1,10 @@
-<app-admin-menu></app-admin-menu>
+<app-respondant-menu></app-respondant-menu>
 
 <ion-content class="auth-form">
   <ion-grid>
     <ion-row>
       <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-        <span class="divider line one-line">ADD RESPONDER</span>
+        <span class="divider line one-line">EDIT RESPONDER</span>
         <form #form="ngForm" (ngSubmit)="adminAddResponder()">
           <ion-grid>
             <ion-row color="primary" justify-content-center>
@@ -60,7 +60,9 @@
                   <span class="input-padding"></span>
                   <div class="input-form-line">
                     <ion-item lines="none">
-                      <ion-label position="floating">Responder Address</ion-label>
+                      <ion-label position="floating"
+                        >Responder Address</ion-label
+                      >
                       <ion-input
                         type="text"
                         name="address"
@@ -73,19 +75,35 @@
                   <div class="input-form-line">
                     <ion-item>
                       <ion-label>Responder Unit</ion-label>
-                      <ion-select name="respondant_unit" [(ngModel)]="addReponderCredentials.respondant_unit" placeholder="Units">
-                          <ion-select-option [value]="info" *ngFor="let info of units">{{info}}</ion-select-option>
+                      <ion-select
+                        name="respondant_unit"
+                        [(ngModel)]="addReponderCredentials.respondant_unit"
+                        placeholder="Units"
+                      >
+                        <ion-select-option
+                          [value]="info"
+                          *ngFor="let info of units"
+                          >{{info}}</ion-select-option
+                        >
                       </ion-select>
-                  </ion-item>
+                    </ion-item>
                   </div>
                   <span class="input-padding"></span>
                   <div class="input-form-line">
                     <ion-item>
                       <ion-label>Responder Type</ion-label>
-                      <ion-select name="respondantType" [(ngModel)]="addReponderCredentials.respondantType" placeholder="Unit Type">
-                          <ion-select-option [value]="info" *ngFor="let info of unitTypes">{{info}}</ion-select-option>
+                      <ion-select
+                        name="respondantType"
+                        [(ngModel)]="addReponderCredentials.respondantType"
+                        placeholder="Unit Type"
+                      >
+                        <ion-select-option
+                          [value]="info"
+                          *ngFor="let info of unitTypes"
+                          >{{info}}</ion-select-option
+                        >
                       </ion-select>
-                  </ion-item>
+                    </ion-item>
                   </div>
                   <span class="input-padding"></span>
                   <div class="input-form-line">
@@ -108,7 +126,7 @@
           <ion-item lines="none">
             <div slot="end">
               <ion-button size="large" type="submit" color="warning"
-                >Add
+                >EDIT
                 <ion-icon name="add-circle-sharp"></ion-icon>
               </ion-button>
             </div>
@@ -118,3 +136,9 @@
     </ion-row>
   </ion-grid>
 </ion-content>
+
+<ion-footer>
+  <ion-toolbar>
+    <div class="footer"></div>
+  </ion-toolbar>
+</ion-footer>

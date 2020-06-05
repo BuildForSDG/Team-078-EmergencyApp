@@ -19,8 +19,8 @@ export class RequestService {
     //run a query to find responders that are in the same geocoded location as the victim
     //essentially the same formatted address, which is stae evel in our case
     return firebase.firestore().collection('responder')
-    .where('formatted_address', '==', formatted_address)
-    .where('respondant_type', '==', request_type)
+    .where('formattedAddress', '==', formatted_address)
+    .where('respondantType', '==', request_type)
     .get().then(result=>{
       result.forEach(doc=>{
         console.log(doc.data());

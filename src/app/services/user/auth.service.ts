@@ -38,6 +38,22 @@ export class AuthService {
     });
   }
 
+  getDangersLocation(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const units = []; 
+      firebase.firestore().collection("road_danger").get().then(function (querySnapshot) {
+        querySnapshot.forEach((doc) => {
+          units.push(doc.data());
+          //units.push(doc.data().location,doc.data().dangerType,doc.data().description);
+          console.log(units);
+          resolve(units);
+        });
+      }).catch((error) => {
+        console.log("Error:" + error);
+      });
+    });
+  }
+
   getUnit(): Promise<any> {
     return new Promise((resolve, reject) => {
       const units = [];
@@ -95,6 +111,7 @@ export class AuthService {
     phoneNumber: string,
     address: string,
     respondantUnit: string,
+    respondantType: string,
     coordinates: any,
     formattedAddress: string
   ): Promise<any> {
@@ -111,6 +128,7 @@ export class AuthService {
             phoneNumber,
             address,
             respondantUnit,
+            respondantType,
             location: coordinates,
             formattedAddress,
           })
@@ -165,16 +183,13 @@ export class AuthService {
         throw new Error(error);
       });
   }
+
 // <<<<<<< assign-requests-to-unit-by-proximity
   
   addRequest(victim_id:string, request_ref:string, request_type:string, 
     request_lat: number, request_long:number,request_address: string, 
     respond_rating: string,responder_email:string, victim_number:string, formatted_address:string ):Promise<any>{
-// =======
 
-//   addRequest(requestRef:string, requestType:string, requestLat: number,
-//      requestLong:number,requestAddress: string, respondRating: string,responderEmail:string, victimNumber:string ):Promise<any>{
-// >>>>>>> develop
     return  firebase
     .firestore()
     .collection('request')
@@ -195,20 +210,7 @@ export class AuthService {
       responded_responder: '',
       //this is the address passed in from geocoding
       formatted_address : formatted_address
-// =======
-//       requestRef,
-//       requestType,
-//       requestTime: firebase.firestore.FieldValue.serverTimestamp(),
-//       requestLat,
-//       requestLong,
-//       requestAddress,
-//       respondRating,
-//       responderEmail,
-//       victimNumber,
-//       requestResolved: false,
-//       assignedResponders: [],
-//       respondedResponder: ''
-// >>>>>>> develop
+
     });
   }
 

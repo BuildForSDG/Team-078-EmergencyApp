@@ -1,9 +1,7 @@
 import { Component, ViewChild, OnInit } from '@angular/core';
 import	{	AlertController,	LoadingController	}	from	'@ionic/angular';
 import	{	Plugins	}	from	'@capacitor/core';
-
 import	{	GoogleMapComponent	}	from	'../../../components/google-map/google-map.component';
-
 import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';

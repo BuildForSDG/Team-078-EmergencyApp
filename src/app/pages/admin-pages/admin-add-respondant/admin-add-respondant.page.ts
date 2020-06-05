@@ -19,11 +19,13 @@ export class AdminAddRespondantPage implements OnInit {
     phone_number: '',
     address: '',
     respondant_unit: '',
+    respondantType: '',
     coordinates: {},
     coordinateInfo: ''
   };
   formatted_address = "";
   units = [];
+  unitTypes = [];
   public loading: any;
   constructor(
     private _auth: AuthService,
@@ -31,6 +33,9 @@ export class AdminAddRespondantPage implements OnInit {
     public alertCtrl: AlertController,
     public modalController: ModalController
   ) {
+
+    
+
     _auth.getUnit().then(async (result) => {
       this.loading = await this.loadingCtrl.create();
       await this.loading.present();
@@ -41,7 +46,19 @@ export class AdminAddRespondantPage implements OnInit {
         const alert = await this.alertCtrl.create({ message: error.message, buttons: [{ text: 'Ok', role: 'cancel' }], });
         await alert.present();
       });
-    })
+    });
+
+    _auth.getUnitType().then(async (info) => {
+      //this.loading = await this.loadingCtrl.create();
+      //await this.loading.present();
+      this.unitTypes = await info;
+      // this.loading.dismiss();
+    }).catch((error) => {
+      this.loading.dismiss().then(async () => {
+        const alert = await this.alertCtrl.create({ message: error.message, buttons: [{ text: 'Ok', role: 'cancel' }], });
+        await alert.present();
+      });
+    });
 
   }
   public modal: any;
@@ -62,6 +79,7 @@ export class AdminAddRespondantPage implements OnInit {
         console.log('The result:', res);
         this.addReponderCredentials.coordinates = res.data.location;
         this.formatted_address = res.data.address;
+        console.log(res.data.address);
         this.addReponderCredentials.coordinateInfo = res.data.location.lat + "," + res.data.location.lng;
       }else{
         console.log("No result:", res);
@@ -81,7 +99,8 @@ export class AdminAddRespondantPage implements OnInit {
     this.addReponderCredentials.phone_number != "" &&
     this.addReponderCredentials.address != "" &&
     this.addReponderCredentials.respondant_unit != "" &&
-    this.formatted_address != "" &&
+    this.addReponderCredentials.respondantType != "" &&
+    // this.formatted_address != "" &&
     this.addReponderCredentials.coordinates != null){
     this._auth
       .addResponder(
@@ -90,6 +109,7 @@ export class AdminAddRespondantPage implements OnInit {
         this.addReponderCredentials.phone_number,
         this.addReponderCredentials.address,
         this.addReponderCredentials.respondant_unit,
+        this.addReponderCredentials.respondantType,
         this.addReponderCredentials.coordinates,
         this.formatted_address
       )
@@ -100,6 +120,7 @@ export class AdminAddRespondantPage implements OnInit {
               message: "Respondant Created",
               buttons: [{ text: "Ok", role: "cancel" }]
             });
+            await alert.present();
             this.addReponderCredentials = {
               email: '',
               password: '',
@@ -107,19 +128,19 @@ export class AdminAddRespondantPage implements OnInit {
               phone_number: '',
               address: '',
               respondant_unit: '',
+              respondantType: '',
               coordinates: {},
               coordinateInfo: ''
             };
-          }),
-          error => {
-            this.loading.dismiss().then(async () => {
-              const alert = await this.alertCtrl.create({
-                message: error.message,
-                buttons: [{ text: 'Ok', role: 'cancel' }]
-              });
-              await alert.present();
+          })
+        }).catch( (error) => {
+          this.loading.dismiss().then(async () => {
+            const alert = await this.alertCtrl.create({
+              message: error.message,
+              buttons: [{ text: 'Ok', role: 'cancel' }]
             });
-          }
+            await alert.present();
+          });
         });
     }else{
       this.loading.dismiss().then(async () => {

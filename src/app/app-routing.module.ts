@@ -141,15 +141,15 @@ const routes: Routes = [
         m => m.VictimConfirmLocOnMapPageModule
       )
   },
+  // {
+  //   path: 'admin-add-danger',
+  //   loadChildren: () =>
+  //     import('./pages/admin-pages/admin-add-danger/admin-add-danger.module').then(
+  //       m => m.AdminAddDangerPageModule
+  //     )
+  // },
   {
     path: 'admin-add-danger',
-    loadChildren: () =>
-      import('./pages/admin-pages/admin-add-danger/admin-add-danger.module').then(
-        m => m.AdminAddDangerPageModule
-      )
-  },
-  {
-    path: 'admin-verify-danger-map',
     loadChildren: () =>
       import('./pages/admin-pages/admin-verify-danger-map/admin-verify-danger-map.module').then(
         m => m.AdminVerifyDangerMapPageModule
@@ -171,7 +171,7 @@ const routes: Routes = [
   },
   {
     path: 'admin-edit-admin',
-    loadChildren: () => import('./pages/admin-pages/admin-edit-admin/admin-edit-admin.module').then(m => m.AdminEditAdminPageModule)
+    loadChildren: () => import('./admin-edit-admin/admin-edit-admin.module').then(m => m.AdminEditAdminPageModule)
   },
   {
     path: 'view-admins',
@@ -182,6 +182,18 @@ const routes: Routes = [
     loadChildren: () => import('./pages/respondant-pages/respondant-recover-pass/respondant-recover-pass.module').then( m => m.RespondantRecoverPassPageModule)
   },
   {
+    path: 'respondent-view-dangers',
+    loadChildren: () => import('./pages/respondant-pages/respondent-view-dangers/respondent-view-dangers.module').then( m => m.RespondentViewDangersPageModule)
+  },
+  {
+    path: 'respondent-add-danger',
+    loadChildren: () => import('./pages/respondant-pages/respondent-add-danger/respondent-add-danger.module').then( m => m.RespondentAddDangerPageModule)
+  },
+//   {
+//     path: 'respondant-edit-details',
+//     loadChildren: () => import('./pages/respondant-pages/respondant-edit-details/respondant-edit-details.module').then( m => m.RespondantEditDetailsPageModule)
+//   },
+    {
     path: 'respondant-details',
     loadChildren: () => import('./pages/respondant-pages/respondant-details/respondant-details.module').then( m => m.RespondantDetailsPageModule)
   }
@@ -195,4 +207,5 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 {
+
 }
