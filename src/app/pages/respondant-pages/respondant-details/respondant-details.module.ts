@@ -6,9 +6,9 @@ import { IonicModule } from '@ionic/angular';
 
 import { RespondantMenuModule } from '../../../components/respondant.components.module';
 
-import { RespondantDashboardPageRoutingModule } from './respondant-dashboard-routing.module';
+import { RespondantDetailsPageRoutingModule } from './respondant-details-routing.module';
 
-import { RespondantDashboardPage } from './respondant-dashboard.page';
+import { RespondantDetailsPage } from './respondant-details.page';
 
 @NgModule({
   imports: [
@@ -16,8 +16,8 @@ import { RespondantDashboardPage } from './respondant-dashboard.page';
     FormsModule,
     IonicModule,
     RespondantMenuModule,
-    RespondantDashboardPageRoutingModule
+    RespondantDetailsPageRoutingModule
   ],
-  declarations: [RespondantDashboardPage]
+  declarations: [RespondantDetailsPage]
 })
-export class RespondantDashboardPageModule {}
+export class RespondantDetailsPageModule {}

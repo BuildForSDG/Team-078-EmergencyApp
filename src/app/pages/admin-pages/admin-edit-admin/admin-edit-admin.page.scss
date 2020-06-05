@@ -1,9 +1,5 @@
-ion-toolbar {
-  --background: #00154f;
-}
-
 ion-content {
-  --background: center / contain no-repeat url('./../../../../assets/spiral-path.svg');
+  --background: center / contain no-repeat url('../../../../assets/spiral-path.svg');
 }
 
 .flex-top {
@@ -61,7 +57,3 @@ ion-item {
   --highlight-height: 0;
 }
 
-ion-footer {
-  height: 80px;
-  position: relative;
-}

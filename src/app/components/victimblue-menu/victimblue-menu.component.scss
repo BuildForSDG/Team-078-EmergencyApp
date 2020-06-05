@@ -126,16 +126,16 @@ ion-menu-button {
   position: absolute;
   top: 10px;
   left: 250px;
-  height: 45px;
-  width: 45px;
+  height: 25px;
+  width: 25px;
 }
 
 .back-btn {
   position: absolute;
   top: 20px;
   left: 10px;
-  height: 40px;
-  width: 40px;
+  height: 25px;
+  width: 25px;
 }
 
 .item-background {
@@ -146,7 +146,7 @@ ion-menu-button {
   position: absolute;
   width: 90%;
   --height: 40%;
-  border: 2px solid var(--ion-color-primary);
+  border: 2px solid var(--ion-color-secondary);
   box-sizing: border-box;
   border-radius: 3px;
   margin: 10px 0 1px 15px;
@@ -154,8 +154,8 @@ ion-menu-button {
 
 
 .menu-icon {
-  width: 30px;
-  height: 30px;
+  width: 25px;
+  height: 25px;
 }
 
 .menu-main-icon {
@@ -169,7 +169,7 @@ ion-menu-button {
 }
 
 .menu-item-line {
-  border-bottom: 2px solid var(--ion-color-primary);
+  border-bottom: 2px solid var(--ion-color-secondary);
 }
 
 //....................Menu Icon and Grid End............................//

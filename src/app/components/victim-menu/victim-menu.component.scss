@@ -4,9 +4,9 @@
     position: absolute;
     top: 20px;
     left: 10px;
-    height: 40px;
-    width: 40px;
-  }
+    height: 25px;
+    width: 25px;
+}
 
 .header-shadow-text {
     font-family: 'Poppins', 'sans-serif';
@@ -25,21 +25,27 @@
 }
 
 .logo-title {
-    height: 40px;
-    width: 40px;
+    height: 25px;
+    width: 25px;
 }
 
 .menu-title {
     position: relative;
     top: -10px;
+}
+
 .back-btn {
     position: absolute;
     top: 20px;
     left: 10px;
-    height: 40px;
-    width: 40px;
-  }
-} 
+    height: 25px;
+    width: 25px;
+}
+
+.header-title {
+    height: 60px;
+}
+
 //modified
 //.....................header Title and SVG end..............................//
 // ....................Menu harmburger design start.........................//
@@ -92,6 +98,7 @@
         // margin-bottom: 5px;
         top: 13px;
     }
+
     .menu-harmbg-2 {
         position: absolute;
         width: 19.71px;
@@ -103,6 +110,7 @@
         top: 13px;
         left: 10px;
     }
+
     .menu-harmbg-3 {
         position: absolute;
         width: 30px;
@@ -119,16 +127,23 @@
 //...............................Menu Icon and Grid start...........................//
 ion-menu {
     --ion-background-color: rgb(0, 18, 70, 0.8);
+
     ion-item {
         background: transparent;
     }
+
     ion-label {
         color: white;
     }
+
     ion-icon {
         color: white;
         margin-right: 20px;
     }
+}
+
+.home-btn {
+    background-color: none;
 }
 
 ion-menu-button {
@@ -138,42 +153,45 @@ ion-menu-button {
 .menu-close {
     position: absolute;
     top: 10px;
-    left: 250px;
-    height: 45px;
-    width: 45px;
+    left: 260px;
+    height: 25px;
+    width: 25px;
 }
 
 .item-background {
     --ion-background-color: transparent;
+    padding-left: -1020px
 }
 
 .menu-border {
     position: absolute;
     width: 90%;
     --height: 40%;
-    border: 2px solid var(--ion-color-primary);
+    border: 2px solid var(--ion-color-secondary);
     box-sizing: border-box;
     border-radius: 3px;
     margin: 10px 0 1px 15px;
 }
 
 .menu-icon {
-    width: 30px;
-    height: 30px;
+    width: 25px;
+    height: 25px;
 }
 
 .menu-main-icon {
     display: flex;
     justify-content: space-between;
     padding-top: 50px;
+    margin-left: -10px;
 }
 
-.menu-main-icon:first-child {
-    padding-left: 10px;
+ion-segment-button {
+    padding: 20px;
+    margin: -10px;
 }
 
 .menu-item-line {
-    border-bottom: 2px solid var(--ion-color-primary);
+    border-bottom: 2px solid var(--ion-color-secondary);
 }
 
 //....................Menu Icon and Grid End............................//
@@ -184,6 +202,7 @@ ion-menu-button {
         font-size: 2vw;
         word-wrap: break-word;
     }
+
     .user-helpsvg {
         width: 20px;
         height: 20px;

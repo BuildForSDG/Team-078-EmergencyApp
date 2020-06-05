@@ -21,6 +21,31 @@
     top: -5px; 
 }
 
+.header-title {
+    height: 60px;  
+}
+
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    height: 25px;
+    width: 25px;
+}
+
+.menu-close {
+    position: absolute;
+    top: 10px;
+    left: 260px;
+    height: 25px;
+    width: 25px;
+}
+
+.menu-icon {
+    width: 25px;
+    height: 25x;
+}
+
 //.....................header Title and SVG end..............................//
 
 
@@ -122,21 +147,6 @@ ion-menu-button {
     padding-top: 10px;
 }
 
-.menu-close {
-    position: absolute;
-    top: 10px;
-    left: 250px;
-    height: 45px;
-    width: 45px;
-}
-
-.back-btn {
-    position: absolute;
-    top: 20px;
-    left: 10px;
-    height: 40px;
-    width: 40px;
-}
 
 .item-background {
     --ion-background-color: transparent;
@@ -146,17 +156,13 @@ ion-menu-button {
     position: absolute;
     width: 90%;
     --height: 40%;
-    border: 2px solid var(--ion-color-primary);
+    border: 2px solid var(--ion-color-secondary);
     box-sizing: border-box;
     border-radius: 3px;
     margin: 10px 0 1px 15px;
 }
 
 
-.menu-icon {
-    width: 30px;
-    height: 30px;
-}
 
 .menu-main-icon {
     display: grid;
@@ -169,7 +175,7 @@ ion-menu-button {
 }
 
 .menu-item-line {
-    border-bottom: 2px solid var(--ion-color-primary);
+    border-bottom: 2px solid var(--ion-color-secondary);
 }
 
 //....................Menu Icon and Grid End............................//

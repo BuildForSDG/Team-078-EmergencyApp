@@ -1,60 +1,67 @@
-import { Component, OnInit } from '@angular/core';
-import { Location } from '@angular/common';
-import { Router } from '@angular/router';
+import { Component, OnInit } from "@angular/core";
+import { Location } from "@angular/common";
+import { Router } from "@angular/router";
 
 @Component({
-  selector: 'app-victim-menu',
-  templateUrl: './victim-menu.component.html',
-  styleUrls: ['./victim-menu.component.scss'],
+  selector: "app-victim-menu",
+  templateUrl: "./victim-menu.component.html",
+  styleUrls: ["./victim-menu.component.scss"],
 })
 export class VictimMenuComponent implements OnInit {
-  routerlocation: string = this.router.url;
   // properties
-  menuItem: string[]
+  routerlocation: string = this.router.url;
+  menuItem: string[];
+  menuSegment: string
 
   constructor(private location: Location, private router: Router) {
+    // this is reserved incase we add more
+    //pages, switch method will be used to
+    //display content based on user's visit
     this.menuItem = [
-      'admin-dashboard',
-      'welcom-page',
-      'respondant-login',
-      'respondant-dashboard',
-      'admin-sign-up',
-      'admin-login',
-      'admin-add-respondant',
-      'splash-page',
-      'get-help',
-      'user-welcome',
-      'find-unit',
-      'unit-alert',
-      'view-unit',
-      'user-location'
-    ]
+      "admin-dashboard",
+      "welcom-page",
+      "respondant-login",
+      "respondant-dashboard",
+      "admin-sign-up",
+      "admin-login",
+      "admin-add-respondant",
+      "splash-page",
+      "get-help",
+      "user-welcome",
+      "find-unit",
+      "unit-alert",
+      "view-unit",
+      "user-location",
+    ];
   }
-  
-  ngOnInit() {
-    
-  }
+
+  ngOnInit() {}
 
   goBack() {
     this.location.back();
   }
 
-  // this is used to make the logo dynamic
-  logoUpdate(){
-   return (this.routerlocation === '/get-help') ? 
-   '/assets/md-custom-focus.svg' : 
-   '/assets/md-custom-handshake.svg';
+  // This is used to make the logo dynamic
+  logoUpdate() {
+    return this.routerlocation === "/get-help"
+      ? "/assets/md-custom-handshake.svg"
+      : "/assets/md-custom-focus.svg";
   }
 
-  //this is used to make the logo dynamic
+  // This is used to make the logo dynamic
   titleUpdate() {
-    return (this.routerlocation === '/get-help') ? 
-      'Get Help' : 'Find Unit';
+    return this.routerlocation === "/get-help" ? "Get Help" : "Find Unit";
+  }
+
+  // triggers wen menu button is clicked
+  flipSegment(): void {
+    if (this.menuSegment === 'get-help') {
+      this.menuSegment = 'find-unit';
+    } else {
+      this.menuSegment = 'get-help';
+    }
   }
 }
-
-
-
 
 // these are users' path
 //   'find-unit',
@@ -64,8 +71,7 @@ export class VictimMenuComponent implements OnInit {
 //   'victim-confirm-loc-on-map'
 //   'view-dangers'
 //   'view-unit',
-// ]
-
+//
 
 // this.menuItem = [
 //   'admin-dashboard',
@@ -76,7 +82,4 @@ export class VictimMenuComponent implements OnInit {
 //   'admin-login',
 //   'admin-add-respondant',
 //   'splash-page',
-//   'user-welcome',
-
-
-
+//   'user-welcome',]

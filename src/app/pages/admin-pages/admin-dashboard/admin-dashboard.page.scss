@@ -26,16 +26,13 @@ ion-row {
   font-style: normal;
   font-weight: normal;
   font-size: 26px;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   line-height: 40px;
   text-align: center;
   letter-spacing: 0.05em;
   color: rgba(0, 21, 79, 0.9);
 }
 
-ion-footer ion-toolbar {
-  --background: rgba(0, 21, 79, 0.8);
-  height: 40px;
-}
 
 .button-text {
   font-family: 'Poppins', sans-serif;

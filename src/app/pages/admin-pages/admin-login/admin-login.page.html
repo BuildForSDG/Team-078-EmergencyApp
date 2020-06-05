@@ -1,25 +1,16 @@
-<!-- This link is reserved to take care of back button -->
-<!-- <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Admin Sign Up</ion-title>
-  </ion-toolbar> -->
-
-  <ion-header>
-    <ion-toolbar color="secondary" class="ion-padding-vertical">
+<ion-header>
+    <ion-toolbar color="primary">
       <ion-title class="header-shadow-text">
         ADMIN 
       </ion-title>
-      <ion-buttons slot="end">
-        <ion-menu-button class="main-menu-harmburger" menu="main-menu">
-        </ion-menu-button>
-      </ion-buttons>
     </ion-toolbar>
   </ion-header>
   
 
 <ion-grid id="container">
+        <ion-text class="login-text">
+            LOG IN
+        </ion-text>
     <ion-row>
         <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
             <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
