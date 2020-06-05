@@ -27,6 +27,7 @@ export class RespondentViewDangersPage implements OnInit {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.map.init().then((res) => {
+          //fetch dangers from firebase
           this._auth.getDangersLocation().then(async (result) => {
             this.loading = await this.loadingCtrl.create();
             await this.loading.present();
@@ -56,20 +57,8 @@ export class RespondentViewDangersPage implements OnInit {
         overlay.present();
         Geolocation.getCurrentPosition().then((position)	=>	{
             overlay.dismiss();
-            // this.latitude	=	position.coords.latitude;
-            // this.longitude	=	position.coords.longitude;
-            // var locations = [
-            //   [-33.890542, 151.274856, 4],
-            //   [-33.923036, 151.259052, 5],
-            //   [-34.028249, 151.157507, 3],
-            //   [-33.80010128657071, 151.28747820854187, 2],
-            //   [ -33.950198, 151.259302, 1]
-            // ];
+            //display danger fetched from firebase
             this.map.displayMultipleMarkers(this.locations);
-            // const	data	=	{
-            //   latitude:	this.latitude,
-            //   longitude:	this.longitude
-            // };
             this.alertCtrl.create({
               header:	'Location	set!',
               message: 'You can now view any dangers on your current route.',

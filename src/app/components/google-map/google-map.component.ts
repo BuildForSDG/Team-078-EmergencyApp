@@ -214,7 +214,8 @@ export class GoogleMapComponent {
       // var dateCreated = marker['request_time'];
       var dateCreated = new Date(marker['request_time']['seconds'] * 1000).toLocaleString();
       var infowindow = new google.maps.InfoWindow({
-        content: `<div class=infowindow><h4>${marker['dangerType']}</h4><p>Description: ${marker['description']}</p><p>Date: ${dateCreated}</p></div>`
+        content: `<div class=infowindow><h4>${marker['dangerType']}</h4><p>Description: 
+        ${marker['description']}</p><p>Date: ${dateCreated}</p></div><ion-button (click)="deleteMarker()">remove</ion-button>`
       });
       google.maps.event.addListener(markerInfo, 'click', this.infoCallback(infowindow, markerInfo));
     });
@@ -223,7 +224,9 @@ export class GoogleMapComponent {
   public infoCallback(infowindow, marker) {
     return function () { infowindow.open(this.map, marker); };
   }
-
+  public deleteMarker(){
+    console.log("Marker Clicked");
+  }
   public changeMarkerWithoutAni(lat: number, lng: number): void {
 
     const latLng = new google.maps.LatLng(lat, lng);
