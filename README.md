@@ -38,14 +38,13 @@ This starter uses [Parcel](https://parceljs.org/getting_started.html) as the bun
 
 ## Authors
 
-@toberixng	Oluwatobi Fatumo 
-@Onwuagba	Kenenna Onwuagba 
-@Dbinutu	Dbinutu
-@Tonykaynoni	Adedayo Anthony  
-@MelvinManni	Melvin Kosisochukwu 
-@b0nbon1	Bonvic Bundi 
-@Grace-Amarahu	Grace-Amarahu
-
+[@Oluwatobi Fatumo](https://github.com/toberixng)
+[@Kenenna Onwuagba](https://github.com/onwuagba)
+[@Dbinutu](https://github.com/Dbinutu)
+[@Adedayo Anthony](https://github.com/Tonykaynoni)
+[@Bonvic Bundi](https://github.com/b0nbon1)
+[@Grace-Amarahu](https://github.com/Grace-Amarahu)
+[@Melvin Kosisochukwu](https://github.com/MelvinManni)
 
 ## Contributing
 

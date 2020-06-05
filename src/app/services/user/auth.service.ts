@@ -38,6 +38,22 @@ export class AuthService {
     });
   }
 
+  getDangersLocation(): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const units = []; 
+      firebase.firestore().collection("road_danger").get().then(function (querySnapshot) {
+        querySnapshot.forEach((doc) => {
+          units.push(doc.data());
+          //units.push(doc.data().location,doc.data().dangerType,doc.data().description);
+          console.log(units);
+          resolve(units);
+        });
+      }).catch((error) => {
+        console.log("Error:" + error);
+      });
+    });
+  }
+
   getUnit(): Promise<any> {
     return new Promise((resolve, reject) => {
       const units = [];

@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
+import { RespondentBackMenuModule } from '../../../components/respondentback.components.module'
+
 import { RespondantRecoverPassPageRoutingModule } from './respondant-recover-pass-routing.module';
 
 import { RespondantRecoverPassPage } from './respondant-recover-pass.page';
@@ -13,6 +15,7 @@ import { RespondantRecoverPassPage } from './respondant-recover-pass.page';
     CommonModule,
     FormsModule,
     IonicModule,
+    RespondentBackMenuModule,
     RespondantRecoverPassPageRoutingModule
   ],
   declarations: [RespondantRecoverPassPage]
