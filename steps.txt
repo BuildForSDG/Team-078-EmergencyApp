@@ -68,14 +68,13 @@ view-emergencies
       
     
 find-unit
-splash-page
-view-dangers
 get-help
-user-welcome
-unit-alert
-view-unit
+unit-alert---
 user-location
+user-welcome
 victim-confirm-loc-on-map
+view-dangers----
+view-unit---
 
     
     
