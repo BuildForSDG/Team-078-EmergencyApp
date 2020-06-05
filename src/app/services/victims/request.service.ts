@@ -1,7 +1,9 @@
-import {Injectable} from '@angular/core';
+import { Injectable } from '@angular/core';
+import { Platform } from '@ionic/angular';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
+import { PushNotificationService } from '../../services/notifications/push-notification.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +13,7 @@ export class RequestService {
   
   responders : any = [] ;
 
-  constructor() { }
+  constructor(private pushNotification: PushNotificationService, public platform: Platform) { }
 
   assignResponders(victim_id:string, request_ref:string, request_type:string, 
     request_lat: number, request_long:number,request_address: string, 
@@ -27,7 +29,10 @@ export class RequestService {
         this.responders.push(doc.id);
         //Here we will want to perform a sort of realtime notification
         //Ideally, it would be a push notification
-       
+        //check for platform before using this so as to avoid the error on the web console
+        if(this.platform.is('android') || this.platform.is('ios')){
+          this.pushNotification ;
+        }
       });
       //alert all these responders by populating the assigned_responders
       //on the request
