@@ -1,0 +1,209 @@
+//.................header Title and SVG start..........................//
+
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    height: 40px;
+    width: 40px;
+  }
+
+.header-shadow-text {
+    font-family: 'Poppins', 'sans-serif';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 5vw;
+    text-align: center;
+    letter-spacing: 0.05em;
+    color: rgb(0, 18, 70, 0.8);
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    text-transform: uppercase;
+}
+
+.logo-title {
+    height: 40px;
+    width: 40px;
+}
+
+.menu-title {
+    position: relative;
+    top: -10px;
+.back-btn {
+    position: absolute;
+    top: 20px;
+    left: 10px;
+    height: 40px;
+    width: 40px;
+  }
+} 
+//modified
+//.....................header Title and SVG end..............................//
+// ....................Menu harmburger design start.........................//
+.main-menu-harmburger {
+    width: 50px;
+    height: 50px;
+    position: relative;
+    top: -5px;
+}
+
+.menu-harmbg-1 {
+    position: absolute;
+    min-width: 100%;
+    height: 1.86px;
+    background: var(--ion-color-secondary);
+    border-radius: 45px;
+    border: 1px solid #ffc409;
+    margin-bottom: 5px;
+}
+
+.menu-harmbg-2 {
+    position: absolute;
+    min-width: 80%;
+    height: 1.86px;
+    background: var(--ion-color-secondary);
+    border-radius: 45px;
+    border: 1px solid #ffc409;
+    margin-top: 5px;
+    left: 8.2px;
+}
+
+.menu-harmbg-3 {
+    position: absolute;
+    min-width: 100%;
+    height: 1.86px;
+    background: var(--ion-color-secondary);
+    border-radius: 45px;
+    border: 1px solid #ffc409;
+    margin-top: 10px;
+}
+
+@supports (-moz-appearance:none) {
+    .menu-harmbg-1 {
+        position: absolute;
+        width: 30px;
+        height: 1.86px;
+        background: var(--ion-color-secondary);
+        border-radius: 45px;
+        border: 1px solid black;
+        // margin-bottom: 5px;
+        top: 13px;
+    }
+    .menu-harmbg-2 {
+        position: absolute;
+        width: 19.71px;
+        height: 1.86px;
+        background: var(--ion-color-secondary);
+        border-radius: 45px;
+        border: 1px solid black;
+        // margin-top: 5px;
+        top: 13px;
+        left: 10px;
+    }
+    .menu-harmbg-3 {
+        position: absolute;
+        width: 30px;
+        height: 1.86px;
+        background: var(--ion-color-secondary);
+        border-radius: 45px;
+        border: 1px solid black;
+        // margin-top: 10px;
+        top: 13px;
+    }
+}
+
+//.........................Menu harmburger design end.............................//
+//...............................Menu Icon and Grid start...........................//
+ion-menu {
+    --ion-background-color: rgb(0, 18, 70, 0.8);
+    ion-item {
+        background: transparent;
+    }
+    ion-label {
+        color: white;
+    }
+    ion-icon {
+        color: white;
+        margin-right: 20px;
+    }
+}
+
+ion-menu-button {
+    padding-top: 10px;
+}
+
+.menu-close {
+    position: absolute;
+    top: 10px;
+    left: 250px;
+    height: 45px;
+    width: 45px;
+}
+
+.item-background {
+    --ion-background-color: transparent;
+}
+
+.menu-border {
+    position: absolute;
+    width: 90%;
+    --height: 40%;
+    border: 2px solid var(--ion-color-primary);
+    box-sizing: border-box;
+    border-radius: 3px;
+    margin: 10px 0 1px 15px;
+}
+
+.menu-icon {
+    width: 30px;
+    height: 30px;
+}
+
+.menu-main-icon {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 50px;
+}
+
+.menu-main-icon:first-child {
+    padding-left: 10px;
+}
+
+.menu-item-line {
+    border-bottom: 2px solid var(--ion-color-primary);
+}
+
+//....................Menu Icon and Grid End............................//
+//.................... Media Query ............................//
+//.................... Media Query ............................//
+@media only screen and (max-width: 320px) {
+    .header-shadow-text {
+        font-size: 2vw;
+        word-wrap: break-word;
+    }
+    .user-helpsvg {
+        width: 20px;
+        height: 20px;
+    }
+}
+
+
+/* Large devices (laptops/desktops, 992px and up) */
+
+@media only screen and (min-width: 992px) {
+    .header-shadow-text {
+        font-size: 24px;
+    }
+}
+
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+
+@media only screen and (min-width: 1200px) {
+    .header-shadow-text {
+        font-size: 24px;
+    }
+}

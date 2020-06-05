@@ -188,7 +188,13 @@ const routes: Routes = [
   {
     path: 'respondent-add-danger',
     loadChildren: () => import('./pages/respondant-pages/respondent-add-danger/respondent-add-danger.module').then( m => m.RespondentAddDangerPageModule)
+  },  {
+    path: 'respondant-edit-details',
+    loadChildren: () => import('./pages/respondant-pages/respondant-edit-details/respondant-edit-details.module').then( m => m.RespondantEditDetailsPageModule)
   }
+
+
+
 
 
 ];
