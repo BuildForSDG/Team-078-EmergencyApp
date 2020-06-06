@@ -49,7 +49,6 @@ export class RespondentViewDangersPage implements OnInit {
     });
   }
 
-  
   loadDangers():	void	{
     this.loadingCtrl.create({
       message:	'Setting current location...'
@@ -58,7 +57,7 @@ export class RespondentViewDangersPage implements OnInit {
         Geolocation.getCurrentPosition().then((position)	=>	{
             overlay.dismiss();
             //display danger fetched from firebase
-            this.map.displayMultipleMarkers(this.locations);
+            this.map.respondentOrAdminDisplayMultipleMarkers(this.locations);
             this.alertCtrl.create({
               header:	'Location	set!',
               message: 'You can now view any dangers on your current route.',

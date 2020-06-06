@@ -27,6 +27,7 @@ export class GoogleMapComponent {
   private mapsLoaded = false;
   private networkHandler = null;
   public connectionAvailable = true;
+  public allMarkers = [];
 
   constructor(private renderer: Renderer2, private element: ElementRef,
     private platform: Platform, @Inject(DOCUMENT) private _document) { }
@@ -55,11 +56,8 @@ export class GoogleMapComponent {
   }
 
   private loadSDK(): Promise<any> {
-
     console.log('Loading	Google	Maps	SDK');
-
     this.addConnectivityListeners();
-
     return new Promise((resolve, reject) => {
       if (!this.mapsLoaded) {
         Network.getStatus().then((status) => {
@@ -93,7 +91,6 @@ export class GoogleMapComponent {
   }
 
   private injectSDK(): Promise<any> {
-
     return new Promise((resolve, reject) => {
       window['mapInit'] = () => {
         this.mapsLoaded = true;
@@ -109,13 +106,10 @@ export class GoogleMapComponent {
       }
       this.renderer.appendChild(this._document.body, script);
     });
-
   }
 
   private initMap(): Promise<any> {
-
     return new Promise((resolve, reject) => {
-
       Geolocation.getCurrentPosition({ enableHighAccuracy: true, timeout: 10000 }).then((position) => {
         console.log(position);
         // let	latLng	=	new	google.maps.LatLng(46.064941,13.230720);
@@ -124,9 +118,7 @@ export class GoogleMapComponent {
           center: latLng,
           zoom: 15
         };
-
         this.map = new google.maps.Map(this.element.nativeElement, mapOptions);
-
         resolve(true);
       }, (err) => {
         console.log(err);
@@ -136,7 +128,6 @@ export class GoogleMapComponent {
     });
 
   }
-
 
   public watch() {
     return new Promise((resolve, reject) => {
@@ -200,9 +191,8 @@ export class GoogleMapComponent {
     this.marker = marker
   }
 
-  public displayMultipleMarkers(markers: []): void {
+  public respondentOrAdminDisplayMultipleMarkers(markers: []): void {
     var markerInfo;
-    // const entries = Object.entries(markers)
     console.log("Auth Details", markers);
     markers.forEach((marker) => {
       markerInfo = new google.maps.Marker({
@@ -211,22 +201,52 @@ export class GoogleMapComponent {
         animation: google.maps.Animation.DROP,
         title: marker['dangerType']
       });
+      this.allMarkers.push(markerInfo);
       // var dateCreated = marker['request_time'];
       var dateCreated = new Date(marker['request_time']['seconds'] * 1000).toLocaleString();
       var infowindow = new google.maps.InfoWindow({
         content: `<div class=infowindow><h4>${marker['dangerType']}</h4><p>Description: 
-        ${marker['description']}</p><p>Date: ${dateCreated}</p></div><ion-button (click)="deleteMarker()">remove</ion-button>`
+        ${marker['description']}</p><p>Date: ${dateCreated}</p></div><ion-button>remove</ion-button>`,
+        location: {
+          lat: marker['location']['lat'],
+          lng: marker['location']['lng'],
+        },
+        currentInfoMarker: markerInfo
       });
+      //event listener to call the infoWindow when the marker is clicked
+      //the this.infoCallback(infowindow, markerInfo will ensure that the browsers remebers with marker was 
+      //clicked and with what details
       google.maps.event.addListener(markerInfo, 'click', this.infoCallback(infowindow, markerInfo));
+
+      //we add the event listener to remove marker here 
+      google.maps.event.addListener(infowindow, 'domready', () => {
+        const el = document.querySelector('ion-button');
+        el.addEventListener('click', () => this.deleteMarker(infowindow));
+      });
     });
   }
 
   public infoCallback(infowindow, marker) {
     return function () { infowindow.open(this.map, marker); };
   }
-  public deleteMarker(){
-    console.log("Marker Clicked");
+  public deleteMarker(infowindow) {
+    //fetch the location that matches the selected marker in firestore
+    var getLocation = firebase.firestore().collection('road_danger')
+      .where('location', '==', infowindow.location);
+    getLocation.get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        //delete the date
+        doc.ref.delete();
+        infowindow.close();
+        //remove the marker from the map
+        infowindow.currentInfoMarker.setMap(null);
+      });
+    }), error => {
+      console.log(error);
+    };
+
   }
+
   public changeMarkerWithoutAni(lat: number, lng: number): void {
 
     const latLng = new google.maps.LatLng(lat, lng);
@@ -257,8 +277,5 @@ export class GoogleMapComponent {
       });
     });
   }
-
-
-
 
 }

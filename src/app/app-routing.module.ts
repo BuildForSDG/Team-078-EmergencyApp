@@ -196,7 +196,12 @@ const routes: Routes = [
     {
     path: 'respondant-details',
     loadChildren: () => import('./pages/respondant-pages/respondant-details/respondant-details.module').then( m => m.RespondantDetailsPageModule)
+  },
+  {
+    path: 'admin-view-dangers',
+    loadChildren: () => import('./pages/admin-pages/admin-view-dangers/admin-view-dangers.module').then( m => m.AdminViewDangersPageModule)
   }
+
 
 ];
 @NgModule({
