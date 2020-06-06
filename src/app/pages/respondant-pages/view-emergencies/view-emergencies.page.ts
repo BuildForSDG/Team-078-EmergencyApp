@@ -13,11 +13,6 @@ import "firebase/firestore";
 })
 export class ViewEmergenciesPage implements OnInit {
   emergencies : any = [];
-
-  // Store values from emergencyList
-//   @Input() Number = '098765431';
-//   @Input() Time = 'Mon 12 Dec, 2020';
-//   @Input() Location = 'National Industrial Court Nigeria 6th Lugard Ave, GRA, Enugu.';
   public Response: string;
 
   constructor(private modalController: ModalController) {
