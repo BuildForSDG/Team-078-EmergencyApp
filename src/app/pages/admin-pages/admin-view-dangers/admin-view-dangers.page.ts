@@ -31,7 +31,7 @@ export class AdminViewDangersPage implements OnInit {
             await this.loading.present();
             this.locations = await result;
             this.loadDangers();
-            console.log("Info", result);
+           // console.log("Info", result);
             this.loading.dismiss();
           }).catch((error) => {
             this.loading.dismiss().then(async () => {

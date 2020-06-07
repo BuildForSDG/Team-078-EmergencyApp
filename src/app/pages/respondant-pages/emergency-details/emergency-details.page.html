@@ -18,12 +18,20 @@
               <div class="ion-text-start ion-margin ion-padding em_item">
                 <h3 class="em_header">Details :</h3>
                 <p>
-                  {{phone_number}} <br>
-                  {{time}} <br>
-                  {{location}}
+                  Phone: {{phone_number}} <br><br>
+                  Request Time: {{time}} <br><br>
+                  Location: {{location}}
                 </p>
               </div>
+              
+           
             </ion-item>
+          </div>
+          <div>
+          <ion-item>
+            <ion-button size="small" (click)="openMapModal()" color="warning">View on Map
+            </ion-button>
+          </ion-item>
           </div>
         </ion-grid>
       </ion-col>

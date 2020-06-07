@@ -33,9 +33,6 @@ export class AdminAddRespondantPage implements OnInit {
     public alertCtrl: AlertController,
     public modalController: ModalController
   ) {
-
-    
-
     _auth.getUnit().then(async (result) => {
       this.loading = await this.loadingCtrl.create();
       await this.loading.present();
@@ -95,6 +92,7 @@ export class AdminAddRespondantPage implements OnInit {
     await this.loading.present();
     if(
     this.addReponderCredentials.email != "" &&
+    this.addReponderCredentials.fullname != "" &&
     this.addReponderCredentials.password != "" &&
     this.addReponderCredentials.phone_number != "" &&
     this.addReponderCredentials.address != "" &&
@@ -106,6 +104,7 @@ export class AdminAddRespondantPage implements OnInit {
       .addResponder(
         this.addReponderCredentials.email,
         this.addReponderCredentials.password,
+        this.addReponderCredentials.fullname,
         this.addReponderCredentials.phone_number,
         this.addReponderCredentials.address,
         this.addReponderCredentials.respondant_unit,
