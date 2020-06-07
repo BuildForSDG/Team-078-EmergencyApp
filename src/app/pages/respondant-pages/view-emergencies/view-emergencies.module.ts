@@ -4,11 +4,11 @@ import { FormsModule } from '@angular/forms';
 import { Component } from '@angular/core';
 import { ModalController } from '@ionic/angular';
 import { IonicModule } from '@ionic/angular';import { RespondantMenuModule } from '../../../components/respondant.components.module'
-
 import { ViewEmergenciesPageRoutingModule } from './view-emergencies-routing.module';
-
 import { ViewEmergenciesPage } from './view-emergencies.page';
 import { EmergencyDetailsPage } from '../emergency-details/emergency-details.page';
+import { RespondentViewRequestOnMapPage } from '../respondent-view-request-on-map/respondent-view-request-on-map.page';
+import { ViewDangersPageModule } from '../../victim-pages/view-dangers/view-dangers.module';
 
 @NgModule({
   imports: [
@@ -16,10 +16,11 @@ import { EmergencyDetailsPage } from '../emergency-details/emergency-details.pag
     FormsModule,
     IonicModule,
     RespondantMenuModule,
-    ViewEmergenciesPageRoutingModule
+    ViewEmergenciesPageRoutingModule,
+    ViewDangersPageModule
   ],
-  declarations: [ViewEmergenciesPage, EmergencyDetailsPage],
-  entryComponents: [EmergencyDetailsPage]
+  declarations: [ViewEmergenciesPage, EmergencyDetailsPage,RespondentViewRequestOnMapPage],
+  entryComponents: [EmergencyDetailsPage,RespondentViewRequestOnMapPage]
 })
 export class ViewEmergenciesPageModule {}
 
