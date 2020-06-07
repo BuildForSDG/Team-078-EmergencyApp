@@ -36,7 +36,7 @@ export class ViewEmergenciesPage implements OnInit {
               let data = {
                 id: doc.id,
                 phone_number : doc.data().victim_number,
-                time: doc.data().request_time,
+                time:  new Date(doc.data().request_time * 1000).toLocaleString(),
                 location: doc.data().request_address
               }
               this.emergencies.push(data);

@@ -45,11 +45,11 @@ export class AuthService {
         querySnapshot.forEach((doc) => {
           units.push(doc.data());
           //units.push(doc.data().location,doc.data().dangerType,doc.data().description);
-          console.log(units);
+          //console.log(units);
           resolve(units);
         });
       }).catch((error) => {
-        console.log("Error:" + error);
+        //console.log("Error:" + error);
       });
     });
   }
@@ -108,6 +108,7 @@ export class AuthService {
   addResponder(
     email: string,
     password: string,
+    fullname: string,
     phoneNumber: string,
     address: string,
     respondantUnit: string,
@@ -124,7 +125,8 @@ export class AuthService {
           .doc(`/responder/${newUserCredential.user.uid}`)
           .set({
             email,
-            password: password,
+            password,
+            fullname,
             phoneNumber,
             address,
             respondantUnit,
@@ -182,19 +184,16 @@ export class AuthService {
         // alert(error.message);
         throw new Error(error);
       });
-  }
+  }  
 
-// <<<<<<< assign-requests-to-unit-by-proximity
-  
+  //store victims request to firebase
   addRequest(victim_id:string, request_ref:string, request_type:string, 
     request_lat: number, request_long:number,request_address: string, 
     respond_rating: string,responder_email:string, victim_number:string, formatted_address:string ):Promise<any>{
-
     return  firebase
     .firestore()
     .collection('request')
     .add({
-// <<<<<<< assign-requests-to-unit-by-proximity
       victim_id: victim_id,
       request_ref: request_ref,
       request_type: request_type,

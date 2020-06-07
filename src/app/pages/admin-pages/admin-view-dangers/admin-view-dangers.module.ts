@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule,CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
@@ -14,6 +14,7 @@ import { ViewDangersPageModule } from '../../victim-pages/view-dangers/view-dang
     AdminViewDangersPageRoutingModule,
     ViewDangersPageModule
   ],
-  declarations: [AdminViewDangersPage]
+  declarations: [AdminViewDangersPage],
+  schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class AdminViewDangersPageModule { }
