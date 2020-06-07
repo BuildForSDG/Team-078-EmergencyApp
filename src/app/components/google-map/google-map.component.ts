@@ -191,59 +191,23 @@ export class GoogleMapComponent {
 
   }
   public viewRequestOnMap(reponderLocation: {}, requestLocation: {}): void {
-    var responderMarker, requestMarker;
-    var directionsDisplay;
-    directionsDisplay = new google.maps.DirectionsRenderer();
-    responderMarker = new google.maps.Marker({
-      position: new google.maps.LatLng(reponderLocation['lat'], reponderLocation['lng']),
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      title: 'Currect Location',
-      icon: '../../assets/map-icon/respondent_icon.png',
-    });
-    //this.allMarkers.push(markerInfo);
-    //var dateCreated = new Date(marker['request_time']['seconds'] * 1000).toLocaleString();
-    var infowindow = new google.maps.InfoWindow({
-      content: `Your Current Location`
-    });
-    //event listener to call the infoWindow when the marker is clicked
-    //the this.infoCallback(infowindow, markerInfo will ensure that the browsers remembers with marker was 
-    //clicked and with what details
-    google.maps.event.addListener(responderMarker, 'click', this.infoCallback(infowindow, responderMarker));
-
-    //Add request Marker
-    requestMarker = new google.maps.Marker({
-      position: new google.maps.LatLng(requestLocation['lat'], requestLocation['lng']),
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      title: 'Request Location',
-      icon: '../../assets/map-icon/request_icon.png',
-    });
-    //this.allMarkers.push(markerInfo);
-    //var dateCreated = new Date(marker['request_time']['seconds'] * 1000).toLocaleString();
-    var infowindow2 = new google.maps.InfoWindow({
-      content: `Request Location`
-    });
-    //event listener to call the infoWindow when the marker is clicked
-    //the this.infoCallback(infowindow, markerInfo will ensure that the browsers remembers with marker was 
-    //clicked and with what details
-    google.maps.event.addListener(requestMarker, 'click', this.infoCallback(infowindow2, requestMarker));
+    const directionsDisplay = new google.maps.DirectionsRenderer();
     directionsDisplay.setMap(this.map);
-    var start = new google.maps.LatLng(reponderLocation['lat'], reponderLocation['lng']);
-    var end = new google.maps.LatLng(requestLocation['lat'], requestLocation['lng']);
-    var request = {
-      origin: start,
-      destination: end,
-      travelMode: google.maps.TravelMode.DRIVING
-    };
-    var directionsService = new google.maps.DirectionsService();
-    directionsService.route(request, function (response, status) {
-      if (status == google.maps.DirectionsStatus.OK) {
-        directionsDisplay.setDirections(response);
-        directionsDisplay.setMap(this.map);
-      }
-    });
 
+    const start = new google.maps.LatLng(reponderLocation['lat'], reponderLocation['lng']);
+    const end = new google.maps.LatLng(requestLocation['lat'], requestLocation['lng']);
+    const directionsService = new google.maps.DirectionsService();
+    directionsService.route(
+      {
+        origin: start,
+        destination: end,
+        travelMode: google.maps.TravelMode.DRIVING
+      },
+      function (response, status) {
+        if (status === 'OK') {
+          directionsDisplay.setDirections(response);
+        }
+      });
     if (this.marker) {
       this.marker.setMap(null);
     }
