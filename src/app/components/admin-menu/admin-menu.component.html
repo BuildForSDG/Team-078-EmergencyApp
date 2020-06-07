@@ -25,7 +25,7 @@
         </ion-item>
       </ion-menu-toggle>
       <ion-menu-toggle>
-        <ion-item class="item-background" style="padding: 50px 0px 10px 5px;" href="/admin-login" >
+        <ion-item class="item-background" style="padding: 50px 0px 10px 5px;">
           <ion-icon color="secondary" class="menu-icon" name="log-in-outline"></ion-icon>
         </ion-item>
       </ion-menu-toggle>
@@ -33,6 +33,11 @@
   </ion-header>
   <ion-content>
     <ion-list class="menu-border">
+      <ion-menu-toggle>
+        <ion-item class="menu-item-line" href="/admin-add-danger">
+          <ion-label>Add Danger</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
       <ion-menu-toggle>
         <ion-item class="menu-item-line" href="/view-respondant-list">
           <ion-label>View Responders</ion-label>
@@ -48,11 +53,12 @@
           <ion-label>View Admins</ion-label>
         </ion-item>
       </ion-menu-toggle>
-      <ion-menu-toggle>
+      <!-- @Kenenna: This menu is not important. The edit admin page should only be accessible when the page is selected from an admin info. -->
+      <!-- <ion-menu-toggle>
         <ion-item href="/admin-edit-admin">
           <ion-label>Edit Admin</ion-label>
         </ion-item>
-      </ion-menu-toggle>
+      </ion-menu-toggle> -->
     </ion-list>
   </ion-content>
   <ion-router-outlet id="main"></ion-router-outlet>
