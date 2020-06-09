@@ -7,5 +7,6 @@
 <app-victimblue-menu></app-victimblue-menu>
 
 <ion-content>
+  <app-google-places (setAddress)="getAddress($event)" adressType="geocode" apiKey="AIzaSyBExZNShIaWE9RKXq_oqsAgyaYcYRhYGB8"></app-google-places>
   <app-google-map	apiKey="AIzaSyBExZNShIaWE9RKXq_oqsAgyaYcYRhYGB8"></app-google-map> 
 </ion-content>
