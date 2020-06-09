@@ -10,6 +10,7 @@ import "firebase/auth";
 import "firebase/firestore";
 
 const {Geolocation} = Plugins;
+
 declare var google;
 @Component({
   selector: 'app-victim-confirm-loc-on-map',
@@ -21,7 +22,6 @@ export class VictimConfirmLocOnMapPage implements OnInit {
   map: GoogleMapComponent;
   private latitude: number;
   private longitude: number;
-
   public loading: HTMLIonLoadingElement;
   data: any;
   markerlatlong = {
