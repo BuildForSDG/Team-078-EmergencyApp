@@ -130,7 +130,6 @@ export class ViewDangersPage implements OnInit {
 
         this.directionsDisplay = new google.maps.DirectionsRenderer();
         this.directionsDisplay.setMap(this.map.map);
-        console.log(this.directionsDisplay);
         const start = new google.maps.LatLng(current_pos.coords.latitude, current_pos.coords.longitude);
         const end = new google.maps.LatLng(this.destinationLatLng.lat, this.destinationLatLng.lng);
         const directionsService = new google.maps.DirectionsService();
