@@ -28,10 +28,10 @@ export class GoogleMapComponent {
   private networkHandler = null;
   public connectionAvailable = true;
   public allMarkers = [];
-  private isOpenInfoWindow : any;
+  private isOpenInfoWindow : boolean = false;
   directionsDisplay: any;
   private direction: boolean = false;
-
+  private currentOpenInfo: any;
   constructor(private renderer: Renderer2, private element: ElementRef,
     private platform: Platform, @Inject(DOCUMENT) private _document) { }
 
@@ -374,13 +374,14 @@ export class GoogleMapComponent {
   //info window method
   public infoCallback(infowindow, marker) {
     var that = this;
-    if(that.isOpenInfoWindow){
-      that.isOpenInfoWindow.close();
-      //console
-    }
+   
     return function () { 
+      if(that.isOpenInfoWindow == true){
+        that.currentOpenInfo.close();
+      }
       infowindow.open(this.map, marker);
-      that.isOpenInfoWindow = infowindow;
+      that.isOpenInfoWindow = true;
+      that.currentOpenInfo = infowindow;
     };
   }
   public deleteMarker(infowindow) {
