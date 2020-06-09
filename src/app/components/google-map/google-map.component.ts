@@ -388,10 +388,10 @@ export class GoogleMapComponent {
   public deleteMarker(infowindow) {
     //fetch the location that matches the selected marker in firestore
     var getLocation = firebase.firestore().collection('road_danger')
-      .where('location', '==', infowindow.location);
+      .where('location', '==', infowindow.location)
     getLocation.get().then(function (querySnapshot) {
       querySnapshot.forEach(function (doc) {
-        //delete the date
+        //delete the data
         doc.ref.delete();
         infowindow.close();
         //remove the marker from the map
