@@ -257,33 +257,6 @@ export class AuthService {
       });
   }
 
-  facebookSignIn(): Promise<void> {
-    const provider = new firebase.auth.FacebookAuthProvider();
-    firebase.auth().signInWithRedirect(provider);
-    return firebase
-      .auth()
-      .getRedirectResult()
-      .then((result) => {
-        if (result.credential) {
-          // This gives you a Facebook Access Token. You can use it to access the Facebook API.
-          // var token = result.credential.accessToken;
-          // ...
-        }
-        // The signed-in user info.
-        const user = result.user;
-      })
-      .catch((error) => {
-        // Handle Errors here.
-        const errorCode = error.code;
-        const errorMessage = error.message;
-        // The email of the user's account used.
-        const email = error.email;
-        // The firebase.auth.AuthCredential type that was used.
-        const credential = error.credential;
-        // ...
-      });
-  }
-
   resetPassword(email: string): Promise<void> {
     return firebase.auth().sendPasswordResetEmail(email);
   }

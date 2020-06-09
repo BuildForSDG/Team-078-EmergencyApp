@@ -100,7 +100,7 @@ export class GoogleMapComponent {
       script.id = 'googleMaps';
 
       if (this.apiKey) {
-        script.src = 'https://maps.googleapis.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit&libraries=geometry,places';
       } else {
         script.src = 'https://maps.googleapis.com/maps/api/js?callback=mapInit';
       }
@@ -119,7 +119,8 @@ export class GoogleMapComponent {
           zoom: 13
         };
         this.map = new google.maps.Map(this.element.nativeElement, mapOptions);
-        resolve(true);
+        //resolve the latLng to be used to get the current position
+        resolve(position);
       }, (err) => {
         console.log(err);
         reject('Could	not	initialise map');
@@ -213,15 +214,47 @@ export class GoogleMapComponent {
     }
   }
 
-  public respondentOrAdminDisplayMultipleMarkers(markers: []): void {
+  public victimDisplayMultipleMarkers(markers: []): void {
     var markerInfo;
     console.log("Auth Details", markers);
     markers.forEach((marker) => {
+      var image = 'http://maps.google.com/mapfiles/kml/shapes/caution.png';
       markerInfo = new google.maps.Marker({
         position: new google.maps.LatLng(marker['location']['lat'], marker['location']['lng']),
         map: this.map,
         animation: google.maps.Animation.DROP,
-        title: marker['dangerType']
+        title: marker['dangerType'],
+        icon: image
+      });
+      this.allMarkers.push(markerInfo);
+      var dateCreated = new Date(marker['request_time']['seconds'] * 1000).toLocaleString();
+      var infowindow = new google.maps.InfoWindow({
+        content: `<div class=infowindow><h4>${marker['dangerType']}</h4><p>Description: 
+        ${marker['description']}</p><p>Date: ${dateCreated}</p></div>`,
+        location: {
+          lat: marker['location']['lat'],
+          lng: marker['location']['lng'],
+        },
+        currentInfoMarker: markerInfo
+      });
+      //event listener to call the infoWindow when the marker is clicked
+      //the this.infoCallback(infowindow, markerInfo will ensure that the browsers remembers with marker was 
+      //clicked and with what details
+      google.maps.event.addListener(markerInfo, 'click', this.infoCallback(infowindow, markerInfo));
+    });
+  }
+
+  public respondentOrAdminDisplayMultipleMarkers(markers: []): void {
+    var markerInfo;
+    console.log("Auth Details", markers);
+    markers.forEach((marker) => {
+      var image = 'http://maps.google.com/mapfiles/kml/shapes/caution.png';
+      markerInfo = new google.maps.Marker({
+        position: new google.maps.LatLng(marker['location']['lat'], marker['location']['lng']),
+        map: this.map,
+        animation: google.maps.Animation.DROP,
+        title: marker['dangerType'],
+        icon: image
       });
       this.allMarkers.push(markerInfo);
       var dateCreated = new Date(marker['request_time']['seconds'] * 1000).toLocaleString();
@@ -298,5 +331,6 @@ export class GoogleMapComponent {
       });
     });
   }
+
 
 }
