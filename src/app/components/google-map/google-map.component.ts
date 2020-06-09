@@ -103,7 +103,7 @@ export class GoogleMapComponent {
       script.id = 'googleMaps';
 
       if (this.apiKey) {
-        script.src = 'https://maps.googleapis.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit';
+        script.src = 'https://maps.googleapis.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit&libraries=geometry,places';
       } else {
         script.src = 'https://maps.googleapis.com/maps/api/js?callback=mapInit';
       }
@@ -126,8 +126,8 @@ export class GoogleMapComponent {
         };
 
         this.map = new google.maps.Map(this.element.nativeElement, mapOptions);
-
-        resolve(true);
+        //resolve the latLng to be used to get the current position
+        resolve(position);
       }, (err) => {
         console.log(err);
         reject('Could	not	initialise map');
@@ -205,11 +205,13 @@ export class GoogleMapComponent {
     // const entries = Object.entries(markers)
     console.log("Auth Details", markers);
     markers.forEach((marker) => {
+      var image = 'http://maps.google.com/mapfiles/kml/shapes/caution.png';
       markerInfo = new google.maps.Marker({
         position: new google.maps.LatLng(marker['location']['lat'], marker['location']['lng']),
         map: this.map,
         animation: google.maps.Animation.DROP,
-        title: marker['dangerType']
+        title: marker['dangerType'],
+        icon: image
       });
       // var dateCreated = marker['request_time'];
       var dateCreated = new Date(marker['request_time']['seconds'] * 1000).toLocaleString();
@@ -254,8 +256,6 @@ export class GoogleMapComponent {
       });
     });
   }
-
-
 
 
 }
