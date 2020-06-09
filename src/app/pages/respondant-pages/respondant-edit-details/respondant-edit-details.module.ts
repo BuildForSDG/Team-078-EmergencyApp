@@ -4,7 +4,7 @@ import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
 
-import { RespondantMenuModule } from '../../../components/respondant.components.module'
+import { RespondentBackMenuModule  } from '../../../components/respondentback.components.module'
 
 import { RespondantEditDetailsPageRoutingModule } from './respondant-edit-details-routing.module';
 
@@ -15,7 +15,7 @@ import { RespondantEditDetailsPage } from './respondant-edit-details.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    RespondantMenuModule,
+    RespondentBackMenuModule,
     RespondantEditDetailsPageRoutingModule
   ],
   declarations: [RespondantEditDetailsPage]
