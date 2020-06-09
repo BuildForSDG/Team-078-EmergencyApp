@@ -191,6 +191,67 @@ export class GoogleMapComponent {
     }
 
   }
+
+
+  public viewUnitOnMap(usersLocation: {}, unitLocation: []): void {
+    var markerInfo;
+    //console.log("Auth Details", markers);
+    unitLocation.forEach((marker) => {
+      var image = 'http://maps.google.com/mapfiles/ms/micons/red-dot.png';
+      if (marker['unit_type'] == "Fire") {
+        image = 'http://maps.google.com/mapfiles/ms/micons/firedept.png';
+      }
+      if (marker['unit_type'] == "Accident") {
+        image = 'http://maps.google.com/mapfiles/ms/micons/hospitals.png';
+      }
+
+      markerInfo = new google.maps.Marker({
+        position: new google.maps.LatLng(marker['coordinates']['lat'], marker['coordinates']['lng']),
+        map: this.map,
+        animation: google.maps.Animation.DROP,
+        title: marker['unit_title'],
+        icon: image
+      });
+      this.allMarkers.push(markerInfo);
+      //var dateCreated = new Date(marker['reg_date']['seconds'] * 1000).toLocaleString();
+      var infowindow = new google.maps.InfoWindow({
+        content: `<div class=infowindow><h4>${marker['unit_title']}</h4><p>Type: 
+        ${marker['unit_type']}</p><p>Phone: 
+        ${marker['phone_number']}</p></div>`,
+        location: {
+          lat: marker['coordinates']['lat'],
+          lng: marker['coordinates']['lng'],
+        },
+        currentInfoMarker: markerInfo
+      });
+      //event listener to call the infoWindow when the marker is clicked
+      //the this.infoCallback(infowindow, markerInfo will ensure that the browsers remembers with marker was 
+      //clicked and with what details
+      google.maps.event.addListener(markerInfo, 'click', this.infoCallback(infowindow, markerInfo));
+    });
+
+    // const directionsDisplay = new google.maps.DirectionsRenderer();
+    // directionsDisplay.setMap(this.map);
+
+    // const start = new google.maps.LatLng(reponderLocation['lat'], reponderLocation['lng']);
+    // const end = new google.maps.LatLng(unitLoaction['coordinates']['lat'], unitLoaction['coordinates']['lng']);
+    // const directionsService = new google.maps.DirectionsService();
+    // directionsService.route(
+    //   {
+    //     origin: start,
+    //     destination: end,
+    //     travelMode: google.maps.TravelMode.DRIVING
+    //   },
+    //   function (response, status) {
+    //     if (status === 'OK') {
+    //       directionsDisplay.setDirections(response);
+    //     }
+    //   });
+    // if (this.marker) {
+    //   this.marker.setMap(null);
+    // }
+  }
+
   public viewRequestOnMap(reponderLocation: {}, requestLocation: {}): void {
     const directionsDisplay = new google.maps.DirectionsRenderer();
     directionsDisplay.setMap(this.map);
@@ -216,7 +277,7 @@ export class GoogleMapComponent {
 
   public victimDisplayMultipleMarkers(markers: []): void {
     var markerInfo;
-    console.log("Auth Details", markers);
+    //console.log("Auth Details", markers);
     markers.forEach((marker) => {
       var image = 'http://maps.google.com/mapfiles/kml/shapes/caution.png';
       markerInfo = new google.maps.Marker({

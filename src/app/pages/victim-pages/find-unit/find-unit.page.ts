@@ -11,7 +11,7 @@ import { VictimViewUnitOnMapPage } from '../victim-view-unit-on-map/victim-view-
 })
 export class FindUnitPage implements OnInit {
   userInfo = {
-    emmergency: '',
+    unitType: '',
     address: '',
     victim_id: ''
   };
@@ -52,7 +52,7 @@ export class FindUnitPage implements OnInit {
     //Sending the details submited to verify location page.
     this.loading = await this.loadingCtrl.create();
     await this.loading.present();
-    if (this.userInfo.emmergency !== '' && this.userInfo.address !== '') {
+    if (this.userInfo.unitType !== '') {
       // const navigationExtras: NavigationExtras = {
       //   state: {
       //     userInfo: this.userInfo
@@ -62,7 +62,7 @@ export class FindUnitPage implements OnInit {
         const modal = await this.modalController.create({
           component: VictimViewUnitOnMapPage,
           componentProps: {
-            emmergency: this.userInfo.emmergency,
+            unitType: this.userInfo.unitType,
             address: this.userInfo.address,
           }
         });

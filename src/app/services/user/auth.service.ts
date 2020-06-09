@@ -9,21 +9,40 @@ import { resolve } from 'url';
   providedIn: 'root'
 })
 export class AuthService {
-  addUnit(unit_title: string, unit_type: string, address: string, phone_number: string, coordinates: any) {
-    return  firebase
-    .firestore()
-    .collection('units')
-    .add({
-      unit_title: unit_title,
-      unit_type: unit_type,
-      address: address,
-      phone_number:phone_number,
-      coordinates: coordinates,
-      reg_date: firebase.firestore.FieldValue.serverTimestamp()
+
+  constructor() { }
+
+  //fetch units by unit type
+  getUnitsByUnitType(unitType: string): Promise<any> {
+    return new Promise((resolve, reject) => {
+      const unitsDetails = [];
+      return firebase.firestore().collection('units')
+        .where('unit_type', '==', unitType)
+        .get().then(function (querySnapshot) {
+          querySnapshot.forEach((doc) => {
+            unitsDetails.push(doc.data());
+            resolve(unitsDetails);
+          });
+        }).catch((error) => {
+          console.log("Error:" + error);
+        });
     });
   }
 
-  constructor() {}
+  addUnit(unit_title: string, unit_type: string, address: string, phone_number: string, coordinates: any) {
+    return firebase
+      .firestore()
+      .collection('units')
+      .add({
+        unit_title: unit_title,
+        unit_type: unit_type,
+        address: address,
+        phone_number: phone_number,
+        coordinates: coordinates,
+        reg_date: firebase.firestore.FieldValue.serverTimestamp()
+      });
+  }
+
   getUnitType(): Promise<any> {
     return new Promise((resolve, reject) => {
       const units = [];
@@ -40,7 +59,7 @@ export class AuthService {
 
   getDangersLocation(): Promise<any> {
     return new Promise((resolve, reject) => {
-      const units = []; 
+      const units = [];
       firebase.firestore().collection("road_danger").get().then(function (querySnapshot) {
         querySnapshot.forEach((doc) => {
           units.push(doc.data());
@@ -75,26 +94,26 @@ export class AuthService {
     return firebase.auth().signInWithEmailAndPassword(email, password);
   }
 
-  anonymousLogin() : Promise<any> {
+  anonymousLogin(): Promise<any> {
     return firebase.auth().signInAnonymously().then(firebaseUser => {
       firebase.firestore().doc(`victims/${firebaseUser.user.uid}`).set({
         email: ''
       });
       console.log('Signed in as:', firebaseUser.user.uid);
     },
-    error => {
-      console.error('Authentication failed:', error);
-    });
+      error => {
+        console.error('Authentication failed:', error);
+      });
   }
 
-  checkVictimAccount(victim) : Promise<any> {
+  checkVictimAccount(victim): Promise<any> {
     const doc = firebase.firestore().doc(`victims/${victim}`);
-    return	new	Promise((resolve,	reject)	=>	{
+    return new Promise((resolve, reject) => {
       doc.get().then((docu) => {
         // this user is already registered as a victim
-        if(docu.exists) {
-            reject('Victim Exists') ;
-        }else{
+        if (docu.exists) {
+          reject('Victim Exists');
+        } else {
           // this document does not exists meaning this victim has not been previously registered
           resolve(true);
         }
@@ -117,10 +136,10 @@ export class AuthService {
     formattedAddress: string
   ): Promise<any> {
     return firebase
-    .auth()
-    .createUserWithEmailAndPassword(email, password)
-    .then((newUserCredential: firebase.auth.UserCredential) => {
-           firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((newUserCredential: firebase.auth.UserCredential) => {
+        firebase
           .firestore()
           .doc(`/responder/${newUserCredential.user.uid}`)
           .set({
@@ -134,7 +153,7 @@ export class AuthService {
             location: coordinates,
             formattedAddress,
           })
-          .then(() =>{
+          .then(() => {
             return true;
           })
           .catch((error) => {
@@ -184,33 +203,33 @@ export class AuthService {
         // alert(error.message);
         throw new Error(error);
       });
-  }  
+  }
 
   //store victims request to firebase
-  addRequest(victim_id:string, request_ref:string, request_type:string, 
-    request_lat: number, request_long:number,request_address: string, 
-    respond_rating: string,responder_email:string, victim_number:string, formatted_address:string ):Promise<any>{
-    return  firebase
-    .firestore()
-    .collection('request')
-    .add({
-      victim_id: victim_id,
-      request_ref: request_ref,
-      request_type: request_type,
-      request_time: firebase.firestore.FieldValue.serverTimestamp(),
-      request_lat: request_lat,
-      request_long:request_long,
-      request_address : request_address,
-      respond_rating: respond_rating,
-      responder_email: responder_email,
-      victim_number: victim_number,
-      request_resolved: false,
-      assigned_responders: [],
-      responded_responder: '',
-      //this is the address passed in from geocoding
-      formatted_address : formatted_address
+  addRequest(victim_id: string, request_ref: string, request_type: string,
+    request_lat: number, request_long: number, request_address: string,
+    respond_rating: string, responder_email: string, victim_number: string, formatted_address: string): Promise<any> {
+    return firebase
+      .firestore()
+      .collection('request')
+      .add({
+        victim_id: victim_id,
+        request_ref: request_ref,
+        request_type: request_type,
+        request_time: firebase.firestore.FieldValue.serverTimestamp(),
+        request_lat: request_lat,
+        request_long: request_long,
+        request_address: request_address,
+        respond_rating: respond_rating,
+        responder_email: responder_email,
+        victim_number: victim_number,
+        request_resolved: false,
+        assigned_responders: [],
+        responded_responder: '',
+        //this is the address passed in from geocoding
+        formatted_address: formatted_address
 
-    });
+      });
   }
 
   addDanger(dangerType: string, description: string, lng: number, lat: number) {
@@ -218,15 +237,15 @@ export class AuthService {
       lat,
       lng
     };
-    return  firebase
-    .firestore()
-    .collection('road_danger')
-    .add({
-      dangerType,
-      description,
-      location,
-      request_time: firebase.firestore.FieldValue.serverTimestamp()
-    });
+    return firebase
+      .firestore()
+      .collection('road_danger')
+      .add({
+        dangerType,
+        description,
+        location,
+        request_time: firebase.firestore.FieldValue.serverTimestamp()
+      });
   }
   signupUser(
     firstname: string,

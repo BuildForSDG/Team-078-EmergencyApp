@@ -3,6 +3,7 @@ import { ModalController, AlertController, LoadingController } from '@ionic/angu
 import { GoogleMapComponent } from 'src/app/components/google-map/google-map.component';
 import * as firebase from 'firebase';
 import { Geolocation } from '@capacitor/core';
+import { AuthService } from 'src/app/services/user/auth.service';
 
 @Component({
   selector: 'app-victim-view-unit-on-map',
@@ -22,14 +23,18 @@ export class VictimViewUnitOnMapPage implements OnInit {
   map: GoogleMapComponent;
   public loading: HTMLIonLoadingElement;
   constructor(private alertCtrl: AlertController,
-  private loadingCtrl: LoadingController,private modalController: ModalController) { }
+  private loadingCtrl: LoadingController,private modalController: ModalController,
+  private _auth: AuthService) { }
   private latitude: number;
   private longitude: number;
+  unitType: string ;
+  unitsDetails: any;
   coord: any;
   ngOnInit() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.map.init().then((res) => {
+        this.map.init().then(async (res) => {
+          this.unitsDetails = await this._auth.getUnitsByUnitType(this.unitType);
           this.setLocation();
         }, (err) => {
           console.log(err);
@@ -56,7 +61,7 @@ export class VictimViewUnitOnMapPage implements OnInit {
           lng : this.longitude
         };
         //this.map.mapLocation();
-        this.map.viewRequestOnMap(currentLocation,this.coord);
+        this.map.viewUnitOnMap(currentLocation,this.unitsDetails);
         const data = {
           latitude: this.latitude,
           longitude: this.longitude

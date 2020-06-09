@@ -15,14 +15,14 @@
         <div class="form">
           <form size="12" (ngSubmit)="submitForm()" #infoForm="ngForm">
             <ion-item>
-              <ion-label>SELECT UNIT</ion-label>
-              <ion-select name="emmergency" [(ngModel)]="userInfo.emmergency" placeholder="Unit">
+              <ion-label>SELECT EMMERGENCY TYPE</ion-label>
+              <ion-select name="unitType" [(ngModel)]="userInfo.unitType" placeholder="Type">
                   <ion-select-option [value]="types" *ngFor="let types of emergencies">{{types}}</ion-select-option>
               </ion-select>
           </ion-item>
-            <ion-item no-lines>
+            <!-- <ion-item no-lines>
               <ion-input type="text" name="address" [(ngModel)]="userInfo.address" placeholder="ENTER LOCATION" required></ion-input>
-            </ion-item>
+            </ion-item> -->
             <ion-button type="submit">
               <ion-icon name="search-sharp"  slot="start"></ion-icon> Find
             </ion-button>
