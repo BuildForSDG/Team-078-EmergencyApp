@@ -218,7 +218,7 @@ export class GoogleMapComponent {
     var markerInfo;
     console.log("Auth Details", markers);
     markers.forEach((marker) => {
-      var image = 'http://maps.google.com/mapfiles/kml/shapes/caution.png';
+      var image = 'http://maps.google.com/mapfiles/kml/pal3/icon33.png';
       markerInfo = new google.maps.Marker({
         position: new google.maps.LatLng(marker['location']['lat'], marker['location']['lng']),
         map: this.map,
