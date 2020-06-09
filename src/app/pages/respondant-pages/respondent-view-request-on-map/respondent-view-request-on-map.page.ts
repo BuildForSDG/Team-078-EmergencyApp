@@ -43,6 +43,31 @@ export class RespondentViewRequestOnMapPage implements OnInit {
       message: 'Checking current location...'
     }).then((overlay) => {
       overlay.present();
+      //call the watch position function
+      const id = Geolocation.watchPosition({ enableHighAccuracy: true, timeout: 10000 }, (position, err) => {
+        // Geolocation.clearWatch({id});
+        overlay.dismiss();
+        this.latitude = position.coords.latitude;
+        this.longitude = position.coords.longitude;
+        const currentLocation = {
+          lat : this.latitude,
+          lng : this.longitude
+        };
+        this.map.viewRequestOnMap(currentLocation,this.coord);
+        this.map.changeMarker(this.latitude, this.longitude);
+        const data = {
+          latitude: this.latitude,
+          longitude: this.longitude
+        };
+        if (err) {
+          console.log(err);
+          overlay.dismiss();
+          return;
+        }
+
+      });
+      
+      /**
       Geolocation.getCurrentPosition().then((position) => {
         overlay.dismiss();
         this.latitude = position.coords.latitude;
@@ -68,6 +93,7 @@ export class RespondentViewRequestOnMapPage implements OnInit {
         console.log(err);
         overlay.dismiss();
       });
+      */
     });
   }
 
