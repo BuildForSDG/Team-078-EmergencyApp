@@ -193,6 +193,7 @@ const routes: Routes = [
     path: 'respondent-view-request-on-map',
     loadChildren: () => import('./pages/respondant-pages/respondent-view-request-on-map/respondent-view-request-on-map.module').then(m => m.RespondentViewRequestOnMapPageModule)
   }
+
 ];
 @NgModule({
   imports: [

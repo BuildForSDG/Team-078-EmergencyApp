@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { Component } from '@angular/core';
-import { ModalController } from '@ionic/angular';
 import { IonicModule } from '@ionic/angular';import { RespondantMenuModule } from '../../../components/respondant.components.module'
 import { ViewEmergenciesPageRoutingModule } from './view-emergencies-routing.module';
 import { ViewEmergenciesPage } from './view-emergencies.page';
