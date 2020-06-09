@@ -33,6 +33,10 @@ export class ViewDangersPage implements OnInit {
 
   private region: any = {};
 
+  private direction: boolean = false;
+
+  directionsDisplay: any ;
+
   address: Object;
   formattedAddress: string;
 
@@ -98,9 +102,9 @@ export class ViewDangersPage implements OnInit {
     .then(result=>{
       //console.log(result, "result");
       Geolocation.getCurrentPosition({ enableHighAccuracy: true, timeout: 10000 }).then((current_pos) => {
-        //remove any previously drawn lines.
-        if(typeof(this.region.geodesic) != 'undefined'){
-          this.region.setMap(null);
+        //remove any previously drawn directional lines.
+        if(this.direction == true){
+          this.directionsDisplay.setMap(null);
           this.map.map.setCenter(new google.maps.LatLng(current_pos.coords.latitude, current_pos.coords.longitude));
         }
         //destination coordinates from the geocoding 
@@ -112,6 +116,7 @@ export class ViewDangersPage implements OnInit {
           //destination
           {lat: this.destinationLatLng.lat, lng: this.destinationLatLng.lng}
         ];
+        /**
         this.region = new google.maps.Polyline({
           path: coords, 
           geodesic: true,
@@ -121,6 +126,30 @@ export class ViewDangersPage implements OnInit {
         });
 
         this.region.setMap(this.map.map);
+         */
+
+        this.directionsDisplay = new google.maps.DirectionsRenderer();
+        this.directionsDisplay.setMap(this.map.map);
+        console.log(this.directionsDisplay);
+        const start = new google.maps.LatLng(current_pos.coords.latitude, current_pos.coords.longitude);
+        const end = new google.maps.LatLng(this.destinationLatLng.lat, this.destinationLatLng.lng);
+        const directionsService = new google.maps.DirectionsService();
+        //we declare a variable that because 
+        //"this" becomes undefined inside the route callback
+        var that = this ;
+        directionsService.route(
+          {
+            origin: start,
+            destination: end,
+            travelMode: google.maps.TravelMode.DRIVING
+          },
+          function (response, status) {
+            if (status === 'OK') {
+              that.directionsDisplay.setDirections(response);
+              //set a variable to tell that directions service has been initiated
+              that.direction = true ; 
+            }
+          });
 
       }, (err) => {
         console.log(err);
