@@ -1,12 +1,4 @@
 // View Admins stylesheet
-.header,
-.footer {
-  width: 100%;
-  height: auto;
-  background: rgba(0, 21, 79, 0.9);
-  margin: 0;
-}
-
 .divider {
   display: flex;
   &:before,
@@ -93,5 +85,5 @@
 }
 
 .no-bg {
-  background-color: #ffffff;
+  background-color: none;
 }

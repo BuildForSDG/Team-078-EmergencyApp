@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { ModalController } from '@ionic/angular';
+import { ModalController, LoadingController, AlertController } from '@ionic/angular';
 import { EmergencyDetailsPage } from '../emergency-details/emergency-details.page';
 
 import * as firebase from "firebase/app";
@@ -13,16 +13,20 @@ import "firebase/firestore";
 })
 export class ViewEmergenciesPage implements OnInit {
   emergencies : any = [];
-
-  // Store values from emergencyList
-//   @Input() Number = '098765431';
-//   @Input() Time = 'Mon 12 Dec, 2020';
-//   @Input() Location = 'National Industrial Court Nigeria 6th Lugard Ave, GRA, Enugu.';
+    public loading: any;
   public Response: string;
 
-  constructor(private modalController: ModalController) {
+  async ngOnInit() {
+    this.loading = await this.loadingCtrl.create();
+    await this.loading.present();
+  }
+
+  constructor(private modalController: ModalController, public loadingCtrl: LoadingController,
+    public alertCtrl: AlertController) {
     //get a list of all emergencie sassigned to this particular responder
-    firebase.auth().onAuthStateChanged(user => { 
+    firebase.auth().onAuthStateChanged(async user => { 
+      // this.loading = await this.loadingCtrl.create();
+      //   await this.loading.present();
       if (user) { 
         //user is active
         firebase.firestore().doc(`responder/${user.uid}`).get().then(result=>{
@@ -32,7 +36,7 @@ export class ViewEmergenciesPage implements OnInit {
           //this is done by looking in the requests table for assigned responders
           firebase.firestore().collection('request').where('assigned_responders', 'array-contains', profile_id)
           //.where('request_type', '==', result.data().respondant_type)
-          .where('request_resolved', '==', false)
+          .where('request_resolved', '==', false).orderBy('request_time', 'desc')
           //we use onsnapshot to check in realtime for changes in data.
           .onSnapshot(res=>{
             //set emergencies to an empty array so that it is empty for each snapshot
@@ -41,22 +45,40 @@ export class ViewEmergenciesPage implements OnInit {
               let data = {
                 id: doc.id,
                 phone_number : doc.data().victim_number,
-                time: doc.data().request_time,
-                location: doc.data().request_address
+                time:  new Date(doc.data().request_time.seconds * 1000).toLocaleString(),
+                location: doc.data().request_address,
+                coord : {
+                  lat: doc.data().request_lat,
+                  lng: doc.data().request_long
+                }
               }
               this.emergencies.push(data);
             })
+            this.loading.dismiss();
             //console.log(this.emergencies);
           }, err=>{
-            console.log(err);
+            this.loading.dismiss().then(async () => {
+              const alert = await this.alertCtrl.create({
+                message: err.message,
+                buttons: [{ text: 'Ok', role: 'cancel' }]
+              });
+              await alert.present();
+            });
           });//end assigned responders query
         }, error=>{
+          this.loading.dismiss().then(async () => {
+            const alert = await this.alertCtrl.create({
+              message: error.message,
+              buttons: [{ text: 'Ok', role: 'cancel' }]
+            });
+            await alert.present();
+          });
           console.log(error);
         });//end profile query
       }
     });
   }
-
+  
   async openModal(id) {
     const request = this.emergencies.find(element => element.id === id);
     const modal = await this.modalController.create({
@@ -65,7 +87,8 @@ export class ViewEmergenciesPage implements OnInit {
         id: request.id,
         phone_number:  request.phone_number,
         time: request.time,
-        location: request.location
+        location: request.location,
+        coord: request.coord
       }
     });
     // return response from modal 
@@ -74,9 +97,6 @@ export class ViewEmergenciesPage implements OnInit {
     });
 
     return await modal.present();
-  }
-
-  ngOnInit() {
   }
 
 }

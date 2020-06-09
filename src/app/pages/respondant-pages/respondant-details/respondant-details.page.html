@@ -1,0 +1,108 @@
+<app-respondant-menu></app-respondant-menu>
+
+<ion-content class="auth-form">
+  <ion-grid>
+    <ion-row>
+      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+        <div class="details-header">
+          <ion-text class="details">DETAILS</ion-text>
+        </div>
+        
+        <form #form="ngForm" (ngSubmit)="updateDetails()">
+          <ion-grid>
+            <ion-text>Email: {{ respondentDetails.email }}</ion-text>
+            <ion-row color="primary" justify-content-center>
+              <ion-col align-self-center>
+                <div padding>
+                  <!-- <div class="input-form-line">
+                    <ion-item lines="none">
+                      <ion-label position="floating">Email</ion-label>
+                      <ion-input
+                        type="text"
+                        name="email"
+                        [(ngModel)]="respondentDetails.email"
+                        required
+                      ></ion-input>
+                    </ion-item>
+                  </div> -->
+                  <span class="input-padding"></span>
+                  <div class="input-form-line">
+                    <ion-item lines="none">
+                      <ion-label position="floating">Full Name</ion-label>
+                      <ion-input
+                        type="text"
+                        name="fullname"
+                        [(ngModel)]="respondentDetails.fullname"
+                        required
+                      ></ion-input>
+                    </ion-item>
+                  </div>
+                  <span class="input-padding"></span>
+                  <div class="input-form-line">
+                    <ion-item lines="none">
+                      <ion-label position="floating">Phone Number</ion-label>
+                      <ion-input
+                        type="text"
+                        name="phone_number"
+                        [(ngModel)]="respondentDetails.phone_number"
+                        required
+                      ></ion-input>
+                    </ion-item>
+                  </div>
+                  <span class="input-padding"></span>
+                  <div class="input-form-line">
+                    <ion-item lines="none">
+                      <ion-label position="floating">Responder Address</ion-label>
+                      <ion-input
+                        type="text"
+                        name="address"
+                        [(ngModel)]="respondentDetails.address"
+                        required
+                      ></ion-input>
+                    </ion-item>
+                  </div>
+                  <span class="input-padding"></span>
+                  <div class="input-form-line">
+                    <ion-item lines="none">
+                      <ion-label position="floating">Responder Unit</ion-label>
+                      <ion-input
+                        type="text"
+                        name="respondant_unit"
+                        [readonly]="readonly"
+                        [(ngModel)]="respondentDetails.respondant_unit"
+                        required
+                      ></ion-input>
+                    </ion-item>
+                  </div>
+
+                  <span class="input-padding"></span>
+                  <div class="input-form-line">
+                    <ion-item lines="none">
+                      <ion-label position="floating">Responder Type</ion-label>
+                      <ion-input
+                        type="text"
+                        name="respondantType"
+                        [readonly]="readonly"
+                        [(ngModel)]="respondentDetails.respondantType"
+                        required
+                      ></ion-input>
+                    </ion-item>
+                  </div>              
+                  <span class="input-padding"></span>
+                </div>
+              </ion-col>
+            </ion-row>
+          </ion-grid>
+          <ion-item lines="none">
+            <div slot="end">
+              <ion-button size="large" type="submit" color="warning"
+                >Save
+                <ion-icon name="add-circle-sharp"></ion-icon>
+              </ion-button>
+            </div>
+          </ion-item>
+        </form>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

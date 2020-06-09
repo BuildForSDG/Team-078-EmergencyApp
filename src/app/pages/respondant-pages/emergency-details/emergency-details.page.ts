@@ -3,7 +3,7 @@ import { ModalController } from '@ionic/angular';
 import * as firebase from "firebase/app";
 import "firebase/auth";
 import "firebase/firestore";
-
+import { RespondentViewRequestOnMapPage } from '../respondent-view-request-on-map/respondent-view-request-on-map.page';
 @Component({
   selector: 'app-emergency-details',
   templateUrl: './emergency-details.page.html',
@@ -14,6 +14,7 @@ export class EmergencyDetailsPage implements OnInit {
   phone_number: string ;
   time: any ;
   location: any ;
+  coord: any;
   id: any ;
   responded: boolean = false ;
   constructor(private modalController: ModalController) { 
@@ -43,6 +44,17 @@ export class EmergencyDetailsPage implements OnInit {
 
   async closeModal() {
     await this.modalController.dismiss();
+  }
+  async openMapModal() {
+    const modal = await this.modalController.create({
+      component: RespondentViewRequestOnMapPage,
+      componentProps: {
+        coord: this.coord
+      }
+    });
+    // return response from modal 
+    modal.onWillDismiss();
+    return await modal.present();
   }
 
   respond(){

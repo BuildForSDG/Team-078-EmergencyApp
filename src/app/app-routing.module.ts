@@ -4,7 +4,6 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    // loadChildren: () => import('./tabs/tabs.module').then(m => m.TabsPageModule)
     loadChildren: () => import('./welcom-page/welcom-page.module').then(
       m => m.WelcomPagePageModule
     )
@@ -122,11 +121,11 @@ const routes: Routes = [
         m => m.ViewEmergenciesPageModule
       )
   },
-  {
-    path: 'emergency-details',
-    loadChildren: () =>
-      import('./pages/respondant-pages/emergency-details/emergency-details.module').then(m => m.EmergencyDetailsPageModule)
-  },
+  // {
+  //   path: 'emergency-details',
+  //   loadChildren: () =>
+  //     import('./pages/respondant-pages/emergency-details/emergency-details.module').then(m => m.EmergencyDetailsPageModule)
+  // },
   {
     path: 'user-location',
     loadChildren: () =>
@@ -141,13 +140,6 @@ const routes: Routes = [
         m => m.VictimConfirmLocOnMapPageModule
       )
   },
-  // {
-  //   path: 'admin-add-danger',
-  //   loadChildren: () =>
-  //     import('./pages/admin-pages/admin-add-danger/admin-add-danger.module').then(
-  //       m => m.AdminAddDangerPageModule
-  //     )
-  // },
   {
     path: 'admin-add-danger',
     loadChildren: () =>
@@ -171,32 +163,36 @@ const routes: Routes = [
   },
   {
     path: 'admin-edit-admin',
-    loadChildren: () => import('./admin-edit-admin/admin-edit-admin.module').then(m => m.AdminEditAdminPageModule)
+    loadChildren: () => import('./pages/admin-pages/admin-edit-admin/admin-edit-admin.module').then(m => m.AdminEditAdminPageModule)
   },
   {
     path: 'view-admins',
-    loadChildren: () => import('./pages/admin-pages/view-admins/view-admins.module').then( m => m.ViewAdminsPageModule)
+    loadChildren: () => import('./pages/admin-pages/view-admins/view-admins.module').then(m => m.ViewAdminsPageModule)
   },
   {
     path: 'respondant-recover-pass',
-    loadChildren: () => import('./pages/respondant-pages/respondant-recover-pass/respondant-recover-pass.module').then( m => m.RespondantRecoverPassPageModule)
+    loadChildren: () => import('./pages/respondant-pages/respondant-recover-pass/respondant-recover-pass.module').then(m => m.RespondantRecoverPassPageModule)
   },
   {
     path: 'respondent-view-dangers',
-    loadChildren: () => import('./pages/respondant-pages/respondent-view-dangers/respondent-view-dangers.module').then( m => m.RespondentViewDangersPageModule)
+    loadChildren: () => import('./pages/respondant-pages/respondent-view-dangers/respondent-view-dangers.module').then(m => m.RespondentViewDangersPageModule)
   },
   {
     path: 'respondent-add-danger',
-    loadChildren: () => import('./pages/respondant-pages/respondent-add-danger/respondent-add-danger.module').then( m => m.RespondentAddDangerPageModule)
-  },  {
-    path: 'respondant-edit-details',
-    loadChildren: () => import('./pages/respondant-pages/respondant-edit-details/respondant-edit-details.module').then( m => m.RespondantEditDetailsPageModule)
+    loadChildren: () => import('./pages/respondant-pages/respondent-add-danger/respondent-add-danger.module').then(m => m.RespondentAddDangerPageModule)
+  },
+  {
+    path: 'respondant-details',
+    loadChildren: () => import('./pages/respondant-pages/respondant-details/respondant-details.module').then(m => m.RespondantDetailsPageModule)
+  },
+  {
+    path: 'admin-view-dangers',
+    loadChildren: () => import('./pages/admin-pages/admin-view-dangers/admin-view-dangers.module').then(m => m.AdminViewDangersPageModule)
+  },
+  {
+    path: 'respondent-view-request-on-map',
+    loadChildren: () => import('./pages/respondant-pages/respondent-view-request-on-map/respondent-view-request-on-map.module').then(m => m.RespondentViewRequestOnMapPageModule)
   }
-
-
-
-
-
 ];
 @NgModule({
   imports: [
@@ -206,4 +202,5 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 {
+
 }

@@ -2,7 +2,7 @@
 1 - I created a folder called components, where all our custom menu components resided. To make our work neat, a subfolder(custome component) 
 is created for each of the user (admin, victim, respondant), this pertern was used for our pages.
 
-2 - A file called 'victim.components.module.ts (shared module) was created, this file allows us 
+2 - A file called victim.components.module.ts (shared module) was created, this file allows us 
 to share component among our components. Here we are sharing component for our menu for various pages
 
 3. To be able to  use features provided by Angular and Ionic, I imported NgModule, CommonModule and IonicModule into the shared module. For example if IonicModule is not imported, ionic extentended elements will not work and this could break our application.
@@ -22,7 +22,7 @@ See custom component below:
  
  ## For user-location page: 
  1 - Open user-location.module.ts
- 2 - Import VictimMenuModule  - import { VictimMenuModule } from '../../../components/victim.components.module' -
+ 2 - Import VictimMenuModule  - import { VictimMenuModule } from ../../../components/victim.components.module' -
  3 - Locate @NgModule({
   imports: [
     CommonModule,
@@ -39,3 +39,44 @@ and place the VictimMenuModule here
 
 4. Since the background color of our Menu bar is yellow we will use 
 '<app-victim-menu></app-victim-menu>' component, this should be placed above our html
+
+
+Home-page:
+welcom-page
+
+
+Admin Pages:
+admin-add-danger
+admin-add-respondant
+admin-add-unit
+admin-dashboard
+admin-edit-admin
+admin-edit-unit
+admin-login
+admin-sign-up
+admin-verify-danger-map
+view-admins
+view-respondant-list
+
+Respondant:
+emergency-details   
+respondant-dashboard
+respondant-details
+respondant-login
+respondant-recover-pass
+view-emergencies    
+      
+    
+find-unit
+get-help
+unit-alert---
+user-location
+user-welcome
+victim-confirm-loc-on-map
+view-dangers----
+view-unit---
+
+    
+    
+    
+  

@@ -7,16 +7,6 @@
     margin: 0;
 }
 
-.footer {
-    width: 100%;
-    height: 58px;
-    background: rgba(0, 21, 79, 0.9);
-}
-
-ion-back-button {
-    color: rgba(240, 236, 33, 0.9);
-}
-
 .divider {
     display: flex;
     &:before,
@@ -26,10 +16,15 @@ ion-back-button {
     }
 }
 
+//modified
 .line {
     align-items: center;
     margin: 1em -1em;
     color: #000000;
+    font-weight: bold;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    font-family: 'Poppins', 'sans-serif';
+    font-style: normal;
     &:before,
     &:after {
         height: 1px;

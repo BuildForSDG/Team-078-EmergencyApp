@@ -1,11 +1,4 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start" class="header">
-      <ion-menu-button></ion-menu-button>
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-  </ion-toolbar>
-</ion-header>
+<app-admin-menu></app-admin-menu>
 
 <ion-content class="unit-body">
   <ion-grid style="height: 100%;">
@@ -20,8 +13,8 @@
                   <ion-label class="em_header ion-text-uppercase"
                     >ADMIN ID : {{admin.ID}}</ion-label
                   >
-                  <button slot="end" class="no-bg">
-                    <ion-icon class="pen" name="create" size="large"></ion-icon>
+                  <a href="/admin-edit-admin"></a><button slot="end" class="no-bg">
+                    <ion-icon class="pen" name="create-outline" size="large"></ion-icon>
                   </button>
                 </ion-item>
                 <ion-item lines="none">
@@ -52,9 +45,9 @@
                   <ion-label class="em_header ion-text-uppercase"
                     >ADMIN ID : AD3023</ion-label
                   >
-                  <button slot="end" class="no-bg">
-                    <ion-icon class="pen" name="create" size="large"></ion-icon>
-                  </button>
+                  <a href="/admin-edit-admin"><button slot="end" class="no-bg">
+                    <ion-icon class="pen" name="create-outline" size="large"></ion-icon>
+                  </button></a>
                 </ion-item>
                 <ion-item lines="none">
                   <p class="ion-text-capitalize">
@@ -84,8 +77,3 @@
   </ion-grid>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar>
-    <div class="footer"></div>
-  </ion-toolbar>
-</ion-footer>

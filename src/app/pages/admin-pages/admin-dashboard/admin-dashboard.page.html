@@ -1,12 +1,3 @@
-<!-- <ion-header>
-  <ion-toolbar class="dashboard__toolbar">
-    <ion-title slot="start" class="dashboard__toolbar--title">ADMIN</ion-title>
-    <ion-button slot="end" fill="clear">
-      <ion-icon name="log-out-outline" class="log-out"></ion-icon>
-    </ion-button>
-  </ion-toolbar>
-</ion-header> -->
-
 <app-admin-menu></app-admin-menu>
 
 <ion-content>
@@ -24,7 +15,7 @@
         <ion-grid class="ion-no-padding ion-no-margin">
           <ion-row class="ion-justify-content-between">
             <ion-col size="5">
-              <ion-button fill="clear" class="button-text">
+              <ion-button fill="clear" class="button-text" href="/view-respondant-list"> 
                 <p>
                   View <br /><br />
                   Responder
@@ -47,7 +38,7 @@
 
           <ion-row class="ion-justify-content-between ion-margin-top">
             <ion-col size="5">
-              <ion-button fill="clear" class="button-text">
+              <ion-button fill="clear" class="button-text" href="/view-admins">
                 <p>
                   View <br /><br />
                   Admin
@@ -55,7 +46,7 @@
               </ion-button>
             </ion-col>
             <ion-col size="5">
-              <ion-button fill="clear" class="button-text">
+              <ion-button fill="clear" class="button-text" href="/admin-sign-up">
                 <p>
                   Add <br /><br />
                   Admin
@@ -63,11 +54,11 @@
               </ion-button>
             </ion-col>
           </ion-row>
-          <ion-item lines="none">
+          <ion-item lines="none" class="ion-margin-top">
             <div slot="end">
               <ion-button
                 size="large"
-                href="/admin-verify-danger-map"
+                href="/admin-add-danger"
                 color="warning"
                 >Add Danger
                 <ion-icon name="add-circle-sharp"></ion-icon>
@@ -80,6 +71,3 @@
   </ion-grid>
 </ion-content>
 
-<ion-footer>
-  <ion-toolbar> </ion-toolbar>
-</ion-footer>

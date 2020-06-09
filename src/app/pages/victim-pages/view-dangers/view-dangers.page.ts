@@ -72,7 +72,7 @@ export class ViewDangersPage implements OnInit {
         overlay.present();
         Geolocation.getCurrentPosition().then((position)	=>	{
             overlay.dismiss();
-            this.map.displayMultipleMarkers(this.locations);
+            this.map.victimDisplayMultipleMarkers(this.locations);
             this.alertCtrl.create({
               header:	'Location	set!',
               message: 'You can now view any dangers on your current route.',
@@ -86,7 +86,6 @@ export class ViewDangersPage implements OnInit {
         });
     });
   }
-
 
   getAddress(place: object) {
     this.address = place['formatted_address'];

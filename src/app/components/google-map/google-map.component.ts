@@ -27,6 +27,7 @@ export class GoogleMapComponent {
   private mapsLoaded = false;
   private networkHandler = null;
   public connectionAvailable = true;
+  public allMarkers = [];
 
   constructor(private renderer: Renderer2, private element: ElementRef,
     private platform: Platform, @Inject(DOCUMENT) private _document) { }
@@ -55,11 +56,8 @@ export class GoogleMapComponent {
   }
 
   private loadSDK(): Promise<any> {
-
     console.log('Loading	Google	Maps	SDK');
-
     this.addConnectivityListeners();
-
     return new Promise((resolve, reject) => {
       if (!this.mapsLoaded) {
         Network.getStatus().then((status) => {
@@ -93,7 +91,6 @@ export class GoogleMapComponent {
   }
 
   private injectSDK(): Promise<any> {
-
     return new Promise((resolve, reject) => {
       window['mapInit'] = () => {
         this.mapsLoaded = true;
@@ -109,22 +106,18 @@ export class GoogleMapComponent {
       }
       this.renderer.appendChild(this._document.body, script);
     });
-
   }
 
   private initMap(): Promise<any> {
-
     return new Promise((resolve, reject) => {
-
       Geolocation.getCurrentPosition({ enableHighAccuracy: true, timeout: 10000 }).then((position) => {
         console.log(position);
         // let	latLng	=	new	google.maps.LatLng(46.064941,13.230720);
         const latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
         const mapOptions = {
           center: latLng,
-          zoom: 15
+          zoom: 13
         };
-
         this.map = new google.maps.Map(this.element.nativeElement, mapOptions);
         //resolve the latLng to be used to get the current position
         resolve(position);
@@ -136,7 +129,6 @@ export class GoogleMapComponent {
     });
 
   }
-
 
   public watch() {
     return new Promise((resolve, reject) => {
@@ -158,6 +150,22 @@ export class GoogleMapComponent {
 
   enableMap(): void {
     this.connectionAvailable = true;
+  }
+
+  public changeMarker(lat: number, lng: number): void {
+
+    const latLng = new google.maps.LatLng(lat, lng);
+    const marker = new google.maps.Marker({
+      map: this.map,
+      animation: google.maps.Animation.DROP,
+      position: latLng,
+    });
+    // 	Remove	existing	marker	if	it	exists
+    if (this.marker) {
+      this.marker.setMap(null);
+    }
+    // 	Add	new	marker
+    this.marker = marker
   }
 
   addConnectivityListeners(): void {
@@ -183,26 +191,31 @@ export class GoogleMapComponent {
     }
 
   }
+  public viewRequestOnMap(reponderLocation: {}, requestLocation: {}): void {
+    const directionsDisplay = new google.maps.DirectionsRenderer();
+    directionsDisplay.setMap(this.map);
 
-  public changeMarker(lat: number, lng: number): void {
-
-    const latLng = new google.maps.LatLng(lat, lng);
-    const marker = new google.maps.Marker({
-      map: this.map,
-      animation: google.maps.Animation.DROP,
-      position: latLng,
-    });
-    // 	Remove	existing	marker	if	it	exists
+    const start = new google.maps.LatLng(reponderLocation['lat'], reponderLocation['lng']);
+    const end = new google.maps.LatLng(requestLocation['lat'], requestLocation['lng']);
+    const directionsService = new google.maps.DirectionsService();
+    directionsService.route(
+      {
+        origin: start,
+        destination: end,
+        travelMode: google.maps.TravelMode.DRIVING
+      },
+      function (response, status) {
+        if (status === 'OK') {
+          directionsDisplay.setDirections(response);
+        }
+      });
     if (this.marker) {
       this.marker.setMap(null);
     }
-    // 	Add	new	marker
-    this.marker = marker
   }
 
-  public displayMultipleMarkers(markers: []): void {
+  public victimDisplayMultipleMarkers(markers: []): void {
     var markerInfo;
-    // const entries = Object.entries(markers)
     console.log("Auth Details", markers);
     markers.forEach((marker) => {
       var image = 'http://maps.google.com/mapfiles/kml/shapes/caution.png';
@@ -213,17 +226,79 @@ export class GoogleMapComponent {
         title: marker['dangerType'],
         icon: image
       });
-      // var dateCreated = marker['request_time'];
+      this.allMarkers.push(markerInfo);
       var dateCreated = new Date(marker['request_time']['seconds'] * 1000).toLocaleString();
       var infowindow = new google.maps.InfoWindow({
-        content: `<div class=infowindow><h4>${marker['dangerType']}</h4><p>Description: ${marker['description']}</p><p>Date: ${dateCreated}</p></div>`
+        content: `<div class=infowindow><h4>${marker['dangerType']}</h4><p>Description: 
+        ${marker['description']}</p><p>Date: ${dateCreated}</p></div>`,
+        location: {
+          lat: marker['location']['lat'],
+          lng: marker['location']['lng'],
+        },
+        currentInfoMarker: markerInfo
       });
+      //event listener to call the infoWindow when the marker is clicked
+      //the this.infoCallback(infowindow, markerInfo will ensure that the browsers remembers with marker was 
+      //clicked and with what details
       google.maps.event.addListener(markerInfo, 'click', this.infoCallback(infowindow, markerInfo));
     });
   }
 
+  public respondentOrAdminDisplayMultipleMarkers(markers: []): void {
+    var markerInfo;
+    console.log("Auth Details", markers);
+    markers.forEach((marker) => {
+      var image = 'http://maps.google.com/mapfiles/kml/shapes/caution.png';
+      markerInfo = new google.maps.Marker({
+        position: new google.maps.LatLng(marker['location']['lat'], marker['location']['lng']),
+        map: this.map,
+        animation: google.maps.Animation.DROP,
+        title: marker['dangerType'],
+        icon: image
+      });
+      this.allMarkers.push(markerInfo);
+      var dateCreated = new Date(marker['request_time']['seconds'] * 1000).toLocaleString();
+      var infowindow = new google.maps.InfoWindow({
+        content: `<div class=infowindow><h4>${marker['dangerType']}</h4><p>Description: 
+        ${marker['description']}</p><p>Date: ${dateCreated}</p></div><ion-button>remove</ion-button>`,
+        location: {
+          lat: marker['location']['lat'],
+          lng: marker['location']['lng'],
+        },
+        currentInfoMarker: markerInfo
+      });
+      //event listener to call the infoWindow when the marker is clicked
+      //the this.infoCallback(infowindow, markerInfo will ensure that the browsers remembers with marker was 
+      //clicked and with what details
+      google.maps.event.addListener(markerInfo, 'click', this.infoCallback(infowindow, markerInfo));
+
+      //we add the event listener to remove marker here 
+      google.maps.event.addListener(infowindow, 'domready', () => {
+        const el = document.querySelector('ion-button');
+        el.addEventListener('click', () => this.deleteMarker(infowindow));
+      });
+    });
+  }
+  //info window method
   public infoCallback(infowindow, marker) {
     return function () { infowindow.open(this.map, marker); };
+  }
+  public deleteMarker(infowindow) {
+    //fetch the location that matches the selected marker in firestore
+    var getLocation = firebase.firestore().collection('road_danger')
+      .where('location', '==', infowindow.location);
+    getLocation.get().then(function (querySnapshot) {
+      querySnapshot.forEach(function (doc) {
+        //delete the date
+        doc.ref.delete();
+        infowindow.close();
+        //remove the marker from the map
+        infowindow.currentInfoMarker.setMap(null);
+      });
+    }), error => {
+      console.log(error);
+    };
+
   }
 
   public changeMarkerWithoutAni(lat: number, lng: number): void {
@@ -234,7 +309,7 @@ export class GoogleMapComponent {
       position: latLng,
       draggable: true
     });
-    // 	Remove	existing	marker	if	it	exists
+    // Remove existing marker if	it exists
     if (this.marker) {
       this.marker.setMap(null);
     }

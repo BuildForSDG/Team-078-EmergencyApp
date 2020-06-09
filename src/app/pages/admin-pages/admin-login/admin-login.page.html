@@ -1,70 +1,80 @@
-<!-- This link is reserved to take care of back button -->
-<!-- <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Admin Sign Up</ion-title>
-  </ion-toolbar> -->
-
-  <ion-header>
-    <ion-toolbar color="secondary" class="ion-padding-vertical">
-      <ion-title class="header-shadow-text">
-        ADMIN 
-      </ion-title>
-      <ion-buttons slot="end">
-        <ion-menu-button class="main-menu-harmburger" menu="main-menu">
-        </ion-menu-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
-  
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="header-shadow-text">
+      ADMIN
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-grid id="container">
-    <ion-row>
-        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-            <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
-                <div padding>
+  <ion-text class="login-text">
+    LOG IN
+  </ion-text>
+  <ion-row>
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <form [formGroup]="loginForm" (ngSubmit)="loginUser()">
+        <div padding>
+          <div class="emerge-form-line">
+            <ion-item lines="none">
+              <ion-label position="floating">Email</ion-label>
+              <ion-input
+                type="email"
+                formControlName="email"
+                required
+              ></ion-input>
+            </ion-item>
+          </div>
+          <div class="error-container">
+            <ng-container *ngFor="let validation of validation_messages.email">
+              <div
+                class="error-message"
+                *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)"
+              >
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>{{ validation.message }}</span>
+              </div>
+            </ng-container>
+          </div>
+          <span class="emerge-span"></span>
 
-                    <div class="emerge-form-line">
-                        <ion-item lines="none">
-                            <ion-label position="floating">Email</ion-label>
-                            <ion-input type="email" formControlName="email" required></ion-input>
-                        </ion-item>
-                    </div>
-                    <div class="error-container">
-                        <ng-container *ngFor="let validation of validation_messages.email">
-                            <div class="error-message" *ngIf="loginForm.get('email').hasError(validation.type) && (loginForm.get('email').dirty || loginForm.get('email').touched)">
-                                <ion-icon name="information-circle-outline"></ion-icon>
-                                <span>{{ validation.message }}</span>
-                            </div>
-                        </ng-container>
-                    </div>
-                    <span class="emerge-span"></span>
+          <div class="emerge-form-line">
+            <ion-item lines="none">
+              <ion-label position="floating">Password</ion-label>
+              <ion-input
+                type="password"
+                formControlName="password"
+                required
+              ></ion-input>
+            </ion-item>
+          </div>
+          <div class="error-container">
+            <ng-container
+              *ngFor="let validation of validation_messages.password"
+            >
+              <div
+                class="error-message"
+                *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)"
+              >
+                <ion-icon name="information-circle-outline"></ion-icon>
+                <span>{{ validation.message }}</span>
+              </div>
+            </ng-container>
+          </div>
+          <span class="emerge-span"></span>
+        </div>
 
-                    <div class="emerge-form-line">
-                        <ion-item lines="none">
-                            <ion-label position="floating">Password</ion-label>
-                            <ion-input type="password" formControlName="password" required></ion-input>
-                        </ion-item>
-                    </div>
-                    <div class="error-container">
-                        <ng-container *ngFor="let validation of validation_messages.password">
-                            <div class="error-message" *ngIf="loginForm.get('password').hasError(validation.type) && (loginForm.get('password').dirty || loginForm.get('password').touched)">
-                                <ion-icon name="information-circle-outline"></ion-icon>
-                                <span>{{ validation.message }}</span>
-                            </div>
-                        </ng-container>
-                    </div>
-                    <span class="emerge-span"></span>
-                </div>
-
-                <div padding>
-                    <ion-button size="large" type="submit" color="secondary" [disabled]="!loginForm.valid" expand="block">Login
-                        <ion-icon name="log-out-outline"></ion-icon>
-                    </ion-button>
-                </div>
-
-            </form>
-        </ion-col>
-    </ion-row>
+        <div padding>
+          <ion-button
+            size="large"
+            type="submit"
+            color="secondary"
+            [disabled]="!loginForm.valid"
+            expand="block"
+            >Login
+            <ion-icon name="log-out-outline"></ion-icon>
+          </ion-button>
+        </div>
+      </form>
+    </ion-col>
+  </ion-row>
 </ion-grid>

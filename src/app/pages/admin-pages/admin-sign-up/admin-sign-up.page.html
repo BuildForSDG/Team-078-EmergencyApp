@@ -1,76 +1,97 @@
-<!-- This link is reserved to take care of back button -->
-<!-- <ion-toolbar>
-    <ion-buttons slot="start">
-        <ion-back-button></ion-back-button>
-    </ion-buttons>
-    <ion-title>Admin Sign Up</ion-title>
-</ion-toolbar> -->
-
 <ion-header>
-    <ion-toolbar color="secondary" class="ion-padding-vertical">
-      <ion-title class="header-shadow-text">
-        ADMIN SIGN UP
-      </ion-title>
-      <ion-buttons slot="end">
-        <ion-menu-button class="main-menu-harmburger" menu="main-menu">
-        </ion-menu-button>
-      </ion-buttons>
-    </ion-toolbar>
-  </ion-header>
+  <ion-toolbar color="primary">
+    <ion-title class="header-shadow-text">
+        Add new admin
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
 
 <ion-grid id="container">
-    <ion-row>
-        <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-            <form (ngSubmit)="adminAddUser()" #registerForm="ngForm">
-                <div padding>
-                    <div class="emerge-form-line">
-                        <ion-item lines="none">
-                            <ion-label position="floating">First name</ion-label>
-                            <ion-input type="text" name="firstname" [(ngModel)]="registerCredentials.firstname" required></ion-input>
-                        </ion-item>
-                    </div>
-                    <span class="emerge-span"></span>
+  <ion-row>
+    <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
+      <form (ngSubmit)="adminAddUser()" #registerForm="ngForm">
+        <div padding>
+          <div class="emerge-form-line">
+            <ion-item lines="none">
+              <ion-label position="floating">First name</ion-label>
+              <ion-input
+                type="text"
+                name="firstname"
+                [(ngModel)]="registerCredentials.firstname"
+                required
+              ></ion-input>
+            </ion-item>
+          </div>
+          <span class="emerge-span"></span>
 
-                    <div class="emerge-form-line">
-                        <ion-item lines="none">
-                            <ion-label position="floating">Last name</ion-label>
-                            <ion-input type="text" name="lastname" [(ngModel)]="registerCredentials.lastname" required></ion-input>
-                        </ion-item>
-                    </div>
-                    <span class="emerge-span"></span>
+          <div class="emerge-form-line">
+            <ion-item lines="none">
+              <ion-label position="floating">Last name</ion-label>
+              <ion-input
+                type="text"
+                name="lastname"
+                [(ngModel)]="registerCredentials.lastname"
+                required
+              ></ion-input>
+            </ion-item>
+          </div>
+          <span class="emerge-span"></span>
 
-                    <div class="emerge-form-line">
-                        <ion-item lines="none">
-                            <ion-label position="floating">Email</ion-label>
-                            <ion-input type="text" name="email" [(ngModel)]="registerCredentials.email" required></ion-input>
-                        </ion-item>
-                    </div>
-                    <span class="emerge-span"></span>
+          <div class="emerge-form-line">
+            <ion-item lines="none">
+              <ion-label position="floating">Email</ion-label>
+              <ion-input
+                type="text"
+                name="email"
+                [(ngModel)]="registerCredentials.email"
+                required
+              ></ion-input>
+            </ion-item>
+          </div>
+          <span class="emerge-span"></span>
 
-                    <div class="emerge-form-line">
-                        <ion-item lines="none">
-                            <ion-label position="floating">Phone Number</ion-label>
-                            <ion-input type="text" name="phone_number" [(ngModel)]="registerCredentials.phone_number" required></ion-input>
-                        </ion-item>
-                    </div>
-                    <span class="emerge-span"></span>
+          <div class="emerge-form-line">
+            <ion-item lines="none">
+              <ion-label position="floating">Phone Number</ion-label>
+              <ion-input
+                type="text"
+                name="phone_number"
+                [(ngModel)]="registerCredentials.phone_number"
+                required
+              ></ion-input>
+            </ion-item>
+          </div>
+          <span class="emerge-span"></span>
 
-                    <div class="emerge-form-line">
-                        <ion-item lines="none">
-                            <ion-label position="floating">Password</ion-label>
-                            <ion-input type="password" name="password" [(ngModel)]=" registerCredentials.password " required></ion-input>
-                        </ion-item>
-                    </div>
-                    <span class="emerge-span "></span>
-                </div>
+          <div class="emerge-form-line">
+            <ion-item lines="none">
+              <ion-label position="floating">Password</ion-label>
+              <ion-input
+                type="password"
+                name="password"
+                [(ngModel)]=" registerCredentials.password "
+                required
+              ></ion-input>
+            </ion-item>
+          </div>
+          <span class="emerge-span"></span>
+        </div>
 
-                <div padding>
-                    <ion-button size="large " type="submit " color="secondary " expand="block ">Sign Up
-                        <ion-icon name="log-out-outline "></ion-icon>
-                    </ion-button>
-                </div>
-
-            </form>
-        </ion-col>
-    </ion-row>
+        <div padding>
+          <ion-button
+            size="large "
+            type="submit "
+            color="secondary "
+            expand="block "
+            >Sign Up
+            <ion-icon name="log-out-outline "></ion-icon>
+          </ion-button>
+        </div>
+      </form>
+    </ion-col>
+  </ion-row>
 </ion-grid>
+
+<ion-footer>
+  <ion-toolbar> </ion-toolbar>
+</ion-footer>

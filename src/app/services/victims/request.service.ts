@@ -10,14 +10,14 @@ import { PushNotificationService } from '../../services/notifications/push-notif
 })
 
 export class RequestService {
-  
-  responders : any = [] ;
+
+  responders: any = [];
 
   constructor(private pushNotification: PushNotificationService, public platform: Platform) { }
 
-  assignResponders(victim_id:string, request_ref:string, request_type:string, 
-    request_lat: number, request_long:number,request_address: string, 
-    respond_rating: string, victim_number:string, formatted_address: string ):Promise<any>{
+  assignResponders(victim_id: string, request_ref: string, request_type: string,
+    request_lat: number, request_long: number, request_address: string,
+    respond_rating: string, victim_number: string, formatted_address: string): Promise<any> {
     //run a query to find responders that are in the same geocoded location as the victim
     //essentially the same formatted address, which is stae evel in our case
     return firebase.firestore().collection('responder')
@@ -46,14 +46,9 @@ export class RequestService {
         
       }, error=>{
         console.log(error);
-      })
-      
-    }, error=> {
-      console.log(error);
+      });
     });
-    
   }
 
-  
 
 }
