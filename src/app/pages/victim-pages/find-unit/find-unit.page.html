@@ -15,7 +15,7 @@
         <div class="form">
           <form size="12" (ngSubmit)="submitForm()" #infoForm="ngForm">
             <ion-item>
-              <ion-label>SELECT EMMERGENCY TYPE</ion-label>
+              <ion-label>Select Emmergency Type</ion-label>
               <ion-select name="unitType" [(ngModel)]="userInfo.unitType" placeholder="Type">
                   <ion-select-option [value]="types" *ngFor="let types of emergencies">{{types}}</ion-select-option>
               </ion-select>

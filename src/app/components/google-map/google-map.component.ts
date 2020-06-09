@@ -28,6 +28,9 @@ export class GoogleMapComponent {
   private networkHandler = null;
   public connectionAvailable = true;
   public allMarkers = [];
+  private isOpenInfoWindow : any;
+  directionsDisplay: any;
+  private direction: boolean = false;
 
   constructor(private renderer: Renderer2, private element: ElementRef,
     private platform: Platform, @Inject(DOCUMENT) private _document) { }
@@ -210,7 +213,7 @@ export class GoogleMapComponent {
 
   public viewUnitOnMap(usersLocation: any, unitLocation: []): void {
     var markerInfo;
-   
+
     //loop through unit location and display markers on the map
     unitLocation.forEach((marker) => {
       var image = 'http://maps.google.com/mapfiles/ms/micons/red-dot.png';
@@ -247,31 +250,17 @@ export class GoogleMapComponent {
       google.maps.event.addListener(markerInfo, 'click', this.getDirectionBetweenMarker(usersLocation, markerInfo));
     });
 
-    // const directionsDisplay = new google.maps.DirectionsRenderer();
-    // directionsDisplay.setMap(this.map);
-
-    // const start = new google.maps.LatLng(reponderLocation['lat'], reponderLocation['lng']);
-    // const end = new google.maps.LatLng(unitLoaction['coordinates']['lat'], unitLoaction['coordinates']['lng']);
-    // const directionsService = new google.maps.DirectionsService();
-    // directionsService.route(
-    //   {
-    //     origin: start,
-    //     destination: end,
-    //     travelMode: google.maps.TravelMode.DRIVING
-    //   },
-    //   function (response, status) {
-    //     if (status === 'OK') {
-    //       directionsDisplay.setDirections(response);
-    //     }
-    //   });
-    // if (this.marker) {
-    //   this.marker.setMap(null);
-    // }
   }
   public getDirectionBetweenMarker(fromLocationDetails: any, toLocationDetails: any) {
+    var getThat = this;
     return function () {
-      const directionsDisplay = new google.maps.DirectionsRenderer();
-      directionsDisplay.setMap(this.map);
+
+      if (getThat.direction == true) {
+        getThat.directionsDisplay.setMap(null);
+        getThat.map.setCenter(new google.maps.LatLng(fromLocationDetails.lat, fromLocationDetails.lng));
+      }
+      getThat.directionsDisplay = new google.maps.DirectionsRenderer();
+      getThat.directionsDisplay.setMap(this.map);
 
       const start = new google.maps.LatLng(fromLocationDetails.lat, fromLocationDetails.lng);
       const end = new google.maps.LatLng(toLocationDetails.getPosition().lat(), toLocationDetails.getPosition().lng());
@@ -284,7 +273,8 @@ export class GoogleMapComponent {
         },
         function (response, status) {
           if (status === 'OK') {
-            directionsDisplay.setDirections(response);
+            getThat.directionsDisplay.setDirections(response);
+            getThat.direction = true;
           }
         });
       if (this.marker) {
@@ -383,7 +373,15 @@ export class GoogleMapComponent {
   }
   //info window method
   public infoCallback(infowindow, marker) {
-    return function () { infowindow.open(this.map, marker); };
+    var that = this;
+    if(that.isOpenInfoWindow){
+      that.isOpenInfoWindow.close();
+      //console
+    }
+    return function () { 
+      infowindow.open(this.map, marker);
+      that.isOpenInfoWindow = infowindow;
+    };
   }
   public deleteMarker(infowindow) {
     //fetch the location that matches the selected marker in firestore
