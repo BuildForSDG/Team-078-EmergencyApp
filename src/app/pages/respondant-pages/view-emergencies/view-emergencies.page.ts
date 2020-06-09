@@ -12,8 +12,8 @@ import "firebase/firestore";
   styleUrls: ['./view-emergencies.page.scss'],
 })
 export class ViewEmergenciesPage implements OnInit {
-  emergencies : any = [];
-    public loading: any;
+  emergencies: any = [];
+  public loading: any;
   public Response: string;
 
   async ngOnInit() {
@@ -24,48 +24,48 @@ export class ViewEmergenciesPage implements OnInit {
   constructor(private modalController: ModalController, public loadingCtrl: LoadingController,
     public alertCtrl: AlertController) {
     //get a list of all emergencie sassigned to this particular responder
-    firebase.auth().onAuthStateChanged(async user => { 
+    firebase.auth().onAuthStateChanged(async user => {
       // this.loading = await this.loadingCtrl.create();
       //   await this.loading.present();
-      if (user) { 
+      if (user) {
         //user is active
-        firebase.firestore().doc(`responder/${user.uid}`).get().then(result=>{
+        firebase.firestore().doc(`responder/${user.uid}`).get().then(result => {
           //here we get the profile of the responder
-          var profile_id = result.id ;
+          var profile_id = result.id;
           //get all the unresolved emergencies that belong to this responder
           //this is done by looking in the requests table for assigned responders
           firebase.firestore().collection('request').where('assigned_responders', 'array-contains', profile_id)
-          //.where('request_type', '==', result.data().respondant_type)
-          .where('request_resolved', '==', false).orderBy('request_time', 'desc')
-          //we use onsnapshot to check in realtime for changes in data.
-          .onSnapshot(res=>{
-            //set emergencies to an empty array so that it is empty for each snapshot
-            this.emergencies = [];
-            res.forEach(doc=>{
-              let data = {
-                id: doc.id,
-                phone_number : doc.data().victim_number,
-                time:  new Date(doc.data().request_time.seconds * 1000).toLocaleString(),
-                location: doc.data().request_address,
-                coord : {
-                  lat: doc.data().request_lat,
-                  lng: doc.data().request_long
+            //.where('request_type', '==', result.data().respondant_type)
+            .where('request_resolved', '==', false).orderBy('request_time', 'desc')
+            //we use onsnapshot to check in realtime for changes in data.
+            .onSnapshot(res => {
+              //set emergencies to an empty array so that it is empty for each snapshot
+              this.emergencies = [];
+              res.forEach(doc => {
+                let data = {
+                  id: doc.id,
+                  phone_number: doc.data().victim_number,
+                  time: new Date(doc.data().request_time.seconds * 1000).toLocaleString(),
+                  location: doc.data().request_address,
+                  coord: {
+                    lat: doc.data().request_lat,
+                    lng: doc.data().request_long
+                  }
                 }
-              }
-              this.emergencies.push(data);
-            })
-            this.loading.dismiss();
-            //console.log(this.emergencies);
-          }, err=>{
-            this.loading.dismiss().then(async () => {
-              const alert = await this.alertCtrl.create({
-                message: err.message,
-                buttons: [{ text: 'Ok', role: 'cancel' }]
+                this.emergencies.push(data);
+              })
+              this.loading.dismiss();
+              //console.log(this.emergencies);
+            }, err => {
+              this.loading.dismiss().then(async () => {
+                const alert = await this.alertCtrl.create({
+                  message: err.message,
+                  buttons: [{ text: 'Ok', role: 'cancel' }]
+                });
+                await alert.present();
               });
-              await alert.present();
-            });
-          });//end assigned responders query
-        }, error=>{
+            });//end assigned responders query
+        }, error => {
           this.loading.dismiss().then(async () => {
             const alert = await this.alertCtrl.create({
               message: error.message,
@@ -78,14 +78,14 @@ export class ViewEmergenciesPage implements OnInit {
       }
     });
   }
-  
+
   async openModal(id) {
     const request = this.emergencies.find(element => element.id === id);
     const modal = await this.modalController.create({
       component: EmergencyDetailsPage,
       componentProps: {
         id: request.id,
-        phone_number:  request.phone_number,
+        phone_number: request.phone_number,
         time: request.time,
         location: request.location,
         coord: request.coord
