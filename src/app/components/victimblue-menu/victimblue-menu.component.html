@@ -56,54 +56,54 @@
 		<div [ngSwitch]="menuSegment">
 			<ion-list *ngSwitchCase="'view-danger'" class="menu-border">
 				<ion-menu-toggle>
-					<ion-item class="menu-item-line" href="/view-dangers">
-						<ion-label>View Danger</ion-label>
+					<ion-item class="menu-item-line" href="/get-help">
+						<ion-label>Get Help</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
-				<!-- <ion-menu-toggle>
-					<ion-item class="menu-item-line" href="./user-location">
-						<ion-label>View on Map</ion-label>
-					</ion-item>
-				</ion-menu-toggle> -->
 				<ion-menu-toggle>
-					<ion-item href="./user-welcome">
-						<ion-label>Home</ion-label>
+					<ion-item class="menu-item-line" href="./find-unit">
+						<ion-label>Find Unit</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item href="./view-dangers">
+						<ion-label>View Dangers</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
 			</ion-list>
 
 			<ion-list *ngSwitchCase="'find-unit'" class="menu-border">
 				<ion-menu-toggle>
-					<ion-item class="menu-item-line" href="/find-unit">
+					<ion-item class="menu-item-line" href="/get-help">
+						<ion-label>Get Help</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item class="menu-item-line" href="./find-unit">
 						<ion-label>Find Unit</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
-				<!-- <ion-menu-toggle>
-					<ion-item class="menu-item-line" href="./view-unit">
-						<ion-label>View Unit</ion-label>
-					</ion-item>
-				</ion-menu-toggle> -->
 				<ion-menu-toggle>
-					<ion-item href="./home">
-						<ion-label>Home</ion-label>
+					<ion-item href="./view-dangers">
+						<ion-label>View Dangers</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
 			</ion-list>
 
 			<ion-list *ngSwitchCase="'get-help'" class="menu-border">
 				<ion-menu-toggle>
-					<ion-item class="menu-item-line" href="/view-unit">
+					<ion-item class="menu-item-line" href="/get-help">
 						<ion-label>Get Help</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
-				<!-- <ion-menu-toggle>
-					<ion-item class="menu-item-line" href="./get-help">
-						<ion-label>View</ion-label>
-					</ion-item>
-				</ion-menu-toggle> -->
 				<ion-menu-toggle>
-					<ion-item href="./find-unit">
+					<ion-item class="menu-item-line" href="./find-unit">
 						<ion-label>Find Unit</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item href="./view-dangers">
+						<ion-label>View Dangers</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
 			</ion-list>
