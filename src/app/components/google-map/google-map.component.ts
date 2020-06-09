@@ -210,21 +210,7 @@ export class GoogleMapComponent {
 
   public viewUnitOnMap(usersLocation: any, unitLocation: []): void {
     var markerInfo;
-    //add user marker
-    // var usermarkerInfo = new google.maps.Marker({
-    //   position: new google.maps.LatLng(usersLocation.lat, usersLocation.lng),
-    //   map: this.map,
-    //   // animation: google.maps.Animation.DROP,
-    //   title: 'Current Location',
-    // });
-    // var infowindow = new google.maps.InfoWindow({
-    //   content: `<div class=infowindow>Your Current Location</div>`,
-    // });
-    //event listener to call the infoWindow when the marker is clicked
-    //the this.infoCallback(infowindow, markerInfo will ensure that the browsers remembers with marker was 
-    //clicked and with what details
-    // google.maps.event.addListener(usermarkerInfo, 'click', this.infoCallback(infowindow, usermarkerInfo));
-
+   
     //loop through unit location and display markers on the map
     unitLocation.forEach((marker) => {
       var image = 'http://maps.google.com/mapfiles/ms/micons/red-dot.png';
@@ -257,7 +243,7 @@ export class GoogleMapComponent {
       //the this.infoCallback(infowindow, markerInfo will ensure that the browsers remembers with marker was 
       //clicked and with what details
 
-      // google.maps.event.addListener(markerInfo, 'click', this.infoCallback(infowindow, markerInfo));
+      google.maps.event.addListener(markerInfo, 'click', this.infoCallback(infowindow, markerInfo));
       google.maps.event.addListener(markerInfo, 'click', this.getDirectionBetweenMarker(usersLocation, markerInfo));
     });
 
