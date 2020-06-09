@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';
 import { VictimMenuModule } from '../../../components/victim.components.module'
 import { FindUnitPageRoutingModule } from './find-unit-routing.module';
 import { FindUnitPage } from './find-unit.page';
-import { VictimViewUnitOnMapPage } from '../victim-view-unit-on-map/victim-view-unit-on-map.page';
+import { VictimViewUnitOnMapPage } from '../../victim-pages/victim-view-unit-on-map/victim-view-unit-on-map.page';
 import { ViewDangersPageModule } from '../../victim-pages/view-dangers/view-dangers.module';
 
 @NgModule({
