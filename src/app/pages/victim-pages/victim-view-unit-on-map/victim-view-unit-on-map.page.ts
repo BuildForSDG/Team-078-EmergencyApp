@@ -52,7 +52,8 @@ export class VictimViewUnitOnMapPage implements OnInit {
       message: 'Checking current location...'
     }).then((overlay) => {
       overlay.present();
-      Geolocation.getCurrentPosition().then((position) => {
+      const id = Geolocation.watchPosition({ enableHighAccuracy: true, timeout: 10000 }, (position, err) => {
+        // Geolocation.clearWatch({id});
         overlay.dismiss();
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
@@ -60,23 +61,45 @@ export class VictimViewUnitOnMapPage implements OnInit {
           lat : this.latitude,
           lng : this.longitude
         };
-        //this.map.mapLocation();
+
         this.map.viewUnitOnMap(currentLocation,this.unitsDetails);
+        this.map.updateMarker(this.latitude, this.longitude);
         const data = {
           latitude: this.latitude,
           longitude: this.longitude
         };
-        this.alertCtrl.create({
-          header: 'Location	confirmed!',
-          // message: 'You can now view any dangers on your current route.',
-          buttons: [{ text: 'Ok' }]
-        }).then((alert) => {
-          alert.present();
-        });
-      }, (err) => {
-        console.log(err);
-        overlay.dismiss();
+        if (err) {
+          console.log(err);
+          overlay.dismiss();
+          return;
+        }
+
       });
+      // Geolocation.getCurrentPosition().then((position) => {
+      //   overlay.dismiss();
+      //   this.latitude = position.coords.latitude;
+      //   this.longitude = position.coords.longitude;
+      //   const currentLocation = {
+      //     lat : this.latitude,
+      //     lng : this.longitude
+      //   };
+      //   //this.map.mapLocation();
+      //   this.map.viewUnitOnMap(currentLocation,this.unitsDetails);
+      //   const data = {
+      //     latitude: this.latitude,
+      //     longitude: this.longitude
+      //   };
+      //   this.alertCtrl.create({
+      //     header: 'Location	confirmed!',
+      //     // message: 'You can now view any dangers on your current route.',
+      //     buttons: [{ text: 'Ok' }]
+      //   }).then((alert) => {
+      //     alert.present();
+      //   });
+      // }, (err) => {
+      //   console.log(err);
+      //   overlay.dismiss();
+      // });
     });
   }
 

@@ -168,6 +168,21 @@ export class GoogleMapComponent {
     this.marker = marker
   }
 
+  public updateMarker(lat: number, lng: number): void {
+
+    const latLng = new google.maps.LatLng(lat, lng);
+    const marker = new google.maps.Marker({
+      map: this.map,
+      position: latLng,
+    });
+    // 	Remove	existing	marker	if	it	exists
+    if (this.marker) {
+      this.marker.setMap(null);
+    }
+    // 	Add	new	marker
+    this.marker = marker
+  }
+
   addConnectivityListeners(): void {
 
     console.warn('The	Capacitor	Network	API	does	not	currently	have	a	web	implementation.	This	will	only	work	when	running	as	an	iOS/Android	app');
@@ -193,9 +208,24 @@ export class GoogleMapComponent {
   }
 
 
-  public viewUnitOnMap(usersLocation: {}, unitLocation: []): void {
+  public viewUnitOnMap(usersLocation: any, unitLocation: []): void {
     var markerInfo;
-    //console.log("Auth Details", markers);
+    //add user marker
+    // var usermarkerInfo = new google.maps.Marker({
+    //   position: new google.maps.LatLng(usersLocation.lat, usersLocation.lng),
+    //   map: this.map,
+    //   // animation: google.maps.Animation.DROP,
+    //   title: 'Current Location',
+    // });
+    // var infowindow = new google.maps.InfoWindow({
+    //   content: `<div class=infowindow>Your Current Location</div>`,
+    // });
+    //event listener to call the infoWindow when the marker is clicked
+    //the this.infoCallback(infowindow, markerInfo will ensure that the browsers remembers with marker was 
+    //clicked and with what details
+    // google.maps.event.addListener(usermarkerInfo, 'click', this.infoCallback(infowindow, usermarkerInfo));
+
+    //loop through unit location and display markers on the map
     unitLocation.forEach((marker) => {
       var image = 'http://maps.google.com/mapfiles/ms/micons/red-dot.png';
       if (marker['unit_type'] == "Fire") {
@@ -208,7 +238,6 @@ export class GoogleMapComponent {
       markerInfo = new google.maps.Marker({
         position: new google.maps.LatLng(marker['coordinates']['lat'], marker['coordinates']['lng']),
         map: this.map,
-        animation: google.maps.Animation.DROP,
         title: marker['unit_title'],
         icon: image
       });
@@ -227,7 +256,9 @@ export class GoogleMapComponent {
       //event listener to call the infoWindow when the marker is clicked
       //the this.infoCallback(infowindow, markerInfo will ensure that the browsers remembers with marker was 
       //clicked and with what details
-      google.maps.event.addListener(markerInfo, 'click', this.infoCallback(infowindow, markerInfo));
+
+      // google.maps.event.addListener(markerInfo, 'click', this.infoCallback(infowindow, markerInfo));
+      google.maps.event.addListener(markerInfo, 'click', this.getDirectionBetweenMarker(usersLocation, markerInfo));
     });
 
     // const directionsDisplay = new google.maps.DirectionsRenderer();
@@ -250,6 +281,30 @@ export class GoogleMapComponent {
     // if (this.marker) {
     //   this.marker.setMap(null);
     // }
+  }
+  public getDirectionBetweenMarker(fromLocationDetails: any, toLocationDetails: any) {
+    return function () {
+      const directionsDisplay = new google.maps.DirectionsRenderer();
+      directionsDisplay.setMap(this.map);
+
+      const start = new google.maps.LatLng(fromLocationDetails.lat, fromLocationDetails.lng);
+      const end = new google.maps.LatLng(toLocationDetails.getPosition().lat(), toLocationDetails.getPosition().lng());
+      const directionsService = new google.maps.DirectionsService();
+      directionsService.route(
+        {
+          origin: start,
+          destination: end,
+          travelMode: google.maps.TravelMode.DRIVING
+        },
+        function (response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          }
+        });
+      if (this.marker) {
+        this.marker.setMap(null);
+      }
+    }
   }
 
   public viewRequestOnMap(reponderLocation: {}, requestLocation: {}): void {
