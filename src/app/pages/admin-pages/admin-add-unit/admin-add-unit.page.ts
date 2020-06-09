@@ -83,7 +83,7 @@ export class AdminAddUnitPage implements OnInit {
         this.addUnitForm.get("unit_type").value,
         this.addUnitForm.get("address").value,
         this.addUnitForm.get("phone_number").value,
-        this.addUnitForm.get("coordinates").value).then(() => {
+        this.coordinatesInfo.location).then(() => {
           this.loading.dismiss().then(() => {
             this.loading.dismiss().then(async () => {
               const alert = await this.alertCtrl.create({ message: "Unit Added Successfully", buttons: [{ text: 'Ok', role: 'cancel' }], });

@@ -13,31 +13,20 @@
     <ion-row class="ion-text-center ion-align-items-center">
       <ion-col size-md="6" offset-md="3" class="ion-margin-vertical">
         <div class="form">
-          <form size="12">
+          <form size="12" (ngSubmit)="submitForm()" #infoForm="ngForm">
             <ion-item>
-              <ion-label>SELECT UNIT</ion-label>
-              <ion-select value="UNIT" multiple="true" placeholder="UNIT">
-                <ion-select-option value="Robbery">Police</ion-select-option>
-                <ion-select-option value="Accident">Hospital</ion-select-option>
-                <ion-select-option value="Fire">Firemen</ion-select-option>
+              <ion-label>SELECT EMMERGENCY TYPE</ion-label>
+              <ion-select name="unitType" [(ngModel)]="userInfo.unitType" placeholder="Type">
+                  <ion-select-option [value]="types" *ngFor="let types of emergencies">{{types}}</ion-select-option>
               </ion-select>
-            </ion-item>
-            <ion-item no-lines>
-              <ion-input type="text" placeholder="ENTER LOCATION" required></ion-input>
-            </ion-item>
-            <ion-button>
-              <ion-icon name="search-sharp" slot="start"></ion-icon> GET GPS
-              LOCATION
+          </ion-item>
+            <!-- <ion-item no-lines>
+              <ion-input type="text" name="address" [(ngModel)]="userInfo.address" placeholder="ENTER LOCATION" required></ion-input>
+            </ion-item> -->
+            <ion-button type="submit">
+              <ion-icon name="search-sharp"  slot="start"></ion-icon> Find
             </ion-button>
-            <ion-grid>
-              <ion-row>
-                <ion-col size="6" offset="6">
-                  <ion-button type="submit">
-                    SUMBIT <ion-icon name="arrow-forward" slot="end"></ion-icon>
-                  </ion-button>
-                </ion-col>
-              </ion-row>
-            </ion-grid>
+       
           </form>
         </div>
       </ion-col>

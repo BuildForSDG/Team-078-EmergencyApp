@@ -9,39 +9,26 @@
         </ion-text>
 
         <div class="cards-holder">
-          <ion-card>
+          <ion-card *ngFor="let respondent of respondents">
             <div class="card-buttons">
-              <ion-button fill="clear">
+              <!-- <ion-button fill="clear">
                 <ion-icon name="create-outline"></ion-icon>
-              </ion-button>
+              </ion-button> -->
 
-              <ion-button fill="clear">
-                <ion-icon name="trash-outline"></ion-icon>
+              <ion-button fill="clear" (click) = "deleteRespondent(respondent.id)">
+                <ion-icon name="trash-outline" ></ion-icon>
               </ion-button>
             </div>
             <ion-card-header>
-              <ion-card-title>UNIT ID: 547AT2</ion-card-title>
+              <ion-card-title>UNIT ID: {{ respondent.id }}</ion-card-title>
             </ion-card-header>
             <ion-card-content>
-              National Industrial Court Nigeria, Enugu, Nigeria.
-            </ion-card-content>
-          </ion-card>
-          <ion-card>
+             Address: {{ respondent.address }} <br>
+             Phone Number: {{ respondent.phoneNumber }} <br>
+             Respondent Email: {{ respondent.email }} <br>
+             Respondent Unit: {{ respondent.respondentUnit }} <br>
+             Respondent Type: {{ respondent.respondentType }}
 
-            <div class="card-buttons">
-              <ion-button fill="clear">
-                <ion-icon name="create-outline"></ion-icon>
-              </ion-button>
-            
-              <ion-button fill="clear">
-                <ion-icon name="trash-outline"></ion-icon>
-              </ion-button>
-            </div>
-            <ion-card-header>
-              <ion-card-title>UNIT ID: 341TT9</ion-card-title>
-            </ion-card-header>
-            <ion-card-content>
-              Off Adeola Odeku , Victoria Island , Lagos , Nigeria.
             </ion-card-content>
           </ion-card>
         </div>
