@@ -1,7 +1,7 @@
 import { Component, ViewChild, OnInit } from "@angular/core";
 import { AlertController, LoadingController } from "@ionic/angular";
 import { Plugins } from "@capacitor/core";
-import { Router, ActivatedRoute } from "@angular/router";
+import { Router, ActivatedRoute, NavigationExtras } from "@angular/router";
 import { GoogleMapComponent } from "../../../components/google-map/google-map.component";
 import { AuthService } from "../../../services/user/auth.service";
 import { RequestService } from "../../../services/victims/request.service";
@@ -94,12 +94,17 @@ export class VictimConfirmLocOnMapPage implements OnInit {
         "",responder_email,this.userInfo.phone_number, formatted_address)
       .then( () => {
           //alert all units necessary of this request
+          const navigationExtras: NavigationExtras = {
+            state: {
+              request_ref: request_ref
+            }
+          };
           this.requestService.assignResponders(this.userInfo.victim_id,request_ref,this.userInfo.emmergency,
             this.userInfo.latLong.lat,this.userInfo.latLong.long,this.userInfo.address,
             "",this.userInfo.phone_number, formatted_address)
           .then( () => {
             this.loading.dismiss().then(() => { 
-              this.router.navigate(["/unit-alert"]);
+              this.router.navigate(["/unit-alert"],navigationExtras);
             });
           }, error => { 
             this.loading.dismiss().then( () => { 

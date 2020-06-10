@@ -14,17 +14,25 @@
               </div>
             </ion-row>
             <ion-row>
-              <div
-                class="ion-text-center user-text ion-padding"
-                style="text-decoration: underline;"
-              >
-                Estimated Time of Arrival
+              <div class="modal" *ngFor="let respondent of respondents">
+                <ion-item  lines="none">
+                  <div class="ion-text-start ion-margin ion-padding em_item">
+                    <h3 class="em_header">Details :</h3>
+                    <p>This is the list of respondent that have been notified</p>
+                    <p>
+                      Name: {{ respondent.fullname }} <br><br>
+                      Phone: {{ respondent.phoneNumber }} <br><br>
+                      Email: {{ respondent.email }} <br>
+                      Address: {{ respondent.formattedAddress }} <br>
+                    </p>
+                  </div>
+                </ion-item>
               </div>
             </ion-row>
-            <ion-row>
+            <!-- <ion-row>
               <ion-icon name="car-sport-sharp"></ion-icon>&nbsp;
               <span style="font-weight: bold;">57 Minutes</span>
-            </ion-row>
+            </ion-row> -->
           </ion-col>
         </ion-grid>
         <ion-item lines="none">
