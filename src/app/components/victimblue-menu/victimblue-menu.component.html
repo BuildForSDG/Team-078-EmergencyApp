@@ -29,7 +29,7 @@
 			<ion-segment [(ngModel)]="menuSegment">
 				<ion-segment-button>
 					<ion-menu-toggle>
-					<ion-button fill="clear" color="none" routerLink="/user-welcome">
+					<ion-button fill="clear" color="none" href="/user-welcome">
 						<ion-icon color="secondary" name="home"></ion-icon>
 					</ion-button>
 				</ion-menu-toggle>
@@ -56,17 +56,17 @@
 		<div [ngSwitch]="menuSegment">
 			<ion-list *ngSwitchCase="'view-danger'" class="menu-border">
 				<ion-menu-toggle>
-					<ion-item class="menu-item-line" routerLink="/get-help">
+					<ion-item class="menu-item-line" href="/get-help">
 						<ion-label>Get Help</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
 				<ion-menu-toggle>
-					<ion-item class="menu-item-line" routerLink="/find-unit">
+					<ion-item class="menu-item-line" href="./find-unit">
 						<ion-label>Find Unit</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
 				<ion-menu-toggle>
-					<ion-item routerLink="/view-dangers">
+					<ion-item href="./view-dangers">
 						<ion-label>View Dangers</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
@@ -74,17 +74,17 @@
 
 			<ion-list *ngSwitchCase="'find-unit'" class="menu-border">
 				<ion-menu-toggle>
-					<ion-item class="menu-item-line" routerLink="/get-help">
+					<ion-item class="menu-item-line" href="/get-help">
 						<ion-label>Get Help</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
 				<ion-menu-toggle>
-					<ion-item class="menu-item-line" routerLink="/find-unit">
+					<ion-item class="menu-item-line" href="./find-unit">
 						<ion-label>Find Unit</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
 				<ion-menu-toggle>
-					<ion-item routerLink="/view-dangers">
+					<ion-item href="./view-dangers">
 						<ion-label>View Dangers</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
@@ -92,17 +92,17 @@
 
 			<ion-list *ngSwitchCase="'get-help'" class="menu-border">
 				<ion-menu-toggle>
-					<ion-item class="menu-item-line" routerLink="/get-help">
+					<ion-item class="menu-item-line" href="/get-help">
 						<ion-label>Get Help</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
 				<ion-menu-toggle>
-					<ion-item class="menu-item-line" routerLink="/find-unit">
+					<ion-item class="menu-item-line" href="./find-unit">
 						<ion-label>Find Unit</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
 				<ion-menu-toggle>
-					<ion-item routerLink="/view-dangers">
+					<ion-item href="./view-dangers">
 						<ion-label>View Dangers</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
