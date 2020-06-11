@@ -32,11 +32,11 @@
     </div>
   </ion-header>
   <ion-content>
-    <div class="menu-border">
+    <ion-list class="menu-border">
       <ion-menu-toggle>
-        <ion-button class="menu-item-line" routerLink="/admin-add-danger">
+        <ion-item class="menu-item-line" href="/admin-add-danger">
           <ion-label>Add Danger</ion-label>
-        </ion-button>
+        </ion-item>
       </ion-menu-toggle>
       <ion-menu-toggle>
         <ion-item class="menu-item-line" href="/view-respondant-list">
@@ -74,7 +74,7 @@
           <ion-label>Edit Admin</ion-label>
         </ion-item>
       </ion-menu-toggle> -->
-    </div>
+    </ion-list>
   </ion-content>
   <ion-router-outlet id="main"></ion-router-outlet>
 </ion-menu>

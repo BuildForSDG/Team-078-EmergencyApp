@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import { AppRoutingModule } from '../../../app/app-routing.module';
+
 
 @Component({
   selector: 'app-admin-menu',
@@ -8,6 +8,7 @@ import { AppRoutingModule } from '../../../app/app-routing.module';
   styleUrls: ['./admin-menu.component.scss'],
 })
 export class AdminMenuComponent implements OnInit {
+  
 
   constructor(private location: Location) { 
 
