@@ -7,7 +7,6 @@ import { Location } from '@angular/common';
   styleUrls: ['./admin-menu.component.scss'],
 })
 export class AdminMenuComponent implements OnInit {
-  
 
   constructor(private location: Location) { 
 
