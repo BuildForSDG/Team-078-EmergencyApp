@@ -1,3 +1,13 @@
+<!-- Default back button -->
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start" color="secondary">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Welcome</ion-title>
+  </ion-toolbar>
+</ion-header>
+
 <ion-content>
     <ion-grid class="ion-margin-vertical">
         <ion-row>
@@ -20,7 +30,7 @@
                 </div>
 
                 <div class="buttons">
-                    <ion-button href="/get-help">
+                    <ion-button routerLink="/get-help">
                         <i class="handshake">
               <svg
                 width="35"
@@ -37,11 +47,11 @@
             >Get Help
           </ion-button>
 
-          <ion-button href="/find-unit">
+          <ion-button routerLink="/find-unit">
             <ion-icon name="locate-sharp"></ion-icon>Find Unit
           </ion-button>
 
-          <ion-button href="/view-dangers"> 
+          <ion-button routerLink="/view-dangers"> 
             <ion-icon name="alert-circle-sharp"></ion-icon> View Dangers
           </ion-button>
         </div>
