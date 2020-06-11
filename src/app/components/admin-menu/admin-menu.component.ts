@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
+import { AppRoutingModule } from '../../../app/app-routing.module';
 
 @Component({
   selector: 'app-admin-menu',
