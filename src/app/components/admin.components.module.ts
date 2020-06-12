@@ -207,7 +207,7 @@ const routes: Routes = [
         CommonModule,
         FormsModule,
         IonicModule,
-        RouterModule,
+        RouterModule
     ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
