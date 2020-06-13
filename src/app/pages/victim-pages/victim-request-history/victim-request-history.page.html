@@ -1,0 +1,33 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Request History</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+
+<ion-content class="unit-body">
+  <ion-grid style="height: 100%">
+    <ion-row>
+      <ion-col size-md="6" size-lg="5" size-xs="12" class="ion-margin-vertical">
+        <h3 class="divider line one-line">All Request</h3>
+        <ion-grid class="unit-inner-body">
+          <div class="modal" *ngFor="let request of requests">
+            <ion-item (click) = "openModal(request.id)" lines="none">
+              <div class="ion-text-start ion-margin ion-padding em_item">
+                <h3 class="em_header">Details :</h3>
+                <p>
+                  Phone: {{request.phone_number}} <br><br>
+                  Request Time: {{request.time}} <br><br>
+                  Location: {{request.location}}<br><br>
+                  Request Type: {{request.request_type}}<br><br>
+                  Status: {{request.request_resolved ? 'Successful' : 'Pending' }}
+                  
+                </p>
+              </div>
+            </ion-item>
+          </div>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

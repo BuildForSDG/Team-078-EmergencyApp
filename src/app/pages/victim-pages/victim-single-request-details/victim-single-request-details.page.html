@@ -1,0 +1,85 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Request Details</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content padding class="unit-body">
+  <ion-grid style="height: 100%">
+    <ion-row>
+      <ion-col class="ion-margin-vertical">
+        <ion-grid class="unit-inner-body">
+          <div>
+            <ion-item lines="none">
+              <div class="ion-text-start ion-margin ion-padding em_item">
+                <h3 class="em_header">Request Info:</h3>
+                <p>
+                  Phone: {{phone_number}} <br><br>
+                  Request Time: {{time}} <br><br>
+                  Location: {{location}}
+                </p>
+              </div>
+              
+           
+            </ion-item>
+          </div>
+
+          <ion-grid class="unit-inner-body" *ngIf="!request_status">
+            <div class="modal" *ngFor="let responder of allresponders_data">
+              <ion-item lines="none">
+                <div class="ion-text-start ion-margin ion-padding em_item">
+                  <h3 class="em_header">Responders Details :</h3>
+                  <p>
+                    Fullname: {{responder.fullname}} <br><br>
+                    Phone: {{responder.phone_number}} <br><br>
+                    Email: {{responder.email}} <br><br>
+                    Location: {{responder.address}}<br><br>
+                    Responder Unit: {{responder.respondentUnit}}<br><br>
+                    Status: <span [class.responded]="responder.id == responder.responded_responder" [class.standby]="responder.id !== responder.responded_responder">{{responder.id == responder.responded_responder ? 'Responded' : 'On Standby' }}  </span>     
+                  </p>
+                </div>
+              </ion-item>
+            </div>
+          </ion-grid>
+          <ion-grid class="unit-inner-body" *ngIf="request_status">
+            <div class="modal">
+              <ion-item lines="none">
+                <div class="ion-text-start ion-margin ion-padding em_item">
+                  <h3 class="em_header">Status:</h3>
+                  <p>
+                    <img src="../../../../assets/success_button.jpg">   
+                  </p>
+                </div>
+              </ion-item>
+            </div>
+          </ion-grid>
+
+          
+          <div>
+          </div>
+        </ion-grid>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>
+
+<ion-footer>
+  <div class="footer">
+    <ion-item lines="none">
+      <div slot="start">
+        <ion-button size="small" color="danger" *ngIf="!request_status" color="warning" [disabled]="request_status" (click)="closeModal()">No Response
+        </ion-button>
+      </div>
+      <div slot="end">
+        <ion-button size="small" *ngIf="!request_status" color="warning" (click)="unit_responded()" [disabled]="request_status">Unit Responded 
+        </ion-button>
+        <!-- <ion-button size="small" *ngIf="responded" color="warning" disabled>Unit Responded
+        </ion-button> -->
+      </div>
+    </ion-item>
+  </div>
+</ion-footer>

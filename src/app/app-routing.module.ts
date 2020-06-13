@@ -185,7 +185,14 @@ const routes: Routes = [
   {
     path: 'respondent-view-request-on-map',
     loadChildren: () => import('./pages/respondant-pages/respondent-view-request-on-map/respondent-view-request-on-map.module').then(m => m.RespondentViewRequestOnMapPageModule)
+  },
+  {
+    path: 'victim-request-history',
+    loadChildren: () => import('./pages/victim-pages/victim-request-history/victim-request-history.module').then( m => m.VictimRequestHistoryPageModule)
   }
+
+
+
 
 ];
 @NgModule({
