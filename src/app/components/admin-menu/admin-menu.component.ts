@@ -1,28 +1,21 @@
-import { Component, OnInit } from "@angular/core";
-import { MenuController } from "@ionic/angular";
-import { Location } from "@angular/common";
-import {  Router } from "@angular/router";
+import { Component, OnInit } from '@angular/core';
+import { Location } from '@angular/common';
 
 @Component({
-  selector: "app-admin-menu",
-  templateUrl: "./admin-menu.component.html",
-  styleUrls: ["./admin-menu.component.scss"],
+  selector: 'app-admin-menu',
+  templateUrl: './admin-menu.component.html',
+  styleUrls: ['./admin-menu.component.scss'],
 })
 export class AdminMenuComponent implements OnInit {
   
-  constructor(private location: Location, 
-    private menu: MenuController, 
-    private route: Router) { }
+
+  constructor(private location: Location) { 
+
+  }
   ngOnInit() {
-
-   }
-
-   openFirst() {
-    this.menu.enable(true, 'main-menu');
-    this.menu.open('main-menu');
   }
-
+  
   goBack() {
-    this.location.back();
-  }
+  this.location.back();
+}
 }

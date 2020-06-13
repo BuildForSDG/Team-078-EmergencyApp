@@ -53,7 +53,7 @@ export class VictimMenuComponent implements OnInit {
     return this.routerlocation === "/get-help" ? "Get Help" : "Find Unit";
   }
 
-  // triggers when menu button is clicked
+  // triggers wen menu button is clicked
   flipSegment(): void {
     if (this.menuSegment === 'get-help') {
       this.menuSegment = 'find-unit';
