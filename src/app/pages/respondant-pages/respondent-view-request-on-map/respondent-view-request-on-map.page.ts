@@ -54,7 +54,8 @@ export class RespondentViewRequestOnMapPage implements OnInit {
           lng : this.longitude
         };
         this.map.viewRequestOnMap(currentLocation,this.coord);
-        this.map.changeMarker(this.latitude, this.longitude);
+        this.map.changeMarkerWithoutAni(this.latitude, this.longitude);
+       
         const data = {
           latitude: this.latitude,
           longitude: this.longitude

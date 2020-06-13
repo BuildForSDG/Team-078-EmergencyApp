@@ -23,11 +23,11 @@ export class VictimViewUnitOnMapPage implements OnInit {
   map: GoogleMapComponent;
   public loading: HTMLIonLoadingElement;
   constructor(private alertCtrl: AlertController,
-  private loadingCtrl: LoadingController,private modalController: ModalController,
-  private _auth: AuthService) { }
+    private loadingCtrl: LoadingController, private modalController: ModalController,
+    private _auth: AuthService) { }
   private latitude: number;
   private longitude: number;
-  unitType: string ;
+  unitType: string;
   unitsDetails: any;
   coord: any;
   ngOnInit() {
@@ -58,12 +58,12 @@ export class VictimViewUnitOnMapPage implements OnInit {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
         const currentLocation = {
-          lat : this.latitude,
-          lng : this.longitude
+          lat: this.latitude,
+          lng: this.longitude
         };
 
-        this.map.viewUnitOnMap(currentLocation,this.unitsDetails);
-        this.map.updateMarker(this.latitude, this.longitude);
+        this.map.viewUnitOnMap(currentLocation, this.unitsDetails);
+        this.map.changeMarkerWithoutAni(this.latitude, this.longitude);
         const data = {
           latitude: this.latitude,
           longitude: this.longitude
