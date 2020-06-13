@@ -1,0 +1,48 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>Review Response</ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="closeModal()">
+        <ion-icon slot="icon-only" name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+      <form id="review-form">
+        <!-- <div class="fieldset"> -->
+          <!-- <label for="reviewName">Name</label> -->
+          <ion-item no-lines>
+            <ion-input type="text" placeholder="Your Name" name="reviewName" required></ion-input>
+        </ion-item>
+          <!-- <input name="reviewName" id="reviewName" required=""> -->
+        <!-- </div> -->
+        <!-- <div class="fieldset"> -->
+          <ion-item>
+          <label>Rating</label>
+          <div class="rate">
+            <input type="radio" id="star5" name="rate" value="5" required="">
+            <label for="star5" title="5 stars">5 stars</label>
+            <input type="radio" id="star4" name="rate" value="4">
+            <label for="star4" title="4 stars">4 stars</label>
+            <input type="radio" id="star3" name="rate" value="3">
+            <label for="star3" title="3 stars">3 stars</label>
+            <input type="radio" id="star2" name="rate" value="2" >
+            <label for="star2" title="2 stars">2 stars</label>
+            <input type="radio" id="star1" name="https://codepen.io/pen/rate" value="1" onkeydown="navRadioGroup(event)" onfocus="setFocus(event)">
+            <label for="star1" title="1 star">1 star</label>
+          </div>
+        <!-- </div> -->
+      </ion-item>
+  
+        <!-- <div class="fieldset"> -->
+        <ion-item no-lines>
+          <ion-textarea name="reviewComments" placeholder="Add comment here..." id="reviewComments" cols="20" rows="5" required=""></ion-textarea>
+        </ion-item>
+          <!-- </div> -->
+        <div class="fieldset right">
+          <button id="submit-review-btn">Save</button>
+        </div>
+      </form>
+</ion-content>
