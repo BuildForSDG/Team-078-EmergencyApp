@@ -89,13 +89,26 @@ export class VictimSingleRequestDetailsPage implements OnInit {
     const modal = await this.modalController.create({
       component: VictimReviewPagePage,
       componentProps: {
-        
+         request_id : this.id
+      }
+    });
+
+    modal.onDidDismiss().then(res => {
+      if (res !== null) {
+        console.log('The result:', res.data.responded);
+        if(res.data.responded){
+          this.request_status = true;
+        }
+     }else{
+        console.log("No result:", res);
+
       }
     });
     // return response from modal 
     modal.onWillDismiss().then(dataReturned => {
      // this.Response = dataReturned.data;
     });
+    
 
     return await modal.present();
   }

@@ -15,16 +15,17 @@ export class VictimRequestHistoryPage implements OnInit {
   public Response: string;
 
   async ngOnInit() {
-    this.loading = await this.loadingCtrl.create();
-    await this.loading.present();
+
   }
 
   constructor(private modalController: ModalController, public loadingCtrl: LoadingController,
     public alertCtrl: AlertController) {
+    
     //get a list of all emergencie sassigned to this particular responder
     firebase.auth().onAuthStateChanged(async user => {
-      // this.loading = await this.loadingCtrl.create();
-      //   await this.loading.present();
+      this.loading = await this.loadingCtrl.create();
+        await this.loading.present();
+
       if (user) {
         //user is active
         firebase.firestore().collection('request')
@@ -36,19 +37,20 @@ export class VictimRequestHistoryPage implements OnInit {
               let data = {
                 id: doc.id,
                 phone_number: doc.data().victim_number,
-                assigned_responders:  doc.data().assigned_responder,
+                assigned_responders: doc.data().assigned_responder,
                 time: new Date(doc.data().request_time.seconds * 1000).toLocaleString(),
                 location: doc.data().request_address,
                 coord: {
                   lat: doc.data().request_lat,
                   lng: doc.data().request_long
                 },
-                request_type :  doc.data().request_type,
-                request_resolved:  doc.data().request_resolved
+                request_type: doc.data().request_type,
+                request_resolved: doc.data().request_resolved
               }
               this.requests.push(data);
-              this.loading.dismiss();
+              
             });
+            this.loading.dismiss();
           }, (error) => {
             this.loading.dismiss().then(async () => {
               const alert = await this.alertCtrl.create({

@@ -28,7 +28,7 @@
             </ion-item>
           </div>
 
-          <ion-grid class="unit-inner-body">
+          <ion-grid class="unit-inner-body" *ngIf="!request_status">
             <div class="modal" *ngFor="let responder of allresponders_data">
               <ion-item lines="none">
                 <div class="ion-text-start ion-margin ion-padding em_item">
@@ -40,6 +40,18 @@
                     Location: {{responder.address}}<br><br>
                     Responder Unit: {{responder.respondentUnit}}<br><br>
                     Status: <span [class.responded]="responder.id == responder.responded_responder" [class.standby]="responder.id !== responder.responded_responder">{{responder.id == responder.responded_responder ? 'Responded' : 'On Standby' }}  </span>     
+                  </p>
+                </div>
+              </ion-item>
+            </div>
+          </ion-grid>
+          <ion-grid class="unit-inner-body" *ngIf="request_status">
+            <div class="modal">
+              <ion-item lines="none">
+                <div class="ion-text-start ion-margin ion-padding em_item">
+                  <h3 class="em_header">Status:</h3>
+                  <p>
+                    <img src="../../../../assets/success_button.jpg">   
                   </p>
                 </div>
               </ion-item>
@@ -59,7 +71,7 @@
   <div class="footer">
     <ion-item lines="none">
       <div slot="start">
-        <ion-button size="small" color="danger" *ngIf="!request_status" (click)="unit_responded()" [disabled]="request_status" (click)="closeModal()">No Response
+        <ion-button size="small" color="danger" *ngIf="!request_status" color="warning" [disabled]="request_status" (click)="closeModal()">No Response
         </ion-button>
       </div>
       <div slot="end">
