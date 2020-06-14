@@ -18,24 +18,25 @@ export class VictimMenuComponent implements OnInit {
     {
       title: "Find Unit",
       url: "/find-unit",
+      icon: "help-buoy-outline"
     },
     {
       title: "Get Help",
       url: "/get-help",
+      icon: "medkit-outline"
     },
     {
       title: "User Location",
       url: "/user-location",
+      icon: "location-outline"
     },
     {
       title: "View Dangers",
       url: "/view-dangers",
+      icon: "flame-outline"
     }
   ];
 
-//   find-unit  yellow menu
-// get-help yellow menu
-// user-location yellow
 
   selectedPath = '';
 
