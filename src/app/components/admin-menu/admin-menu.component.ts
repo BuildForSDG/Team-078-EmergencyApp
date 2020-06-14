@@ -42,13 +42,14 @@ export class AdminMenuComponent implements OnInit {
   constructor(private location: Location, private menu: MenuController, private router: Router) { 
     this.router.events.subscribe((event: RouterEvent) => {
       this.selectedPath = event.url;
+      
     });  
   }
   ngOnInit() {
   }
 
   toggleMenu() {
-    this.menu.toggle();
+    this.menu.toggle('main-menu');
   }
   
   goBack() {
