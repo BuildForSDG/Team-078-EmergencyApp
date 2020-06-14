@@ -36,6 +36,11 @@ export class RespondantMenuComponent implements OnInit {
       url: '/respondent-view-dangers',
       icon: 'bonfire-outline'
     },
+    {
+      title: 'Respondent History',
+      url: '/respondant-history',
+      icon: 'bonfire-outline'
+    },
   ];
 
 // <ion-icon name="bonfire-outline"></ion-icon>

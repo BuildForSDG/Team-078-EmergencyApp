@@ -75,7 +75,20 @@ export class VictimMenuComponent implements OnInit {
 
   // This is used to make the logo dynamic
   titleUpdate() {
-    return this.routerlocation === "/get-help" ? "Get Help" : "Find Unit";
+    if(this.routerlocation ==="/get-help" ){
+       return "Get Help"
+    }
+
+    if(this.routerlocation ==="/find-unit" ){
+      return "Find Unit"
+    }
+    if(this.routerlocation ==="/view-dangers" ){
+      return "Dangers"
+    }
+    if(this.routerlocation ==="/victim-request-history" ){
+      return "Request History"
+    }
+  
   }
 
   // triggers wen menu button is clicked
