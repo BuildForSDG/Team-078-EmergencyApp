@@ -1,5 +1,8 @@
 //.................header Title and SVG start..........................//
 
+.active-item {
+    border-left : 8px solid var(--ion-color-secondary);
+}
 
 .header-shadow-text {
     font-family: 'Poppins', 'sans-serif';
