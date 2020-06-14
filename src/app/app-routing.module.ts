@@ -188,8 +188,14 @@ const routes: Routes = [
   },
   {
     path: 'victim-request-history',
-    loadChildren: () => import('./pages/victim-pages/victim-request-history/victim-request-history.module').then( m => m.VictimRequestHistoryPageModule)
+    loadChildren: () => import('./pages/victim-pages/victim-request-history/victim-request-history.module').then(m => m.VictimRequestHistoryPageModule)
+  },
+  {
+    path: 'respondent-history',
+    loadChildren: () => import('./pages/respondant-pages/respondent-history/respondent-history.module').then(m => m.RespondentHistoryPageModule)
   }
+
+
 
 
 

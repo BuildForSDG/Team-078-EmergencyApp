@@ -32,19 +32,20 @@ export class UnitAlertPage implements OnInit {
        await firebase.firestore().collection('request')
           .where('request_ref', '==', this.request_ref).limit(1)
           .get().then(function (querySnapshot) {
-           
+            console.log("Request Info",querySnapshot.docs);
             querySnapshot.forEach(async (doc) => {
-              await firebase.firestore().collection('responder/'+doc.data().assigned_responders)
-              .limit(1)
-              .get().then(function (querySnapshot) {
-               
-                querySnapshot.forEach((doc) => {
-                  respondents.push(doc.data());
-                  //console.log(respondents)
-                });
+              console.log("Request Info In",doc.data());
+              //fetch details of all assigned respondent
+              console.log("responders_now",doc.data().assigned_responders);
+              doc.data().assigned_responders.forEach(element => {
+                firebase.firestore().doc('responder/'+element)
+              .get().then((response) => {
+                  respondents.push(response.data());
               }).catch((error) => {
                 console.log("Error:" + error);
               });
+              });
+              
               //console.log(respondents)
             });
           }).catch((error) => {
