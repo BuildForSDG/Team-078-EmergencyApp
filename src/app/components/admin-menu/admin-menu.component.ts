@@ -10,7 +10,6 @@ import {Router, RouterEvent} from '@angular/router';
 })
 export class AdminMenuComponent
   implements OnInit {
-
   pages = [
     {
       title: 'Admin Dashboard',
@@ -20,10 +19,11 @@ export class AdminMenuComponent
       title: 'Add Danger',
       url: '/admin-add-danger',
     },
-    {
-      title: 'View Responders',
-      url: '/view-respondant-list',
-    },
+    // this Keeps spooling to infinity
+    // {
+    //   title: 'View Responders',
+    //   url: '/view-respondant-list',
+    // },
     {
       title: 'Add Responders',
       url: '/admin-add-responder',
@@ -32,10 +32,11 @@ export class AdminMenuComponent
       title: 'Add Unit',
       url: '/admin-add-unit',
     },
-    {
-      title: 'View Dangers',
-      url: '/admin-view-dangers',
-    },
+    // this Keeps spooling to infinity
+    // {
+    //   title: 'View Dangers',
+    //   url: '/admin-view-dangers',
+    // },
     {
       title: 'View Admin',
       url: '/view-admins',
