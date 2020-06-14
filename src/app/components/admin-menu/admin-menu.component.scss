@@ -159,7 +159,7 @@ ion-menu-button {
 
 .menu-border {
   position: relative;
-  width: 10%;
+  width: 90%;
   --height: 40%;
   border: 1px solid var(--ion-color-secondary);
   box-sizing: border-box;
@@ -168,8 +168,9 @@ ion-menu-button {
 }
 
 .menu-item-line {
-  border: 1px solid var(--ion-color-secondary);
+  border-bottom: 1px solid var(--ion-color-secondary);
 }
+
 
 .menu-main-icon {
   display: grid;
