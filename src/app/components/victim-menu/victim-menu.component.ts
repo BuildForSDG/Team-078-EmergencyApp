@@ -34,6 +34,11 @@ export class VictimMenuComponent implements OnInit {
       title: "View Dangers",
       url: "/view-dangers",
       icon: "flame-outline"
+    },
+    {
+      title: "View Units",
+      url: "/view-unit",
+      icon: "boat-outline"
     }
   ];
 

@@ -12,28 +12,33 @@ export class RespondantMenuComponent implements OnInit {
 
   pages = [
     {
-      title: 'Respondant Dashboard',
+      title: 'Dashboard',
       url: '/respondant-dashboard',
+      icon: 'clipboard-outline'
     },
     {
       title: 'Respondant Details',
       url: '/respondant-details',
+      icon: 'person-outline'
     },
     {
       title: 'Add Danger',
       url: '/respondent-add-danger',
+      icon: 'flame-outline'
     },
     {
       title: 'View Emergency',
       url: '/view-emergencies',
+      icon: 'medkit-outline'
     },
     {
       title: 'View Danger',
       url: '/respondent-view-dangers',
+      icon: 'bonfire-outline'
     },
   ];
 
-
+// <ion-icon name="bonfire-outline"></ion-icon>
 
   selectedPath = '';
 

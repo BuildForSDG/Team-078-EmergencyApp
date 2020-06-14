@@ -73,4 +73,3 @@ export class AdminMenuComponent
   }
 }
 
-// private menu: MenuController,
