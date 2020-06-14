@@ -14,10 +14,12 @@ export class AdminMenuComponent
     {
       title: 'Admin Dashboard',
       url: '/admin-dashboard',
+      icon: 'clipboard-outline'
     },
     {
       title: 'Add Danger',
       url: '/admin-add-danger',
+      icon: "flame-outline"
     },
     // this Keeps spooling to infinity
     // {
@@ -27,10 +29,12 @@ export class AdminMenuComponent
     {
       title: 'Add Responders',
       url: '/admin-add-respondant',
+      icon: 'person-add-outline'
     },
     {
       title: 'Add Unit',
       url: '/admin-add-unit',
+      icon: 'location-outline'
     },
     // this Keeps spooling to infinity
     // {
@@ -40,8 +44,10 @@ export class AdminMenuComponent
     {
       title: 'View Admin',
       url: '/view-admins',
+      icon: 'eye-outline'
     },
   ];
+
 
   selectedPath = '';
 
