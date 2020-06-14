@@ -41,8 +41,7 @@ export class AdminMenuComponent implements OnInit {
 
   constructor(private location: Location, private menu: MenuController, private router: Router) { 
     this.router.events.subscribe((event: RouterEvent) => {
-      this.selectedPath = event.url;
-      
+      this.selectedPath = event.url;  
     });  
   }
   ngOnInit() {
