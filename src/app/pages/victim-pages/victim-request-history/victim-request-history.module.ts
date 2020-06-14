@@ -6,11 +6,14 @@ import { VictimRequestHistoryPageRoutingModule } from './victim-request-history-
 import { VictimSingleRequestDetailsPage } from '../victim-single-request-details/victim-single-request-details.page';
 import { VictimRequestHistoryPage } from './victim-request-history.page';
 import { VictimReviewPagePage } from '../victim-review-page/victim-review-page.page';
+import { VictimMenuModule } from '../../../components/victim.components.module';
+
 @NgModule({
   imports: [
     CommonModule,
     FormsModule,
     IonicModule,
+    VictimMenuModule,
     VictimRequestHistoryPageRoutingModule,
     
   ],

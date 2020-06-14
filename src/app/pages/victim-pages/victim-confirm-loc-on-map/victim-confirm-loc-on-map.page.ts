@@ -52,6 +52,7 @@ export class VictimConfirmLocOnMapPage implements OnInit {
         this.userInfo.phone_number = this.data.phone_number;
         this.userInfo.victim_id = this.data.victim_id;
       } else {
+       // this.map.disableMap();
         this.router.navigate(['/get-help']);
       }
     });
@@ -92,18 +93,20 @@ export class VictimConfirmLocOnMapPage implements OnInit {
       this._auth.addRequest(this.userInfo.victim_id,request_ref,this.userInfo.emmergency,
         this.userInfo.latLong.lat,this.userInfo.latLong.long,this.userInfo.address,
         "",responder_email,this.userInfo.phone_number, formatted_address)
-      .then( () => {
+      .then( async () => {
           //alert all units necessary of this request
           const navigationExtras: NavigationExtras = {
             state: {
               request_ref: request_ref
             }
           };
-          this.requestService.assignResponders(this.userInfo.victim_id,request_ref,this.userInfo.emmergency,
+          await this.requestService.assignResponders(this.userInfo.victim_id,request_ref,this.userInfo.emmergency,
             this.userInfo.latLong.lat,this.userInfo.latLong.long,this.userInfo.address,
             "",this.userInfo.phone_number, formatted_address)
-          .then( () => {
+          .then( async (result) => {
+            await result;
             this.loading.dismiss().then(() => { 
+              this.map.disableMap();
               this.router.navigate(["/unit-alert"],navigationExtras);
             });
           }, error => { 

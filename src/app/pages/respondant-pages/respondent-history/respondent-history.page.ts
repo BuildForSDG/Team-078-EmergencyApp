@@ -1,22 +1,19 @@
 import { Component, OnInit } from '@angular/core';
 import { ModalController, LoadingController, AlertController } from '@ionic/angular';
 import * as firebase from 'firebase';
-import { VictimSingleRequestDetailsPage } from '../victim-single-request-details/victim-single-request-details.page';
+import { RespondentSingleRequestDetailPage } from '../respondent-single-request-detail/respondent-single-request-detail.page';
 
 @Component({
-  selector: 'app-victim-request-history',
-  templateUrl: './victim-request-history.page.html',
-  styleUrls: ['./victim-request-history.page.scss'],
+  selector: 'app-respondent-history',
+  templateUrl: './respondent-history.page.html',
+  styleUrls: ['./respondent-history.page.scss'],
 })
-export class VictimRequestHistoryPage implements OnInit {
+export class RespondentHistoryPage implements OnInit {
 
+  
   requests: any = [];
   public loading: any;
   public Response: string;
-
-  async ngOnInit() {
-
-  }
 
   constructor(private modalController: ModalController, public loadingCtrl: LoadingController,
     public alertCtrl: AlertController) {
@@ -26,9 +23,9 @@ export class VictimRequestHistoryPage implements OnInit {
         await this.loading.present();
        //user is active
       if (user) {
-        //fetch all request by for this user
+        //fetch all request assigned to this user
         firebase.firestore().collection('request')
-          .where('victim_id', '==', user.uid)
+          .where('responded_responder', '==', user.uid)
           .get().
           then(result => {
             //iterate through each request
@@ -36,7 +33,6 @@ export class VictimRequestHistoryPage implements OnInit {
               let data = {
                 id: doc.id,
                 phone_number: doc.data().victim_number,
-                assigned_responders: doc.data().assigned_responder,
                 time: new Date(doc.data().request_time.seconds * 1000).toLocaleString(),
                 location: doc.data().request_address,
                 coord: {
@@ -63,10 +59,13 @@ export class VictimRequestHistoryPage implements OnInit {
       }
     });
   }
+  ngOnInit() {
+  }
+
   async openModal(id) {
     const request = this.requests.find(element => element.id === id);
     const modal = await this.modalController.create({
-      component: VictimSingleRequestDetailsPage,
+      component: RespondentSingleRequestDetailPage,
       componentProps: {
         id: request.id,
         phone_number: request.phone_number,
@@ -83,4 +82,5 @@ export class VictimRequestHistoryPage implements OnInit {
 
     return await modal.present();
   }
+
 }

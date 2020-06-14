@@ -66,8 +66,13 @@
 					</ion-item>
 				</ion-menu-toggle>
 				<ion-menu-toggle>
-					<ion-item href="./view-dangers">
+					<ion-item class="menu-item-line" href="./view-dangers">
 						<ion-label>View Dangers</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item href="victim-request-history">
+						<ion-label>Request History</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
 			</ion-list>
@@ -84,8 +89,13 @@
 					</ion-item>
 				</ion-menu-toggle>
 				<ion-menu-toggle>
-					<ion-item href="./view-dangers">
+					<ion-item  class="menu-item-line" href="./view-dangers">
 						<ion-label>View Dangers</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item href="victim-request-history">
+						<ion-label>Request History</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
 			</ion-list>
@@ -102,10 +112,40 @@
 					</ion-item>
 				</ion-menu-toggle>
 				<ion-menu-toggle>
-					<ion-item href="./view-dangers">
+					<ion-item class="menu-item-line"  href="./view-dangers">
 						<ion-label>View Dangers</ion-label>
 					</ion-item>
 				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item href="victim-request-history">
+						<ion-label>Request History</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				
+			</ion-list>
+
+			<ion-list *ngSwitchCase="'victim-request-history'" class="menu-border">
+				<ion-menu-toggle>
+					<ion-item class="menu-item-line" href="/get-help">
+						<ion-label>Get Help</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item class="menu-item-line" href="./find-unit">
+						<ion-label>Find Unit</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item  class="menu-item-line" href="./view-dangers">
+						<ion-label>View Dangers</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				<ion-menu-toggle>
+					<ion-item href="victim-request-history">
+						<ion-label>Request History</ion-label>
+					</ion-item>
+				</ion-menu-toggle>
+				
 			</ion-list>
 		</div>
 	</ion-content>

@@ -33,7 +33,7 @@ export class VictimReviewPagePage implements OnInit {
         request_resolved: true,
         respond_rating: this.reviewDetails.rate,
       }).then(() => {
-        firebase.firestore().doc(`request/${this.request_id}`).collection("review").doc().set({
+        firebase.firestore().doc(`request/${this.request_id}`).collection("review").doc('details').set({
           name: this.reviewDetails.name,
           rate: this.reviewDetails.rate,
           comment: this.reviewDetails.comment
