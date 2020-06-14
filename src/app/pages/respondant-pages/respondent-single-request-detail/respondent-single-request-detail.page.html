@@ -28,24 +28,21 @@
             </ion-item>
           </div>
 
-          <ion-grid class="unit-inner-body" *ngIf="!request_status">
-            <div class="modal" *ngFor="let responder of allresponders_data">
+          <ion-grid class="unit-inner-body" *ngIf="request_status">
+            <div class="modal">
               <ion-item lines="none">
                 <div class="ion-text-start ion-margin ion-padding em_item">
-                  <h3 class="em_header">Responders Details :</h3>
+                  <h3 class="em_header">Review Details :</h3>
                   <p>
-                    Fullname: {{responder.fullname}} <br><br>
-                    Phone: {{responder.phone_number}} <br><br>
-                    Email: {{responder.email}} <br><br>
-                    Location: {{responder.address}}<br><br>
-                    Responder Unit: {{responder.respondentUnit}}<br><br>
-                    Status: <span [class.responded]="responder.id == responder.responded_responder" [class.standby]="responder.id !== responder.responded_responder">{{responder.id == responder.responded_responder ? 'Responded' : 'On Standby' }}  </span>     
-                  </p>
+                    name: {{review.name}} <br><br>
+                    Rate: {{review.rate}} Star <br><br>
+                    Comment: {{review.comment}} <br><br>
+                    </p>
                 </div>
               </ion-item>
             </div>
           </ion-grid>
-          <ion-grid class="unit-inner-body" *ngIf="request_status">
+          <!-- <ion-grid class="unit-inner-body" *ngIf="request_status">
             <div class="modal">
               <ion-item lines="none">
                 <div class="ion-text-start ion-margin ion-padding em_item">
@@ -56,7 +53,7 @@
                 </div>
               </ion-item>
             </div>
-          </ion-grid>
+          </ion-grid> -->
 
           
           <div>

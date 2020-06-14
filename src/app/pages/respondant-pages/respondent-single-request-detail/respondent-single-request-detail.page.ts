@@ -19,7 +19,7 @@ export class RespondentSingleRequestDetailPage implements OnInit {
   allresponders_data: any = [];
   request_status: any = false;
   isReviewed: any = false;
-  public review : {
+  review = {
      name : '',
      rate : '',
      comment : ''
@@ -50,10 +50,13 @@ export class RespondentSingleRequestDetailPage implements OnInit {
                     console.log('subcollection exists');
                     this.isReviewed = true;  
                     sub.forEach((result) =>{
+                       console.log("Content" , result.data());
                         this.review.name = result.data().name;
                         this.review.rate = result.data().rate;
                         this.review.comment = result.data().comment;
                     });
+                    that.request_status = true;
+                    that.loading.dismiss()
                   }else{
                     that.loading.dismiss().then(async () => {
                                 const alert = await that.alertCtrl.create({

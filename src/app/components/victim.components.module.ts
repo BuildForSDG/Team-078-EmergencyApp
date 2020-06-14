@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
 
 import { VictimMenuComponent } from '../components/victim-menu/victim-menu.component'
 
@@ -12,6 +13,7 @@ import { VictimMenuComponent } from '../components/victim-menu/victim-menu.compo
     CommonModule,
     FormsModule,
     IonicModule,
+    RouterModule
   ],
 
 })
