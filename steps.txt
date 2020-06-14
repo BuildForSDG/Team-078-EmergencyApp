@@ -59,12 +59,15 @@ view-admins
 view-respondant-list
 
 Respondant:
-emergency-details   
+emergency-details  n 
+respondant-recover-pass n
+respondant-edit-details n 
 respondant-dashboard
 respondant-details
 respondant-login
-respondant-recover-pass
-view-emergencies    
+view-emergencies
+respondent-add-danger
+respondent-view-dangers  
       
     
 find-unit

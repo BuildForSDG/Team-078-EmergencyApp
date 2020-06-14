@@ -12,36 +12,28 @@ export class RespondantMenuComponent implements OnInit {
 
   pages = [
     {
-      title: 'Admin Dashboard',
-      url: '/admin-dashboard',
+      title: 'Respondant Dashboard',
+      url: '/respondant-dashboard',
+    },
+    {
+      title: 'Respondant Details',
+      url: '/respondant-details',
     },
     {
       title: 'Add Danger',
-      url: '/admin-add-danger',
-    },
-    // this Keeps spooling to infinity
-    // {
-    //   title: 'View Responders',
-    //   url: '/view-respondant-list',
-    // },
-    {
-      title: 'Add Responders',
-      url: '/admin-add-respondant',
+      url: '/respondent-add-danger',
     },
     {
-      title: 'Add Unit',
-      url: '/admin-add-unit',
+      title: 'View Emergency',
+      url: '/view-emergencies',
     },
-    // this Keeps spooling to infinity
-    // {
-    //   title: 'View Dangers',
-    //   url: '/admin-view-dangers',
-    // },
     {
-      title: 'View Admin',
-      url: '/view-admins',
+      title: 'View Danger',
+      url: '/respondent-view-dangers',
     },
   ];
+
+
 
   selectedPath = '';
 
