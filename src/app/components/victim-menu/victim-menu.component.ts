@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { Location } from "@angular/common";
-import { Router } from "@angular/router";
+import { MenuController } from "@ionic/angular";
+import { Router, RouterEvent } from "@angular/router";
 
 @Component({
   selector: "app-victim-menu",
@@ -11,31 +12,49 @@ export class VictimMenuComponent implements OnInit {
   // properties
   routerlocation: string = this.router.url;
   menuItem: string[];
-  menuSegment: string
+  menuSegment: string;
 
-  constructor(private location: Location, private router: Router) {
-    // this is reserved incase we add more
-    //pages, switch method will be used to
-    //display content based on user's visit
-    this.menuItem = [
-      "admin-dashboard",
-      "welcom-page",
-      "respondant-login",
-      "respondant-dashboard",
-      "admin-sign-up",
-      "admin-login",
-      "admin-add-respondant",
-      "splash-page",
-      "get-help",
-      "user-welcome",
-      "find-unit",
-      "unit-alert",
-      "view-unit",
-      "user-location",
-    ];
-  }
+  pages = [
+    {
+      title: "Find Unit",
+      url: "/find-unit",
+    },
+    {
+      title: "Get Help",
+      url: "/get-help",
+    },
+    {
+      title: "User Location",
+      url: "/user-location",
+    },
+    {
+      title: "View Dangers",
+      url: "/view-dangers",
+    }
+  ];
+
+//   find-unit  yellow menu
+// get-help yellow menu
+// user-location yellow
+
+  selectedPath = '';
+
+  constructor(
+    private location: Location, 
+    private menu: MenuController, 
+    private router: Router) {
+      this.router.events.subscribe(
+        (event: RouterEvent) => {
+          this.selectedPath = event.url;
+        }
+      );
+    }
 
   ngOnInit() {}
+
+  toggleMenu() {
+    this.menu.toggle('main-menu');
+  }
 
   goBack() {
     this.location.back();
@@ -55,10 +74,10 @@ export class VictimMenuComponent implements OnInit {
 
   // triggers wen menu button is clicked
   flipSegment(): void {
-    if (this.menuSegment === 'get-help') {
-      this.menuSegment = 'find-unit';
+    if (this.menuSegment === "get-help") {
+      this.menuSegment = "find-unit";
     } else {
-      this.menuSegment = 'get-help';
+      this.menuSegment = "get-help";
     }
   }
 }

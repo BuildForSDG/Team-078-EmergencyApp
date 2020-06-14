@@ -2,6 +2,7 @@ import { NgModule, CUSTOM_ELEMENTS_SCHEMA} from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
 
 import { VictimblueMenuComponent } from '../components/victimblue-menu/victimblue-menu.component'
 
@@ -12,6 +13,7 @@ import { VictimblueMenuComponent } from '../components/victimblue-menu/victimblu
     CommonModule,
     FormsModule,
     IonicModule,
+    RouterModule
   ],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
