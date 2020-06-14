@@ -16,36 +16,36 @@
 
 <ion-header>
   <ion-toolbar>
-    <ion-buttons (click)="toggleMenu()" slot="end">
-      <ion-menu-button></ion-menu-button>
+    <ion-buttons slot="end">
+      <ion-menu-button (click)="toggleMenu()"></ion-menu-button>
     </ion-buttons>
     <ion-title>testing</ion-title>
   </ion-toolbar>
 </ion-header>
 
+<ion-menu contentId="content" side="end" enabled="true" persistent="true">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>menu</ion-title>
+    </ion-toolbar>
+  </ion-header>
 
+  <ion-content>
+    <ion-list>
+      <ion-menu-toggle auto-hide="true" *ngFor="let page of pages">
+        <ion-item
+          [routerLink]="page.url"
+          routerDirection="root"
+          [class.active-item]="selectedPath === page.url"
+        >
+          {{ page.title }}
+        </ion-item>
+      </ion-menu-toggle>
+    </ion-list>
+  </ion-content>
+</ion-menu>
 
-
-  <ion-menu contentId="content" side="end">
-    <ion-header>
-      <ion-toolbar>
-        <ion-title>menu</ion-title>
-      </ion-toolbar>
-    </ion-header>
-
-    <ion-content>
-      <ion-list>
-        <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
-          <ion-item [routerLink]="p.url" routerDirection="root" [class.active-item]="selectedPath === p.url">
-            {{ p.title}}
-          </ion-item>
-        </ion-menu-toggle>
-      </ion-list>
-    </ion-content>
-  </ion-menu>
-
-  <ion-router-outlet id="content" main></ion-router-outlet>
-
+<ion-router-outlet id="content" main></ion-router-outlet>
 
 <!-- MENU SIDE ITEMS START -->
 <!-- <ion-menu menuId="main-menu" contentId="main" side="end">

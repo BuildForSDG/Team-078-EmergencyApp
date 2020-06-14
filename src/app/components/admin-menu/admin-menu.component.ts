@@ -15,13 +15,13 @@ export class AdminMenuComponent implements OnInit {
       title: 'Add Danger',
       url: '/admin-add-danger'
     },
-    // {
-    //   title: 'View Responders',
-    //   url: '/view-respondant-list'
-    // },
+    {
+      title: 'View Responders',
+      url: '/view-respondant-list'
+    },
     {
       title: 'Add Responders',
-      url: '/admin-add-danger'
+      url: '/admin-add-responder'
     },
     {
       title: 'Add Unit',
