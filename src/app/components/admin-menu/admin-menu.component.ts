@@ -26,7 +26,7 @@ export class AdminMenuComponent
     // },
     {
       title: 'Add Responders',
-      url: '/admin-add-responder',
+      url: '/admin-add-respondant',
     },
     {
       title: 'Add Unit',
