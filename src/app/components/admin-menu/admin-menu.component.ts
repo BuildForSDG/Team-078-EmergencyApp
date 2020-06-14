@@ -8,52 +8,62 @@ import {Router, RouterEvent} from '@angular/router';
   templateUrl: './admin-menu.component.html',
   styleUrls: ['./admin-menu.component.scss'],
 })
-export class AdminMenuComponent implements OnInit {
+export class AdminMenuComponent
+  implements OnInit {
 
   pages = [
     {
+      title: 'Admin Dashboard',
+      url: '/admin-dashboard',
+    },
+    {
       title: 'Add Danger',
-      url: '/admin-add-danger'
+      url: '/admin-add-danger',
     },
     {
       title: 'View Responders',
-      url: '/view-respondant-list'
+      url: '/view-respondant-list',
     },
     {
       title: 'Add Responders',
-      url: '/admin-add-responder'
+      url: '/admin-add-responder',
     },
     {
       title: 'Add Unit',
-      url: '/admin-add-unit'
+      url: '/admin-add-unit',
     },
     {
       title: 'View Dangers',
-      url: '/admin-view-dangers'
+      url: '/admin-view-dangers',
     },
     {
       title: 'View Admin',
-      url: '/view-admins'
-    }
+      url: '/view-admins',
+    },
   ];
 
   selectedPath = '';
 
-  constructor(private location: Location, private menu: MenuController, private router: Router) { 
-    this.router.events.subscribe((event: RouterEvent) => {
-      this.selectedPath = event.url;  
-    });  
+  constructor(
+    private location: Location,
+    private menu: MenuController,
+    private router: Router
+  ) {
+    this.router.events.subscribe(
+      (event: RouterEvent) => {
+        this.selectedPath = event.url;
+      }
+    );
   }
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
   toggleMenu() {
     this.menu.toggle('main-menu');
   }
-  
+
   goBack() {
-  this.location.back();
-}
+    this.location.back();
+  }
 }
 
 // private menu: MenuController,
