@@ -1,5 +1,9 @@
 //.................header Title and SVG start..........................//
 
+.active-item {
+    border-left: 8px solid var(--ion-color-secondary);
+  }
+
 .back-btn {
     position: absolute;
     top: 20px;
@@ -159,12 +163,12 @@ ion-menu-button {
 
 .item-background {
     --ion-background-color: transparent;
-    padding: 60px 145px 10px 5px;
+    padding: 50px 145px 10px 5px;
   }
   
   .item-background2 {
     --ion-background-color: transparent;
-    padding: 60px 1px 10px 5px;;
+    padding: 50px 1px 10px 5px;;
   }
 
 .menu-border {
