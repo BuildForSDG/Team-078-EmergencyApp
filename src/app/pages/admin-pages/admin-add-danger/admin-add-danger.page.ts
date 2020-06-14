@@ -6,13 +6,15 @@ import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/user/auth.service';
 import * as firebase from 'firebase';
 import { Geolocation } from '@capacitor/core';
-
+declare var google;
 @Component({
   selector: 'app-admin-add-danger',
   templateUrl: './admin-add-danger.page.html',
   styleUrls: ['./admin-add-danger.page.scss'],
 })
+
 export class AdminAddDangerPage implements OnInit {
+  
   addDangerForm: FormGroup;
   @ViewChild(GoogleMapComponent, { static: false })
   map: GoogleMapComponent;

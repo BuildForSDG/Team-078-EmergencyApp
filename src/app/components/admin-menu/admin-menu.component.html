@@ -65,10 +65,10 @@
     <ion-list class="menu-border">
       <ion-menu-toggle
         auto-hide="false"
-        *ngFor="let page of pages"
+        *ngFor="let page of pages; last as isLast"
       >
         <ion-item
-          class="menu-item-line"
+          [class.menu-item-line] = "!isLast"
           [routerLink]="[page.url]"
           routerDirection="root"
           [class.active-item]="
