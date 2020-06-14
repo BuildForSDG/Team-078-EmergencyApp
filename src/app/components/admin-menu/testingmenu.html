@@ -1,0 +1,80 @@
+<!-- Menu toggle -->
+<ion-header>
+  <ion-toolbar color="primary"  class="header-title">
+    <ion-icon (click)="goBack()" color="secondary" class="back-btn" src="/assets/md-custom-backbtn.svg"></ion-icon>
+    <ion-buttons slot="end">
+      <ion-menu-button class="main-menu-harmburger" menu="main-menu">
+        <span class="menu-harmbg-1"></span>
+        <span class="menu-harmbg-2"></span>
+        <span class="menu-harmbg-3"></span>
+      </ion-menu-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<!-- MENU SIDE ITEMS START -->
+<ion-menu menuId="main-menu" contentId="main" side="end">
+  <ion-header>
+    <ion-menu-toggle>
+      <ion-icon  color="secondary" class="menu-close" name="close-outline"></ion-icon>
+    </ion-menu-toggle>
+    <div class="menu-main-icon">
+      <ion-menu-toggle>
+        <ion-item class="item-background" style="padding: 50px 150px 10px 5px;" href="/admin-dashboard">
+          <ion-icon color="secondary" class="menu-icon" name="home"></ion-icon>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item class="item-background" style="padding: 50px 0px 10px 5px;" href="/admin-login" >
+          <ion-icon color="secondary" class="menu-icon" name="log-in-outline"></ion-icon>
+        </ion-item>
+      </ion-menu-toggle>
+    </div>
+  </ion-header>
+  <ion-content>
+    <ion-list class="menu-border">
+      <ion-menu-toggle>
+        <ion-item class="menu-item-line" href="/admin-add-danger">
+          <ion-label>Add Danger</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item class="menu-item-line" href="/view-respondant-list">
+          <ion-label>View Responders</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item class="menu-item-line" href="/admin-add-respondant">
+          <ion-label>Add Responders</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item class="menu-item-line" href="/admin-add-danger">
+          <ion-label>Add Danger</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item class="menu-item-line" href="/admin-add-unit">
+          <ion-label>Add Unit</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item class="menu-item-line" href="/admin-view-dangers">
+          <ion-label>View Dangers</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <ion-menu-toggle>
+        <ion-item href="/view-admins">
+          <ion-label>View Admins</ion-label>
+        </ion-item>
+      </ion-menu-toggle>
+      <!-- @Kenenna: This menu is not important. The edit admin page should only be accessible when the page is selected from an admin info. -->
+      <!-- <ion-menu-toggle>
+        <ion-item href="/admin-edit-admin">
+          <ion-label>Edit Admin</ion-label>
+        </ion-item>
+      </ion-menu-toggle> -->
+    </ion-list>
+  </ion-content>
+  <ion-router-outlet id="main"></ion-router-outlet>
+</ion-menu>

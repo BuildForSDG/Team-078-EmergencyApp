@@ -41,6 +41,17 @@ and place the VictimMenuModule here
 '<app-victim-menu></app-victim-menu>' component, this should be placed above our html
 
 
+Do a total refactoring of the Menu, challenges encounter was as a result of not importing router module into the shared module, Importing the router module into the shared module give us access to the global routing module.
+
+In each of the component I imported 'MenuController' this gives our app access to use some functionalities for our menu. eg it gives us access to either toggle, open or close our menu box, I also used router even emitter that let us get the page a user is, the essence of this is, when a user visit a page the menu is highlighted, this was made possible creating a class  named '.active-item'
+
+in addition to that  an array of object was created, this array of object has three properties: title, url and icon. inside the let say respondants-menu.component.ts, I use *ngFor to iterate the the array of object, this gives us access to easily add or remove any property without altering out html.
+
+To change any item i.e to either add or remove any item in out menu the array of object named 'page' can be altered to soothe our choice on the list.
+
+
+
+
 Home-page:
 welcom-page
 
@@ -59,22 +70,35 @@ view-admins
 view-respondant-list
 
 Respondant:
-emergency-details   
+emergency-details  n 
+respondant-recover-pass n
+respondant-edit-details n 
 respondant-dashboard
 respondant-details
 respondant-login
-respondant-recover-pass
-view-emergencies    
+view-emergencies
+respondent-add-danger
+respondent-view-dangers  
       
     
-find-unit
-get-help
-unit-alert---
-user-location
-user-welcome
-victim-confirm-loc-on-map
-view-dangers----
-view-unit---
+find-unit  yellow
+get-help yellow
+unit-alert blue disappeared
+user-location yellow
+victim-confirm-loc-on-map disappeared
+victim-view-unit-on-map none
+view-dangers blue
+view-unit Blue
+
+
+
+view-dangers blue menu
+view-unit Blue menu
+unit-alert blue disappeared
+
+find-unit  yellow menu
+get-help yellow menu
+user-location yellow
 
     
     
