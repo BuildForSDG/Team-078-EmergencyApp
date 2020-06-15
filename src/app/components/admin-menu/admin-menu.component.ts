@@ -9,6 +9,10 @@ import { Router, RouterEvent } from "@angular/router";
   styleUrls: ["./admin-menu.component.scss"],
 })
 export class AdminMenuComponent implements OnInit {
+  // Properties
+  selectedPath: string = "";
+  isShowDiv: boolean = false;
+
   pages = [
     {
       title: "Admin Dashboard",
@@ -41,10 +45,6 @@ export class AdminMenuComponent implements OnInit {
       icon: "location-outline",
     },
   ];
-
-  selectedPath = "";
-
-  isShowDiv: boolean = false;
 
   constructor(
     private location: Location,

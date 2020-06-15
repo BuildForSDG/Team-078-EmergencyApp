@@ -13,6 +13,9 @@ export class VictimMenuComponent implements OnInit {
   routerlocation: string = this.router.url;
   menuItem: string[];
   menuSegment: string;
+  selectedPath: string = "";
+  isShowDiv: boolean = false;
+  page: Object[];
 
   pages = [
     {
@@ -43,8 +46,6 @@ export class VictimMenuComponent implements OnInit {
   ];
 
 
-  selectedPath = '';
-
   constructor(
     private location: Location, 
     private menu: MenuController, 
@@ -58,8 +59,8 @@ export class VictimMenuComponent implements OnInit {
 
   ngOnInit() {}
 
-  toggleMenu() {
-    this.menu.toggle('main-menu');
+  toggleDisplayDiv() {
+    this.isShowDiv = !this.isShowDiv;
   }
 
   goBack() {

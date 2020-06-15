@@ -8,7 +8,7 @@ import { AdminMenuComponent } from '../components/admin-menu/admin-menu.componen
 
 @NgModule({
     declarations: [AdminMenuComponent],
-    exports: [AdminMenuComponent],
+    exports: [AdminMenuComponent, RouterModule],
     imports: [
         CommonModule,
         FormsModule,

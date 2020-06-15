@@ -9,10 +9,13 @@ import { Router, RouterEvent } from "@angular/router";
   styleUrls: ['./victimblue-menu.component.scss'],
 })
 export class VictimblueMenuComponent implements OnInit {
-  // properties
-  routerlocation: string = this.router.url;
-  menuItem: string[];
-  menuSegment: string;
+    // properties
+    routerlocation: string = this.router.url;
+    menuItem: string[];
+    menuSegment: string;
+    selectedPath: string = "";
+    isShowDiv: boolean = false;
+    page: Object[];
 
   pages = [
     {
@@ -42,9 +45,6 @@ export class VictimblueMenuComponent implements OnInit {
     }
   ];
 
-
-  selectedPath = '';
-
   constructor(
     private location: Location, 
     private menu: MenuController, 
@@ -58,8 +58,8 @@ export class VictimblueMenuComponent implements OnInit {
 
   ngOnInit() {}
 
-  toggleMenu() {
-    this.menu.toggle('main-menu');
+  toggleDisplayDiv() {
+    this.isShowDiv = !this.isShowDiv;
   }
 
   goBack() {
