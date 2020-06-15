@@ -147,12 +147,12 @@ ion-menu-button {
 
 .item-background {
   --ion-background-color: transparent;
-  padding: 20px 143px 10px 5px;
+  padding: 10px 143px 10px 5px;
 }
 
 .item-background2 {
   --ion-background-color: transparent;
-  padding: 20px 1px 10px 5px;;
+  padding: 10px 1px 10px 5px;;
 }
 
 // Reserved for incase of any issues with responsiveness
@@ -177,6 +177,7 @@ ion-menu-button {
   box-sizing: border-box;
   border-radius: 3px;
   margin: 10px 0 1px 15px;
+  // border-style: solid solid none;
 }
 
 .menu-item-line {
