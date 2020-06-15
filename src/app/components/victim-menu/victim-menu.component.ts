@@ -51,11 +51,27 @@ export class VictimMenuComponent implements OnInit {
       );
     }
 
-  ngOnInit() {}
+  ngOnInit() {
+
+  }
+
+  ionDidClose(){
+    !this.isShowDiv
+  }
 
   toggleDisplayDiv() {
-    this.isShowDiv = !this.isShowDiv;
+    switch (this.isShowDiv) {
+      case true:
+        return false;
+      case false:
+        return true;
+      default:
+        return true;
+    }
   }
+  // toggleDisplayDiv() {
+  //   this.isShowDiv = !this.isShowDiv;
+  // }
 
   goBack() {
     this.location.back();

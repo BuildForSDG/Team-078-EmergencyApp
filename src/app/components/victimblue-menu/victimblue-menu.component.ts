@@ -17,33 +17,28 @@ export class VictimblueMenuComponent implements OnInit {
     isShowDiv: boolean = false;
     page: Object[];
 
-  pages = [
-    {
-      title: "Find Unit",
-      url: "/find-unit",
-      icon: "help-buoy-outline"
-    },
-    {
-      title: "Get Help",
-      url: "/get-help",
-      icon: "medkit-outline"
-    },
-    {
-      title: "User Location",
-      url: "/user-location",
-      icon: "location-outline"
-    },
-    {
-      title: "View Dangers",
-      url: "/view-dangers",
-      icon: "flame-outline"
-    },
-    {
-      title: "View Units",
-      url: "/view-unit",
-      icon: "boat-outline"
-    }
-  ];
+    pages = [
+      {
+        title: "Get Help",
+        url: "/get-help",
+        icon: "medkit-outline"
+      },
+      {
+        title: "Find Unit",
+        url: "/find-unit",
+        icon: "help-buoy-outline"
+      },
+      {
+        title: "View Dangers",
+        url: "/view-dangers",
+        icon: "flame-outline"
+      },
+      {
+        title: "Request History",
+        url: "/victim-request-history",
+        icon: "boat-outline"
+      }
+    ];
 
   constructor(
     private location: Location, 
@@ -59,24 +54,19 @@ export class VictimblueMenuComponent implements OnInit {
   ngOnInit() {}
 
   toggleDisplayDiv() {
-    this.isShowDiv = !this.isShowDiv;
+    switch (this.isShowDiv) {
+      case true:
+        return false;
+      case false:
+        return true;
+      default:
+        return true;
+    }
   }
 
   goBack() {
     this.location.back();
   }
-
-  // This is used to make the logo dynamic
-  // logoUpdate() {
-  //   return this.routerlocation === "/get-help"
-  //     ? "/assets/md-custom-handshake.svg"
-  //     : "/assets/md-custom-focus.svg";
-  // }
-
-  // This is used to make the logo dynamic
-  // titleUpdate() {
-  //   return this.routerlocation === "/get-help" ? "Get Help" : "Find Unit";
-  // }
 
   // triggers wen menu button is clicked
   flipSegment(): void {
