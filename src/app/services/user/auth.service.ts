@@ -4,13 +4,30 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { resolve } from 'url';
+import { Plugins } from '@capacitor/core';
+import { Platform } from '@ionic/angular';
+
+const { Storage } = Plugins;
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
 
-  constructor() { }
+  public pushToken : any ;
+
+  constructor(public platform: Platform) {
+    //get the pushToken here..
+    //of course check platform first
+    //if(this.platform.is('android') || this.platform.is('ios')){
+      this.getPushToken();
+    //}
+  }
+
+  async getPushToken() {
+    const { value } = await Storage.get({ key: 'pushToken' });
+    this.pushToken = value ;
+  }
 
   //fetch units by unit type
   getUnitsByUnitType(unitType: string): Promise<any> {
@@ -97,7 +114,8 @@ export class AuthService {
   anonymousLogin(): Promise<any> {
     return firebase.auth().signInAnonymously().then(firebaseUser => {
       firebase.firestore().doc(`victims/${firebaseUser.user.uid}`).set({
-        email: ''
+        email: '',
+        pushToken : this.pushToken
       });
       console.log('Signed in as:', firebaseUser.user.uid);
     },
@@ -114,7 +132,7 @@ export class AuthService {
         if (docu.exists) {
           reject('Victim Exists');
         } else {
-          // this document does not exists meaning this victim has not been previously registered
+          // this document does not exist meaning this victim has not been previously registered
           resolve(true);
         }
       }, (err) => {
@@ -151,7 +169,7 @@ export class AuthService {
             respondantUnit,
             respondantType,
             location: coordinates,
-            formattedAddress,
+            formattedAddress
           })
           .then(() => {
             return true;
