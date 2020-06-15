@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Location } from '@angular/common';
-import {MenuController} from '@ionic/angular';
-import {Router, RouterEvent} from '@angular/router';
-
+import { MenuController } from '@ionic/angular';
+import { Router, RouterEvent, NavigationStart, NavigationEnd, NavigationError } from '@angular/router';
+import { NgZone } from '@angular/core';
 @Component({
   selector: 'app-admin-menu',
   templateUrl: './admin-menu.component.html',
@@ -50,19 +50,23 @@ export class AdminMenuComponent
 
 
   selectedPath = '';
-
+  menuState = '';
+  isToggle = false;
   constructor(
     private location: Location,
     private menu: MenuController,
-    private router: Router
+    private router: Router,
+    public zone: NgZone
   ) {
+
     this.router.events.subscribe(
       (event: RouterEvent) => {
         this.selectedPath = event.url;
-      }
-    );
+      });
+
   }
-  ngOnInit() {}
+  ngOnInit() {
+  }
 
   toggleMenu() {
     this.menu.toggle('main-menu');
