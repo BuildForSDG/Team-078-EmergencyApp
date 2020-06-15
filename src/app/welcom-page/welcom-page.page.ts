@@ -19,7 +19,6 @@ export class WelcomPagePage implements OnInit {
   constructor(public platform: Platform) {
     //get the pushToken here..
     //of course check platform first
-    console.log(this.platform);
     if(this.platform.is('android') || this.platform.is('ios')){
       PushNotifications.requestPermission().then( result => {
         if (result.granted) {
