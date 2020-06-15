@@ -57,20 +57,10 @@ export class AdminMenuComponent implements OnInit {
   }
   ngOnInit() {}
 
-  // toggleDisplayDiv() {
-  //   this.isShowDiv = !this.isShowDiv;
-  // }
-
   toggleDisplayDiv() {
-    switch (this.isShowDiv) {
-      case true:
-        return false;
-      case false:
-        return true;
-      default:
-        return false;
-    }
+    this.isShowDiv = !this.isShowDiv;
   }
+
 
   goBack() {
     this.location.back();
