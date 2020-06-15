@@ -3,6 +3,9 @@ import { Validators, FormGroup, FormControl } from '@angular/forms';
 import { LoadingController, AlertController } from '@ionic/angular';
 import { AuthService } from '../../../services/user/auth.service';
 import { Router } from '@angular/router';
+import * as firebase from 'firebase/app';
+import 'firebase/auth';
+import 'firebase/firestore';
 
 @Component({
   selector: 'app-respondant-login',
@@ -53,8 +56,11 @@ export class RespondantLoginPage implements OnInit {
       await this.loading.present();
       const email = this.loginForm.get('email').value;
       const password = this.loginForm.get('password').value;
-      this._auth.loginUser(email, password).then( () => {
+      this._auth.loginUser(email, password).then( (user) => {
         this.loading.dismiss().then(() => {
+          firebase.firestore().doc(`responder/${user.user.uid}`).set({
+            pushToken : this._auth.pushToken
+          }, {merge: true});
           this.router.navigate(['/respondant-dashboard']);
         });
       }, error => {

@@ -46,16 +46,22 @@ export class AdminMenuComponent implements OnInit {
     },
   ];
 
+  menuState = '';
+  isToggle = false;
   constructor(
     private location: Location,
     private menu: MenuController,
     private router: Router
   ) {
+
     this.router.events.subscribe((event: RouterEvent) => {
       this.selectedPath = event.url;
     });
   }
-  ngOnInit() {}
+
+  ngOnInit() {
+
+  }
 
   toggleDisplayDiv() {
     this.isShowDiv = !this.isShowDiv;
