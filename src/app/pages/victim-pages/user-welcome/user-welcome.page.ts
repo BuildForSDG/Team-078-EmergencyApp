@@ -21,7 +21,9 @@ export class UserWelcomePage implements OnInit {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         // user is active
-        this.checkVictimAccount(user.uid);
+        //check victim account may not be necessary because it might be best to
+        //keep all users to one account.
+        //this.checkVictimAccount(user.uid);
       }else{
         // there is no user, perform anonymous login anyway
         this.doAnonLogin();
