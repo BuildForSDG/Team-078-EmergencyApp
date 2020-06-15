@@ -1,0 +1,307 @@
+html {
+    box-sizing: border-box;
+  }
+  *,
+  *::before,
+  *::after {
+    box-sizing: inherit;
+  }
+  body,td,th,p{
+      color: #333;
+    font: 16px/1.6 Arial, Helvetica, sans-serif;
+  }
+  body {
+      background-color: #fdfdfd;
+      margin: 0;
+      position:relative;
+  }
+  h2 {
+    display: inline-block;
+  }
+  #review-add-btn {
+    padding: 0;
+    font-size: 1.6em;
+    cursor: pointer;
+  }
+  /* ====================== Review Form ====================== */
+  #modal {
+    /* position: absolute;
+    left: 10vh;
+    top: 10vh; */
+    /* fix exactly center: https://css-tricks.com/considerations-styling-modal/ */
+    /* begin css tricks */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    /* end css tricks */
+    /* z-index: -10; */
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    /* width: 80vw; */
+    /* height: 80vh; */
+    border: 1px solid #666;
+    border-radius: 10px;
+    opacity: 0;
+    transition: all .3s;
+    overflow: hidden;
+    background-color: #eee;
+    /* visibility: hidden; */
+    display: none;
+  }
+  #modal.show {
+    /* visibility: visible;   */
+    opacity: 1;
+    /* z-index: 10; */
+    display: flex;
+  }
+  .modal-overlay {
+    width: 100%;
+    height: 100%;
+    z-index: 2; /* places the modalOverlay between the main page and the modal dialog */
+    background-color: #000;
+    opacity: 0;
+    transition: all .3s;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: none;
+    margin: 0;
+    padding: 0;
+  }
+  .modal-overlay.show {
+    display: block;
+    opacity: 0.5;  
+  }
+  #modal .close-btn {
+    align-self: flex-end;
+    font-size: 1.4em;
+    margin: 8px 8px 0;
+    padding: 0 8px;
+    cursor: pointer;
+  }
+  form {
+    max-width: 900px;
+    padding: 0 20px 20px 20px;
+  }
+  /* 
+  input,
+  label {
+    display: block;
+    width: 100%;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  } */
+  
+  input,
+  /* input:not(input[type='radio']), */
+  /* input:not(type='radio'), */
+//   select, .rate, textarea, button {
+//     background: #f9f9f9;
+//     border: 1px solid #e5e5e5;
+//     border-radius: 8px;
+//     box-shadow: inset 0 1px 1px #e1e1e1;
+//     font-size: 16px;
+//     padding: 8px;
+//   }
+  input[type="radio"] {
+    box-shadow: none;
+  }
+  button {
+    min-width: 48px;
+    min-height: 48px;
+  }
+  button:hover {
+    border: 1px solid #ccc;
+    background-color: #fff;
+  }
+  button#review-add-btn, 
+  button.close-btn, 
+  button#submit-review-btn {
+    min-height: 40px;
+  }
+  button#submit-review-btn {
+    font-weight: bold;
+    cursor: pointer;
+    padding: 0 16px;
+  }
+  
+  .fieldset {
+    margin-top: 20px;
+  }
+  .right {
+    align-self: flex-end;
+  }
+  #review-form-container {
+    width: 100%;
+    /* background-color: #eee; */
+    padding: 0 20px 26px;
+    color: #333;
+    overflow-y: auto;
+  }
+  #review-form-container h2 {
+    margin: 0 0 0 6px;
+  }
+  #review-form {
+    display: flex;
+    flex-direction: column;
+    background: #fff;
+    border: 1px solid #e5e5e5;
+    border-radius: 4px;
+  }
+  #review-form label, #review-form input {
+    display: block;
+    /* width: 100%; */
+  }
+  #review-form label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  #review-form .rate label, #review-form .rate input,
+  #review-form .rate1 label, #review-form .rate1 input {
+    display: inline-block;
+  }
+  /* Modified from: https://codepen.io/tammykimkim/pen/yegZRw */
+  .rate {
+    /* float: left; */
+    /* display: inline-block; */
+    height: 36px;
+    display: inline-flex;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: flex-end;
+    margin-top: auto;
+  }
+  #review-form .rate > label {
+    margin-bottom: 0;
+    margin-top: -5px;
+    height: 30px;
+  }
+  .rate:not(:checked) > input {
+    /* position: absolute; */
+    top: -9999px;
+    margin-left: -24px;
+    width: 20px;
+    padding-right: 14px;
+    z-index: -10;
+  }
+  .rate:not(:checked) > label {
+    float:right;
+    width:1em;
+    overflow:hidden;
+    white-space:nowrap;
+    cursor:pointer;
+    font-size:30px;
+    color:#ccc;
+  }
+  /* #star1:focus{
+  
+  } */
+  .rate2 {
+    float: none;
+  }
+  .rate:not(:checked) > label::before {
+    content: '★ ';
+    position: relative;
+    top: -10px;
+    left: 2px;
+  }
+  .rate > input:checked ~ label {
+    color: #ffc700;
+    /* outline: -webkit-focus-ring-color auto 5px; */
+  }
+  .rate > input:checked:focus + label, .rate > input:focus + label {
+    outline: -webkit-focus-ring-color auto 5px;
+  }
+  .rate:not(:checked) > label:hover,
+  .rate:not(:checked) > label:hover ~ label {
+    color: #deb217;
+    /* outline: -webkit-focus-ring-color auto 5px; */
+  }
+  .rate > input:checked + label:hover,
+  .rate > input:checked + label:hover ~ label,
+  .rate > input:checked ~ label:hover,
+  .rate > input:checked ~ label:hover ~ label,
+  .rate > label:hover ~ input:checked ~ label {
+    color: #c59b08;
+  }
+  #submit-review {
+    align-self: flex-end;
+  }
+
+  // @import url('https://fonts.googleapis.com/css2?family=\'Poppins\', sans-serif:wght@100;200;300;400;500;600;700;800&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@400;700&display=swap');
+
+ion-toolbar {
+    --background: rgba(244, 175, 27, 0.8);
+   }
+   
+   ion-toolbar ion-title{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #000000;
+   }
+   
+   ion-title i{
+     position: relative;
+     top: 5px;
+   }
+   
+  
+   ion-button {
+     --background: #f4af1b;
+     font-family: 'Inconsolata', monospace;
+     color: #000000;
+     height: 45px;
+     max-width: max-content;
+     min-width: 100%;
+     font-style: normal;
+     font-weight: bold;
+     font-size: 18px;
+     line-height: 35px;
+     letter-spacing: 0.03em;
+     margin-top: 50px;
+   }
+   
+   ion-text h1 {
+     margin-top: 40px;
+     font-family: 'Poppins', sans-serif;
+     font-style: normal;
+     font-weight: bold;
+     font-size: 16px;
+     line-height: 20px;
+     /* or 125% */
+     letter-spacing: 0.03em;
+     color: #000000;
+   }
+   
+   form {
+     margin-top: 80px;
+   }
+   
+   ion-item {
+     --background: #ffffff;
+     margin-top: 20px;
+     border: 1.5px solid #f2bc94;
+     box-sizing: border-box;
+     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+     border-radius: 3px;
+     --highlight-height: 0;
+   }
+   
+   ion-input {
+     font-style: normal;
+     font-weight: normal;
+     font-family: 'Inconsolata', monospace;
+     font-size: 16px;
+     line-height: 35px;
+     letter-spacing: 0.03em;
+     color: rgba(0, 21, 79, 0.6);
+   }
+   

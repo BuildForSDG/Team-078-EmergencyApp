@@ -21,7 +21,7 @@ export class RequestService {
     return firebase.firestore().collection('responder')
     .where('formattedAddress', '==', formatted_address)
     .where('respondantType', '==', request_type)
-    .get().then(result=>{
+    .get().then(async result=>{
       result.forEach(doc=>{
         console.log(doc.data());
         this.responders.push(doc.id);
@@ -35,12 +35,14 @@ export class RequestService {
       });
       //alert all these responders by populating the assigned_responders
       //on the request
-      firebase.firestore().collection('request').where('request_ref','==',request_ref)
+      await firebase.firestore().collection('request').where('request_ref','==',request_ref)
       .limit(1).get().then(result=> {
         result.forEach(doc=>{
           firebase.firestore().collection('request').doc(`${doc.id}`).update({
             assigned_responders: this.responders//firebase.firestore.FieldValue.arrayUnion(`${id}`)
+           
           });
+          
         })
         
       }, error=>{

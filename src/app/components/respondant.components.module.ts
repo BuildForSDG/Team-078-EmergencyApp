@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { IonicModule } from '@ionic/angular';
+import { RouterModule } from '@angular/router';
 
 import { RespondantMenuComponent } from '../components/respondant-menu/respondant-menu.component';
 
@@ -12,6 +13,7 @@ import { RespondantMenuComponent } from '../components/respondant-menu/respondan
         CommonModule,
         FormsModule,
         IonicModule,
+        RouterModule
     ],
 })
 export class RespondantMenuModule {}

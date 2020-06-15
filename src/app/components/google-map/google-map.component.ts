@@ -28,10 +28,12 @@ export class GoogleMapComponent {
   private networkHandler = null;
   public connectionAvailable = true;
   public allMarkers = [];
-  private isOpenInfoWindow : boolean = false;
+  private isOpenInfoWindow: boolean = false;
   directionsDisplay: any;
   private direction: boolean = false;
   private currentOpenInfo: any;
+  private isRequestDirection: boolean = false;
+  private isUnitDisplayed : boolean = false;
   constructor(private renderer: Renderer2, private element: ElementRef,
     private platform: Platform, @Inject(DOCUMENT) private _document) { }
 
@@ -170,22 +172,6 @@ export class GoogleMapComponent {
     // 	Add	new	marker
     this.marker = marker
   }
-
-  public updateMarker(lat: number, lng: number): void {
-
-    const latLng = new google.maps.LatLng(lat, lng);
-    const marker = new google.maps.Marker({
-      map: this.map,
-      position: latLng,
-    });
-    // 	Remove	existing	marker	if	it	exists
-    if (this.marker) {
-      this.marker.setMap(null);
-    }
-    // 	Add	new	marker
-    this.marker = marker
-  }
-
   addConnectivityListeners(): void {
 
     console.warn('The	Capacitor	Network	API	does	not	currently	have	a	web	implementation.	This	will	only	work	when	running	as	an	iOS/Android	app');
@@ -212,43 +198,46 @@ export class GoogleMapComponent {
 
 
   public viewUnitOnMap(usersLocation: any, unitLocation: []): void {
-    var markerInfo;
+    if (!this.isUnitDisplayed) {
+      var markerInfo;
 
-    //loop through unit location and display markers on the map
-    unitLocation.forEach((marker) => {
-      var image = 'http://maps.google.com/mapfiles/ms/micons/red-dot.png';
-      if (marker['unit_type'] == "Fire") {
-        image = 'http://maps.google.com/mapfiles/ms/micons/firedept.png';
-      }
-      if (marker['unit_type'] == "Accident") {
-        image = 'http://maps.google.com/mapfiles/ms/micons/hospitals.png';
-      }
+      //loop through unit location and display markers on the map
+      unitLocation.forEach((marker) => {
+        var image = 'http://maps.google.com/mapfiles/ms/micons/red-dot.png';
+        if (marker['unit_type'] == "Fire") {
+          image = 'http://maps.google.com/mapfiles/ms/micons/firedept.png';
+        }
+        if (marker['unit_type'] == "Accident") {
+          image = 'http://maps.google.com/mapfiles/ms/micons/hospitals.png';
+        }
 
-      markerInfo = new google.maps.Marker({
-        position: new google.maps.LatLng(marker['coordinates']['lat'], marker['coordinates']['lng']),
-        map: this.map,
-        title: marker['unit_title'],
-        icon: image
-      });
-      this.allMarkers.push(markerInfo);
-      //var dateCreated = new Date(marker['reg_date']['seconds'] * 1000).toLocaleString();
-      var infowindow = new google.maps.InfoWindow({
-        content: `<div class=infowindow><h4>${marker['unit_title']}</h4><p>Type: 
+        markerInfo = new google.maps.Marker({
+          position: new google.maps.LatLng(marker['coordinates']['lat'], marker['coordinates']['lng']),
+          map: this.map,
+          title: marker['unit_title'],
+          icon: image
+        });
+        this.allMarkers.push(markerInfo);
+        //var dateCreated = new Date(marker['reg_date']['seconds'] * 1000).toLocaleString();
+        var infowindow = new google.maps.InfoWindow({
+          content: `<div class=infowindow><h4>${marker['unit_title']}</h4><p>Type: 
         ${marker['unit_type']}</p><p>Phone: 
         ${marker['phone_number']}</p></div>`,
-        location: {
-          lat: marker['coordinates']['lat'],
-          lng: marker['coordinates']['lng'],
-        },
-        currentInfoMarker: markerInfo
-      });
-      //event listener to call the infoWindow when the marker is clicked
-      //the this.infoCallback(infowindow, markerInfo will ensure that the browsers remembers with marker was 
-      //clicked and with what details
+          location: {
+            lat: marker['coordinates']['lat'],
+            lng: marker['coordinates']['lng'],
+          },
+          currentInfoMarker: markerInfo
+        });
+        //event listener to call the infoWindow when the marker is clicked
+        //the this.infoCallback(infowindow, markerInfo will ensure that the browsers remembers with marker was 
+        //clicked and with what details
 
-      google.maps.event.addListener(markerInfo, 'click', this.infoCallback(infowindow, markerInfo));
-      google.maps.event.addListener(markerInfo, 'click', this.getDirectionBetweenMarker(usersLocation, markerInfo));
-    });
+        google.maps.event.addListener(markerInfo, 'click', this.infoCallback(infowindow, markerInfo));
+        google.maps.event.addListener(markerInfo, 'click', this.getDirectionBetweenMarker(usersLocation, markerInfo));
+      });
+      this.isUnitDisplayed = true;
+    }
 
   }
   public getDirectionBetweenMarker(fromLocationDetails: any, toLocationDetails: any) {
@@ -284,25 +273,28 @@ export class GoogleMapComponent {
   }
 
   public viewRequestOnMap(reponderLocation: {}, requestLocation: {}): void {
-    const directionsDisplay = new google.maps.DirectionsRenderer();
-    directionsDisplay.setMap(this.map);
+    if (!this.isRequestDirection) {
+      const directionsDisplay = new google.maps.DirectionsRenderer();
+      directionsDisplay.setMap(this.map);
 
-    const start = new google.maps.LatLng(reponderLocation['lat'], reponderLocation['lng']);
-    const end = new google.maps.LatLng(requestLocation['lat'], requestLocation['lng']);
-    const directionsService = new google.maps.DirectionsService();
-    directionsService.route(
-      {
-        origin: start,
-        destination: end,
-        travelMode: google.maps.TravelMode.DRIVING
-      },
-      function (response, status) {
-        if (status === 'OK') {
-          directionsDisplay.setDirections(response);
-        }
-      });
-    if (this.marker) {
-      this.marker.setMap(null);
+      const start = new google.maps.LatLng(reponderLocation['lat'], reponderLocation['lng']);
+      const end = new google.maps.LatLng(requestLocation['lat'], requestLocation['lng']);
+      const directionsService = new google.maps.DirectionsService();
+      directionsService.route(
+        {
+          origin: start,
+          destination: end,
+          travelMode: google.maps.TravelMode.DRIVING
+        },
+        function (response, status) {
+          if (status === 'OK') {
+            directionsDisplay.setDirections(response);
+          }
+        });
+      if (this.marker) {
+        this.marker.setMap(null);
+      }
+      this.isRequestDirection = true;
     }
   }
 
@@ -374,9 +366,9 @@ export class GoogleMapComponent {
   //info window method
   public infoCallback(infowindow, marker) {
     var that = this;
-   
-    return function () { 
-      if(that.isOpenInfoWindow == true){
+
+    return function () {
+      if (that.isOpenInfoWindow == true) {
         that.currentOpenInfo.close();
       }
       infowindow.open(this.map, marker);

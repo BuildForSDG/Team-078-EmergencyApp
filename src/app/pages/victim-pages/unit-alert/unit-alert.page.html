@@ -10,15 +10,14 @@
             <ion-row class="ion-margin">
               <div class="ion-text-center user-text">
                 The unit has been notified and is on the way.<br />
-                Please find somewhere safe to wait.
+                Please find somewhere safe to wait. Below is the list of respondent closer to your location
               </div>
             </ion-row>
             <ion-row>
               <div class="modal" *ngFor="let respondent of respondents">
                 <ion-item  lines="none">
                   <div class="ion-text-start ion-margin ion-padding em_item">
-                    <h3 class="em_header">Details :</h3>
-                    <p>This is the list of respondent that have been notified</p>
+                    <h3 class="em_header">Respondent Details :</h3>
                     <p>
                       Name: {{ respondent.fullname }} <br><br>
                       Phone: {{ respondent.phoneNumber }} <br><br>
