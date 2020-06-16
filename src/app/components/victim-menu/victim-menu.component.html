@@ -9,7 +9,7 @@
 			</span>
 		</ion-title>
 
-		<ion-buttons slot="end" (click)="flipSegment()">
+		<ion-buttons slot="end" (click)="toggleDisplayDiv()">
 			<ion-menu-button class="main-menu-harmburger">
 				<span class="menu-harmbg-1"></span>
 				<span class="menu-harmbg-2"></span>
@@ -23,7 +23,6 @@
 <ion-menu [hidden]="isShowDiv" contentId="content" side="end">
 	<ion-header>
 	  <div class="menu-main-icon">
-		<ion-menu-toggle>
 		  <ion-item
 			class="item-background"
 			routerLink="/user-welcome"
@@ -34,8 +33,6 @@
 			  name="home"
 			></ion-icon>
 		  </ion-item>
-		</ion-menu-toggle>
-		<ion-menu-toggle>
 		  <ion-item
 			class="item-background2" 
 			routerLink="/"
@@ -46,14 +43,13 @@
 			  name="log-in-outline"
 			></ion-icon>
 		  </ion-item>
-		</ion-menu-toggle>
 	  </div>
 	</ion-header>
   
 	<ion-content>
 	  <ion-list class="menu-border">
-		<div (click)=toggleDisplayDiv()>
-		  <ion-item auto-hide="false" *ngFor="let page of pages; last as isLast"
+		<div>
+		  <ion-item auto-hide="true" *ngFor="let page of pages; last as isLast"
 		  [class.menu-item-line] = "!isLast"
 			[routerLink]="[page.url]"
 			routerDirection="root"
