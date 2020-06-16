@@ -167,6 +167,7 @@ export class AuthService {
             phoneNumber,
             address,
             respondantUnit,
+            pushToken: '',
             respondantType,
             location: coordinates,
             formattedAddress

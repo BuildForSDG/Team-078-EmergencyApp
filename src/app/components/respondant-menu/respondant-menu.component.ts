@@ -57,14 +57,7 @@ export class RespondantMenuComponent implements OnInit {
   // }
 
   toggleDisplayDiv() {
-    switch (this.isShowDiv) {
-      case true:
-        return false;
-      case false:
-        return true;
-      default:
-        return true;
-    }
+    this.menu.toggle('main-menu');
   }
 
   goBack() {

@@ -36,7 +36,7 @@ export class AdminMenuComponent implements OnInit {
     },
     {
       title: "View Respondents",
-      url: "/admin-view-dangers",
+      url: "/view-respondant-list",
       icon: "eye-outline",
     },
     {
@@ -64,7 +64,7 @@ export class AdminMenuComponent implements OnInit {
   }
 
   toggleDisplayDiv() {
-    this.isShowDiv = !this.isShowDiv;
+    this.menu.toggle('main-menu');
   }
 
 
