@@ -1,7 +1,8 @@
 import { Component, OnInit } from "@angular/core";
 import { Location } from "@angular/common";
-import { MenuController } from "@ionic/angular";
+import { MenuController, AlertController, LoadingController } from "@ionic/angular";
 import { Router, RouterEvent } from "@angular/router";
+import * as firebase from 'firebase';
 
 @Component({
   selector: "app-respondant-menu",
@@ -40,11 +41,14 @@ export class RespondantMenuComponent implements OnInit {
       icon: "bonfire-outline",
     },
   ];
+  public loading: HTMLIonLoadingElement;
 
   constructor(
     private location: Location,
     private menu: MenuController,
-    private router: Router
+    private router: Router,
+    private alertCtrl: AlertController,
+    private loadingCtrl: LoadingController,
   ) {
     this.router.events.subscribe((event: RouterEvent) => {
       this.selectedPath = event.url;
@@ -58,6 +62,26 @@ export class RespondantMenuComponent implements OnInit {
 
   toggleDisplayDiv() {
     this.menu.toggle('main-menu');
+  }
+  async signOut(){
+    this.loading = await this.loadingCtrl.create(); 
+    await this.loading.present(); 
+    firebase.auth().signOut().then(() => {
+      this.loading.dismiss().then(async () => { 
+        // this.map.disableMap();
+        const alert = await this.alertCtrl.create({ message: "You have logout successfully" , buttons: [{ text: 'Ok', role: 'cancel' }], });
+        await alert.present();
+        this.router.navigate(["/respondant-login"]);
+      });
+        
+    }).catch((error) => {
+      // An error happened.
+      this.loading.dismiss().then(async () => { 
+        // this.map.disableMap();
+        const alert = await this.alertCtrl.create({ message: error.message , buttons: [{ text: 'Ok', role: 'cancel' }], });
+        await alert.present();
+      });
+    });
   }
 
   goBack() {
