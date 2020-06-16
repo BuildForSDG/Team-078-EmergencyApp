@@ -31,6 +31,11 @@ export class RespondantMenuComponent implements OnInit {
       icon: "flame-outline",
     },
     {
+      title: "View Danger",
+      url: "/respondent-view-dangers",
+      icon: "bonfire-outline",
+    },
+    {
       title: "View Emergency",
       url: "/view-emergencies",
       icon: "medkit-outline",

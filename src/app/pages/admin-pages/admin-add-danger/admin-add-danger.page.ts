@@ -1,7 +1,7 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, OnDestroy, HostListener } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { GoogleMapComponent } from 'src/app/components/google-map/google-map.component';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationStart } from '@angular/router';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { AuthService } from 'src/app/services/user/auth.service';
 import * as firebase from 'firebase';
@@ -13,7 +13,7 @@ declare var google;
   styleUrls: ['./admin-add-danger.page.scss'],
 })
 
-export class AdminAddDangerPage implements OnInit {
+export class AdminAddDangerPage implements OnInit , OnDestroy {
   
   addDangerForm: FormGroup;
   @ViewChild(GoogleMapComponent, { static: false })
@@ -32,6 +32,8 @@ export class AdminAddDangerPage implements OnInit {
     latLong: this.markerlatlong,
   };
 
+  
+
   constructor(
     private route: ActivatedRoute,
     private alertCtrl: AlertController,
@@ -39,7 +41,7 @@ export class AdminAddDangerPage implements OnInit {
     private router: Router,
     private _auth: AuthService
   ) { }
-
+  private routeSub:any; 
   ngOnInit() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -53,6 +55,18 @@ export class AdminAddDangerPage implements OnInit {
         );
       }
     });
+    this.routeSub = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        // save your data
+        this.map.disableMap();
+      }
+    });
+  }
+
+ 
+  @HostListener('unloaded')
+  ngOnDestroy() {
+    this.map.disableMap();
   }
 
   async adminAddDanger(): Promise<void> {

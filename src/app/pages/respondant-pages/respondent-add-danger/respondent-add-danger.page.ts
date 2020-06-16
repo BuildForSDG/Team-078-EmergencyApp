@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit  } from '@angular/core';
+import { Component, ViewChild, OnInit, HostListener, OnDestroy  } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { FormGroup } from '@angular/forms';
 import { Plugins } from '@capacitor/core';
@@ -16,7 +16,7 @@ declare var google;
   templateUrl: './respondent-add-danger.page.html',
   styleUrls: ['./respondent-add-danger.page.scss'],
 })
-export class RespondentAddDangerPage implements OnInit {
+export class RespondentAddDangerPage implements OnInit ,OnDestroy{
   addDangerForm: FormGroup;
   @ViewChild(GoogleMapComponent, { static: false })
   map: GoogleMapComponent;
@@ -57,6 +57,11 @@ export class RespondentAddDangerPage implements OnInit {
         );
       }
     });
+  }
+  @HostListener('unloaded')
+  ngOnDestroy() {
+    this.map.disableMap();
+    console.log('Items destroyed');
   }
 
   async addDanger(): Promise<void> {

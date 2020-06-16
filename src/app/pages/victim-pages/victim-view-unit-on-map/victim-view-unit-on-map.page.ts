@@ -1,17 +1,17 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, HostListener, OnDestroy } from '@angular/core';
 import { ModalController, AlertController, LoadingController } from '@ionic/angular';
 import { GoogleMapComponent } from 'src/app/components/google-map/google-map.component';
 import * as firebase from 'firebase';
 import { Geolocation } from '@capacitor/core';
 import { AuthService } from 'src/app/services/user/auth.service';
 import { RouterEvent, Router } from '@angular/router';
-
+declare var google;
 @Component({
   selector: 'app-victim-view-unit-on-map',
   templateUrl: './victim-view-unit-on-map.page.html',
   styleUrls: ['./victim-view-unit-on-map.page.scss'],
 })
-export class VictimViewUnitOnMapPage implements OnInit {
+export class VictimViewUnitOnMapPage implements OnInit,OnDestroy{
 
   // constructor(private modalController: ModalController) { }
 
@@ -47,12 +47,20 @@ export class VictimViewUnitOnMapPage implements OnInit {
         }, (err) => {
           console.log(err);
         });
+      }else{
+        console.log("User not found");
       }
     });
   }
   async closeModal() {
-    await this.modalController.dismiss();
     this.map.disableMap();
+    await this.modalController.dismiss();
+    
+  }
+  @HostListener('unloaded')
+  ngOnDestroy() {
+    this.map.disableMap();
+    console.log('Items destroyed');
   }
 
   setLocation(): void {

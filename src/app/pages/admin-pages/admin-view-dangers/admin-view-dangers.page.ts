@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit } from '@angular/core';
+import { Component, ViewChild, OnInit, OnDestroy, HostListener } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { Plugins } from '@capacitor/core';
 import { GoogleMapComponent } from '../../../components/google-map/google-map.component';
@@ -6,6 +6,7 @@ import * as firebase from 'firebase/app';
 import 'firebase/auth';
 import 'firebase/firestore';
 import { AuthService } from '../../../services/user/auth.service';
+import { NavigationStart, Router } from '@angular/router';
 const { Geolocation, Storage } = Plugins;
 
 @Component({
@@ -13,14 +14,15 @@ const { Geolocation, Storage } = Plugins;
   templateUrl: './admin-view-dangers.page.html',
   styleUrls: ['./admin-view-dangers.page.scss'],
 })
-export class AdminViewDangersPage implements OnInit {
+export class AdminViewDangersPage implements OnInit , OnDestroy{
   @ViewChild(GoogleMapComponent, { static: false }) map: GoogleMapComponent;
   public loading: HTMLIonLoadingElement;
   private locations: [];
   constructor(private alertCtrl: AlertController,
-    private loadingCtrl: LoadingController, private _auth: AuthService) {
+    private loadingCtrl: LoadingController, private _auth: AuthService,
+    private router: Router) {
   }
-
+  private routeSub:any; 
   ngOnInit() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -45,8 +47,19 @@ export class AdminViewDangersPage implements OnInit {
         });
       }
     });
-  }
 
+    this.routeSub = this.router.events.subscribe((event) => {
+      if (event instanceof NavigationStart) {
+        // save your data
+        this.map.disableMap();
+      }
+    });
+  }
+  @HostListener('unloaded')
+  ngOnDestroy() {
+    this.map.disableMap();
+  }
+ 
   loadDangers(): void {
     this.loadingCtrl.create({
       message: 'Setting current location...'
@@ -69,5 +82,7 @@ export class AdminViewDangersPage implements OnInit {
       });
     });
   }
+
+  
 
 }
