@@ -5,7 +5,7 @@ import { IonicModule } from '@ionic/angular';import { RespondantMenuModule } fro
 import { ViewEmergenciesPageRoutingModule } from './view-emergencies-routing.module';
 import { ViewEmergenciesPage } from './view-emergencies.page';
 import { EmergencyDetailsPage } from '../emergency-details/emergency-details.page';
-import { RespondentViewRequestOnMapPage } from '../respondent-view-request-on-map/respondent-view-request-on-map.page';
+// import { RespondentViewRequestOnMapPage } from '../respondent-view-request-on-map/respondent-view-request-on-map.page';
 import { ViewDangersPageModule } from '../../victim-pages/view-dangers/view-dangers.module';
 
 @NgModule({
@@ -17,8 +17,8 @@ import { ViewDangersPageModule } from '../../victim-pages/view-dangers/view-dang
     ViewEmergenciesPageRoutingModule,
     ViewDangersPageModule
   ],
-  declarations: [ViewEmergenciesPage, EmergencyDetailsPage,RespondentViewRequestOnMapPage],
-  entryComponents: [EmergencyDetailsPage,RespondentViewRequestOnMapPage]
+  declarations: [ViewEmergenciesPage, EmergencyDetailsPage],
+  entryComponents: [EmergencyDetailsPage]
 })
 export class ViewEmergenciesPageModule {}
 

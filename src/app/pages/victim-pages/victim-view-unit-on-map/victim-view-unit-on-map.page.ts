@@ -4,6 +4,7 @@ import { GoogleMapComponent } from 'src/app/components/google-map/google-map.com
 import * as firebase from 'firebase';
 import { Geolocation } from '@capacitor/core';
 import { AuthService } from 'src/app/services/user/auth.service';
+import { RouterEvent, Router } from '@angular/router';
 
 @Component({
   selector: 'app-victim-view-unit-on-map',
@@ -24,7 +25,14 @@ export class VictimViewUnitOnMapPage implements OnInit {
   public loading: HTMLIonLoadingElement;
   constructor(private alertCtrl: AlertController,
     private loadingCtrl: LoadingController, private modalController: ModalController,
-    private _auth: AuthService) { }
+    private _auth: AuthService,private router: Router) { 
+      // var that = this;
+      // this.router.events.subscribe(async (event: RouterEvent) => {
+      //   console.log("Route Changed");
+        
+      //   await this.map.disableMap();
+      // });
+    }
   private latitude: number;
   private longitude: number;
   unitType: string;

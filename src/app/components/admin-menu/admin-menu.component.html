@@ -14,6 +14,7 @@
     >
       <ion-menu-button
         class="main-menu-harmburger"
+        (click)="toggleDisplayDiv()"
       >
         <span class="menu-harmbg-1"></span>
         <span class="menu-harmbg-2"></span>
@@ -26,7 +27,6 @@
 <ion-menu [hidden]="isShowDiv"  contentId="content" side="end">
   <ion-header>
     <div class="menu-main-icon">
-      <ion-menu-toggle>
         <ion-item
           class="item-background"
           routerLink="/admin-dashboard"
@@ -37,8 +37,6 @@
             name="home"
           ></ion-icon>
         </ion-item>
-      </ion-menu-toggle>
-      <ion-menu-toggle>
         <ion-item
           class="item-background2" 
           routerLink="/admin-login"
@@ -49,7 +47,6 @@
             name="log-in-outline"
           ></ion-icon>
         </ion-item>
-      </ion-menu-toggle>
     </div>
   </ion-header>
 

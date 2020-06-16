@@ -43,6 +43,7 @@ export class FindUnitPage implements OnInit {
 
       }
     });
+   
   }
 
   ngOnInit() {

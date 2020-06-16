@@ -10,6 +10,7 @@ import { RespondentAddDangerPageRoutingModule } from './respondent-add-danger-ro
 
 import { RespondentAddDangerPage } from './respondent-add-danger.page';
 
+import { ViewDangersPageModule } from '../../victim-pages/view-dangers/view-dangers.module';
 
 @NgModule({
   imports: [
@@ -17,7 +18,8 @@ import { RespondentAddDangerPage } from './respondent-add-danger.page';
     FormsModule,
     IonicModule,
     RespondentAddDangerPageRoutingModule,
-    RespondantMenuModule
+    RespondantMenuModule,
+    ViewDangersPageModule
   ],
   declarations: [RespondentAddDangerPage],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]

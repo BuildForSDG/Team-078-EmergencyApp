@@ -2,7 +2,7 @@ import { Component, ViewChild, OnInit  } from '@angular/core';
 import { AlertController, LoadingController } from '@ionic/angular';
 import { FormGroup } from '@angular/forms';
 import { Plugins } from '@capacitor/core';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router, ActivatedRoute, RouterEvent } from '@angular/router';
 import { GoogleMapComponent } from '../../../components/google-map/google-map.component';
 import { AuthService } from '../../../services/user/auth.service';
 import * as firebase from 'firebase/app';
@@ -40,7 +40,9 @@ export class RespondentAddDangerPage implements OnInit {
     private loadingCtrl: LoadingController,
     private router: Router,
     private _auth: AuthService
-  ) { }
+  ) {
+
+   }
 
   ngOnInit() {
     firebase.auth().onAuthStateChanged(user => {
