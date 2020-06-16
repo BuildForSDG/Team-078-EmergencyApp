@@ -13,22 +13,19 @@ export class VictimMenuComponent implements OnInit {
   routerlocation: string = this.router.url;
   menuItem: string[];
   menuSegment: string;
+  selectedPath: string = "";
+  isShowDiv: boolean = false;
 
   pages = [
-    {
-      title: "Find Unit",
-      url: "/find-unit",
-      icon: "help-buoy-outline"
-    },
     {
       title: "Get Help",
       url: "/get-help",
       icon: "medkit-outline"
     },
     {
-      title: "User Location",
-      url: "/user-location",
-      icon: "location-outline"
+      title: "Find Unit",
+      url: "/find-unit",
+      icon: "help-buoy-outline"
     },
     {
       title: "View Dangers",
@@ -36,14 +33,12 @@ export class VictimMenuComponent implements OnInit {
       icon: "flame-outline"
     },
     {
-      title: "View Units",
-      url: "/view-unit",
+      title: "Request History",
+      url: "/victim-request-history",
       icon: "boat-outline"
     }
   ];
 
-
-  selectedPath = '';
 
   constructor(
     private location: Location, 
@@ -56,11 +51,20 @@ export class VictimMenuComponent implements OnInit {
       );
     }
 
-  ngOnInit() {}
+  ngOnInit() {
 
-  toggleMenu() {
+  }
+
+  ionDidClose(){
+    !this.isShowDiv
+  }
+
+  toggleDisplayDiv() {
     this.menu.toggle('main-menu');
   }
+  // toggleDisplayDiv() {
+  //   this.isShowDiv = !this.isShowDiv;
+  // }
 
   goBack() {
     this.location.back();

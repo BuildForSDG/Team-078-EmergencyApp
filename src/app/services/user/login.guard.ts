@@ -27,6 +27,7 @@ export class LoginGuard implements CanActivate {
                 } else {
                   // this document does not exist meaning this is not a legit respondent
                   resolve(true);
+                  ///console.log("User Not found");
                 }
               }, (err) => {
                 console.log('Error getting document:', err);
