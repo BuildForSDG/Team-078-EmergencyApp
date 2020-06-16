@@ -57,19 +57,46 @@ export class RespondantLoginPage implements OnInit {
       const email = this.loginForm.get('email').value;
       const password = this.loginForm.get('password').value;
       this._auth.loginUser(email, password).then( (user) => {
-        this.loading.dismiss().then(() => {
-          firebase.firestore().doc(`responder/${user.user.uid}`).set({
-            pushToken : this._auth.pushToken
-          }, {merge: true});
-          this.router.navigate(['/respondant-dashboard']);
-        });
-      }, error => {
         this.loading.dismiss().then(async () => {
-          const alert = await this.alertCtrl.create({ message: error.message, buttons: [{ text: 'Ok', role: 'cancel' }], });
-          await alert.present();
-        });
-      } );
-    }
+          if (user) {
+            //check if this a legit respondent
+            await firebase.firestore().doc(`responder/${user.user.uid}`).get().then((docu) => {
+              // this user is a legit respondent
+              if (docu.exists) {
+                firebase.firestore().doc(`responder/${user.user.uid}`).set({
+                  // if (docu.exists) {
+                  //   this.router.navigate(['/respondant-dashboard']);
+                  // },
+                  pushToken : this._auth.pushToken
+                }, {merge: true}),
+               
+                //this.router.navigate(['/respondant-dashboard']);
+                this.router.navigate(['/respondant-dashboard']);
+              }else{
+                this.loading.dismiss().then(async () => {
+                  const alert = await this.alertCtrl.create({ message: "User Not Found", buttons: [{ text: 'Ok', role: 'cancel' }], });
+                  await alert.present();
+                });
+               
+              }
+                
+              }),( (err) => {
+              console.log('Error getting document:', err);
+              this.loading.dismiss().then(async () => {
+                const alert = await this.alertCtrl.create({ message: err.message, buttons: [{ text: 'Ok', role: 'cancel' }], });
+                await alert.present();
+              });
+            });  
+        } 
+          
+      });
+    },(error) => {
+      this.loading.dismiss().then(async () => {
+        const alert = await this.alertCtrl.create({ message: error.message, buttons: [{ text: 'Ok', role: 'cancel' }], });
+        await alert.present();
+      });
+    });
   }
 
+  }
 }

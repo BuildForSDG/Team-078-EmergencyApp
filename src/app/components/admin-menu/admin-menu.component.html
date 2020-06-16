@@ -10,7 +10,6 @@
       src="/assets/md-custom-backbtn.svg"
     ></ion-icon>
     <ion-buttons
-      (click)="toggleMenu()"
       slot="end"
     >
       <ion-menu-button
@@ -24,15 +23,8 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-menu contentId="content" side="end">
+<ion-menu [hidden]="isShowDiv"  contentId="content" side="end">
   <ion-header>
-    <ion-menu-toggle>
-      <ion-icon
-        color="secondary"
-        class="menu-close"
-        name="close-outline"
-      ></ion-icon>
-    </ion-menu-toggle>
     <div class="menu-main-icon">
       <ion-menu-toggle>
         <ion-item
@@ -49,7 +41,7 @@
       <ion-menu-toggle>
         <ion-item
           class="item-background2" 
-          href="/admin-login"
+          routerLink="/admin-login"
         >
           <ion-icon
             color="secondary"
@@ -63,22 +55,35 @@
 
   <ion-content>
     <ion-list class="menu-border">
+
+      <div (click)=toggleDisplayDiv()>
+        <ion-item auto-hide="false" *ngFor="let page of pages; last as isLast"
+          [class.menu-item-line] = "!isLast"
+          [routerLink]="[page.url]"
+          routerDirection="root"
+          [class.active-item]="
+            selectedPath === page.url
+          "
+          >
+
       <!-- <ion-menu-toggle
         auto-hide="true"
       > -->
-        <ion-item
+        <!-- <ion-item
           [class.menu-item-line] = "!isLast"
           [routerLink]="[page.url]"
           routerDirection="root"
           [class.active-item]="selectedPath === page.url"
           *ngFor="let page of pages; last as isLast"         
         >
+>>>>>>> develop -->
         <ion-icon color="secondary" name={{page.icon}}></ion-icon>
           <ion-label>
             {{ page.title }}
           </ion-label>
         </ion-item>
-      <!-- </ion-menu-toggle> -->
+      </div>
+
     </ion-list>
   </ion-content>
 </ion-menu>
