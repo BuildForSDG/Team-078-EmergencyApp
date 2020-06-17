@@ -8,40 +8,26 @@
 </ion-header>
 
 <ion-content>
-  <ion-content>
-    <app-google-map apiKey="AIzaSyBExZNShIaWE9RKXq_oqsAgyaYcYRhYGB8"></app-google-map>
+  <app-google-map apiKey="AIzaSyBExZNShIaWE9RKXq_oqsAgyaYcYRhYGB8"></app-google-map>
 </ion-content>
+
 <ion-footer>
-  <ion-grid id="container">
-    <ion-row>
-      <ion-col align-self-center size-md="6" size-lg="5" size-xs="12">
-        <form (ngSubmit)="adminAddDanger()" #addDangerForm="ngForm">
-          <div padding>
-            <div class="emerge-form-line">
-              <ion-item>
-                <ion-label floating>Description</ion-label>
-                <ion-textarea
-                  name="description"
-                  [(ngModel)]="description"
-                ></ion-textarea>
-              </ion-item>
-            </div>
-          </div>
 
-          <div padding>
-            <ion-button
-              size="large "
-              type="submit "
-              color="secondary"
-              expand="block "
-              >Add Map Location
-              <ion-icon name="log-out-outline "></ion-icon>
-            </ion-button>
-          </div>
-        </form>
-      </ion-col>
-    </ion-row>
-  </ion-grid>
-</ion-content>
+  <form (ngSubmit)="adminAddDanger()">
+      <div class="emerge-form-line">
+          <ion-item>
+              <ion-select name="dangerType" [(ngModel)]="dangerInfo.dangerType" placeholder="Select Type" required>
+                  <ion-select-option value="Robbery">Robbery</ion-select-option>
+                  <ion-select-option value="Pot holes">Pot Holes</ion-select-option>
+                  <ion-select-option value="Road block">Road Block</ion-select-option>
+                  <ion-select-option value="Under contruction">Under Contruction</ion-select-option>
+              </ion-select>
+          </ion-item>
+          <ion-item>
+              <ion-label floating>Description</ion-label>
+              <ion-textarea name="description" [(ngModel)]="dangerInfo.description" required></ion-textarea>
+          </ion-item>
+      </div>
+      <ion-button expand="full" type="submit">Submit Danger</ion-button>
+  </form>
 </ion-footer>
-
