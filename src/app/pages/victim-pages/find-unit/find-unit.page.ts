@@ -3,7 +3,7 @@ import { Router, NavigationExtras } from '@angular/router';
 import { AuthService } from 'src/app/services/user/auth.service';
 import { LoadingController, AlertController, ModalController } from '@ionic/angular';
 import * as firebase from 'firebase';
-import { GoogleMapComponent } from 'src/app/components/google-map/google-map.component';
+//import { GoogleMapComponent } from 'src/app/components/google-map/google-map.component';
 import { VictimViewUnitOnMapPage } from '../victim-view-unit-on-map/victim-view-unit-on-map.page';
 @Component({
   selector: 'app-find-unit',
@@ -13,7 +13,7 @@ import { VictimViewUnitOnMapPage } from '../victim-view-unit-on-map/victim-view-
 // declare var google;
 export class FindUnitPage implements OnInit,OnDestroy  {
   // @ViewChild(GoogleMapComponent, { static: false })
-  map: GoogleMapComponent;
+  // map: GoogleMapComponent;
   userInfo = {
     unitType: '',
     address: '',
@@ -24,9 +24,9 @@ export class FindUnitPage implements OnInit,OnDestroy  {
   Response: any;
   constructor(private modalController: ModalController, private router: Router, private _auth: AuthService, public loadingCtrl: LoadingController,
     public alertCtrl: AlertController) {
-      if (typeof (this.map) === 'undefined') {
+     /*  if (typeof (this.map) === 'undefined') {
            console.log("This Map is Undefined");
-      }
+      } */
     _auth.getUnitType().then(async (result) => {
       this.loading = await this.loadingCtrl.create();
       await this.loading.present();

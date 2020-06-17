@@ -7,6 +7,7 @@ import { RespondentViewRequestOnMapPage } from './respondent-view-request-on-map
 import { ViewDangersPageModule } from '../../victim-pages/view-dangers/view-dangers.module';
 
 @NgModule({
+
   imports: [
     CommonModule,
     FormsModule,
@@ -14,7 +15,6 @@ import { ViewDangersPageModule } from '../../victim-pages/view-dangers/view-dang
     RespondentViewRequestOnMapPageRoutingModule,
     ViewDangersPageModule
   ],
-  declarations: [RespondentViewRequestOnMapPage],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class RespondentViewRequestOnMapPageModule {}

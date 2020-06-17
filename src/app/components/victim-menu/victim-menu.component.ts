@@ -23,6 +23,14 @@ export class VictimMenuComponent implements OnInit {
       icon: "medkit-outline"
     },
     {
+      title: "Request History",
+      url: "/victim-request-history",
+      icon: "boat-outline"
+    }
+  ];
+  
+  tempPage = [
+    {
       title: "Find Unit",
       url: "/find-unit",
       icon: "help-buoy-outline"
@@ -32,11 +40,6 @@ export class VictimMenuComponent implements OnInit {
       url: "/view-dangers",
       icon: "flame-outline"
     },
-    {
-      title: "Request History",
-      url: "/victim-request-history",
-      icon: "boat-outline"
-    }
   ];
 
 

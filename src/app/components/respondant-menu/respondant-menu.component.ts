@@ -26,16 +26,6 @@ export class RespondantMenuComponent implements OnInit {
       icon: "person-outline",
     },
     {
-      title: "Add Danger",
-      url: "/respondent-add-danger",
-      icon: "flame-outline",
-    },
-    {
-      title: "View Danger",
-      url: "/respondent-view-dangers",
-      icon: "bonfire-outline",
-    },
-    {
       title: "View Emergency",
       url: "/view-emergencies",
       icon: "medkit-outline",
@@ -43,6 +33,19 @@ export class RespondantMenuComponent implements OnInit {
     {
       title: "Respondent History",
       url: "/respondent-history",
+      icon: "bonfire-outline",
+    },
+  ];
+  
+  tempPage = [
+     {
+      title: "Add Danger",
+      url: "/respondent-add-danger",
+      icon: "flame-outline",
+    },
+    {
+      title: "View Danger",
+      url: "/respondent-view-dangers",
       icon: "bonfire-outline",
     },
   ];

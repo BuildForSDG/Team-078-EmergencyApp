@@ -45,6 +45,7 @@ export class VictimViewUnitOnMapPage implements OnInit,OnDestroy{
           this.unitsDetails = await this._auth.getUnitsByUnitType(this.unitType);
           this.setLocation();
         }, (err) => {
+          // this.setLocation();
           console.log(err);
         });
       }else{
@@ -59,7 +60,7 @@ export class VictimViewUnitOnMapPage implements OnInit,OnDestroy{
   }
   @HostListener('unloaded')
   ngOnDestroy() {
-    this.map.disableMap();
+    this.map.disableMap()
     console.log('Items destroyed');
   }
 
@@ -68,7 +69,7 @@ export class VictimViewUnitOnMapPage implements OnInit,OnDestroy{
       message: 'Checking current location...'
     }).then((overlay) => {
       overlay.present();
-      const id = Geolocation.watchPosition({ enableHighAccuracy: true, timeout: 10000 }, (position, err) => {
+      Geolocation.watchPosition({ enableHighAccuracy: true, timeout: 100000 }, (position, err) => {
         // Geolocation.clearWatch({id});
         overlay.dismiss();
         this.latitude = position.coords.latitude;

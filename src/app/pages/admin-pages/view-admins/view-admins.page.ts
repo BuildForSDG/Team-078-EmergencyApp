@@ -6,7 +6,7 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./view-admins.page.scss'],
 })
 export class ViewAdminsPage implements OnInit {
-
+  adminList : [];
   constructor() { }
 
   ngOnInit() {

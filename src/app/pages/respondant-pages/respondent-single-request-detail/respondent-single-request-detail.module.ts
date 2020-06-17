@@ -15,6 +15,6 @@ import { RespondentSingleRequestDetailPage } from './respondent-single-request-d
     IonicModule,
     RespondentSingleRequestDetailPageRoutingModule
   ],
-  declarations: [RespondentSingleRequestDetailPage]
+  // declarations: [RespondentSingleRequestDetailPage]
 })
 export class RespondentSingleRequestDetailPageModule {}
