@@ -128,7 +128,7 @@ export class GoogleMapComponent {
 
   private initMap(): Promise<any> {
     return new Promise((resolve, reject) => {
-      Geolocation.getCurrentPosition({ enableHighAccuracy: true, timeout: 10000 }).then((position) => {
+      Geolocation.getCurrentPosition({  enableHighAccuracy: true,  timeout: 100000 }).then((position) => {
         console.log(position);
         // let	latLng	=	new	google.maps.LatLng(46.064941,13.230720);
         const latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -140,6 +140,8 @@ export class GoogleMapComponent {
         //resolve the latLng to be used to get the current position
         resolve(position);
       }, (err) => {
+
+        
         console.log(err);
         reject('Could	not	initialise map');
       });
@@ -162,7 +164,7 @@ export class GoogleMapComponent {
   }
 
   disableMap(): void {
-    this.connectionAvailable = false;
+    //this.connectionAvailable = false;
     google = undefined;
   }
 
