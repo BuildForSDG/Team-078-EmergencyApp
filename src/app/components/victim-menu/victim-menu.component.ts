@@ -23,12 +23,23 @@ export class VictimMenuComponent implements OnInit {
       icon: "medkit-outline"
     },
     {
+      title: "Find Unit",
+      url: "/find-unit",
+      icon: "help-buoy-outline"
+    },
+    {
       title: "Request History",
       url: "/victim-request-history",
       icon: "boat-outline"
     }
+    ,
+    {
+      title: "View Dangers",
+      url: "/view-dangers",
+      icon: "flame-outline"
+    }
   ];
-  
+
   tempPage = [
     {
       title: "Find Unit",
@@ -44,21 +55,21 @@ export class VictimMenuComponent implements OnInit {
 
 
   constructor(
-    private location: Location, 
-    private menu: MenuController, 
+    private location: Location,
+    private menu: MenuController,
     private router: Router) {
-      this.router.events.subscribe(
-        (event: RouterEvent) => {
-          this.selectedPath = event.url;
-        }
-      );
-    }
+    this.router.events.subscribe(
+      (event: RouterEvent) => {
+        this.selectedPath = event.url;
+      }
+    );
+  }
 
   ngOnInit() {
 
   }
 
-  ionDidClose(){
+  ionDidClose() {
     !this.isShowDiv
   }
 
@@ -82,20 +93,20 @@ export class VictimMenuComponent implements OnInit {
 
   // This is used to make the logo dynamic
   titleUpdate() {
-    if(this.routerlocation ==="/get-help" ){
-       return "Get Help"
+    if (this.routerlocation === "/get-help") {
+      return "Get Help"
     }
 
-    if(this.routerlocation ==="/find-unit" ){
+    if (this.routerlocation === "/find-unit") {
       return "Find Unit"
     }
-    if(this.routerlocation ==="/view-dangers" ){
+    if (this.routerlocation === "/view-dangers") {
       return "Dangers"
     }
-    if(this.routerlocation ==="/victim-request-history" ){
+    if (this.routerlocation === "/victim-request-history") {
       return "Request History"
     }
-  
+
   }
 
   // triggers wen menu button is clicked
