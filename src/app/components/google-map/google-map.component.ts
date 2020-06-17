@@ -53,6 +53,19 @@ export class GoogleMapComponent {
           this.firstLoadFailed = true;
           reject(err);
         });
+      }else if(typeof (google) != 'undefined'){
+        this.disableMap();
+        this.loadSDK().then(() => {
+          this.initMap().then(() => {
+            this.enableMap();
+            resolve(true);
+          }, (err) => {
+            this.disableMap();
+            reject(err);
+          });
+        }, (err) => {
+          reject(err);
+        });
       } else {
         reject('Google	maps	already	initialised');
       }
