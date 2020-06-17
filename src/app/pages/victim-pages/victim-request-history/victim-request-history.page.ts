@@ -60,6 +60,9 @@ export class VictimRequestHistoryPage implements OnInit {
             });
             console.log(error);
           });//end profile query
+          
+      }else{
+      this.loading.dismiss();
       }
     });
   }

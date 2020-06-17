@@ -15,6 +15,6 @@ import { VictimSingleRequestDetailsPage } from './victim-single-request-details.
     IonicModule,
     VictimSingleRequestDetailsPageRoutingModule
   ],
-  declarations: [VictimSingleRequestDetailsPage]
+  // declarations: [VictimSingleRequestDetailsPage]
 })
 export class VictimSingleRequestDetailsPageModule {}

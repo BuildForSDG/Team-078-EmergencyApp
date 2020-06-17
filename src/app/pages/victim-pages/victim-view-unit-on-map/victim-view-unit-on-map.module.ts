@@ -14,7 +14,7 @@ import { ViewDangersPageModule } from '../../victim-pages/view-dangers/view-dang
     VictimViewUnitOnMapPageRoutingModule,
     ViewDangersPageModule
   ],
-  declarations: [VictimViewUnitOnMapPage],
+  // declarations: [VictimViewUnitOnMapPage],
   schemas: [ CUSTOM_ELEMENTS_SCHEMA ]
 })
 export class VictimViewUnitOnMapPageModule {}

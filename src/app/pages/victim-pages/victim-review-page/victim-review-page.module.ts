@@ -15,6 +15,6 @@ import { VictimReviewPagePage } from './victim-review-page.page';
     IonicModule,
     VictimReviewPagePageRoutingModule
   ],
-  declarations: [VictimReviewPagePage]
+  // declarations: [VictimReviewPagePage]
 })
 export class VictimReviewPagePageModule {}
