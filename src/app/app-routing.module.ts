@@ -5,9 +5,10 @@ import { LoginGuard } from './services/user/login.guard';
 const routes: Routes = [
   {
     path: '',
-    loadChildren: () => import('./welcom-page/welcom-page.module').then(
-      m => m.WelcomPagePageModule
-    )
+    loadChildren: () =>
+      import('./pages/admin-pages/admin-login/admin-login.module').then(
+        m => m.AdminLoginPageModule
+      )
   },
   {
     path: 'admin-dashboard',
