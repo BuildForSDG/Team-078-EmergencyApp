@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 
 import { IonicModule } from '@ionic/angular';
-import { VictimBlueMenuModule } from '../../../components/victimblue.components.module';
+import { VictimMenuModule } from '../../../components/victim.components.module';
 
 import { ViewDangersPageRoutingModule } from './view-dangers-routing.module';
 
@@ -17,7 +17,7 @@ import	{	GooglePlacesComponent	}	from	'../../../components/google-places/google-
     CommonModule,
     FormsModule,
     IonicModule,
-    VictimBlueMenuModule,
+    VictimMenuModule,
     ViewDangersPageRoutingModule
   ],
   declarations: [ViewDangersPage, GoogleMapComponent, GooglePlacesComponent],
