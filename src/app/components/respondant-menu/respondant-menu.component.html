@@ -58,8 +58,21 @@
     <ion-list class="menu-border">
       <div (click)="toggleDisplayDiv()">
         <ion-item auto-hide="false" *ngFor="let page of pages; last as isLast"
-        [class.menu-item-line] = "!isLast"
+        class = "menu-item-line"
           [routerLink]="[page.url]"
+          routerDirection="forward"
+          [class.active-item]="
+            selectedPath === page.url
+          "
+        > <ion-icon color="secondary" name={{page.icon}}></ion-icon>
+          <ion-label>
+            {{ page.title }}
+          </ion-label>
+        </ion-item>
+        
+         <ion-item auto-hide="false" *ngFor="let page of tempPage; last as isLast"
+        [class.menu-item-line] = "!isLast"
+          href ="{{ page.url }}"
           routerDirection="forward"
           [class.active-item]="
             selectedPath === page.url

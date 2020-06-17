@@ -1,4 +1,4 @@
-import { Component, ViewChild, OnInit, NgZone } from '@angular/core';
+import { Component, ViewChild, OnInit, NgZone, OnDestroy, HostListener } from '@angular/core';
 import	{	AlertController,	LoadingController	}	from	'@ionic/angular';
 import	{	Plugins	}	from	'@capacitor/core';
 import	{	GoogleMapComponent	}	from	'../../../components/google-map/google-map.component';
@@ -18,7 +18,7 @@ declare var google;
   templateUrl: './view-dangers.page.html',
   styleUrls: ['./view-dangers.page.scss'],
 })
-export class ViewDangersPage implements OnInit {
+export class ViewDangersPage implements OnInit ,OnDestroy{
 
   @ViewChild(GoogleMapComponent, {static: false}) map: GoogleMapComponent;
   @ViewChild(GooglePlacesComponent, {static: false}) places: GooglePlacesComponent;
@@ -68,7 +68,11 @@ export class ViewDangersPage implements OnInit {
       }
     });
   }
-
+  @HostListener('unloaded')
+  ngOnDestroy() {
+    this.map.disableMap();
+    console.log('Items destroyed');
+  }
   loadDangers():	void	{
     this.loadingCtrl.create({
       message:	'Setting current location...'
