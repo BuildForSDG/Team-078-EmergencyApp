@@ -218,12 +218,12 @@ export class GoogleMapComponent {
 
       //loop through unit location and display markers on the map
       unitLocation.forEach((marker) => {
-        var image = 'http://maps.google.com/mapfiles/ms/micons/red-dot.png';
+        var image = 'https://maps.google.com/mapfiles/ms/micons/red-dot.png';
         if (marker['unit_type'] == "Fire") {
-          image = 'http://maps.google.com/mapfiles/ms/micons/firedept.png';
+          image = 'https://maps.google.com/mapfiles/ms/micons/firedept.png';
         }
         if (marker['unit_type'] == "Accident") {
-          image = 'http://maps.google.com/mapfiles/ms/micons/hospitals.png';
+          image = 'https://maps.google.com/mapfiles/ms/micons/hospitals.png';
         }
 
         markerInfo = new google.maps.Marker({
@@ -317,7 +317,7 @@ export class GoogleMapComponent {
     var markerInfo;
     //console.log("Auth Details", markers);
     markers.forEach((marker) => {
-      var image = 'http://maps.google.com/mapfiles/kml/pal3/icon33.png';
+      var image = 'https://maps.google.com/mapfiles/kml/pal3/icon33.png';
       markerInfo = new google.maps.Marker({
         position: new google.maps.LatLng(marker['location']['lat'], marker['location']['lng']),
         map: this.map,
@@ -347,7 +347,7 @@ export class GoogleMapComponent {
     var markerInfo;
     console.log("Auth Details", markers);
     markers.forEach((marker) => {
-      var image = 'http://maps.google.com/mapfiles/kml/pal3/icon33.png';
+      var image = 'https://maps.google.com/mapfiles/kml/pal3/icon33.png';
       markerInfo = new google.maps.Marker({
         position: new google.maps.LatLng(marker['location']['lat'], marker['location']['lng']),
         map: this.map,
