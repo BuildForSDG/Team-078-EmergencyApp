@@ -51,8 +51,8 @@ export class ViewDangersPage implements OnInit ,OnDestroy{
           this._auth.getDangersLocation().then(async (result) => {
             this.loading = await this.loadingCtrl.create();
             await this.loading.present();
-            this.locations = await result;
-            this.loadDangers();
+            this.locations = result;
+            this.loadDangers(res);
             console.log("Info", result);
             this.loading.dismiss();
           }).catch((error) => {
@@ -73,12 +73,12 @@ export class ViewDangersPage implements OnInit ,OnDestroy{
     this.map.disableMap();
     console.log('Items destroyed');
   }
-  loadDangers():	void	{
+  loadDangers(res):	void	{
     this.loadingCtrl.create({
       message:	'Setting current location...'
     }).then((overlay)	=>	{
         overlay.present();
-        Geolocation.getCurrentPosition().then((position)	=>	{
+        // Geolocation.getCurrentPosition().then((position)	=>	{
             overlay.dismiss();
             this.map.victimDisplayMultipleMarkers(this.locations);
             this.alertCtrl.create({
@@ -88,10 +88,10 @@ export class ViewDangersPage implements OnInit ,OnDestroy{
             }).then((alert)	=>	{
               alert.present();
             });
-        },	(err)	=>	{
-          console.log(err);
-          overlay.dismiss();
-        });
+        // },	(err)	=>	{
+        //   console.log(err);
+        //   overlay.dismiss();
+        // });
     });
   }
 

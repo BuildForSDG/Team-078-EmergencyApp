@@ -9,12 +9,9 @@
       class="back-btn"
       src="/assets/md-custom-backbtn.svg"
     ></ion-icon>
-    <ion-buttons
-      slot="end"
-    >
+    <ion-buttons slot="end">
       <ion-menu-button
         class="main-menu-harmburger"
-        (click)="toggleDisplayDiv()"
       >
         <span class="menu-harmbg-1"></span>
         <span class="menu-harmbg-2"></span>
@@ -24,10 +21,9 @@
   </ion-toolbar>
 </ion-header>
 
-<ion-menu menuId="custom" [hidden]="isShowDiv" contentId="content" side="end">
+<ion-menu [hidden]="isShowDiv" contentId="content" side="end">
   <ion-header>
     <div class="menu-main-icon">
-      <ion-menu-toggle>
         <ion-item
           class="item-background"
           routerLink="/respondant-dashboard"
@@ -38,8 +34,7 @@
             name="home"
           ></ion-icon>
         </ion-item>
-      </ion-menu-toggle>
-      <ion-menu-toggle>
+    
         <ion-item
           class="item-background2" 
           (click) = "signOut()"
@@ -50,17 +45,16 @@
             name="log-in-outline"
           ></ion-icon>
         </ion-item>
-      </ion-menu-toggle>
     </div>
   </ion-header>
 
   <ion-content>
     <ion-list class="menu-border">
-      <div (click)="toggleDisplayDiv()">
-        <ion-item auto-hide="false" *ngFor="let page of pages; last as isLast"
-        class = "menu-item-line"
+      <div>
+        <ion-item auto-hide="true" *ngFor="let page of pages; last as isLast"
+        [class.menu-item-line] = "!isLast"
           [routerLink]="[page.url]"
-          routerDirection="forward"
+          routerDirection="root"
           [class.active-item]="
             selectedPath === page.url
           "
@@ -70,7 +64,7 @@
           </ion-label>
         </ion-item>
         
-         <ion-item auto-hide="false" *ngFor="let page of tempPage; last as isLast"
+         <!-- <ion-item auto-hide="false" *ngFor="let page of tempPage; last as isLast"
         [class.menu-item-line] = "!isLast"
           href ="{{ page.url }}"
           routerDirection="forward"
@@ -81,7 +75,7 @@
           <ion-label>
             {{ page.title }}
           </ion-label>
-        </ion-item>
+        </ion-item> -->
       </div>
     </ion-list>
   </ion-content>

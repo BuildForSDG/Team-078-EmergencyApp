@@ -65,8 +65,8 @@ export class AdminViewDangersPage implements OnInit , OnDestroy{
       message: 'Setting current location...'
     }).then((overlay) => {
       overlay.present();
-      Geolocation.getCurrentPosition().then((position) => {
-        overlay.dismiss();
+     // Geolocation.getCurrentPosition().then((position) => {
+        
         //display danger fetched from firebase
         this.map.respondentOrAdminDisplayMultipleMarkers(this.locations);
         this.alertCtrl.create({
@@ -76,10 +76,11 @@ export class AdminViewDangersPage implements OnInit , OnDestroy{
         }).then((alert) => {
           alert.present();
         });
-      }, (err) => {
-        console.log(err);
         overlay.dismiss();
-      });
+      // }, (err) => {
+      //   console.log(err);
+      //   overlay.dismiss();
+      // });
     });
   }
 

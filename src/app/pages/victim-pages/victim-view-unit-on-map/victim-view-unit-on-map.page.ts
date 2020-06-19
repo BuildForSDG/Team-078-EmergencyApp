@@ -41,9 +41,9 @@ export class VictimViewUnitOnMapPage implements OnInit,OnDestroy{
   ngOnInit() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.map.init().then(async (res) => {
+        this.map.init().then(async (position) => {
           this.unitsDetails = await this._auth.getUnitsByUnitType(this.unitType);
-          this.setLocation();
+          this.setLocation(position);
         }, (err) => {
           // this.setLocation();
           console.log(err);
@@ -64,34 +64,37 @@ export class VictimViewUnitOnMapPage implements OnInit,OnDestroy{
     console.log('Items destroyed');
   }
 
-  setLocation(): void {
+  setLocation(position): void {
     this.loadingCtrl.create({
       message: 'Checking current location...'
     }).then((overlay) => {
       overlay.present();
-      Geolocation.watchPosition({ enableHighAccuracy: true, timeout: 100000 }, (position, err) => {
-        // Geolocation.clearWatch({id});
+      this.latitude = position.coords.latitude;
+      this.longitude = position.coords.longitude;
+      var id = Geolocation.watchPosition({ enableHighAccuracy: true, timeout: 10000 }, (position, err) => {
+      Geolocation.clearWatch({id});
+         console.log(position);
+         this.map.changeMarkerWithoutAni(position.coords.latitude, position.coords.longitude);
+            if (err) {
+          console.log(err);
+          overlay.dismiss();
+          return;
+        }
+
+     });
         overlay.dismiss();
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
+       
         const currentLocation = {
           lat: this.latitude,
           lng: this.longitude
         };
 
         this.map.viewUnitOnMap(currentLocation, this.unitsDetails);
-        this.map.changeMarkerWithoutAni(this.latitude, this.longitude);
         const data = {
           latitude: this.latitude,
           longitude: this.longitude
         };
-        if (err) {
-          console.log(err);
-          overlay.dismiss();
-          return;
-        }
 
-      });
       // Geolocation.getCurrentPosition().then((position) => {
       //   overlay.dismiss();
       //   this.latitude = position.coords.latitude;

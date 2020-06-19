@@ -32,7 +32,7 @@ export class WelcomPagePage implements OnInit {
   
       PushNotifications.addListener('registration',
           async (token: PushNotificationToken) => {
-            alert('Push registration success, token: ' + token.value);
+            //alert('Push registration success, token: ' + token.value);
             await Storage.set({
               key: 'pushToken',
               value: token.value

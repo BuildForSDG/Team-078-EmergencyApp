@@ -25,8 +25,8 @@ export class RespondentViewRequestOnMapPage implements OnInit {
   ngOnInit() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.map.init().then((res) => {
-          this.setLocation();
+        this.map.init().then((position) => {
+          this.setLocation(position);
         }, (err) => {
           console.log(err);
         });
@@ -38,35 +38,31 @@ export class RespondentViewRequestOnMapPage implements OnInit {
     this.map.disableMap();
   }
 
-  setLocation(): void {
+  setLocation(position): void {
     this.loadingCtrl.create({
       message: 'Checking current location...'
     }).then((overlay) => {
       overlay.present();
+      this.latitude = position.coords.latitude;
+      this.longitude = position.coords.longitude;
+     
       //call the watch position function
-      const id = Geolocation.watchPosition({ enableHighAccuracy: true, timeout: 10000 }, (position, err) => {
-        // Geolocation.clearWatch({id});
+      var id = Geolocation.watchPosition({ enableHighAccuracy: true, timeout: 10000 }, (position, err) => {
         overlay.dismiss();
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        const currentLocation = {
-          lat : this.latitude,
-          lng : this.longitude
-        };
-        this.map.viewRequestOnMap(currentLocation,this.coord);
-        this.map.changeMarkerWithoutAni(this.latitude, this.longitude);
-       
-        const data = {
-          latitude: this.latitude,
-          longitude: this.longitude
-        };
+        this.map.changeMarkerWithoutAni(position.coords.latitude, position.coords.longitude);
         if (err) {
           console.log(err);
           overlay.dismiss();
           return;
         }
-
+        Geolocation.clearWatch({id});
       });
+      const currentLocation = {
+        lat : this.latitude,
+        lng : this.longitude
+      };
+    
+      this.map.viewRequestOnMap(currentLocation,this.coord);
       
       /**
       Geolocation.getCurrentPosition().then((position) => {

@@ -40,11 +40,11 @@ export class GoogleMapComponent {
   public init(): Promise<any> {
 
     return new Promise((resolve, reject) => {
-      if (typeof (google) === 'undefined') {
+      // if (typeof (google) === 'undefined') {
         this.loadSDK().then(() => {
-          this.initMap().then(() => {
+          this.initMap().then((position) => {
             this.enableMap();
-            resolve(true);
+            resolve(position);
           }, (err) => {
             this.disableMap();
             reject(err);
@@ -53,9 +53,9 @@ export class GoogleMapComponent {
           this.firstLoadFailed = true;
           reject(err);
         });
-      } else {
-        reject('Google	maps	already	initialised');
-      }
+      // } else {
+      //   reject('Google	maps	already	initialised');
+      // }
     });
 
   }
@@ -97,24 +97,25 @@ export class GoogleMapComponent {
 
   private injectSDK(): Promise<any> {
     return new Promise((resolve, reject) => {
-      window['mapInit'] = () => {
+     // window['mapInit'] = () => {
         this.mapsLoaded = true;
         resolve(true);
-      }
-      const script = this.renderer.createElement('script');
-      script.id = 'googleMaps';
+      // }
+      // const script = this.renderer.createElement('script');
+      // script.id = 'googleMaps';
 
-      if (this.apiKey) {
-        script.src = 'https://maps.googleapis.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit&libraries=geometry,places';
-      } else {
-        script.src = 'https://maps.googleapis.com/maps/api/js?callback=mapInit';
-      }
-      this.renderer.appendChild(this._document.body, script);
+      // if (this.apiKey) {
+      //   script.src = 'https://maps.googleapis.com/maps/api/js?key=' + this.apiKey + '&callback=mapInit&libraries=geometry,places';
+      // } else {
+      //   script.src = 'https://maps.googleapis.com/maps/api/js?callback=mapInit';
+      // }
+      // this.renderer.appendChild(this._document.body, script);
     });
   }
 
   private initMap(): Promise<any> {
     return new Promise((resolve, reject) => {
+     // resolve("true");
       Geolocation.getCurrentPosition({  enableHighAccuracy: true,  timeout: 100000 }).then((position) => {
         console.log(position);
         // let	latLng	=	new	google.maps.LatLng(46.064941,13.230720);
@@ -152,7 +153,7 @@ export class GoogleMapComponent {
 
   disableMap(): void {
     //this.connectionAvailable = false;
-    google = undefined;
+    //google = undefined;
   }
 
   enableMap(): void {

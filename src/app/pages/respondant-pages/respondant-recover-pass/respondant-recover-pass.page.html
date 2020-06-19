@@ -11,7 +11,7 @@
           <form>
             <div class="emerge-form-line">
               <ion-item no-lines>
-                <ion-input type="text" placeholder="Email" required></ion-input>
+                <ion-input type="email" name="email" [(ngModel)] = "email" placeholder="Email" required></ion-input>
               </ion-item>
             </div>
 
@@ -24,7 +24,7 @@
                           </ng-container>
                       </div> -->
 
-            <ion-button type="submit" size="12">
+            <ion-button type="submit" size="12" (click) = "recover()">
               RECOVER
             </ion-button>
           </form>
