@@ -53,9 +53,11 @@ export class GoogleMapComponent {
           this.firstLoadFailed = true;
           reject(err);
         });
+
       // } else {
       //   reject('Google	maps	already	initialised');
       // }
+
     });
 
   }

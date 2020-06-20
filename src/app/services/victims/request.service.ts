@@ -40,7 +40,6 @@ export class RequestService {
         result.forEach(doc=>{
           firebase.firestore().collection('request').doc(`${doc.id}`).update({
             assigned_responders: this.responders//firebase.firestore.FieldValue.arrayUnion(`${id}`)
-           
           });
           
         })

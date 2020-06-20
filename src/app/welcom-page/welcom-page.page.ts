@@ -48,13 +48,13 @@ export class WelcomPagePage implements OnInit {
   
       PushNotifications.addListener('pushNotificationReceived',
         (notification: PushNotification) => {
-          alert('Push received: ' + JSON.stringify(notification));
+          //alert('Push received: ' + JSON.stringify(notification));
         }
       );
   
       PushNotifications.addListener('pushNotificationActionPerformed',
         (notification: PushNotificationActionPerformed) => {
-          alert('Push action performed: ' + JSON.stringify(notification));
+          //alert('Push action performed: ' + JSON.stringify(notification));
         }
       );
     }

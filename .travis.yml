@@ -10,4 +10,4 @@ before_script:
   - npm install -g @angular/cli
   - npm run lint
 script:
-  - npm run test
+  - ionic build --prod
