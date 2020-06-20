@@ -116,7 +116,7 @@ export class GoogleMapComponent {
   private initMap(): Promise<any> {
     return new Promise((resolve, reject) => {
      // resolve("true");
-      Geolocation.getCurrentPosition({  enableHighAccuracy: true,  timeout: 100000 }).then((position) => {
+      Geolocation.getCurrentPosition({  enableHighAccuracy: false,  timeout: 5000 }).then((position) => {
         console.log(position);
         // let	latLng	=	new	google.maps.LatLng(46.064941,13.230720);
         const latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
