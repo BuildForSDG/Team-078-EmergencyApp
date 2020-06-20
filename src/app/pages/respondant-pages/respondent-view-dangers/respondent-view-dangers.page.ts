@@ -54,7 +54,7 @@ export class RespondentViewDangersPage implements OnInit {
       message:	'Setting current location...'
     }).then((overlay)	=>	{
         overlay.present();
-        Geolocation.getCurrentPosition().then((position)	=>	{
+        // Geolocation.getCurrentPosition().then((position)	=>	{
             overlay.dismiss();
             //display danger fetched from firebase
             this.map.respondentOrAdminDisplayMultipleMarkers(this.locations);
@@ -65,10 +65,10 @@ export class RespondentViewDangersPage implements OnInit {
             }).then((alert)	=>	{
               alert.present();
             });
-        },	(err)	=>	{
-          console.log(err);
-          overlay.dismiss();
-        });
+        // },	(err)	=>	{
+        //   console.log(err);
+        //   overlay.dismiss();
+        // });
     });
  }
 

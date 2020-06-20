@@ -62,8 +62,8 @@ export class VictimConfirmLocOnMapPage implements OnInit {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
         this.map.init().then(
-          res => {
-            this.setLocation();
+          position => {
+            this.setLocation(position);
           },
           err => {
             console.log(err);
@@ -125,16 +125,16 @@ export class VictimConfirmLocOnMapPage implements OnInit {
     })   
   }
 
-  setLocation(): void {
+  setLocation(position): void {
     this.loadingCtrl
       .create({
         message: 'Setting current location...'
       })
       .then(overlay => {
         overlay.present();
-        Geolocation.getCurrentPosition().then(
-          position => {
-            overlay.dismiss();
+        // Geolocation.getCurrentPosition().then(
+        //   position => {
+           
             this.latitude = position.coords.latitude;
             this.longitude = position.coords.longitude;
             this.map.changeMarkerWithoutAni(this.latitude, this.longitude);
@@ -154,12 +154,13 @@ export class VictimConfirmLocOnMapPage implements OnInit {
               .then(alert => {
                 alert.present();
               });
-          },
-          err => {
-            console.log(err);
-            overlay.dismiss();
-          }
-        );
+              overlay.dismiss();
+        //   },
+        //   err => {
+        //     console.log(err);
+        //     overlay.dismiss();
+        //   }
+        // );
 
         google.maps.event.addListener(this.map.map, 'dragend', () => {
           const center = this.map.map.getCenter();

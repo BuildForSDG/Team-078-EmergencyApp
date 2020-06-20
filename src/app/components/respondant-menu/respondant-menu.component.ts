@@ -35,10 +35,7 @@ export class RespondantMenuComponent implements OnInit {
       url: "/respondent-history",
       icon: "bonfire-outline",
     },
-  ];
-  
-  tempPage = [
-     {
+    {
       title: "Add Danger",
       url: "/respondent-add-danger",
       icon: "flame-outline",
@@ -47,8 +44,21 @@ export class RespondantMenuComponent implements OnInit {
       title: "View Danger",
       url: "/respondent-view-dangers",
       icon: "bonfire-outline",
-    },
+    }
   ];
+  
+  // tempPage = [
+  //    {
+  //     title: "Add Danger",
+  //     url: "/respondent-add-danger",
+  //     icon: "flame-outline",
+  //   },
+  //   {
+  //     title: "View Danger",
+  //     url: "/respondent-view-dangers",
+  //     icon: "bonfire-outline",
+  //   },
+  // ];
   public loading: HTMLIonLoadingElement;
 
   constructor(
@@ -63,14 +73,17 @@ export class RespondantMenuComponent implements OnInit {
     });
   }
   ngOnInit() {}
-
+  // ionDidClose() {
+  //   !this.isShowDiv
+  // }
   // toggleDisplayDiv() {
   //   this.isShowDiv = !this.isShowDiv;
   // }
 
-  toggleDisplayDiv() {
-    this.menu.toggle('main-menu');
-  }
+  // toggleDisplayDiv() {
+  //   this.menu.toggle('main-menu');
+  //   console.log(this.menu)
+  // }
   async signOut(){
     this.loading = await this.loadingCtrl.create(); 
     await this.loading.present(); 
@@ -91,7 +104,7 @@ export class RespondantMenuComponent implements OnInit {
       });
     });
   }
-
+ 
   goBack() {
     this.location.back();
   }

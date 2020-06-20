@@ -40,18 +40,18 @@ export class VictimMenuComponent implements OnInit {
     }
   ];
 
-  tempPage = [
-    {
-      title: "Find Unit",
-      url: "/find-unit",
-      icon: "help-buoy-outline"
-    },
-    {
-      title: "View Dangers",
-      url: "/view-dangers",
-      icon: "flame-outline"
-    },
-  ];
+  // tempPage = [
+  //   {
+  //     title: "Find Unit",
+  //     url: "/find-unit",
+  //     icon: "help-buoy-outline"
+  //   },
+  //   {
+  //     title: "View Dangers",
+  //     url: "/view-dangers",
+  //     icon: "flame-outline"
+  //   },
+  // ];
 
 
   constructor(
@@ -69,9 +69,9 @@ export class VictimMenuComponent implements OnInit {
 
   }
 
-  ionDidClose() {
-    !this.isShowDiv
-  }
+  // ionDidClose() {
+  //   !this.isShowDiv
+  // }
 
   toggleDisplayDiv() {
     this.menu.toggle('main-menu');
