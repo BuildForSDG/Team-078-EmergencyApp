@@ -24,6 +24,7 @@ export class VictimConfirmLocOnMapPage implements OnInit {
   private longitude: number;
   public loading: HTMLIonLoadingElement;
   data: any;
+  id : any;
   markerlatlong = {
     lat: 0,
     long: 0
@@ -53,6 +54,7 @@ export class VictimConfirmLocOnMapPage implements OnInit {
         this.userInfo.victim_id = this.data.victim_id;
       } else {
        // this.map.disableMap();
+       navigator.geolocation.clearWatch(this.id);
         this.router.navigate(['/get-help']);
       }
     });
@@ -107,6 +109,7 @@ export class VictimConfirmLocOnMapPage implements OnInit {
             await result;
             this.loading.dismiss().then(() => { 
               this.map.disableMap();
+              navigator.geolocation.clearWatch(this.id);
               this.router.navigate(["/unit-alert"],navigationExtras);
             });
           }, error => { 
@@ -155,12 +158,31 @@ export class VictimConfirmLocOnMapPage implements OnInit {
                 alert.present();
               });
               overlay.dismiss();
-        //   },
-        //   err => {
-        //     console.log(err);
-        //     overlay.dismiss();
-        //   }
-        // );
+              var target, options;
+              var that = this;
+              function success(pos) {
+                var crd = pos.coords;
+                that.map.changeMarkerWithoutAni(pos.coords.latitude, pos.coords.longitude);
+               // console.log("id Info",that.id);
+                navigator.geolocation.clearWatch(that.id);
+              }
+        
+              function error(err) {
+                console.warn('ERROR(' + err.code + '): ' + err.message);
+              }
+        
+              target = {
+                latitude: 0,
+                longitude: 0
+              };
+        
+              options = {
+                enableHighAccuracy: true,
+                timeout: 10000,
+                maximumAge: 0
+              };
+        
+              this.id = navigator.geolocation.watchPosition(success, error, options);
 
         google.maps.event.addListener(this.map.map, 'dragend', () => {
           const center = this.map.map.getCenter();

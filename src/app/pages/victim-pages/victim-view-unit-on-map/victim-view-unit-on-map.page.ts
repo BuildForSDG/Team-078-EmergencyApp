@@ -11,7 +11,7 @@ declare var google;
   templateUrl: './victim-view-unit-on-map.page.html',
   styleUrls: ['./victim-view-unit-on-map.page.scss'],
 })
-export class VictimViewUnitOnMapPage implements OnInit,OnDestroy{
+export class VictimViewUnitOnMapPage implements OnInit, OnDestroy {
 
   // constructor(private modalController: ModalController) { }
 
@@ -22,22 +22,24 @@ export class VictimViewUnitOnMapPage implements OnInit,OnDestroy{
   // }
   @ViewChild(GoogleMapComponent, { static: false })
   map: GoogleMapComponent;
+  id : any;
   public loading: HTMLIonLoadingElement;
   constructor(private alertCtrl: AlertController,
     private loadingCtrl: LoadingController, private modalController: ModalController,
-    private _auth: AuthService,private router: Router) { 
-      // var that = this;
-      // this.router.events.subscribe(async (event: RouterEvent) => {
-      //   console.log("Route Changed");
-        
-      //   await this.map.disableMap();
-      // });
-    }
+    private _auth: AuthService, private router: Router) {
+    // var that = this;
+    // this.router.events.subscribe(async (event: RouterEvent) => {
+    //   console.log("Route Changed");
+
+    //   await this.map.disableMap();
+    // });
+  }
   private latitude: number;
   private longitude: number;
   unitType: string;
   unitsDetails: any;
   coord: any;
+  
   ngOnInit() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
@@ -48,7 +50,7 @@ export class VictimViewUnitOnMapPage implements OnInit,OnDestroy{
           // this.setLocation();
           console.log(err);
         });
-      }else{
+      } else {
         console.log("User not found");
       }
     });
@@ -56,11 +58,13 @@ export class VictimViewUnitOnMapPage implements OnInit,OnDestroy{
   async closeModal() {
     this.map.disableMap();
     await this.modalController.dismiss();
-    
+    navigator.geolocation.clearWatch(this.id);
+
   }
   @HostListener('unloaded')
   ngOnDestroy() {
     this.map.disableMap()
+    navigator.geolocation.clearWatch(this.id);
     console.log('Items destroyed');
   }
 
@@ -71,56 +75,53 @@ export class VictimViewUnitOnMapPage implements OnInit,OnDestroy{
       overlay.present();
       this.latitude = position.coords.latitude;
       this.longitude = position.coords.longitude;
-      var id = Geolocation.watchPosition({ enableHighAccuracy: true, timeout: 10000 }, (position, err) => {
-      Geolocation.clearWatch({id});
-         console.log(position);
-         this.map.changeMarkerWithoutAni(position.coords.latitude, position.coords.longitude);
-            if (err) {
-          console.log(err);
-          overlay.dismiss();
-          return;
+      const currentLocation = {
+        lat: this.latitude,
+        lng: this.longitude
+      };
+      this.map.changeMarkerWithoutAniAndDraggable(position.coords.latitude, position.coords.longitude);
+      this.map.viewUnitOnMap(currentLocation, this.unitsDetails);
+      overlay.dismiss();
+      });
+      const data = {
+        latitude: this.latitude,
+        longitude: this.longitude
+      };
+      
+      var target, options;
+      var that = this;
+      function success(pos) {
+        var crd = pos.coords;
+
+        if (target.latitude === crd.latitude && target.longitude === crd.longitude) {
+          alert('Congratulations, you reached the target');
+          navigator.geolocation.clearWatch(that.id);
         }
+        
+        that.map.changeMarkerWithoutAniAndDraggable(pos.coords.latitude, pos.coords.longitude);
+        //navigator.geolocation.clearWatch(that.id);
+        console.log("id Info",that.id);
+        // that.id = navigator.geolocation.watchPosition(success, error, options);
+      }
 
-     });
-        overlay.dismiss();
-       
-        const currentLocation = {
-          lat: this.latitude,
-          lng: this.longitude
-        };
+      function error(err) {
+        console.warn('ERROR(' + err.code + '): ' + err.message);
+      }
 
-        this.map.viewUnitOnMap(currentLocation, this.unitsDetails);
-        const data = {
-          latitude: this.latitude,
-          longitude: this.longitude
-        };
+      target = {
+        latitude: 0,
+        longitude: 0
+      };
 
-      // Geolocation.getCurrentPosition().then((position) => {
-      //   overlay.dismiss();
-      //   this.latitude = position.coords.latitude;
-      //   this.longitude = position.coords.longitude;
-      //   const currentLocation = {
-      //     lat : this.latitude,
-      //     lng : this.longitude
-      //   };
-      //   //this.map.mapLocation();
-      //   this.map.viewUnitOnMap(currentLocation,this.unitsDetails);
-      //   const data = {
-      //     latitude: this.latitude,
-      //     longitude: this.longitude
-      //   };
-      //   this.alertCtrl.create({
-      //     header: 'Location	confirmed!',
-      //     // message: 'You can now view any dangers on your current route.',
-      //     buttons: [{ text: 'Ok' }]
-      //   }).then((alert) => {
-      //     alert.present();
-      //   });
-      // }, (err) => {
-      //   console.log(err);
-      //   overlay.dismiss();
-      // });
-    });
+      options = {
+        enableHighAccuracy: true,
+        timeout: 100000,
+        maximumAge: 0
+      };
+
+      this.id = navigator.geolocation.watchPosition(success, error, options);
+    
+    
   }
 
 }

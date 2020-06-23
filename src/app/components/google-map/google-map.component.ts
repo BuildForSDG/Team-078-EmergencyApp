@@ -118,7 +118,7 @@ export class GoogleMapComponent {
   private initMap(): Promise<any> {
     return new Promise((resolve, reject) => {
      // resolve("true");
-      Geolocation.getCurrentPosition({  enableHighAccuracy: false,  timeout: 5000 }).then((position) => {
+      Geolocation.getCurrentPosition({  enableHighAccuracy: false,  timeout: 20000 }).then((position) => {
         console.log(position);
         // let	latLng	=	new	google.maps.LatLng(46.064941,13.230720);
         const latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
@@ -142,7 +142,7 @@ export class GoogleMapComponent {
 
   public watch() {
     return new Promise((resolve, reject) => {
-      const id = Geolocation.watchPosition({ enableHighAccuracy: true, timeout: 10000 }, (position, err) => {
+      const id = Geolocation.watchPosition({ enableHighAccuracy: true, timeout: 20000 }, (position, err) => {
         // Geolocation.clearWatch({id});
         if (err) {
           reject(err);
@@ -415,6 +415,23 @@ export class GoogleMapComponent {
     this.marker = marker;
 
   }
+
+  public changeMarkerWithoutAniAndDraggable(lat: number, lng: number): void {
+
+    const latLng = new google.maps.LatLng(lat, lng);
+    const marker = new google.maps.Marker({
+      map: this.map,
+      position: latLng
+    });
+    // Remove existing marker if	it exists
+    if (this.marker) {
+      this.marker.setMap(null);
+    }
+    // 	Add	new	marker
+    this.marker = marker;
+
+  }
+
   public geoCodeLatLng(lat, lng): Promise<any> {
     var geocoder = new google.maps.Geocoder;
     var latlng = { lat: parseFloat(lat), lng: parseFloat(lng) };

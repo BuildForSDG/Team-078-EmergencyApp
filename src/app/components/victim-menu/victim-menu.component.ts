@@ -106,6 +106,9 @@ export class VictimMenuComponent implements OnInit {
     if (this.routerlocation === "/victim-request-history") {
       return "Request History"
     }
+    if (this.routerlocation === "/victim-confirm-loc-on-map") {
+      return "Verify Location"
+    }
 
   }
 

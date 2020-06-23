@@ -90,11 +90,13 @@ export class RespondantMenuComponent implements OnInit {
     firebase.auth().signOut().then(() => {
       this.loading.dismiss().then(async () => { 
         // this.map.disableMap();
+        
         const alert = await this.alertCtrl.create({ message: "You have logout successfully" , buttons: [{ text: 'Ok', role: 'cancel' }], });
         await alert.present();
+        this.loading.dismiss();
         this.router.navigate(["/respondant-login"]);
       });
-        
+      
     }).catch((error) => {
       // An error happened.
       this.loading.dismiss().then(async () => { 
