@@ -27,6 +27,7 @@ export class FindUnitPage implements OnInit,OnDestroy  {
      /*  if (typeof (this.map) === 'undefined') {
            console.log("This Map is Undefined");
       } */
+      //alert("Updated 2");
     _auth.getUnitType().then(async (result) => {
       this.loading = await this.loadingCtrl.create();
       await this.loading.present();
@@ -54,6 +55,7 @@ export class FindUnitPage implements OnInit,OnDestroy  {
   }
 
   ngOnInit() {
+   
   }
   @HostListener('unloaded')
   ngOnDestroy() {

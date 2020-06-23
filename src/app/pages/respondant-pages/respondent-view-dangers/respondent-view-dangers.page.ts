@@ -26,7 +26,8 @@ export class RespondentViewDangersPage implements OnInit {
   ngOnInit() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.map.init().then((res) => {
+        let userCoordinates = JSON.parse(localStorage.getItem('userCoordinates'));
+        this.map.init(userCoordinates).then((res) => {
           //fetch dangers from firebase
           this._auth.getDangersLocation().then(async (result) => {
             this.loading = await this.loadingCtrl.create();

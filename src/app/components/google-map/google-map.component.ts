@@ -36,11 +36,20 @@ export class GoogleMapComponent {
   private isUnitDisplayed : boolean = false;
   constructor(private renderer: Renderer2, private element: ElementRef,
     private platform: Platform, @Inject(DOCUMENT) private _document) { }
-
-  public init(): Promise<any> {
-
+    myposition = {
+      coords : {
+       latitude : 0,
+       longitude : 0
+      }
+    }
+  public init(position): Promise<any> {
+    
+   
     return new Promise((resolve, reject) => {
       // if (typeof (google) === 'undefined') {
+        console.log("Current Position",position);
+        this.myposition.coords.latitude = position.coords.latitude;
+        this.myposition.coords.longitude = position.coords.longitude;
         this.loadSDK().then(() => {
           this.initMap().then((position) => {
             this.enableMap();
@@ -118,23 +127,46 @@ export class GoogleMapComponent {
   private initMap(): Promise<any> {
     return new Promise((resolve, reject) => {
      // resolve("true");
-      Geolocation.getCurrentPosition({  enableHighAccuracy: false,  timeout: 20000 }).then((position) => {
-        console.log(position);
+      if(this.myposition.coords.latitude !== 0 && this.myposition.coords.longitude !== 0 ){
+      // Geolocation.getCurrentPosition({  enableHighAccuracy: false,  timeout: 20000 }).then((position) => {
+        console.log("Current Location InitMap",this.myposition);
         // let	latLng	=	new	google.maps.LatLng(46.064941,13.230720);
-        const latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        const latLng = new google.maps.LatLng(this.myposition.coords.latitude, this.myposition.coords.longitude);
         const mapOptions = {
           center: latLng,
           zoom: 13
         };
         this.map = new google.maps.Map(this.element.nativeElement, mapOptions);
         //resolve the latLng to be used to get the current position
-        resolve(position);
-      }, (err) => {
+        resolve(this.myposition);
+      }else{
+         Geolocation.getCurrentPosition({  enableHighAccuracy: false,  timeout: 20000 }).then((position) => {
+          console.log("Current Location",position);
+          // let	latLng	=	new	google.maps.LatLng(46.064941,13.230720);
+          const latLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+          const mapOptions = {
+            center: latLng,
+            zoom: 13
+          };
+          console.log("This Position",position);
+          let userCoordinates = {
+            coords: {
+              latitude: position.coords.latitude,
+              longitude: position.coords.longitude
+            }
+          }
+          localStorage.setItem('userCoordinates', JSON.stringify(userCoordinates));
+          this.map = new google.maps.Map(this.element.nativeElement, mapOptions);
+          //resolve the latLng to be used to get the current position
+          resolve(position);
+          }, (err) => {
 
         
         console.log(err);
         reject('Could	not	initialise map');
       });
+      }
+     
 
     });
 
@@ -185,7 +217,7 @@ export class GoogleMapComponent {
       this.networkHandler = Network.addListener('networkStatusChange', (status) => {
         if (status.connected) {
           if (typeof google === 'undefined' && this.firstLoadFailed) {
-            this.init().then((res) => {
+            this.init(this.myposition).then((res) => {
               console.log('Google	Maps	ready.')
             }, (err) => {
               console.log(err);

@@ -61,9 +61,12 @@ export class VictimConfirmLocOnMapPage implements OnInit {
   }
 
   ngOnInit() {
+
+    let userCoordinates = JSON.parse(localStorage.getItem('userCoordinates'));
+    console.log(userCoordinates);
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.map.init().then(
+        this.map.init(userCoordinates).then(
           position => {
             this.setLocation(position);
           },
@@ -163,6 +166,13 @@ export class VictimConfirmLocOnMapPage implements OnInit {
               function success(pos) {
                 var crd = pos.coords;
                 that.map.changeMarkerWithoutAni(pos.coords.latitude, pos.coords.longitude);
+                let userCoordinates = {
+                  coords: {
+                    latitude: pos.coords.latitude,
+                    longitude: pos.coords.longitude
+                  }
+                }
+                localStorage.setItem('userCoordinates', JSON.stringify(userCoordinates));
                // console.log("id Info",that.id);
                 navigator.geolocation.clearWatch(that.id);
               }

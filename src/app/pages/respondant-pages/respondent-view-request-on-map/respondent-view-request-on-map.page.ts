@@ -25,8 +25,9 @@ export class RespondentViewRequestOnMapPage implements OnInit, OnDestroy {
   coord: any;
   ngOnInit() {
     firebase.auth().onAuthStateChanged(user => {
+      let userCoordinates = JSON.parse(localStorage.getItem('userCoordinates'));
       if (user) {
-        this.map.init().then((position) => {
+        this.map.init(userCoordinates).then((position) => {
           this.setLocation(position);
         }, (err) => {
           console.log(err);

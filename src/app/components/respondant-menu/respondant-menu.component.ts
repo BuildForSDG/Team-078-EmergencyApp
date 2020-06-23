@@ -85,25 +85,26 @@ export class RespondantMenuComponent implements OnInit {
   //   console.log(this.menu)
   // }
   async signOut(){
-    this.loading = await this.loadingCtrl.create(); 
-    await this.loading.present(); 
-    firebase.auth().signOut().then(() => {
-      this.loading.dismiss().then(async () => { 
+    // this.loading = await this.loadingCtrl.create(); 
+    // await this.loading.present(); 
+    firebase.auth().signOut().then(async () => {
+      // this.loading.dismiss().then(async () => { 
         // this.map.disableMap();
         
         const alert = await this.alertCtrl.create({ message: "You have logout successfully" , buttons: [{ text: 'Ok', role: 'cancel' }], });
         await alert.present();
-        this.loading.dismiss();
-        this.router.navigate(["/respondant-login"]);
-      });
+        //this.loading.dismiss();
+       
+     // });
+      this.router.navigate(["/respondant-login"]);
       
-    }).catch((error) => {
+    }).catch(async (error) => {
       // An error happened.
-      this.loading.dismiss().then(async () => { 
+      // this.loading.dismiss().then(async () => { 
         // this.map.disableMap();
         const alert = await this.alertCtrl.create({ message: error.message , buttons: [{ text: 'Ok', role: 'cancel' }], });
         await alert.present();
-      });
+      // });
     });
   }
  

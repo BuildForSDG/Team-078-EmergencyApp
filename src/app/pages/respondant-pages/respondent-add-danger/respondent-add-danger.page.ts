@@ -45,9 +45,10 @@ export class RespondentAddDangerPage implements OnInit ,OnDestroy{
    }
 
   ngOnInit() {
+    let userCoordinates = JSON.parse(localStorage.getItem('userCoordinates'));
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.map.init().then(
+        this.map.init(userCoordinates).then(
           position => {
             this.setLocation(position);
           },

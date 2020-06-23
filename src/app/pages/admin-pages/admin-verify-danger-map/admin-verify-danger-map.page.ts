@@ -42,9 +42,10 @@ export class AdminVerifyDangerMapPage implements OnInit {
     private _auth: AuthService
   ) { }
   ngOnInit() {
+    let userCoordinates = JSON.parse(localStorage.getItem('userCoordinates'));
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.map.init().then(
+        this.map.init(userCoordinates).then(
           position => {
             this.setLocation(position);
           },

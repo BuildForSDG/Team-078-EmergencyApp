@@ -40,10 +40,18 @@ export class VictimViewUnitOnMapPage implements OnInit, OnDestroy {
   unitsDetails: any;
   coord: any;
   
+  // myposition = {
+  //   coords : {
+  //    latitude : 6.5568767999999995,
+  //    longitude : 3.3325056
+  //   }
+  // }
   ngOnInit() {
     firebase.auth().onAuthStateChanged(user => {
       if (user) {
-        this.map.init().then(async (position) => {
+        let userCoordinates = JSON.parse(localStorage.getItem('userCoordinates'));
+        //console.log("FindCoord",userCoordinates);
+        this.map.init(userCoordinates).then(async (position) => {
           this.unitsDetails = await this._auth.getUnitsByUnitType(this.unitType);
           this.setLocation(position);
         }, (err) => {
@@ -99,6 +107,13 @@ export class VictimViewUnitOnMapPage implements OnInit, OnDestroy {
         }
         
         that.map.changeMarkerWithoutAniAndDraggable(pos.coords.latitude, pos.coords.longitude);
+        let userCoordinates = {
+          coords: {
+            latitude: pos.coords.latitude,
+            longitude: pos.coords.longitude
+          }
+        }
+        localStorage.setItem('userCoordinates', JSON.stringify(userCoordinates));
         //navigator.geolocation.clearWatch(that.id);
         console.log("id Info",that.id);
         // that.id = navigator.geolocation.watchPosition(success, error, options);
