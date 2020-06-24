@@ -29,13 +29,13 @@ export class PushNotificationService {
 
     PushNotifications.addListener('pushNotificationReceived',
       (notification: PushNotification) => {
-        alert('Push received: ' + JSON.stringify(notification));
+        //alert('Push received: ' + JSON.stringify(notification));
       }
     );
 
     PushNotifications.addListener('pushNotificationActionPerformed',
       (notification: PushNotificationActionPerformed) => {
-        alert('Push action performed: ' + JSON.stringify(notification));
+        //alert('Push action performed: ' + JSON.stringify(notification));
       }
     );
   }
@@ -45,7 +45,7 @@ export class PushNotificationService {
     return new Promise((resolve, reject) => {
       PushNotifications.addListener('registration',
         async (token: PushNotificationToken) => {
-          alert('Push registration success, token: ' + token.value);
+          //alert('Push registration success, token: ' + token.value);
           await Storage.set({
             key: 'pushToken',
             value: token.value
